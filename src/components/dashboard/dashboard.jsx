@@ -1,8 +1,11 @@
 import React from 'react';
+import {Button} from "@mui/material";
 
 function Dashboard(props) {
     return (
-        <div></div>
+        <>
+            <Button className="dsb-btn" variant="contained">Contained</Button>
+        </>
     );
 }
 
