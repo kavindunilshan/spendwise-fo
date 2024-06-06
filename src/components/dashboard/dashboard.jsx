@@ -7,7 +7,11 @@ import {Add} from "@mui/icons-material";
 function Dashboard(props) {
     return (
         <div className="dsb">
-            <Button className="dsb-btn" variant="contained" startIcon={<Add/>}>Transaction</Button>
+            <Button variant="contained"
+                    style={{
+                        backgroundColor: "#FB8B24"
+                    }}
+                    startIcon={<Add/>}>Transaction</Button>
         </div>
     );
 }
