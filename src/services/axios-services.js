@@ -13,5 +13,5 @@ export const fetchCategoryByType = async (type) => {
 }
 
 export const createTransaction = async (transaction) => {
-    const response = await axios.post(baseUrl + "/transaction", transaction);
+    const response = await axios.post(baseUrl + "/transactions", transaction);
 }

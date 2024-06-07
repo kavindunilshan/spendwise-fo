@@ -3,10 +3,11 @@ import "/src/styles/dashboard/dashboard.css";
 import { Button } from "@mui/material";
 import { Add } from "@mui/icons-material";
 import CustomizedDialogs from "../forms/add-transaction.jsx";
+import {createTransaction} from "../../services/axios-services.js";
 
 function Dashboard() {
     const initialFormData = {
-        transactionType: 'Income',
+        transactionType: 'INCOME',
         amount: '',
         date: new Date().toISOString().slice(0, 10),
         categoryId: '',
@@ -29,14 +30,13 @@ function Dashboard() {
     };
 
     const handleFormChange = (e) => {
-        console.log("Hi", e.target);
         const { name, value } = e.target;
 
         if (name === "category") {
             const [categoryId, category] = value.split("-");
             setFormData((prevData) => ({
                 ...prevData,
-                categoryId,
+                categoryId: parseInt(categoryId), // Ensure categoryId is an integer
                 category,
             }));
             return;
@@ -66,8 +66,20 @@ function Dashboard() {
             return;
         }
 
-        // Extract and use formData here
-        console.log('Form Data:', formData);
+        const currentTimeStamp = new Date().toISOString();
+
+        const transaction = {
+            category_id: formData.categoryId,
+            user_id: 111142,
+            date: `${formData.date}T00:00:00`,
+            timestamp: currentTimeStamp,
+            description: formData.description,
+        };
+
+        console.log("Here", transaction);
+
+        createTransaction(transaction);
+
         setFormData(initialFormData);  // Reset the form
         setErrors({});
         setOpen(false);

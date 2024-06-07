@@ -7,15 +7,15 @@ import {fetchCategoryByType} from "../../services/axios-services.js";
 
 const transactionTypes = [
     {
-        value: 'Income',
+        value: 'INCOME',
         label: 'Income',
     },
     {
-        value: 'Expense',
+        value: 'EXPENSE',
         label: 'Expense',
     },
     {
-        value: 'Saving',
+        value: 'SAVING',
         label: 'Saving',
     },
 ];
@@ -93,7 +93,7 @@ export default function SelectTextFields({ formData, handleFormChange, errors, c
                     select
                     label="Category"
                     name="category"
-                    value={formData.category}
+                    value={formData.category === "" ? "":`${formData.categoryId}-${formData.category}`}
                     onChange={handleFormChange}
                     helperText="Please select Category"
                     sx={{ marginLeft : 2 }}
