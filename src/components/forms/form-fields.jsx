@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import MenuItem from '@mui/material/MenuItem';
@@ -20,11 +20,16 @@ const transactionTypes = [
 ];
 
 export default function SelectTextFields({ formData, handleFormChange, errors, currency }) {
+    useEffect(() => {
+
+    }, []);
+
+
     return (
         <Box
             component="form"
             sx={{
-                '& .MuiTextField-root': { m: 1, width: '25ch' },
+                '& .MuiTextField-root': { m: 1 },
             }}
             noValidate
             autoComplete="off"
@@ -37,7 +42,7 @@ export default function SelectTextFields({ formData, handleFormChange, errors, c
                     name="transactionType"
                     value={formData.transactionType}
                     onChange={handleFormChange}
-                    helperText="Please select your transaction type"
+                    helperText="Please select transaction type"
                 >
                     {transactionTypes.map((option) => (
                         <MenuItem key={option.value} value={option.value}>
@@ -60,8 +65,8 @@ export default function SelectTextFields({ formData, handleFormChange, errors, c
                     }}
                     placeholder="0.00"
                 />
-
-
+            </div>
+            <div>
                 <TextField
                     id="outlined-date"
                     label="Date"
@@ -74,6 +79,22 @@ export default function SelectTextFields({ formData, handleFormChange, errors, c
                         shrink: true,
                     }}
                 />
+                <TextField
+                    id="outlined-select-category"
+                    select
+                    label="Category"
+                    name="Category"
+                    value={formData.transactionType}
+                    onChange={handleFormChange}
+                    helperText="Please select Category"
+                    sx={{ marginLeft : 2 }}
+                >
+                    {transactionTypes.map((option) => (
+                        <MenuItem key={option.value} value={option.value}>
+                            {option.label}
+                        </MenuItem>
+                    ))}
+                </TextField>
             </div>
             <div>
                 <TextField
@@ -85,7 +106,7 @@ export default function SelectTextFields({ formData, handleFormChange, errors, c
                     multiline
                     rows={4}
                     helperText="Please enter a description"
-                    sx={{ width: '50ch' }}
+                    sx={{ width: '57ch' }}
                 />
             </div>
         </Box>
