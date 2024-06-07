@@ -3,6 +3,7 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import MenuItem from '@mui/material/MenuItem';
 import {InputAdornment} from "@mui/material";
+import {fetchCategoryByType} from "../../services/axios-services.js";
 
 const transactionTypes = [
     {
@@ -20,9 +21,17 @@ const transactionTypes = [
 ];
 
 export default function SelectTextFields({ formData, handleFormChange, errors, currency }) {
-    useEffect(() => {
+    const [categories, setCategories] = React.useState([]);
 
-    }, []);
+    useEffect(() => {
+        if (formData.transactionType) {
+            fetchCategoryByType(formData.transactionType).then(fetchedCategories => {
+                setCategories(fetchedCategories);
+            }).catch(error => {
+                console.error("Error fetching categories: ", error);
+            });
+        }
+    }, [formData.transactionType]);
 
 
     return (
@@ -83,15 +92,15 @@ export default function SelectTextFields({ formData, handleFormChange, errors, c
                     id="outlined-select-category"
                     select
                     label="Category"
-                    name="Category"
-                    value={formData.transactionType}
+                    name="category"
+                    value={formData.category}
                     onChange={handleFormChange}
                     helperText="Please select Category"
                     sx={{ marginLeft : 2 }}
                 >
-                    {transactionTypes.map((option) => (
-                        <MenuItem key={option.value} value={option.value}>
-                            {option.label}
+                    {categories.map((option) => (
+                        <MenuItem key={option.categoryId} value={`${option.categoryId}-${option.name}`}>
+                            {option.name}
                         </MenuItem>
                     ))}
                 </TextField>

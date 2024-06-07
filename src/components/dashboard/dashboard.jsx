@@ -9,6 +9,8 @@ function Dashboard() {
         transactionType: 'Income',
         amount: '',
         date: new Date().toISOString().slice(0, 10),
+        categoryId: '',
+        category: '',
         description: '',
     };
 
@@ -27,7 +29,19 @@ function Dashboard() {
     };
 
     const handleFormChange = (e) => {
+        console.log("Hi", e.target);
         const { name, value } = e.target;
+
+        if (name === "category") {
+            const [categoryId, category] = value.split("-");
+            setFormData((prevData) => ({
+                ...prevData,
+                categoryId,
+                category,
+            }));
+            return;
+        }
+
         setFormData((prevData) => ({
             ...prevData,
             [name]: value,
