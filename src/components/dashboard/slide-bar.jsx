@@ -1,6 +1,5 @@
-// Sidebar.jsx
 import React from 'react';
-import { List, ListItem, ListItemIcon, Box } from '@mui/material';
+import { List, ListItem, ListItemIcon, Box, Tooltip } from '@mui/material';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import HomeIcon from '@mui/icons-material/Home';
 import AddIcon from '@mui/icons-material/Add';
@@ -16,9 +15,7 @@ const Sidebar = () => {
     }
 
     return (
-
         <>
-
             {!isSidebarOpen && <BlurLinearIcon
                 onClick={toggleSidebar}
                 sx={{
@@ -28,9 +25,7 @@ const Sidebar = () => {
                     zIndex: 1000,
                     cursor: 'pointer',
                 }}
-            />
-            }
-
+            />}
             { isSidebarOpen && <Close
                 onClick={toggleSidebar}
                 sx={{
@@ -40,9 +35,7 @@ const Sidebar = () => {
                     zIndex: 1000,
                     cursor: 'pointer',
                 }}
-            />
-            }
-
+            />}
             {isSidebarOpen &&
                 <Box
                     sx={{
@@ -58,30 +51,38 @@ const Sidebar = () => {
                         justifyContent: 'center',
                         boxShadow: '2px 0 5px rgba(0,0,0,0.1)',
                     }}
-            >
-                <List sx={{ padding: 0 }}>
-                    <ListItem button sx={{ display: 'flex', justifyContent: 'center', padding: '1rem 0' }}>
-                        <ListItemIcon sx={{ minWidth: 'auto', color: 'black' }}>
-                            <AccountCircleIcon />
-                        </ListItemIcon>
-                    </ListItem>
-                    <ListItem button sx={{ display: 'flex', justifyContent: 'center', padding: '1rem 0' }}>
-                        <ListItemIcon sx={{ minWidth: 'auto', color: 'black' }}>
-                            <HomeIcon />
-                        </ListItemIcon>
-                    </ListItem>
-                    <ListItem button sx={{ display: 'flex', justifyContent: 'center', padding: '1rem 0' }}>
-                        <ListItemIcon sx={{ minWidth: 'auto', color: 'black' }}>
-                            <AddIcon />
-                        </ListItemIcon>
-                    </ListItem>
-                    <ListItem button sx={{ display: 'flex', justifyContent: 'center', padding: '1rem 0' }}>
-                        <ListItemIcon sx={{ minWidth: 'auto', color: 'black' }}>
-                            <ReceiptLongIcon />
-                        </ListItemIcon>
-                    </ListItem>
-                </List>
-            </Box>
+                >
+                    <List sx={{ padding: 0 }}>
+                        <ListItem button sx={{ display: 'flex', justifyContent: 'center', padding: '1rem 0' }}>
+                            <Tooltip title="Account" placement="right">
+                                <ListItemIcon sx={{ minWidth: 'auto', color: '#730C97' }}>
+                                    <AccountCircleIcon />
+                                </ListItemIcon>
+                            </Tooltip>
+                        </ListItem>
+                        <ListItem button sx={{ display: 'flex', justifyContent: 'center', padding: '1rem 0' }}>
+                            <Tooltip title="Home" placement="right">
+                                <ListItemIcon sx={{ minWidth: 'auto', color: '#730C97' }}>
+                                    <HomeIcon />
+                                </ListItemIcon>
+                            </Tooltip>
+                        </ListItem>
+                        <ListItem button sx={{ display: 'flex', justifyContent: 'center', padding: '1rem 0' }}>
+                            <Tooltip title="Add Expense" placement="right">
+                                <ListItemIcon sx={{ minWidth: 'auto', color: '#730C97' }}>
+                                    <AddIcon />
+                                </ListItemIcon>
+                            </Tooltip>
+                        </ListItem>
+                        <ListItem button sx={{ display: 'flex', justifyContent: 'center', padding: '1rem 0' }}>
+                            <Tooltip title="Receipt" placement="right">
+                                <ListItemIcon sx={{ minWidth: 'auto', color: '#730C97' }}>
+                                    <ReceiptLongIcon />
+                                </ListItemIcon>
+                            </Tooltip>
+                        </ListItem>
+                    </List>
+                </Box>
             }
         </>
     );
