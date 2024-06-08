@@ -5,6 +5,8 @@ import {Add} from "@mui/icons-material";
 import CustomizedDialogs from "../forms/add-transaction.jsx";
 import {createTransaction} from "../../services/axios-services.js";
 import SlideBar from "./slide-bar.jsx";
+import ChartContainer from "../charts/chart-container.jsx";
+import PieChartComponent from "../charts/pie-chart.jsx";
 import LineChartComponent from "../charts/line-chart.jsx";
 
 function Dashboard() {
@@ -90,17 +92,17 @@ function Dashboard() {
     return (
         <div className="dsb">
             <SlideBar/>
-            <Button
-                onClick={handleClickOpen}
-                variant="contained"
-                style={{
-                    marginLeft: "20px",
-                    backgroundColor: "#FB8B24"
-                }}
-                startIcon={<Add />}
-            >
-                Transaction
-            </Button>
+            {/*<Button*/}
+            {/*    onClick={handleClickOpen}*/}
+            {/*    variant="contained"*/}
+            {/*    style={{*/}
+            {/*        marginLeft: "20px",*/}
+            {/*        backgroundColor: "#FB8B24"*/}
+            {/*    }}*/}
+            {/*    startIcon={<Add />}*/}
+            {/*>*/}
+            {/*    Transaction*/}
+            {/*</Button>*/}
             <CustomizedDialogs
                 open={open}
                 handleClose={handleClose}
@@ -110,9 +112,15 @@ function Dashboard() {
                 errors={errors}
                 currency={"LKR"}
             />
-            <LineChartComponent
-                labels={['January', 'February', 'March', 'April', 'May', 'June', 'July']}
-            />
+            <ChartContainer title="Expence Break down" position={{ top: '50px', left: '50px' }}>
+                <PieChartComponent/>
+            </ChartContainer>
+            <ChartContainer title="Income Break down" position={{ top: '400px', left: '50px' }}>
+                <PieChartComponent/>
+            </ChartContainer>
+            <ChartContainer title="Expence Break down" position={{ top: '400px', left: '500px' }}>
+                <LineChartComponent/>
+            </ChartContainer>
         </div>
     );
 }
