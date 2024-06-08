@@ -1,0 +1,32 @@
+.action-station-container {
+    width: 550px;
+    height: 150px;
+}
+
+.action-station-ym-picker {
+    border: 1px solid #9A031E;
+    border-radius: 5px;
+    position: absolute;
+    top: 55px;
+    left: 70px;
+    scale: 0.8;
+    width: 200px;
+}
+
+.action-station-add-btn {
+    position: absolute;
+    top: 65px;
+    scale: 1.2;
+    font-size: 12px;
+    left: 300px;
+    width: 180px;
+}
+
+.action-station-goal-btn {
+    position: absolute;
+    top: 120px;
+    scale: 1;
+    font-size: 12px;
+    left: 200px;
+    width: 180px;
+}

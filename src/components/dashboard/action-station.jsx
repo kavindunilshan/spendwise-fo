@@ -5,6 +5,7 @@ import {LocalizationProvider} from "@mui/x-date-pickers";
 import {AdapterDayjs} from "@mui/x-date-pickers/AdapterDayjs";
 import {Add} from "@mui/icons-material";
 import Button from "@mui/material/Button";
+import SportsScoreOutlinedIcon from '@mui/icons-material/SportsScoreOutlined';
 import CustomizedDialogs from "../forms/add-transaction.jsx";
 import {createTransaction} from "../../services/axios-services.js";
 
@@ -90,27 +91,43 @@ function ActionStation() {
 
     return (
         <>
-        <div className={'action-station-container'}>
-            <div className={'action-station-ym-picker'}>
-                <LocalizationProvider dateAdapter={AdapterDayjs}>
-                    <DatePicker label={'"month" and "year"'} views={['month', 'year']} style={{size: 'small'}}/>
-                </LocalizationProvider>
+            <div className={'action-station-container'}>
+                <div className={'action-station-ym-picker'}>
+                    <LocalizationProvider dateAdapter={AdapterDayjs}>
+                        <DatePicker label={'"month" and "year"'} views={['month', 'year']} style={{size: 'small'}}/>
+                    </LocalizationProvider>
+                </div>
+                <div className={'action-station-add-btn'}>
+                    <Button disableElevation
+                            onClick={handleClickOpen}
+                            variant="contained"
+                            style={{
+                                border: "1px solid #9A031E",
+                                backgroundColor: "rgba(251,139,36,0)",
+                                color: "#FB8B24",
+                            }}
+                            startIcon={<Add/>}
+                    >
+                        Transaction
+                    </Button>
+                </div>
+                <div className={'action-station-goal-btn'}>
+                    <Button disableElevation
+                            variant="contained"
+                            style={{
+                                border: "1px solid #9A031E",
+                                backgroundColor: "rgba(251,139,36,0)",
+                                color: "#036022",
+                            }}
+                            startIcon={<SportsScoreOutlinedIcon style={{color: '#9A031E'}}/>}
+                    >
+                        Set Goal
+                    </Button>
+                </div>
+                <div className={'action-station-live-clock'}>
+                    {/*<Clock format={'HH:mm:ss'} ticking={true} timezone={'US/Pacific'} />*/}
+                </div>
             </div>
-            <div className={'action-station-add-btn'}>
-                <Button disableElevation
-                    onClick={handleClickOpen}
-                    variant="contained"
-                    style={{
-                        border: "1px solid #9A031E",
-                        backgroundColor: "rgba(251,139,36,0)",
-                        color: "#FB8B24",
-                    }}
-                    startIcon={<Add />}
-                >
-                    Transaction
-                </Button>
-            </div>
-        </div>
             <CustomizedDialogs
                 open={open}
                 handleClose={handleClose}
