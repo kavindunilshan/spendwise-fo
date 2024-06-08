@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import "/src/styles/dashboard/dashboard.css";
-import { Button } from "@mui/material";
-import { Add } from "@mui/icons-material";
+import {Button} from "@mui/material";
+import {Add} from "@mui/icons-material";
 import CustomizedDialogs from "../forms/add-transaction.jsx";
 import {createTransaction} from "../../services/axios-services.js";
+import SlideBar from "./slide-bar.jsx";
+import SimpleLineChart from "../charts/line-chart.jsx";
 
 function Dashboard() {
     const initialFormData = {
@@ -87,10 +89,12 @@ function Dashboard() {
 
     return (
         <div className="dsb">
+            <SlideBar/>
             <Button
                 onClick={handleClickOpen}
                 variant="contained"
                 style={{
+                    marginLeft: "20px",
                     backgroundColor: "#FB8B24"
                 }}
                 startIcon={<Add />}
