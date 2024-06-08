@@ -5,7 +5,7 @@ import {Add} from "@mui/icons-material";
 import CustomizedDialogs from "../forms/add-transaction.jsx";
 import {createTransaction} from "../../services/axios-services.js";
 import SlideBar from "./slide-bar.jsx";
-import SimpleLineChart from "../charts/line-chart.jsx";
+import ChartComponent from "../charts/line-chart.jsx";
 
 function Dashboard() {
     const initialFormData = {
@@ -110,6 +110,7 @@ function Dashboard() {
                 errors={errors}
                 currency={"LKR"}
             />
+            <ChartComponent/>
         </div>
     );
 }
