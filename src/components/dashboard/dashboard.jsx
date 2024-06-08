@@ -5,7 +5,7 @@ import {Add} from "@mui/icons-material";
 import CustomizedDialogs from "../forms/add-transaction.jsx";
 import {createTransaction} from "../../services/axios-services.js";
 import SlideBar from "./slide-bar.jsx";
-import ChartComponent from "../charts/line-chart.jsx";
+import LineChartComponent from "../charts/line-chart.jsx";
 
 function Dashboard() {
     const initialFormData = {
@@ -110,7 +110,9 @@ function Dashboard() {
                 errors={errors}
                 currency={"LKR"}
             />
-            <ChartComponent/>
+            <LineChartComponent
+                labels={['January', 'February', 'March', 'April', 'May', 'June', 'July']}
+            />
         </div>
     );
 }
