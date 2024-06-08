@@ -98,7 +98,7 @@ const LineChartComponent = ({labels, incomeData, expenseData, savingsData}) => {
         ],
     };
     return (
-        <div style={{ height: '250px', width: '450px' }}>
+        <div style={{ height: '350px', width: '550px' }}>
             <Line data={data} options={options} />
         </div>
     );
