@@ -3,7 +3,7 @@ import '/src/styles/navbar/navbar.css'
 
 function Navbar(props) {
     return (
-        <div>
+        <div className={'nav'}>
             <nav className={"navbar"}>
                 <ul className="navbar-nav">
                     <li className="nav-item">Dashboard</li>
@@ -12,7 +12,6 @@ function Navbar(props) {
                     <li className="nav-item">About Us</li>
                 </ul>
             </nav>
-            <hr className={"nav-separator"}/>
         </div>
     );
 }

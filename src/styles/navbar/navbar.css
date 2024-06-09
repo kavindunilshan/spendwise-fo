@@ -25,10 +25,3 @@
     color: #FB8B24;
 }
 
-.nav-separator {
-    width: 100%;
-    height: 1px;
-    background: linear-gradient(to right, transparent, rgba(0, 0, 0, 0.2), transparent);
-    margin: 0;
-    padding: 0;
-}
