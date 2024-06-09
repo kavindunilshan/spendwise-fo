@@ -1,11 +1,10 @@
 import './App.css'
-import Navbar from "./components/navbar/navbar.jsx";
-import Dashboard from "./components/dashboard/dashboard.jsx";
+import Home from "./pages/home.jsx";
 
 function App() {
   return (
     <>
-        <Dashboard/>
+        <Home/>
     </>
   )
 }

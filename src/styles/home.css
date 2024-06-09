@@ -1,0 +1,15 @@
+.home-header {
+
+}
+
+.home-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.home-logo {
+  width: 750px;
+  margin-left: 50px;
+  margin-top: 100px;
+  border-radius: 50px;
+}
