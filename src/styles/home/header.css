@@ -1,0 +1,15 @@
+.home-header {
+
+}
+
+.home-header h1 {
+
+}
+
+.home-logo {
+  position: absolute;
+  top: 20%;
+  left: 45%;
+  width: 35%;
+  border-radius: 50px;
+}
