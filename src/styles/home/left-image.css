@@ -45,7 +45,8 @@
   font-size: 1.4rem;
   color: #320440;
   width: 90%;
-  padding-top: 2%;
+  padding: 3% 2%;
+    line-height: 1.5;
   margin-bottom: 4%;
   text-align: center;
   margin-left: 5%;
