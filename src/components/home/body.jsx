@@ -1,7 +1,7 @@
 import React from 'react';
-import LeftImage from "./left-image.jsx";
+import TextImageContainer from "./text-image.jsx";
 
-function Body(props) {
+function Body() {
     const description1 = 'At Spendwise, we are a ' +
         'team of financial enthusiasts and tech experts dedicated' +
         ' to simplifying personal finance management and' +
@@ -10,17 +10,17 @@ function Body(props) {
 
     return (
         <div >
-            <LeftImage isLeft={true} title={'Who We Are'} image={'./src/assets/li1.png'}
-            description={description1}/>
-            <LeftImage isLeft={false} title={'Who We Are 2'} image={'./src/assets/li1.png'}
-                       description={description1}/>
-            <LeftImage isLeft={true} title={'Who We Are'} image={'./src/assets/li1.png'}
-                       description={description1}/>
-            <LeftImage isLeft={false} title={'Who We Are'} image={'./src/assets/li1.png'}
+            <TextImageContainer isLeft={true} title={'Who We Are'} image={'./src/assets/li1.png'}
                         description={description1}/>
-            <LeftImage isLeft={true} title={'Who We Are'} image={'./src/assets/li1.png'}
-                       description={description1}/>
-            <LeftImage isLeft={false} title={'Who We Are'} image={'./src/assets/li1.png'}
+            <TextImageContainer isLeft={false} title={'Who We Are 2'} image={'./src/assets/li1.png'}
+                        description={description1}/>
+            <TextImageContainer isLeft={true} title={'Who We Are'} image={'./src/assets/li1.png'}
+                        description={description1}/>
+            <TextImageContainer isLeft={false} title={'Who We Are'} image={'./src/assets/li1.png'}
+                        description={description1}/>
+            <TextImageContainer isLeft={true} title={'Who We Are'} image={'./src/assets/li1.png'}
+                        description={description1}/>
+            <TextImageContainer isLeft={false} title={'Who We Are'} image={'./src/assets/li1.png'}
                         description={description1}/>
         </div>
     );

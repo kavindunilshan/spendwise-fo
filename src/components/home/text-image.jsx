@@ -2,7 +2,7 @@ import React, {useEffect, useRef} from 'react';
 import "/src/styles/home/left-image.css";
 import {motion, useAnimation, useInView} from "framer-motion";
 
-function LeftImage({ isLeft, image, title, description }) {
+function TextImageContainer({ isLeft, image, title, description }) {
     const ref = useRef();
 
     const isInView = useInView(ref, {once: false});
@@ -59,4 +59,4 @@ function LeftImage({ isLeft, image, title, description }) {
     );
 }
 
-export default LeftImage;
+export default TextImageContainer;
