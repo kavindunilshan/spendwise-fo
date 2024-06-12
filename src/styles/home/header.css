@@ -1,16 +1,23 @@
 .home-header {
+    position: relative;
+    margin: 5%  auto;
+    width: 70%;
+    height: 75%;
+    /* tl tr br bl*/
+    border-radius: 30px 50px 0 150px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+.home-header-nav {
+    position: absolute;
+    top: 4%;
+    right: 8%;
 
 }
 
 .home-header-content {
-  position: absolute;
-  top: 15%;
-  left: 15%;
-  width: 70%;
-  height: 75%;
-  /* tl tr br bl*/
-  border-radius: 30px 50px 0 150px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: row;
 
@@ -56,6 +63,7 @@
 }
 
 .home-base {
+    align-items: flex-start;
   width: 55%;
   border-radius: 50px;
 }

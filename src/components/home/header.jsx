@@ -5,7 +5,9 @@ import "/src/styles/home/header.css";
 function Header() {
     return (
         <header className="home-header">
-            <Navbar/>
+            <div className={'home-header-nav'}>
+                <Navbar/>
+            </div>
             <div className="home-header-content">
                 <div className={'home-header-content-left'}>
                     <img src={'./src/assets/logoa.png'} alt={'home-base-image'} className={'home-logo'}/>

@@ -1,8 +1,6 @@
 .navbar {
     display: flex;
     justify-content: right;
-    margin-right: 15%;
-    padding: 8.5%;
 }
 
 .navbar-nav {
