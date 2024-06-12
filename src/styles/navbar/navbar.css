@@ -12,7 +12,9 @@
 }
 
 .nav-item {
-    color: #9A031E;
+    color: transparent; /* Set the text color to transparent */
+    background: linear-gradient(to left, #320440, #7d0a0a);
+    -webkit-background-clip: text; /* For webkit browsers */
     cursor: pointer;
     font-family: "Open Sans", sans-serif;
     font-weight: 600;

@@ -7,6 +7,18 @@ function TextImageContainer({ isLeft, image, title, description }) {
 
     const isInView = useInView(ref, {once: false});
 
+    const anime = useAnimation();
+
+    useEffect(() => {
+        if (isInView) {
+            console.log('in view');
+            anime.start('visible');
+        } else {
+            console.log('out of view');
+            anime.start('hidden');
+        }
+    }, [isInView]);
+
     const tags = (
         <>
             {!isLeft ? (
@@ -28,19 +40,6 @@ function TextImageContainer({ isLeft, image, title, description }) {
             )}
         </>
     );
-
-
-    const anime = useAnimation();
-
-    useEffect(() => {
-        if (isInView) {
-            console.log('in view');
-            anime.start('visible');
-        } else {
-            console.log('out of view');
-            anime.start('hidden');
-        }
-    }, [isInView]);
 
     return (
         <div ref={ref} className={'home-li-container'}>
