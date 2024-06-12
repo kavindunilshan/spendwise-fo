@@ -1,0 +1,52 @@
+/*// <div className={'home-li-container'}>*/
+/*// <h2 className={'home-li-title'}>{title}</h2>*/
+/*//     <div className={'home-li-content'}>*/
+/*// <img src={image} alt={'home-li'} className={'home-li'}/>*/
+/*// <div className={'home-li-description'}>{description}</div>*/
+/*//     </div>*/
+/*//     </div>*/
+
+.home-li-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  background-color: #ffffff;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+}
+
+.home-li-title {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+  font-style: italic;
+  font-size: 2rem;
+  color: #9A031E;
+}
+
+.home-li-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  background-color: #ffffff;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+}
+
+.home-li {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+.home-li-description {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 300;
+  font-size: 1rem;
+  color: #320440;
+  padding: 1rem;
+}
+
