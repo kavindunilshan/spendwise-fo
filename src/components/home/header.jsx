@@ -7,7 +7,6 @@ function Header() {
         <header className="home-header">
             <Navbar/>
             <div className="home-header-content">
-
                 <div className={'home-header-content-left'}>
                     <img src={'./src/assets/logoa.png'} alt={'home-base-image'} className={'home-logo'}/>
                     <div className={'home-slogan'}>Personal Expense Tracker</div>
