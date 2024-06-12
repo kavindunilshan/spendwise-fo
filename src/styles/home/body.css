@@ -1,0 +1,15 @@
+.body-item-title {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 3rem;
+    margin-top: 150px;
+    margin-left: 12%;
+    color: transparent; /* Set the text color to transparent */
+    background: linear-gradient(to right, #68066d, #887a00);
+    -webkit-background-clip: text; /* For webkit browsers */
+    background-clip: text; /* For other browsers that support it */
+    text-align: left;
+    -webkit-text-stroke: 0.2px gold; /* Text stroke for webkit browsers */
+    text-stroke: 1px gold;
+}
