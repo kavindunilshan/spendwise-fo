@@ -1,8 +1,30 @@
-import React from 'react';
+import React, {useEffect, useRef} from 'react';
 import TextImageContainer from "./text-image.jsx";
 import "/src/styles/home/body.css";
+import {motion, useAnimation, useInView} from "framer-motion";
 
 function Body() {
+    const ref1 = useRef();
+    const ref2 = useRef();
+
+    const isInView = useInView(ref1, {once: false});
+    const isInView2 = useInView(ref2, {once: false});
+
+    const sideAnime = useAnimation();
+    const sideAnime2 = useAnimation();
+
+    useEffect(() => {
+        if (isInView) {
+            console.log('in view');
+            sideAnime.start('visible');
+        }
+
+        if (isInView2) {
+            console.log('in view');
+            sideAnime2.start('visible');
+        }
+    }, [isInView, isInView2]);
+
     const description1 = 'At Spendwise, we are a ' +
         'team of financial enthusiasts and tech experts dedicated' +
         ' to simplifying personal finance management and' +
@@ -38,16 +60,33 @@ function Body() {
 
     return (
         <div>
-            <div className={'body-item-container'}>
-                <div className={'body-item-title'}>Overview</div>
+            <div ref={ref1} className={'body-item-container'}>
+                <motion.div
+                    variants={{
+                        hidden: {opacity: 0, x: -75},
+                        visible: {opacity: 1, x: 0}
+                    }}
+                    initial={'hidden'}
+                    animate={sideAnime}
+                    transition={{duration: 0.5, delay: 0.25}}
+                    className={'body-item-title'}>Overview</motion.div>
                 <TextImageContainer isLeft={true} title={'Who We Are?'} image={'./src/assets/li1.png'}
                                     description={description1}/>
                 <TextImageContainer isLeft={false} title={'Why to Track Expenses?'} image={'./src/assets/li4.png'}
                                     description={description2}/>
             </div>
 
-            <div className={'body-item-container'}>
-                <div className={'body-item-title'}>Our Service</div>
+            <div ref={ref2} className={'body-item-container'}>
+                <motion.div
+                    variants={{
+                        hidden: {opacity: 0, x: -75},
+                        visible: {opacity: 1, x: 0}
+                    }}
+                    initial={'hidden'}
+                    animate={sideAnime2}
+                    transition={{duration: 0.5, delay: 0.25}}
+                    className={'body-item-title'}>Our Services
+                </motion.div>
                 <TextImageContainer isLeft={true} title={'Track Your Spending'} image={'./src/assets/li3.png'}
                                     description={description3}/>
                 <TextImageContainer isLeft={false} title={'Set Financial Goals'} image={'./src/assets/li5.jpg'}
