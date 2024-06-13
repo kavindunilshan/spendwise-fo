@@ -3,7 +3,6 @@ import {List, ListItem, ListItemIcon, Tooltip} from "@mui/material";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle.js";
 import HomeIcon from "@mui/icons-material/Home.js";
 import AddIcon from "@mui/icons-material/Add.js";
-import ReceiptLongIcon from "@mui/icons-material/ReceiptLong.js";
 import UserMenu from "../login/logged-menu.jsx";
 
 function FlatIcons(props) {
@@ -34,7 +33,7 @@ function FlatIcons(props) {
                 <ListItem button sx={{ display: 'flex', justifyContent: 'center', padding: '1rem', '&:hover': { backgroundColor: 'transparent' } }}>
                     <Tooltip title="Receipt" placement="top">
                         <ListItemIcon sx={{ minWidth: 'auto', color: '#320440' }}>
-                            <UserMenu/>
+                            <UserMenu size={25}/>
                         </ListItemIcon>
                     </Tooltip>
                 </ListItem>
