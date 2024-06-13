@@ -48,9 +48,10 @@ const StyledMenu = styled((props) => (
     },
 }));
 
-export default function UserMenu({name, image}) {
+export default function UserMenu() {
     const [anchorEl, setAnchorEl] = React.useState(null);
-    const { logout } = useAuth0();
+    const { user, logout } = useAuth0();
+    const { name, picture: image } = user;
     const open = Boolean(anchorEl);
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);

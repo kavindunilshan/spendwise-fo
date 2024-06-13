@@ -5,10 +5,7 @@ import UserMenu from "./logged-menu.jsx";
 import '/src/styles/login/login.css';
 
 const LoginButton = () => {
-    const { isAuthenticated, user, loginWithRedirect, logout } = useAuth0();
-
-    console.log("isAuthenticated", isAuthenticated);
-    console.log("user", user);
+    const { isAuthenticated, user, loginWithRedirect } = useAuth0();
 
     return (
         <>
@@ -33,7 +30,7 @@ const LoginButton = () => {
 
                 {isAuthenticated &&
                     <div className={'login-logged-user'}>
-                        <UserMenu name={user.name} image={user.picture}/>
+                        <UserMenu/>
                     </div>
                 }
             </div>
