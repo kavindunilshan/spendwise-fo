@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from "../components/home/header.jsx";
 import Body from "../components/home/body.jsx";
-import LoginButton from "../components/home/login.jsx";
+import LoginButton from "../components/login/login.jsx";
 
 function Home() {
     return (

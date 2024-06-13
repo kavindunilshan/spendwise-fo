@@ -1,6 +1,7 @@
 import React, {useEffect} from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import Button from "@mui/material/Button";
+import UserMenu from "./logged-menu.jsx";
 
 const LoginButton = () => {
     const { isAuthenticated, user, loginWithRedirect, logout } = useAuth0();
@@ -22,10 +23,7 @@ const LoginButton = () => {
 
                 {isAuthenticated &&
                     <div className={'login-logged-user'}>
-                        <Button
-                            onClick={() => logout({logoutParams: {returnTo: window.location.origin}})}
-                        >Log Out
-                        </Button>
+                        <UserMenu name={user.name} image={user.picture}/>
                     </div>
                 }
             </div>
