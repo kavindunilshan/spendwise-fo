@@ -2,12 +2,10 @@ import * as React from 'react';
 import {alpha, styled} from '@mui/material/styles';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import EditIcon from '@mui/icons-material/Edit';
 import Divider from '@mui/material/Divider';
-import ArchiveIcon from '@mui/icons-material/Archive';
-import FileCopyIcon from '@mui/icons-material/FileCopy';
-import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import {Avatar} from "@mui/material";
+import {Logout, Settings, Subscriptions, Visibility} from "@mui/icons-material";
+import {useAuth0} from "@auth0/auth0-react";
 
 const StyledMenu = styled((props) => (
     <Menu
@@ -52,6 +50,7 @@ const StyledMenu = styled((props) => (
 
 export default function UserMenu({name, image}) {
     const [anchorEl, setAnchorEl] = React.useState(null);
+    const { logout } = useAuth0();
     const open = Boolean(anchorEl);
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -60,9 +59,14 @@ export default function UserMenu({name, image}) {
         setAnchorEl(null);
     };
 
+    const handleLogout = () => {
+        logout({logoutParams: {returnTo: window.location.origin}});
+        handleClose();
+    }
+
     return (
-        <div className={'login-user-menu-container'}>
-            <Avatar className={'login-user-icon'} alt={name} src={image} onClick={handleClick} />
+        <div className={'login-user-menu-container'} style={{color: '#320440'}}>
+            <Avatar className={'login-user-icon'} style={{width: 40, height: 40}} alt={name} src={image} onClick={handleClick} />
             <StyledMenu
                 id="demo-customized-menu"
                 className={'login-user-menu'}
@@ -73,22 +77,22 @@ export default function UserMenu({name, image}) {
                 open={open}
                 onClose={handleClose}
             >
-                <MenuItem onClick={handleClose} disableRipple>
-                    <EditIcon />
-                    Edit
+                <MenuItem onClick={handleClose} style={{color: '#320440'}} disableRipple>
+                    <Visibility style={{color: '#320440'}} />
+                    View Profile
                 </MenuItem>
-                <MenuItem onClick={handleClose} disableRipple>
-                    <FileCopyIcon />
-                    Duplicate
+                <MenuItem onClick={handleClose} style={{color: '#320440'}} disableRipple>
+                    <Subscriptions style={{color: '#320440'}} />
+                    Subscriptions
+                </MenuItem>
+                <MenuItem onClick={handleClose} style={{color: '#320440'}} disableRipple>
+                    <Settings style={{color: '#320440'}} />
+                    Settings
                 </MenuItem>
                 <Divider sx={{ my: 0.5 }} />
-                <MenuItem onClick={handleClose} disableRipple>
-                    <ArchiveIcon />
-                    Archive
-                </MenuItem>
-                <MenuItem onClick={handleClose} disableRipple>
-                    <MoreHorizIcon />
-                    More
+                <MenuItem onClick={handleLogout} style={{color: '#320440'}} disableRipple>
+                    <Logout style={{color: '#7d0a0a'}} />
+                    Logout
                 </MenuItem>
             </StyledMenu>
         </div>
