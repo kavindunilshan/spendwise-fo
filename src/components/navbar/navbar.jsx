@@ -7,9 +7,9 @@ function Navbar(props) {
             <nav className={"navbar"}>
                 <ul className="navbar-nav">
                     <li className="nav-item">Dashboard</li>
-                    <li className="nav-item">Manage</li>
-                    <li className="nav-item">Transactions</li>
-                    <li className="nav-item">About Us</li>
+                    <li className="nav-item">Overview</li>
+                    <li className="nav-item">Services</li>
+                    <li className="nav-item">Contact Us</li>
                 </ul>
             </nav>
         </div>
