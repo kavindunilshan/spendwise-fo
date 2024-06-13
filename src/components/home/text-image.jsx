@@ -11,10 +11,8 @@ function TextImageContainer({ isLeft, image, title, description }) {
 
     useEffect(() => {
         if (isInView) {
-            console.log('in view');
             anime.start('visible');
         } else {
-            console.log('out of view');
             anime.start('hidden');
         }
     }, [isInView]);
