@@ -1,4 +1,5 @@
 .action-station-container {
+    position: relative;
     width: 550px;
     height: 150px;
 }
@@ -7,7 +8,7 @@
     border: 1px solid #9A031E;
     border-radius: 5px;
     position: absolute;
-    top: 55px;
+    top: 10px;
     left: 70px;
     scale: 0.8;
     width: 200px;
@@ -15,7 +16,7 @@
 
 .action-station-add-btn {
     position: absolute;
-    top: 65px;
+    top: 20px;
     scale: 1.2;
     font-size: 12px;
     left: 300px;
@@ -24,9 +25,17 @@
 
 .action-station-goal-btn {
     position: absolute;
-    top: 120px;
+    top: 75px;
     scale: 1;
     font-size: 12px;
     left: 200px;
     width: 180px;
+}
+
+.action-station-flat-icons {
+    position: absolute;
+    top: 115px;
+    left: 165px;
+    scale: 1;
+    font-size: 12px;
 }
