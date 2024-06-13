@@ -16,6 +16,15 @@ const LoginButton = () => {
                 {!isAuthenticated &&
                     <div className={'login-anno-user'}>
                         <Button
+                            style={{
+                                color: '#320440',
+                                boxShadow: '0 2px 2px rgba(0, 0, 0, 0.1)',
+                                border: 'none',
+                                borderRadius: 5,
+                                padding: '0px 20px',
+                                fontSize: '1rem',
+                            }}
+                            variant="outlined"
                             onClick={() => loginWithRedirect()}
                         >Log In
                         </Button>
