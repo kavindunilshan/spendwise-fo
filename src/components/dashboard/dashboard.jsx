@@ -15,13 +15,7 @@ function Dashboard() {
     useEffect(() => {
         if (!isAuthenticated && !redirectAttempted) {
             setRedirectAttempted(true);
-            loginWithRedirect(
-                {
-                    appState: {
-                        returnTo: '/dashboard',
-                    },
-                }
-            );
+            loginWithPopup();
         }
     }, []);
 
