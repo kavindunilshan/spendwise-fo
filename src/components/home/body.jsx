@@ -3,12 +3,9 @@ import TextImageContainer from "./text-image.jsx";
 import "/src/styles/home/body.css";
 import {motion, useAnimation, useInView} from "framer-motion";
 
-function Body() {
-    const ref1 = useRef();
-    const ref2 = useRef();
-
-    const isInView = useInView(ref1, {once: false});
-    const isInView2 = useInView(ref2, {once: false});
+function Body({overviewRef, serviceRef}) {
+    const isInView = useInView(overviewRef, {once: false});
+    const isInView2 = useInView(serviceRef, {once: false});
 
     const sideAnime = useAnimation();
     const sideAnime2 = useAnimation();
@@ -60,7 +57,7 @@ function Body() {
 
     return (
         <div>
-            <div ref={ref1} className={'body-item-container'}>
+            <div ref={overviewRef} className={'body-item-container'}>
                 <motion.div
                     variants={{
                         hidden: {opacity: 0, x: -75},
@@ -76,7 +73,7 @@ function Body() {
                                     description={description2}/>
             </div>
 
-            <div ref={ref2} className={'body-item-container'}>
+            <div ref={serviceRef} className={'body-item-container'}>
                 <motion.div
                     variants={{
                         hidden: {opacity: 0, x: -75},
