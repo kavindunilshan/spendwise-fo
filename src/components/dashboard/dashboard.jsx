@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import "/src/styles/dashboard/dashboard.css";
 import SlideBar from "./slide-bar.jsx";
 import WidgetContainer from "../charts/chart-container.jsx";
@@ -12,12 +12,12 @@ function Dashboard() {
     const { isAuthenticated, loginWithRedirect, loginWithPopup } = useAuth0();
     const [redirectAttempted, setRedirectAttempted] = useState(false);
 
-    useEffect(() => {
-        if (!isAuthenticated && !redirectAttempted) {
-            setRedirectAttempted(true);
-            loginWithPopup();
-        }
-    }, []);
+    // useEffect(() => {
+    //     if (!isAuthenticated && !redirectAttempted) {
+    //         setRedirectAttempted(true);
+    //         loginWithPopup();
+    //     }
+    // }, []);
 
 
     return (
