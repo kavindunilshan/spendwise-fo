@@ -36,7 +36,11 @@ function Dashboard() {
                     <PieChartComponent/>
                 </WidgetContainer>
                 <WidgetContainer title="Expence Break down" position={{ top: '300px', left: '500px' }}>
-                    <LineChartComponent labels={["January", "February", "March", "April"]}/>
+                    <LineChartComponent labels={["January", "February", "March", "April"]}
+                                        expenseData={[1000, 2000, 1500, 3000]}
+                                        incomeData={[2000, 3500, 2500, 4000]}
+                                        savingsData={[1000, 1500, 1000, 1000]}
+                    />
                 </WidgetContainer>
                 <WidgetContainer title="Available Pocket" position={{ top: '50px', left: '1120px' }}>
 

@@ -32,18 +32,30 @@ const options = {
             title: {
                 display: true,
                 text: 'Month',
+                color: '#000',
+            },
+            grid: {
+                color: 'rgba(0,0,0,0.47)',
+            },
+            ticks: {
+                color: '#000',
             },
         },
         y: {
             title: {
                 display: true,
                 text: 'Value',
+                color: '#000',
+            },
+            grid: {
+                color: 'rgba(0,0,0,0.41)',
             },
             ticks: {
                 callback: function (value, index, values) {
-                    return '$' + value;
+                    return 'Rs. ' + value;
                 },
 
+                color: '#000',
                 stepSize: 1000,
 
                 // Maximum number of ticks on the y-axis
@@ -56,6 +68,9 @@ const options = {
         legend: {
             display: true,
             position: 'top',
+            labels: {
+                color: '#000',
+            }
         },
         tooltip: {
             mode: 'index',
@@ -71,8 +86,8 @@ const LineChartComponent = ({labels, incomeData, expenseData, savingsData}) => {
             {
                 label: 'Income',
                 data: incomeData,
-                borderColor: '#0900a9',
-                backgroundColor: 'rgba(136, 132, 216, 0.2)',
+                borderColor: '#120c57',
+                backgroundColor: 'rgb(18,12,87)',
                 fill: true,
                 tension: 0,
                 borderWidth: 1,
@@ -81,7 +96,7 @@ const LineChartComponent = ({labels, incomeData, expenseData, savingsData}) => {
                 label: 'Expenses',
                 data: expenseData,
                 borderColor: '#7d0a0a',
-                backgroundColor: 'rgba(130, 202, 157, 0.2)',
+                backgroundColor: 'rgb(125,10,10)',
                 fill: true,
                 tension: 0,
                 borderWidth: 1,
@@ -89,8 +104,8 @@ const LineChartComponent = ({labels, incomeData, expenseData, savingsData}) => {
             {
                 label: 'Savings',
                 data: savingsData,
-                borderColor: 'rgb(205,205,4)',
-                backgroundColor: 'rgba(130, 202, 157, 0.2)',
+                borderColor: 'rgb(136,122,0)',
+                backgroundColor: 'rgb(136,122,0)',
                 fill: true,
                 tension: 0,
                 borderWidth: 1,
