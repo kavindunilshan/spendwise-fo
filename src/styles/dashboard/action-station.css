@@ -32,10 +32,22 @@
     width: 180px;
 }
 
+.action-station-live-clock {
+    position: absolute;
+    font-family: "Open Sans", sans-serif;
+    font-weight: 300;
+    font-style: italic;
+    top: 135px;
+    left: 180px;
+    color: #320440;
+    scale: 1;
+    font-size: 20px;
+}
+
 .action-station-flat-icons {
     position: absolute;
     top: 115px;
-    left: 165px;
+    left: 420px;
     scale: 1;
     font-size: 12px;
 }
