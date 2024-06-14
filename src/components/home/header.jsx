@@ -2,11 +2,11 @@ import React from 'react';
 import Navbar from "../navbar/navbar.jsx";
 import "/src/styles/home/header.css";
 
-function Header() {
+function Header({overviewRef, serviceRef, scrollToSection}) {
     return (
         <header className="home-header">
             <div className={'home-header-nav'}>
-                <Navbar/>
+                <Navbar overviewRef={overviewRef} serviceRef={serviceRef} scrollToSection={scrollToSection}/>
             </div>
             <div className="home-header-content">
                 <div className={'home-header-content-left'}>

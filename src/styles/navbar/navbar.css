@@ -22,7 +22,14 @@
     transition: color 0.3s ease;
 }
 
+.nav-item a {
+    text-decoration: none;
+    color: inherit;
+}
+
 .nav-item:hover {
-    color: #FB8B24;
+    color: transparent;
+    background: linear-gradient(to left, #FB8B24, #7d0a0a);
+    -webkit-background-clip: text;
 }
 

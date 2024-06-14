@@ -7,7 +7,7 @@
     padding: 1rem;
     background-color: #ffffff;
     border-radius: 0.5rem;
-    box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 4px 4px rgba(50, 4, 64, 0.19);
 }
 
 .chart-container-title {
@@ -15,5 +15,5 @@
     font-weight: 600;
     font-style: italic;
     font-size: 1.5rem;
-    color: #9A031E;
+    color: #320440;
 }

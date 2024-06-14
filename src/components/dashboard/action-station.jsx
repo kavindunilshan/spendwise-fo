@@ -8,6 +8,8 @@ import Button from "@mui/material/Button";
 import SportsScoreOutlinedIcon from '@mui/icons-material/SportsScoreOutlined';
 import CustomizedDialogs from "../forms/add-transaction.jsx";
 import {createTransaction} from "../../services/axios-services.js";
+import FlatIcons from "./flat-icons.jsx";
+import Clock from 'react-live-clock';
 
 function ActionStation() {
     const initialFormData = {
@@ -22,6 +24,12 @@ function ActionStation() {
     const [open, setOpen] = useState(false);
     const [formData, setFormData] = useState(initialFormData);
     const [errors, setErrors] = useState({});
+
+    const today = new Date();
+
+    // Format the date
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    const formattedDate = today.toLocaleDateString('en-US', options);
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -125,7 +133,11 @@ function ActionStation() {
                     </Button>
                 </div>
                 <div className={'action-station-live-clock'}>
-                    {/*<Clock format={'HH:mm:ss'} ticking={true} timezone={'US/Pacific'} />*/}
+                    {formattedDate + " "}
+                    <Clock format={'HH:mm:ss'} ticking={true} timezone={'Asia/Colombo'} />
+                </div>
+                <div className={'action-station-flat-icons'}>
+                    <FlatIcons/>
                 </div>
             </div>
             <CustomizedDialogs
