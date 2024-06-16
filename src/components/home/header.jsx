@@ -1,5 +1,5 @@
 import React from 'react';
-import Navbar from "../navbar/navbar.jsx";
+import Navbar from "./navbar/navbar.jsx";
 import "/src/styles/home/header.css";
 
 function Header({overviewRef, serviceRef, scrollToSection}) {
