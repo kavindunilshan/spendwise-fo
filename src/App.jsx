@@ -1,7 +1,7 @@
 import './App.css'
 import Home from "./pages/home.jsx";
 import {Route, Routes} from "react-router-dom";
-import Dashboard from "./components/dashboard/dashboard.jsx";
+import Dashboard from "./pages/dashboard.jsx";
 
 function App() {
   return (
