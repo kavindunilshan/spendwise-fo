@@ -2,6 +2,7 @@ import React, {useRef} from 'react';
 import Header from "../components/home/header.jsx";
 import Body from "../components/home/body.jsx";
 import LoginButton from "../components/login/login.jsx";
+import Footer from "../components/home/footer.jsx";
 
 function Home() {
 
@@ -17,6 +18,7 @@ function Home() {
             <LoginButton></LoginButton>
             <Header overviewRef={overviewRef} serviceRef={serviceRef} scrollToSection={scrollToSection}/>
             <Body overviewRef={overviewRef} serviceRef={serviceRef}/>
+            <Footer/>
         </div>
     );
 }
