@@ -8,19 +8,34 @@ function SettingsMenu({}) {
             <div className="sidebar-menu">
                 <ul className="settings-sidebar">
                     <li className="settings-sidebar-item">
-                        <NavLink to="/settings/profile" activeClassName="active-link">Profile</NavLink>
+                        <NavLink to="/settings/profile"
+                                 style={({ isActive }) => (isActive ? { color: "#faf7f7", backgroundColor: '#320440'} : {})}
+                                >Profile
+                        </NavLink>
                     </li>
                     <li className="settings-sidebar-item">
-                        <NavLink to="/settings/account" activeClassName="active-link">Account</NavLink>
+                        <NavLink to="/settings/account"
+                                 style={({ isActive }) => (isActive ? { color: "#faf7f7", backgroundColor: '#320440'}  : {})}
+                                >Account
+                        </NavLink>
                     </li>
                     <li className="settings-sidebar-item">
-                        <NavLink to="/settings/appearance" activeClassName="active-link">Appearance</NavLink>
+                        <NavLink to="/settings/appearance"
+                            style={({ isActive }) => (isActive ? { color: "#faf7f7", backgroundColor: '#320440'}  : {})}
+                            >Appearance
+                        </NavLink>
                     </li>
                     <li className="settings-sidebar-item">
-                        <NavLink to="/settings/customization" activeClassName="active-link">Customization</NavLink>
+                        <NavLink to="/settings/customization"
+                            style={({ isActive }) => (isActive ? { color: "#faf7f7", backgroundColor: '#320440'}  : {})}
+                            >Customization
+                        </NavLink>
                     </li>
                     <li className="settings-sidebar-item">
-                        <NavLink to="/settings/notifications" activeClassName="active-link">Notifications</NavLink>
+                        <NavLink to="/settings/notifications"
+                            style={({ isActive }) => (isActive ? { color: "#faf7f7", backgroundColor: '#320440'}  : {})}
+                            >Notifications
+                        </NavLink>
                     </li>
                 </ul>
             </div>
