@@ -1,10 +1,10 @@
 import React from 'react';
-import SettingsLayout from "../components/settings/side-menu.jsx";
+import SettingsMenu from "../components/settings/settings-menu.jsx";
 
-function Settings(props) {
+function Settings() {
     return (
         <div>
-            <SettingsLayout/>
+            <SettingsMenu/>
         </div>
     );
 }

@@ -1,20 +1,26 @@
-import './App.css'
-import './index.css'
+import './App.css';
+import './index.css';
+import { Route, Routes } from "react-router-dom";
 import Home from "./pages/home.jsx";
-import {Route, Routes} from "react-router-dom";
 import Dashboard from "./pages/dashboard.jsx";
 import Settings from "./pages/settings.jsx";
 
 function App() {
-  return (
-    <>
-        <Routes>
-            <Route path="/dashboard" element={<Dashboard/>} />
-            <Route path="/settings" element={<Settings/>} />
-            <Route path="/" element={<Home/>} />
-        </Routes>
-    </>
-  )
+    return (
+        <>
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/dashboard" element={<Dashboard />} />
+                <Route path="/settings/*" element={<Settings />}>
+                    <Route path="profile" element={<Profile />} />
+                    <Route path="account" element={<Account />} />
+                    <Route path="appearance" element={<Appearance />} />
+                    <Route path="customization" element={<Customization />} />
+                    <Route path="notifications" element={<Notifications />} />
+                </Route>
+            </Routes>
+        </>
+    );
 }
 
-export default App
+export default App;
