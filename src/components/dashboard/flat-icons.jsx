@@ -1,13 +1,11 @@
 import React from 'react';
 import {List, ListItem, ListItemIcon, Tooltip} from "@mui/material";
-import { useNavigate } from "react-router-dom";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle.js";
+import {useNavigate} from "react-router-dom";
 import HomeIcon from "@mui/icons-material/Home.js";
-import AddIcon from "@mui/icons-material/Add.js";
 import UserMenu from "../login/logged-menu.jsx";
-import {Message, MessageOutlined, Settings} from "@mui/icons-material";
+import {MessageOutlined, Settings} from "@mui/icons-material";
 
-function FlatIcons(props) {
+function FlatIcons({}) {
     const navigate = useNavigate();
     const handleClick = () => {
         navigate('/');
