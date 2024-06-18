@@ -4,11 +4,11 @@ import { Route, Routes } from "react-router-dom";
 import Home from "./pages/home.jsx";
 import Dashboard from "./pages/dashboard.jsx";
 import Settings from "./pages/settings.jsx";
-import Profile from "./components/settings/profile.jsx";
-import Account from "./components/settings/account.jsx";
-import Appearance from "./components/settings/appearance.jsx";
-import Customization from "./components/settings/customization.jsx";
-import Notifications from "./components/settings/notification.jsx";
+import Profile from "./components/settings/profile/profile.jsx";
+import Account from "./components/settings/account/account.jsx";
+import Appearance from "./components/settings/appearance/appearance.jsx";
+import Customization from "./components/settings/customization/customization.jsx";
+import Notifications from "./components/settings/notification/notification.jsx";
 
 function App() {
     return (
