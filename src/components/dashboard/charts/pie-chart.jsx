@@ -36,11 +36,11 @@ const PieChartComponent = () => {
                 label: 'Expense Breakdown',
                 data: Object.values(expenseBreakdown),
                 backgroundColor: [
-                    'rgba(255, 99, 132, 0.6)',
-                    'rgba(54, 162, 235, 0.6)',
-                    'rgba(255, 206, 86, 0.6)',
-                    'rgba(75, 192, 192, 0.6)',
-                    'rgba(153, 102, 255, 0.6)',
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
                 ],
                 borderWidth: 1,
             },
@@ -54,6 +54,9 @@ const PieChartComponent = () => {
             legend: {
                 display: true,
                 position: 'right',
+                labels: {
+                    color: '#000',
+                }
             },
             tooltip: {
                 callbacks: {
@@ -68,7 +71,7 @@ const PieChartComponent = () => {
     };
 
     return (
-        <div style={{ height: '250px', width: '400px' }}>
+        <div style={{ height: '90%', width: '100%' }}>
             <Pie data={data} options={options} />
         </div>
     );

@@ -1,0 +1,96 @@
+.home-footer-container {
+    position: relative;
+    display: flex;
+    background-color: rgba(219, 185, 228, 0.09);
+    color: #ffffff;
+    padding: 1rem;
+    font-family: "Open Sans", sans-serif;
+    font-weight: 500;
+    font-style: italic;
+    font-size: 1rem;
+    margin-top: 300px;
+    height: 500px;
+    border-top: 2px solid #320440;
+}
+
+.home-footer-content-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 40%;
+    height: 100%;
+}
+
+.home-footer-slogan {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 700;
+    font-size: 35px;
+    color: #320440;
+    width: 350px;
+    text-align: center;
+    margin-top: 4%;
+    margin-left: 10%;
+}
+
+.home-footer-logo {
+    transform: rotate(-8deg);
+    width: 60%;
+    margin-top: 10%;
+}
+
+.home-footer-content-right {
+    display: flex;
+    flex-direction: column;
+    margin-top: 5%;
+    width: 60%;
+    height: 100%;
+}
+
+.home-footer-socials {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    margin-top: 5%;
+}
+
+.home-footer-social-icon {
+    width: 50px;
+    height: 50px;
+    margin: 0 5%;
+}
+
+.home-footer-legal {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    margin-top: 10%;
+    color: #320440;
+}
+
+.home-footer-legal-item {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 500;
+    font-size: 15px;
+    margin: 0 2%;
+}
+
+.home-footer-legal-item:nth-child(2) {
+    border-left: 1px solid #320440;
+    border-right: 1px solid #320440;
+    padding: 0 2%;
+}
+
+.home-footer-rights-text {
+    position: absolute;
+    bottom: 10px;
+    left: 25%;
+    font-family: "Open Sans", sans-serif;
+    color: #320440;
+    font-weight: 500;
+    font-size: 15px;
+    margin-top: 5%;
+}
+
+

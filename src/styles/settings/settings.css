@@ -1,0 +1,17 @@
+.settings {
+    margin-top: 20px;
+}
+
+.settings-sub-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.settings-left {
+    width: 12%;
+    height: 100%;
+}
+
+.settings-right {
+    width: 88%;
+}

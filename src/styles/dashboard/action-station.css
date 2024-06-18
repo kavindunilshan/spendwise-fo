@@ -35,11 +35,11 @@
 .action-station-live-clock {
     position: absolute;
     font-family: "Open Sans", sans-serif;
-    font-weight: 300;
+    font-weight: 400;
     font-style: italic;
     top: 135px;
     left: 180px;
-    color: #320440;
+    color: rgba(50, 4, 64, 0.79);
     scale: 1;
     font-size: 20px;
 }
