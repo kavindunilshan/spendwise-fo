@@ -8,9 +8,14 @@ function Settings() {
     return (
         <div>
             <SettingsHeader />
-            <SettingsMenu />
+
             <div className="settings-sub-container">
-                <Outlet/>
+                <div className="settings-left">
+                    <SettingsMenu/>
+                </div>
+                <div className="settings-right">
+                    <Outlet/>
+                </div>
             </div>
 
         </div>
