@@ -88,8 +88,6 @@ function ActionStation() {
             description: formData.description,
         };
 
-        console.log("Here", transaction);
-
         createTransaction(transaction);
 
         setFormData(initialFormData);  // Reset the form
@@ -100,57 +98,59 @@ function ActionStation() {
     return (
         <>
             <div className={'action-station-container'}>
-                <div className={'action-station-ym-picker'}>
-                    <LocalizationProvider dateAdapter={AdapterDayjs}>
-                        <DatePicker label={'"month" and "year"'} views={['month', 'year']} style={{size: 'small'}}/>
-                    </LocalizationProvider>
+                <div className={'action-station-l1'}>
+                    <div className={'action-station-ym-picker'}>
+                        <LocalizationProvider dateAdapter={AdapterDayjs}>
+                            <DatePicker label={'"month" and "year"'} views={['month', 'year']} style={{size: 'small'}}/>
+                        </LocalizationProvider>
+                    </div>
+                    <div className={'action-station-add-btn'}>
+                        <Button disableElevation
+                                onClick={handleClickOpen}
+                                variant="contained"
+                                style={{
+                                    border: "1px solid #320440",
+                                    backgroundColor: "rgba(251,139,36,0)",
+                                    color: "#FB8B24",
+                                }}
+                                startIcon={<Add/>}
+                        >
+                            Transaction
+                        </Button>
+                    </div>
                 </div>
-                <div className={'action-station-add-btn'}>
-                    <Button disableElevation
-                            onClick={handleClickOpen}
-                            variant="contained"
-                            style={{
-                                border: "1px solid #9A031E",
-                                backgroundColor: "rgba(251,139,36,0)",
-                                color: "#FB8B24",
-                            }}
-                            startIcon={<Add/>}
-                    >
-                        Transaction
-                    </Button>
+                    <div className={'action-station-goal-btn'}>
+                        <Button disableElevation
+                                variant="contained"
+                                style={{
+                                    border: "1px solid #320440",
+                                    backgroundColor: "rgba(251,139,36,0)",
+                                    color: "#036022",
+                                }}
+                                startIcon={<SportsScoreOutlinedIcon style={{color: '#9A031E'}}/>}
+                        >
+                            Set Goal
+                        </Button>
+                    </div>
+                    <div className={'action-station-live-clock'}>
+                        {formattedDate + " "}
+                        <Clock format={'HH:mm:ss'} ticking={true} timezone={'Asia/Colombo'}/>
+                    </div>
+                    <div className={'action-station-flat-icons'}>
+                        <FlatIcons/>
+                    </div>
                 </div>
-                <div className={'action-station-goal-btn'}>
-                    <Button disableElevation
-                            variant="contained"
-                            style={{
-                                border: "1px solid #9A031E",
-                                backgroundColor: "rgba(251,139,36,0)",
-                                color: "#036022",
-                            }}
-                            startIcon={<SportsScoreOutlinedIcon style={{color: '#9A031E'}}/>}
-                    >
-                        Set Goal
-                    </Button>
-                </div>
-                <div className={'action-station-live-clock'}>
-                    {formattedDate + " "}
-                    <Clock format={'HH:mm:ss'} ticking={true} timezone={'Asia/Colombo'} />
-                </div>
-                <div className={'action-station-flat-icons'}>
-                    <FlatIcons/>
-                </div>
-            </div>
-            <CustomizedDialogs
-                open={open}
-                handleClose={handleClose}
-                handleSaveChanges={handleSaveChanges}
-                formData={formData}
-                handleFormChange={handleFormChange}
-                errors={errors}
-                currency={"LKR"}
-            />
-        </>
-    );
-}
+                <CustomizedDialogs
+                    open={open}
+                    handleClose={handleClose}
+                    handleSaveChanges={handleSaveChanges}
+                    formData={formData}
+                    handleFormChange={handleFormChange}
+                    errors={errors}
+                    currency={"LKR"}
+                />
+            </>
+            );
+            }
 
-export default ActionStation;
+            export default ActionStation;
