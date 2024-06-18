@@ -1,3 +1,7 @@
+.settings {
+    margin-top: 20px;
+}
+
 .settings-sub-container {
     display: flex;
     flex-direction: row;
@@ -10,5 +14,4 @@
 
 .settings-right {
     width: 88%;
-    background-color: #9A031E;
 }
