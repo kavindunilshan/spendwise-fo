@@ -67,7 +67,7 @@ export default function UserMenu({size}) {
 
     return (
         <div className={'login-user-menu-container'} style={{color: '#320440'}}>
-            <Avatar className={'login-user-icon'} style={{width: size || 40, height: size || 40}} alt={name} src={image} onClick={handleClick} />
+            <Avatar className={'login-user-icon'} style={{width: size || 40, height: size || 40, cursor: 'pointer'}} alt={name} src={image} onClick={handleClick} />
             <StyledMenu
                 id="demo-customized-menu"
                 className={'login-user-menu'}
