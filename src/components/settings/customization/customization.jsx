@@ -1,8 +1,8 @@
 import React from 'react';
 
-function Customization(props) {
+function Customization({}) {
     return (
-        <div></div>
+        <div className={'customization-container'} style={{color: 'black'}}>Hi</div>
     );
 }
 

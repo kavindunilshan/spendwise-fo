@@ -16,7 +16,7 @@ function App() {
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/dashboard" element={<Dashboard />} />
-                <Route path="/settings/*" element={<Settings />}>
+                <Route path="/settings" element={<Settings />}>
                     <Route path="profile" element={<Profile />} />
                     <Route path="account" element={<Account />} />
                     <Route path="appearance" element={<Appearance />} />
