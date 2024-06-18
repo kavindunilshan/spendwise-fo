@@ -83,6 +83,7 @@ function ActionStation() {
         const transaction = {
             category_id: formData.categoryId,
             user_id: 111142,
+            amount: parseFloat(formData.amount),
             date: `${formData.date}T00:00:00`,
             timestamp: currentTimeStamp,
             description: formData.description,

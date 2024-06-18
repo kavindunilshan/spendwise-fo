@@ -5,6 +5,7 @@ import PieChartComponent from "../components/dashboard/charts/pie-chart.jsx";
 import LineChartComponent from "../components/dashboard/charts/line-chart.jsx";
 import ActionStation from "../components/dashboard/action-station.jsx";
 import {useAuth0} from "@auth0/auth0-react";
+import Transactions from "../components/dashboard/transaction-table.jsx";
 
 function Dashboard() {
 
@@ -69,6 +70,7 @@ function Dashboard() {
                                  position={{ top: '54%', left: '60%' }}
                                     size={{ width: '36%', height: '39%' }}
                 >
+                    <Transactions/>
                 </WidgetContainer>
             </>}
         </div>
