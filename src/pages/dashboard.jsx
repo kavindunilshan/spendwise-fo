@@ -24,29 +24,27 @@ function Dashboard() {
         <div className="dsb">
             {isAuthenticated &&
             <>
-                <SlideBar/>
-
-                <WidgetContainer title="Action Station" position={{ top: '50px', left: '500px' }}>
+                <WidgetContainer title="Action Station" position={{ top: '3%', left: '33%' }}>
                     <ActionStation/>
                 </WidgetContainer>
-                <WidgetContainer title="Expence Break down" position={{ top: '50px', left: '50px' }}>
+                <WidgetContainer title="Expence Break down" position={{ top: '3%', left: '2%' }}>
                     <PieChartComponent/>
                 </WidgetContainer>
-                <WidgetContainer title="Income Break down" position={{ top: '400px', left: '50px' }}>
+                <WidgetContainer title="Available Pocket" position={{ top: '3%', left: '74%' }}>
+                </WidgetContainer>
+
+
+                <WidgetContainer title="Income Break down" position={{ top: '50%', left: '2%' }}>
                     <PieChartComponent/>
                 </WidgetContainer>
-                <WidgetContainer title="Expence Break down" position={{ top: '300px', left: '500px' }}>
+
+                <WidgetContainer title="Expence Break down" position={{ top: '40%', left: '33%' }}>
                     <LineChartComponent labels={["January", "February", "March", "April"]}
                                         expenseData={[1000, 2000, 1500, 3000]}
                                         incomeData={[2000, 3500, 2500, 4000]}
-                                        savingsData={[1000, 1500, 1000, 1000]}
-                    />
+                                        savingsData={[1000, 1500, 1000, 1000]} />
                 </WidgetContainer>
-                <WidgetContainer title="Available Pocket" position={{ top: '50px', left: '1120px' }}>
-
-                </WidgetContainer>
-                <WidgetContainer title="Recent Transactions" position={{ top: '350px', left: '1120px' }}>
-
+                <WidgetContainer title="Recent Transactions" position={{ top: '350px', left: '74%' }}>
                 </WidgetContainer>
             </>}
         </div>

@@ -71,7 +71,7 @@ const PieChartComponent = () => {
     };
 
     return (
-        <div style={{ height: '250px', width: '400px' }}>
+        <div style={{ height: '90%', width: '100%' }}>
             <Pie data={data} options={options} />
         </div>
     );
