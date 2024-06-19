@@ -5,7 +5,7 @@ function HeaderWithSlogan({title, slogan, isSubTopic, titleStyle}) {
     return (
         <div className={'settings-header'}>
             <div className={'settings-header-title'} style={titleStyle || {}}>{title}</div>
-            <div className={'settings-header-slogan'} style={{fontSize: isSubTopic ? '0.8em': '1em'}}>{slogan}</div>
+            <div className={'settings-header-slogan'} style={isSubTopic ? {fontSize: '0.7em', fontStyle: 'italic'} : {}}>{slogan}</div>
         </div>
     );
 }

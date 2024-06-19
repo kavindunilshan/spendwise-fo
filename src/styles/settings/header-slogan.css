@@ -1,7 +1,8 @@
 .settings-header {
+    display: flex;
     font-family: 'Open Sans', sans-serif;
-    border-radius: 8px;
-    width: 100%;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .settings-header-title {
