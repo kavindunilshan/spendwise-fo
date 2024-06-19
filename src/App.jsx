@@ -9,6 +9,7 @@ import Account from "./components/settings/account/account.jsx";
 import Appearance from "./components/settings/appearance/appearance.jsx";
 import Customization from "./components/settings/customization/customization.jsx";
 import Notifications from "./components/settings/notification/notification.jsx";
+import {SettingsProvider} from "./components/settings/settings-context.jsx";
 
 function App() {
     return (
@@ -16,14 +17,19 @@ function App() {
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/dashboard" element={<Dashboard />} />
-                <Route path="/settings" element={<Settings />}>
-                    <Route path="profile" element={<Profile />} />
-                    <Route path="account" element={<Account />} />
-                    <Route path="appearance" element={<Appearance />} />
-                    <Route path="customization" element={<Customization />} />
-                    <Route path="notifications" element={<Notifications />} />
-                </Route>
             </Routes>
+
+            <SettingsProvider>
+                <Routes>
+                    <Route path="/settings" element={<Settings />}>
+                        <Route path="profile" element={<Profile />} />
+                        <Route path="account" element={<Account />} />
+                        <Route path="appearance" element={<Appearance />} />
+                        <Route path="customization" element={<Customization />} />
+                        <Route path="notifications" element={<Notifications />} />
+                    </Route>
+                </Routes>
+            </SettingsProvider>
         </>
     );
 }
