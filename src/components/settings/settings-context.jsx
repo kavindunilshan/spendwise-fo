@@ -3,10 +3,10 @@ import React, { createContext, useState } from 'react';
 export const SettingsContext = createContext();
 
 export const SettingsProvider = ({ children }) => {
-    const [sharedData, setSharedData] = useState(null);
+    const [componentData, setComponentData] = useState({title: "", slogan: ""});
 
     return (
-        <SettingsContext.Provider value={{ sharedData, setSharedData }}>
+        <SettingsContext.Provider value={{ componentData, setComponentData }}>
             {children}
         </SettingsContext.Provider>
     );

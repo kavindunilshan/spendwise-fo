@@ -3,10 +3,10 @@ import {SettingsContext} from "../settings-context.jsx";
 
 function Profile({}) {
 
-    const { setSharedData } = useContext(SettingsContext);
+    const { setComponentData } = useContext(SettingsContext);
 
     useEffect(() => {
-        setSharedData({"title": "Profile", "slogan": "Manage your account settings"});
+        setComponentData({"title": "Profile", "slogan": "Manage your account settings"});
     }, []);
 
     return (

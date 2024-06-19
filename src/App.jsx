@@ -14,11 +14,6 @@ import {SettingsProvider} from "./components/settings/settings-context.jsx";
 function App() {
     return (
         <>
-            <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/dashboard" element={<Dashboard />} />
-            </Routes>
-
             <SettingsProvider>
                 <Routes>
                     <Route path="/settings" element={<Settings />}>
@@ -30,6 +25,11 @@ function App() {
                     </Route>
                 </Routes>
             </SettingsProvider>
+
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/dashboard" element={<Dashboard />} />
+            </Routes>
         </>
     );
 }

@@ -7,13 +7,15 @@ import {SettingsContext} from "../components/settings/settings-context.jsx";
 
 function Settings() {
 
-    const { sharedData } = useContext(SettingsContext);
+    const { componentData } = useContext(SettingsContext);
 
-    console.log("settings side", sharedData);
+    console.log("settings side", componentData);
 
     return (
         <div className={'settings'}>
             <HeaderWithSlogan title={'Settings'} slogan={'Manage your account settings'}/>
+
+
             <div className="settings-sub-container">
                 <div className="settings-left">
                     <SettingsMenu/>
