@@ -6,7 +6,7 @@ function Profile({}) {
     const { setComponentData } = useContext(SettingsContext);
 
     useEffect(() => {
-        setComponentData({"title": "Profile", "slogan": "Manage your account settings"});
+        setComponentData({"title": "Profile", "slogan": "View and edit your profile information"});
     }, []);
 
     return (
