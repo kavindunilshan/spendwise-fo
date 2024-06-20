@@ -9,6 +9,7 @@ import {
     CategoryScale,
     LinearScale
 } from 'chart.js';
+import CountUp from "react-countup";
 
 // Register the necessary components for Chart.js
 ChartJS.register(
@@ -70,9 +71,23 @@ const PieChartComponent = () => {
         },
     };
 
+    const styles = {
+        position: 'absolute',
+        bottom: '0',
+        left: '45%',
+        fontFamily: 'Open Sans, sans-serif',
+        fontWeight: 500,
+        fontStyle: 'italic',
+        fontSize: '1.4em',
+        color: 'rgba(123, 103, 128, 0.89)',
+    }
+
     return (
-        <div style={{ height: '90%', width: '100%' }}>
-            <Pie data={data} options={options} />
+        <div style={{position: 'relative', height: '90%', width: '100%'}}>
+            <Pie data={data} options={options}/>
+            <div style={styles}>
+                Income = $<CountUp end={567450} duration={5} separator=","/>
+            </div>
         </div>
     );
 };
