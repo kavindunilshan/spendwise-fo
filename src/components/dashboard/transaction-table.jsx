@@ -10,7 +10,7 @@ import Paper from '@mui/material/Paper';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
-        backgroundColor: '#320440',
+        backgroundColor: 'rgba(50,4,64,0.68)',
         color: theme.palette.common.white,
         padding: '8px 10px',
     },
@@ -49,7 +49,7 @@ const rows = [
 
 export default function Transactions() {
     return (
-        <TableContainer component={Paper} style={{marginTop: '10px'}}>
+        <TableContainer component={Paper} style={{marginTop: '30px'}}>
             <Table sx={{ minWidth: 200 }} aria-label="customized table">
                 <TableHead>
                     <TableRow>
