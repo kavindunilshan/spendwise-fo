@@ -2,7 +2,6 @@ import React from 'react';
 import Trophy from "./tryphy.jsx";
 
 function Milestone(props) {
-    // milestones use state
     const [milestones, setMilestones] = React.useState([]);
 
     const styles = {
