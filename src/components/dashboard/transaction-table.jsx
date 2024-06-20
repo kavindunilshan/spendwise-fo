@@ -60,8 +60,8 @@ export default function Transactions() {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {rows.map((row) => (
-                        <StyledTableRow key={row.name}>
+                    {rows.map((row, index) => (
+                        <StyledTableRow key={index}>
                             <StyledTableCell align="left">{row.timestamp}</StyledTableCell>
                             <NarrowTableCell align="left">{row.type}</NarrowTableCell>
                             <NarrowTableCell align="left">{row.category}</NarrowTableCell>

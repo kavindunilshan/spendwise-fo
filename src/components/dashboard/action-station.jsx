@@ -10,8 +10,10 @@ import CustomizedDialogs from "../forms/add-transaction.jsx";
 import {createTransaction} from "../../services/axios-services.js";
 import FlatIcons from "./flat-icons.jsx";
 import Clock from 'react-live-clock';
+import dayjs from "dayjs";
 
 function ActionStation() {
+    const [date, setDate] = useState(dayjs());
     const initialFormData = {
         transactionType: 'INCOME',
         amount: '',
@@ -102,7 +104,12 @@ function ActionStation() {
                 <div className={'action-station-l1'}>
                     <div className={'action-station-ym-picker'}>
                         <LocalizationProvider dateAdapter={AdapterDayjs}>
-                            <DatePicker label={'"month" and "year"'} views={['month', 'year']} style={{size: 'small'}}/>
+                            <DatePicker
+                                label={'"month" and "year"'}
+                                views={['month', 'year']}
+                                style={{size: 'small'}}
+                                value={date}
+                            />
                         </LocalizationProvider>
                     </div>
                     <div className={'action-station-add-btn'}>

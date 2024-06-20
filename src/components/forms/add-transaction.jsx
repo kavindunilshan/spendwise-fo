@@ -26,8 +26,8 @@ export default function CustomizedDialogs({ open, handleClose, handleSaveChanges
                 aria-labelledby="customized-dialog-title"
                 open={open}
             >
-                <DialogTitle sx={{ m: 0, p: 2 }} id="customized-dialog-title">
-                    Modal title
+                <DialogTitle sx={{ m: 0, p: 2, textAlign: 'center' }} id="customized-dialog-title">
+                    Add Transaction
                 </DialogTitle>
                 <IconButton
                     aria-label="close"
@@ -42,7 +42,12 @@ export default function CustomizedDialogs({ open, handleClose, handleSaveChanges
                     <CloseIcon />
                 </IconButton>
                 <DialogContent dividers>
-                    <SelectTextFields formData={formData} handleFormChange={handleFormChange} errors={errors} currency={currency}/>
+                    <SelectTextFields
+                        formData={formData}
+                        handleFormChange={handleFormChange}
+                        errors={errors}
+                        currency={currency}
+                    />
                 </DialogContent>
                 <DialogActions>
                     <Button autoFocus onClick={handleSaveChanges}>
