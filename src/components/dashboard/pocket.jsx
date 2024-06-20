@@ -4,11 +4,14 @@ import CountUp from "react-countup";
 
 function Pocket(props) {
 
+    const [pocketValue, setPocketValue] = React.useState(0);
+    const [currency, setCurrency] = React.useState('₹');
+
     return (
         <div className={'pocket'}>
             <img className={'pocket-img'} src={'./src/assets/wp.jpg'} alt={''}/>
             <div className={'pocket-value'}>
-                $<CountUp end={567450} duration={5} separator=","/>
+                {currency}<CountUp end={pocketValue} duration={5} separator=","/>
             </div>
         </div>
     );
