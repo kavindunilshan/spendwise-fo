@@ -22,6 +22,10 @@ ChartJS.register(
 );
 
 const PieChartComponent = () => {
+
+    const [value, setValue] = React.useState(0);
+    const [currency, setCurrency] = React.useState('₹');
+
     const expenseBreakdown = {
         'Food': 500,
         'Transportation': 200,
@@ -86,7 +90,7 @@ const PieChartComponent = () => {
         <div style={{position: 'relative', height: '90%', width: '100%'}}>
             <Pie data={data} options={options}/>
             <div style={styles}>
-                Income = $<CountUp end={567450} duration={5} separator=","/>
+                Income = {currency}<CountUp end={value} duration={5} separator=","/>
             </div>
         </div>
     );
