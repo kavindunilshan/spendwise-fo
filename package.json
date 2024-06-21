@@ -19,6 +19,7 @@
     "axios": "^1.7.2",
     "chart.js": "^4.4.3",
     "chartjs-plugin-annotation": "^3.0.1",
+    "currency-list": "^1.0.8",
     "dayjs": "^1.11.11",
     "framer-motion": "^11.2.10",
     "react": "^18.2.0",
