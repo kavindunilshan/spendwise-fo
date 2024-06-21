@@ -14,15 +14,15 @@ function SettingsMenu({}) {
                         </NavLink>
                     </li>
                     <li className="settings-sidebar-item">
-                        <NavLink to="/settings/account"
+                        <NavLink to="/settings/dashboard"
                                  style={({ isActive }) => (isActive ? { color: "#faf7f7", backgroundColor: '#320440'}  : {})}
-                                >Account
+                                >Dashboard
                         </NavLink>
                     </li>
                     <li className="settings-sidebar-item">
-                        <NavLink to="/settings/appearance"
+                        <NavLink to="/settings/notification"
                             style={({ isActive }) => (isActive ? { color: "#faf7f7", backgroundColor: '#320440'}  : {})}
-                            >Appearance
+                            >Notification
                         </NavLink>
                     </li>
                     <li className="settings-sidebar-item">
@@ -32,9 +32,9 @@ function SettingsMenu({}) {
                         </NavLink>
                     </li>
                     <li className="settings-sidebar-item">
-                        <NavLink to="/settings/notifications"
+                        <NavLink to="/settings/support"
                             style={({ isActive }) => (isActive ? { color: "#faf7f7", backgroundColor: '#320440'}  : {})}
-                            >Notifications
+                            >Support
                         </NavLink>
                     </li>
                 </ul>
