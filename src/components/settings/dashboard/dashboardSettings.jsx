@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import { useContext } from 'react';
 import { SettingsContext } from '../settings-context.jsx';
 import HeaderWithSlogan from "../header-slogan.jsx";
@@ -8,6 +8,7 @@ import '/src/styles/settings/components/dashboard.css';
 
 function DashboardSettings(props) {
     const { setComponentData } = useContext(SettingsContext);
+    const [ isLightTheme, setIsLightTheme ] = useState(false);
 
     useEffect(() => {
         setComponentData({title: "Dashboard", slogan: "Manage your dashboard settings"});
@@ -19,6 +20,14 @@ function DashboardSettings(props) {
         color: '#320440'
     }
 
+    const handleDarkTheme = () => {
+        setIsLightTheme(false);
+    }
+
+    const handleLightTheme = () => {
+        setIsLightTheme(true);
+    }
+
     return (
         <div className={'settings-dashboard'}>
             <div className={'settings-dashboard-content'}>
@@ -28,8 +37,24 @@ function DashboardSettings(props) {
                     />
 
                     <div className={'settings-dashboard-img-container'}>
-                        <img className={'settings-dashboard-img'} src={'/src/assets/light.png'} alt={""}/>
-                        <img className={'settings-dashboard-img'} src={'/src/assets/light.png'} alt={""}/>
+                        <div className={'settings-dashboard-img-content'}>
+                            <img
+                                className={`settings-dashboard-img settings-d-img-${isLightTheme ? 'selected' : ''}`}
+                                src={'/src/assets/light.png'}
+                                alt={""}
+                                onClick={() => setIsLightTheme(true)}
+                            />
+                            <div className={'settings-d-text'}>Light</div>
+                        </div>
+                        <div className={'settings-dashboard-img-content'}>
+                            <img
+                                className={`settings-dashboard-img settings-d-img-${!isLightTheme ? 'selected' : ''}`}
+                                src={'/src/assets/light.png'}
+                                alt={""}
+                                onClick={() => setIsLightTheme(false)}
+                            />
+                            <div className={"settings-d-text"}>Dark</div>
+                        </div>
                     </div>
                 </div>
                 <div className={'settings-dashboard-item'}>
