@@ -16,14 +16,10 @@ function Profile({}) {
     const [isEditing, setIsEditing] = React.useState(false);
     const [currency, setCurrency] = React.useState([]);
 
-    const btnStyle = {
-        margin: '10px',
-        backgroundColor: '#320440',
-    }
-
     useEffect(() => {
         setComponentData({"title": "Profile", "slogan": "View and edit your profile information"});
     }, []);
+
 
     const selectCountry = (val) => {
         setCountry(val);
@@ -36,6 +32,11 @@ function Profile({}) {
     const handleCurrencyChange = (event) => {
         const value = event.target.value;
         setCurrency(value);
+    }
+
+    const btnStyle = {
+        margin: '10px',
+        backgroundColor: '#320440',
     }
 
     return (

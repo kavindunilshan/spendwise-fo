@@ -1,5 +1,6 @@
 .settings-dashboard {
   margin-top: 20px;
+    margin-bottom: 20%;
 }
 
 .settings-dashboard-item {
@@ -41,4 +42,16 @@
 
 .settings-d-img-selected {
     border: 1px solid rgb(50, 4, 64);
+}
+
+.settings-d-btns {
+    display: flex;
+    flex-direction: row;
+    margin-right: 5%;
+    float: right;
+}
+
+.s-d-disabled:hover {
+    cursor: not-allowed;
+    border: 1px solid rgba(50, 4, 64, 0);
 }
