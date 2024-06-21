@@ -1,0 +1,33 @@
+.settings-dashboard {
+  margin-top: 20px;
+}
+
+.settings-dashboard-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.settings-dashboard-item {
+    display: flex;
+    flex-direction: column;
+    margin-top: 4%;
+    margin-left: 10%;
+}
+
+.settings-dashboard-img {
+    margin: 2% 0 0 10%;
+    width: 20%;
+    border: 1px solid rgba(50, 4, 64, 0);
+    border-radius: 5px;
+}
+
+.settings-dashboard-img:hover {
+    cursor: pointer;
+    border: 1px solid #320440;
+}
+
+.settings-img-container {
+    display: flex;
+    flex-direction: row;
+    margin-left: 10%;
+}
