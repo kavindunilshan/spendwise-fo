@@ -5,6 +5,9 @@ import PieChartComponent from "../components/dashboard/charts/pie-chart.jsx";
 import LineChartComponent from "../components/dashboard/charts/line-chart.jsx";
 import ActionStation from "../components/dashboard/action-station.jsx";
 import {useAuth0} from "@auth0/auth0-react";
+import Transactions from "../components/dashboard/transaction-table.jsx";
+import Pocket from "../components/dashboard/pocket.jsx";
+import Milestone from "../components/dashboard/milestone.jsx";
 
 function Dashboard() {
 
@@ -47,11 +50,13 @@ function Dashboard() {
                                  position={{ top: '40%', left: '31%' }}
                                  size={{ width: '25%', height: '20%' }}
                 >
+                    <Pocket/>
                 </WidgetContainer>
                 <WidgetContainer title="Milestones"
                                  position={{ top: '67%', left: '31%' }}
                                  size={{ width: '25%', height: '26%' }}
                 >
+                    <Milestone/>
                 </WidgetContainer>
 
 
@@ -69,6 +74,7 @@ function Dashboard() {
                                  position={{ top: '54%', left: '60%' }}
                                     size={{ width: '36%', height: '39%' }}
                 >
+                    <Transactions/>
                 </WidgetContainer>
             </>}
         </div>
