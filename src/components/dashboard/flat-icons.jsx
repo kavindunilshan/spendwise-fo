@@ -7,8 +7,8 @@ import {MessageOutlined, Settings} from "@mui/icons-material";
 
 function FlatIcons({}) {
     const navigate = useNavigate();
-    const handleClick = () => {
-        navigate('/');
+    const handleClick = (path) => {
+        navigate(path || "");
     }
     return (
         <div>
@@ -23,7 +23,7 @@ function FlatIcons({}) {
                 <ListItem button sx={{ display: 'flex', justifyContent: 'center', padding: '1rem', '&:hover': { backgroundColor: 'transparent' } }}>
                     <Tooltip title="Home" placement="top">
                         <ListItemIcon sx={{ minWidth: 'auto', color: '#320440' }}>
-                            <Settings style={{fontSize: 25}} onClick={() => handleClick()}/>
+                            <Settings style={{fontSize: 25}} onClick={() => handleClick("/settings/profile")}/>
                         </ListItemIcon>
                     </Tooltip>
                 </ListItem>
