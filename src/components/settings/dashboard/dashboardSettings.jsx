@@ -4,11 +4,11 @@ import { SettingsContext } from '../settings-context.jsx';
 
 
 
-function Account(props) {
+function DashboardSettings(props) {
     const { setComponentData } = useContext(SettingsContext);
 
     useEffect(() => {
-        setComponentData({title: "Account", slogan: "Manage your account settings"});
+        setComponentData({title: "Dashboard", slogan: "Manage your dashboard settings"});
     }, []);
 
     return (
@@ -16,4 +16,4 @@ function Account(props) {
     );
 }
 
-export default Account;
+export default DashboardSettings;

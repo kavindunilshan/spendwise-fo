@@ -5,7 +5,7 @@ import Home from "./pages/home.jsx";
 import Dashboard from "./pages/dashboard.jsx";
 import Settings from "./pages/settings.jsx";
 import Profile from "./components/settings/profile/profile.jsx";
-import Account from "./components/settings/account/account.jsx";
+import DashboardSettings from "./components/settings/dashboard/dashboardSettings.jsx";
 import Appearance from "./components/settings/appearance/appearance.jsx";
 import Customization from "./components/settings/customization/customization.jsx";
 import Notifications from "./components/settings/notification/notification.jsx";
@@ -18,7 +18,7 @@ function App() {
                 <Routes>
                     <Route path="/settings" element={<Settings />}>
                         <Route path="profile" element={<Profile />} />
-                        <Route path="account" element={<Account />} />
+                        <Route path="account" element={<DashboardSettings />} />
                         <Route path="appearance" element={<Appearance />} />
                         <Route path="customization" element={<Customization />} />
                         <Route path="notifications" element={<Notifications />} />
