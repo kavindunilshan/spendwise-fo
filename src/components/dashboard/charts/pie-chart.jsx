@@ -23,7 +23,7 @@ ChartJS.register(
 
 const PieChartComponent = ({type}) => {
 
-    const [value, setValue] = React.useState(0);
+    const [value, setValue] = React.useState(15030);
     const [currency, setCurrency] = React.useState('₹');
 
     const expenseBreakdown = {
