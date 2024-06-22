@@ -5,6 +5,7 @@ import {CountryDropdown} from "react-country-region-selector";
 import Button from "@mui/material/Button";
 import {useAuth0} from "@auth0/auth0-react";
 import {Avatar} from "@mui/material";
+import {Edit} from "@mui/icons-material";
 
 function Profile({}) {
 
@@ -41,6 +42,19 @@ function Profile({}) {
 
     return (
         <div className={'profile-container'}>
+            <div className={'profile-btns'}>
+                {!isEditing ? <Button style={btnStyle} variant="contained"
+                                      onClick={() => setIsEditing(true)}
+                                      startIcon={<Edit/>}
+                    >
+                        Edit
+                    </Button>
+                    : <>
+                        <Button style={btnStyle} variant="contained" onClick={() => handleSave()}>Save</Button>
+                        <Button style={btnStyle} variant="contained" onClick={() => setIsEditing(false)}>Cancel</Button>
+                    </>
+                }
+            </div>
             <div className={'profile-content'}>
                 <div className={'profile-pic'}>
                     <Avatar className={'login-user-icon'} style={{width: 140, height: 140, cursor: 'pointer'}}
@@ -66,7 +80,7 @@ function Profile({}) {
                             width: '30%',
                             height: '40px',
                             padding: '5px',
-                            borderRadius: '5px',
+                            borderRadius: '15px',
                             border: '1px solid #ccc',
                             outline: 'none'
                         }}
@@ -78,14 +92,6 @@ function Profile({}) {
                            placeholder={'Currency (max 3 letters)'}
                            onChange={handleCurrencyChange} value={currency} maxLength={3}
                     />
-                </div>
-                <div className={'profile-btns'}>
-                    {!isEditing ? <Button style={btnStyle} variant="contained" onClick={() => setIsEditing(true)}>Edit</Button>
-                        : <>
-                            <Button style={btnStyle} variant="contained" onClick={() => handleSave()}>Save</Button>
-                            <Button style={btnStyle} variant="contained" onClick={() => setIsEditing(false)}>Cancel</Button>
-                        </>
-                    }
                 </div>
             </div>
         </div>

@@ -1,9 +1,5 @@
 .profile-container {
-  display: flex;
-  flex-direction: column;
-    height: 100%;
-    width: 100%;
-  margin-top: 20px;
+    margin-top: 20px;
 }
 
 .profile-content {
@@ -27,15 +23,18 @@
 }
 
 .profile-content-item label {
+  font-size: 1em;
   font-weight: 600;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
+  margin-left: 10px;
 }
 
 .profile-content-item input {
-  padding: 10px;
-  border-radius: 5px;
+  padding: 15px;
+  font-size: 0.8em;
+  border-radius: 15px;
   border: 1px solid #dee2e6;
-  width: 40%;
+  width: 60%;
 }
 
 .profile-content-item input:focus {
@@ -50,5 +49,6 @@
 .profile-btns {
     display: flex;
     flex-direction: row;
-    margin-left: 15%;
+    margin-right: 5%;
+    float: right;
 }
