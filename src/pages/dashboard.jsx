@@ -30,13 +30,13 @@ function Dashboard() {
                                  position={{ top: '3%', left: '2%' }}
                                  size={{ width: '25%', height: '40%' }}
                 >
-                    <PieChartComponent/>
+                    <PieChartComponent type={"Expense"}/>
                 </WidgetContainer>
                 <WidgetContainer title="Income Break down"
                                  position={{ top: '51%', left: '2%' }}
                                  size={{ width: '25%', height: '42%' }}
                 >
-                    <PieChartComponent/>
+                    <PieChartComponent type={"Income"}/>
                 </WidgetContainer>
 
 

@@ -5,7 +5,7 @@ function Notification(props) {
     const { setComponentData } = useContext(SettingsContext);
 
     useEffect(() => {
-        setComponentData({"title": "Notification", "slogan": "Manage your account settings"});
+        setComponentData({"title": "Notification", "slogan": "Manage your dashboard settings"});
     }, []);
     return (
         <div></div>

@@ -21,7 +21,7 @@ ChartJS.register(
     LinearScale
 );
 
-const PieChartComponent = () => {
+const PieChartComponent = ({type}) => {
 
     const [value, setValue] = React.useState(0);
     const [currency, setCurrency] = React.useState('₹');
@@ -90,7 +90,7 @@ const PieChartComponent = () => {
         <div style={{position: 'relative', height: '90%', width: '100%'}}>
             <Pie data={data} options={options}/>
             <div style={styles}>
-                Income = {currency}<CountUp end={value} duration={5} separator=","/>
+                {type} = {currency}<CountUp end={value} duration={5} separator=","/>
             </div>
         </div>
     );

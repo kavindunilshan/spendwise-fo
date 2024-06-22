@@ -16,7 +16,7 @@ function Settings() {
 
 
             <div className={'settings-topics'}>
-                <HeaderWithSlogan title={'Settings'} slogan={'Manage your account settings'}/>
+                <HeaderWithSlogan title={'Settings'} slogan={'Manage your dashboard settings'}/>
                 <NavigateNext style={{color: '#6c757d', margin: '0 20px 0 50px'}}/>
                 <HeaderWithSlogan
                     isSubTopic={true}

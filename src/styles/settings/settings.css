@@ -5,8 +5,6 @@
 .settings-sub-container {
     display: flex;
     flex-direction: row;
-    align-items: center;
-    justify-content: center;
 }
 
 .settings-topics {
@@ -16,10 +14,11 @@
 }
 
 .settings-left {
-    width: 12%;
+    width: 15%;
     height: 100%;
 }
 
 .settings-right {
-    width: 88%;
+    width: 85%;
+    height: 100%;
 }
