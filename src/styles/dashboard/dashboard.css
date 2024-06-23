@@ -1,19 +1,25 @@
 .dsb {
     --background-color: #ffffff;
     --text-color: #320440;
-    --primary-color: #7d0a0a;
     --secondary-color: rgba(123, 103, 128, 0.89);
     --shadow-color: rgba(50, 4, 64, 0.19);
     --chart-color: #000000;
+    --red-color: #7b0404;
+    --green-color: #0b7b04;
+    --blue-color: rgb(18,12,87);
+    --yellow-color: rgb(136,122,0);
 }
 
 .dsb.darkmode {
     --background-color: #0f1425;
     --text-color: #31d8ed;
-    --primary-color: #375a7f;
     --secondary-color: rgba(116, 165, 218, 0.89);
     --shadow-color: rgba(49, 216, 237, 0.19);
     --chart-color: #24cbe1;
+    --red-color: #fb1c1c;
+    --green-color: #1cfb1c;
+    --blue-color: #1c1cfb;
+    --yellow-color: #f7f71c;
 }
 
 

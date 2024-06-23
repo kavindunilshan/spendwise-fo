@@ -133,9 +133,9 @@ function ActionStation() {
                                 style={{
                                     border: "1px solid var(--text-color)",
                                     backgroundColor: "rgba(251,139,36,0)",
-                                    color: "#036022",
+                                    color: "var(--green-color)"
                                 }}
-                                startIcon={<SportsScoreOutlinedIcon style={{color: '#9A031E'}}/>}
+                                startIcon={<SportsScoreOutlinedIcon style={{color: 'var(--red-color)'}}/>}
                         >
                             Set Goal
                         </Button>

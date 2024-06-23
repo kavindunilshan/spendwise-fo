@@ -27,6 +27,10 @@ ChartJS.register(
 const LineChartComponent = ({labels, incomeData, getCSSVariableValue, expenseData, savingsData}) => {
     const secondaryColor = getCSSVariableValue('--chart-color');
 
+    const red = getCSSVariableValue('--red-color');
+    const blue = getCSSVariableValue('--blue-color');
+    const yellow = getCSSVariableValue('--yellow-color');
+
 
     const options = {
         responsive: true,
@@ -90,8 +94,8 @@ const LineChartComponent = ({labels, incomeData, getCSSVariableValue, expenseDat
             {
                 label: 'Income',
                 data: incomeData,
-                borderColor: '#120c57',
-                backgroundColor: 'rgb(18,12,87)',
+                borderColor: 'blue',
+                backgroundColor: 'blue',
                 fill: true,
                 tension: 0,
                 borderWidth: 1,
@@ -99,8 +103,8 @@ const LineChartComponent = ({labels, incomeData, getCSSVariableValue, expenseDat
             {
                 label: 'Expenses',
                 data: expenseData,
-                borderColor: '#7d0a0a',
-                backgroundColor: 'rgb(125,10,10)',
+                borderColor: 'red',
+                backgroundColor: 'red',
                 fill: true,
                 tension: 0,
                 borderWidth: 1,
@@ -108,8 +112,8 @@ const LineChartComponent = ({labels, incomeData, getCSSVariableValue, expenseDat
             {
                 label: 'Savings',
                 data: savingsData,
-                borderColor: 'rgb(136,122,0)',
-                backgroundColor: 'rgb(136,122,0)',
+                borderColor: 'yellow',
+                backgroundColor: 'yellow',
                 fill: true,
                 tension: 0,
                 borderWidth: 1,
