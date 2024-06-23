@@ -6,7 +6,7 @@
 
 .action-station-ym-picker {
     border: 1px solid var(--text-color);
-    color: var(--text-color);
+    color: blue !important;
     border-radius: 5px;
     scale: 0.8;
     width: 52%;

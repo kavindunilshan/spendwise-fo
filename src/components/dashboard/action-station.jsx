@@ -11,6 +11,26 @@ import {createTransaction} from "../../services/axios-services.js";
 import FlatIcons from "./flat-icons.jsx";
 import Clock from 'react-live-clock';
 import dayjs from "dayjs";
+import {styled} from "@mui/material/styles";
+
+
+
+const CustomDatePicker = styled(DatePicker)({
+    '& .MuiOutlinedInput-root': {
+        color: 'var(--text-color)',
+    },
+
+    '& .MuiInputAdornment-root': {
+        color: 'var(--text-color)',
+    },
+    '& .MuiSvgIcon-root': {
+        color: 'var(--text-color)',
+    },
+    '& .MuiFormLabel-root': {
+        color: 'var(--text-color)',
+    },
+});
+
 
 function ActionStation() {
     const [date, setDate] = useState(dayjs());
@@ -104,10 +124,10 @@ function ActionStation() {
                 <div className={'action-station-l1'}>
                     <div className={'action-station-ym-picker'}>
                         <LocalizationProvider dateAdapter={AdapterDayjs}>
-                            <DatePicker
+                            <CustomDatePicker
                                 label={'"month" and "year"'}
                                 views={['month', 'year']}
-                                style={{size: 'small'}}
+                                style={{size: 'small', backgroundColor: '#111111'}}
                                 value={date}
                             />
                         </LocalizationProvider>
