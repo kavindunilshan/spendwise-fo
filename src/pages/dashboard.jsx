@@ -23,7 +23,7 @@ function Dashboard() {
     //     }
     // }, []);
 
-    function getCSSVariableValue(variable) {
+    const getCSSVariableValue = (variable) => {
         const dsbElement = document.querySelector('.dsb');
         return getComputedStyle(dsbElement).getPropertyValue(variable).trim();
     }
