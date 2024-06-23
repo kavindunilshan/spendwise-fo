@@ -10,11 +10,13 @@ import Paper from '@mui/material/Paper';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
-        backgroundColor: 'rgba(50,4,64,0.68)',
+        backgroundColor: 'var(--chart-header-color)',
         color: theme.palette.common.white,
         padding: '8px 10px',
     },
     [`&.${tableCellClasses.body}`]: {
+        backgroundColor: 'var(--chart-row-color)',
+        color: 'var(--chart-text-color)',
         fontSize: 14,
         padding: '8px 10px',
     },

@@ -8,6 +8,10 @@
     --green-color: #0b7b04;
     --blue-color: rgb(18,12,87);
     --yellow-color: rgb(187, 169, 14);
+    --chart-header-color: rgba(50,4,64,0.68);
+    --chart-row-color: #ffffff;
+    --chart-odd-row-color: rgba(50,4,64,0.05);
+    --chart-text-color: #320440;
 }
 
 .dsb.darkmode {
@@ -20,6 +24,10 @@
     --green-color: #1cfb1c;
     --blue-color: #1c1cfb;
     --yellow-color: #f7f71c;
+    --chart-header-color: #062227;
+    --chart-row-color: #0f1425;
+    --chart-odd-row-color: #1c1c1c;
+    --chart-text-color: #31d8ed;
 }
 
 
