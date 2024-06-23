@@ -32,6 +32,10 @@ function Dashboard() {
 
     useEffect(() => {
         setSecondaryColor(getCSSVariableValue('--chart-color'));
+        setSecondaryColor(getCSSVariableValue('--red-color'));
+        setSecondaryColor(getCSSVariableValue('--yellow-color'));
+        setSecondaryColor(getCSSVariableValue('--blue-color'));
+
     }, [isDarkMode]);
 
 

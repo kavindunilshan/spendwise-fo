@@ -94,8 +94,8 @@ const LineChartComponent = ({labels, incomeData, getCSSVariableValue, expenseDat
             {
                 label: 'Income',
                 data: incomeData,
-                borderColor: 'blue',
-                backgroundColor: 'blue',
+                borderColor: blue,
+                backgroundColor: blue,
                 fill: true,
                 tension: 0,
                 borderWidth: 1,
@@ -103,8 +103,8 @@ const LineChartComponent = ({labels, incomeData, getCSSVariableValue, expenseDat
             {
                 label: 'Expenses',
                 data: expenseData,
-                borderColor: 'red',
-                backgroundColor: 'red',
+                borderColor: red,
+                backgroundColor: red,
                 fill: true,
                 tension: 0,
                 borderWidth: 1,
@@ -112,8 +112,8 @@ const LineChartComponent = ({labels, incomeData, getCSSVariableValue, expenseDat
             {
                 label: 'Savings',
                 data: savingsData,
-                borderColor: 'yellow',
-                backgroundColor: 'yellow',
+                borderColor: yellow,
+                backgroundColor: yellow,
                 fill: true,
                 tension: 0,
                 borderWidth: 1,
