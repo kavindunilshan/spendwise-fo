@@ -14,7 +14,7 @@ function Dashboard() {
     const { isAuthenticated, loginWithRedirect, loginWithPopup } = useAuth0();
     const [redirectAttempted, setRedirectAttempted] = useState(false);
 
-    const [isDarkMode, setIsDarkMode] = useState(true);
+    const [isDarkMode, setIsDarkMode] = useState(false);
 
     // useEffect(() => {
     //     if (!isAuthenticated && !redirectAttempted) {
