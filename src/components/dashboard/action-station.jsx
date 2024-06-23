@@ -117,9 +117,9 @@ function ActionStation() {
                                 onClick={handleClickOpen}
                                 variant="contained"
                                 style={{
-                                    border: "1px solid #320440",
+                                    border: "1px solid var(--text-color)",
                                     backgroundColor: "rgba(251,139,36,0)",
-                                    color: "#FB8B24",
+                                    color: "var(--text-color)",
                                 }}
                                 startIcon={<Add/>}
                         >
@@ -131,7 +131,7 @@ function ActionStation() {
                         <Button disableElevation
                                 variant="contained"
                                 style={{
-                                    border: "1px solid #320440",
+                                    border: "1px solid var(--text-color)",
                                     backgroundColor: "rgba(251,139,36,0)",
                                     color: "#036022",
                                 }}

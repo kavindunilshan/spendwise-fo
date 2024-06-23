@@ -24,62 +24,66 @@ ChartJS.register(
     annotationPlugin
 );
 
-const options = {
-    responsive: true,
-    maintainAspectRatio: false,
-    scales: {
-        x: {
-            title: {
-                display: true,
-                text: 'Month',
-                color: '#000',
-            },
-            grid: {
-                color: 'rgba(0,0,0,0.47)',
-            },
-            ticks: {
-                color: '#000',
-            },
-        },
-        y: {
-            title: {
-                display: true,
-                text: 'Value',
-                color: '#000',
-            },
-            grid: {
-                color: 'rgba(0,0,0,0.41)',
-            },
-            ticks: {
-                callback: function (value, index, values) {
-                    return 'Rs. ' + value;
+const LineChartComponent = ({labels, incomeData, getCSSVariableValue, expenseData, savingsData}) => {
+    const secondaryColor = getCSSVariableValue('--chart-color');
+
+
+    const options = {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+            x: {
+                title: {
+                    display: true,
+                    text: 'Month',
+                    color: secondaryColor,
                 },
+                grid: {
+                    color: secondaryColor,
+                },
+                ticks: {
+                    color: secondaryColor,
+                },
+            },
+            y: {
+                title: {
+                    display: true,
+                    text: 'Value',
+                    color: secondaryColor,
+                },
+                grid: {
+                    color: secondaryColor,
+                },
+                ticks: {
+                    callback: function (value, index, values) {
+                        return 'Rs. ' + value;
+                    },
 
-                color: '#000',
-                stepSize: 1000,
+                    color: secondaryColor,
+                    stepSize: 1000,
 
-                // Maximum number of ticks on the y-axis
-                maxTicksLimit: 6,
+                    // Maximum number of ticks on the y-axis
+                    maxTicksLimit: 6,
 
-            }
+                }
+            },
         },
-    },
-    plugins: {
-        legend: {
-            display: true,
-            position: 'top',
-            labels: {
-                color: '#000',
-            }
+        plugins: {
+            legend: {
+                display: true,
+                position: 'top',
+                labels: {
+                    color: secondaryColor,
+                }
+            },
+            tooltip: {
+                mode: 'index',
+                intersect: false,
+            },
         },
-        tooltip: {
-            mode: 'index',
-            intersect: false,
-        },
-    },
-};
+    };
 
-const LineChartComponent = ({labels, incomeData, expenseData, savingsData}) => {
+
     const data = {
         labels: labels,
         datasets: [
