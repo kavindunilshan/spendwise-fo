@@ -7,6 +7,8 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import {useEffect} from "react";
+import {fetchLastFiveTransactions} from "../../services/dashboard.js";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -48,6 +50,16 @@ const rows = [
 ];
 
 export default function Transactions() {
+
+    const [transactions, setTransactions] = React.useState([]);
+
+    useEffect(() => {
+        fetchLastFiveTransactions().then((response) => {
+            setTransactions(response.data);
+        });
+        }, []);
+
+
     return (
         <TableContainer component={Paper} style={{marginTop: '30px'}}>
             <Table sx={{ minWidth: 200 }} aria-label="customized table">
@@ -60,12 +72,12 @@ export default function Transactions() {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {rows.map((row, index) => (
+                    {transactions.map((transaction, index) => (
                         <StyledTableRow key={index}>
-                            <StyledTableCell align="left">{row.timestamp}</StyledTableCell>
-                            <NarrowTableCell align="left">{row.type}</NarrowTableCell>
-                            <NarrowTableCell align="left">{row.category}</NarrowTableCell>
-                            <NarrowTableCell align="right">{row.amount}</NarrowTableCell>
+                            <StyledTableCell align="left">{transaction.timestamp}</StyledTableCell>
+                            <NarrowTableCell align="left">{transaction.type}</NarrowTableCell>
+                            <NarrowTableCell align="left">{transaction.category}</NarrowTableCell>
+                            <NarrowTableCell align="right">{transaction.amount}</NarrowTableCell>
                         </StyledTableRow>
                     ))}
                 </TableBody>
