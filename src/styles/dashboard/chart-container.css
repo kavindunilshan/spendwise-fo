@@ -5,9 +5,10 @@
     align-items: center;
     text-align: center;
     padding: 1rem;
-    background-color: #ffffff;
+    background-color: var(--background-color);
+    color: var(--text-color);
     border-radius: 0.5rem;
-    box-shadow: 0 0 4px 4px rgba(50, 4, 64, 0.19);
+    box-shadow: 0 0 4px 4px var(--shadow-color);
 }
 
 .chart-container-title {
@@ -15,5 +16,4 @@
     font-weight: 600;
     font-style: italic;
     font-size: 1.5rem;
-    color: #320440;
 }

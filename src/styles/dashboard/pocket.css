@@ -17,5 +17,5 @@
     font-style: italic;
     margin: 8% auto;
     font-size: 3em;
-    color: rgba(123, 103, 128, 0.89);
+    color: var(--secondary-color);
 }

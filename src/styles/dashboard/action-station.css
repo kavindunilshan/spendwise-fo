@@ -5,7 +5,8 @@
 }
 
 .action-station-ym-picker {
-    border: 1px solid #320440;
+    border: 1px solid var(--text-color);
+    color: blue !important;
     border-radius: 5px;
     scale: 0.8;
     width: 52%;
@@ -29,7 +30,7 @@
     font-family: "Open Sans", sans-serif;
     font-weight: 400;
     font-style: italic;
-    color: rgba(50, 4, 64, 0.79);
+    color: var(--text-color);;
     scale: 1;
     font-size: 20px;
 }

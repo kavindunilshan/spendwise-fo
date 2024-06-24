@@ -10,7 +10,6 @@ import {
     LinearScale
 } from 'chart.js';
 import CountUp from "react-countup";
-
 // Register the necessary components for Chart.js
 ChartJS.register(
     ArcElement,
@@ -21,9 +20,11 @@ ChartJS.register(
     LinearScale
 );
 
-const PieChartComponent = ({type}) => {
 
-    const [value, setValue] = React.useState(0);
+
+const PieChartComponent = ({type, getCSSVariableValue}) => {
+
+    const [value, setValue] = React.useState(15030);
     const [currency, setCurrency] = React.useState('₹');
 
     const expenseBreakdown = {
@@ -52,6 +53,8 @@ const PieChartComponent = ({type}) => {
         ],
     };
 
+    const secondaryColor = getCSSVariableValue('--chart-color');
+
     const options = {
         responsive: true,
         maintainAspectRatio: false,
@@ -60,7 +63,7 @@ const PieChartComponent = ({type}) => {
                 display: true,
                 position: 'right',
                 labels: {
-                    color: '#000',
+                    color: secondaryColor,
                 }
             },
             tooltip: {
@@ -83,7 +86,7 @@ const PieChartComponent = ({type}) => {
         fontWeight: 500,
         fontStyle: 'italic',
         fontSize: '1.4em',
-        color: 'rgba(123, 103, 128, 0.89)',
+        color: 'var(--secondary-color)',
     }
 
     return (

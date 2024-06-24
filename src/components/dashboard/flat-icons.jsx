@@ -15,28 +15,28 @@ function FlatIcons({}) {
             <List sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', padding: 0 }}>
                 <ListItem button sx={{ display: 'flex', justifyContent: 'center', padding: '1rem', '&:hover': { backgroundColor: 'transparent' } }}>
                     <Tooltip title="Home" placement="top">
-                        <ListItemIcon sx={{ minWidth: 'auto', color: '#320440' }}>
-                            <HomeIcon style={{fontSize: 25}} onClick={() => handleClick("/")}/>
-                        </ListItemIcon>
+                        <ListItemIcon sx={{ minWidth: 'auto', color: 'var(--text-color)' }}>
+                            <HomeIcon style={{fontSize: 25}} onClick={() => handleClick()}/>
+        </ListItemIcon>
                     </Tooltip>
                 </ListItem>
                 <ListItem button sx={{ display: 'flex', justifyContent: 'center', padding: '1rem', '&:hover': { backgroundColor: 'transparent' } }}>
                     <Tooltip title="Home" placement="top">
-                        <ListItemIcon sx={{ minWidth: 'auto', color: '#320440' }}>
+                        <ListItemIcon sx={{ minWidth: 'auto', color: 'var(--text-color)' }}>
                             <Settings style={{fontSize: 25}} onClick={() => handleClick("/settings/profile")}/>
                         </ListItemIcon>
                     </Tooltip>
                 </ListItem>
                 <ListItem button sx={{ display: 'flex', justifyContent: 'center', padding: '1rem', '&:hover': { backgroundColor: 'transparent' } }}>
                     <Tooltip title="Home" placement="top">
-                        <ListItemIcon sx={{ minWidth: 'auto', color: '#320440' }}>
+                        <ListItemIcon sx={{ minWidth: 'auto', color: 'var(--text-color)' }}>
                             <MessageOutlined style={{fontSize: 25}} onClick={() => handleClick()}/>
                         </ListItemIcon>
                     </Tooltip>
                 </ListItem>
                 <ListItem button sx={{ display: 'flex', justifyContent: 'center', padding: '1rem', '&:hover': { backgroundColor: 'transparent' } }}>
                     <Tooltip title="Receipt" placement="top">
-                        <ListItemIcon sx={{ minWidth: 'auto', color: '#320440' }}>
+                        <ListItemIcon sx={{ minWidth: 'auto', color: 'var(--text-color)' }}>
                             <UserMenu size={25}/>
                         </ListItemIcon>
                     </Tooltip>

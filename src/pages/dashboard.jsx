@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import "/src/styles/dashboard/dashboard.css";
 import WidgetContainer from "../components/dashboard/charts/chart-container.jsx";
 import PieChartComponent from "../components/dashboard/charts/pie-chart.jsx";
@@ -14,6 +14,8 @@ function Dashboard() {
     const { isAuthenticated, loginWithRedirect, loginWithPopup } = useAuth0();
     const [redirectAttempted, setRedirectAttempted] = useState(false);
 
+    const [isDarkMode, setIsDarkMode] = useState(false);
+
     // useEffect(() => {
     //     if (!isAuthenticated && !redirectAttempted) {
     //         setRedirectAttempted(true);
@@ -21,22 +23,37 @@ function Dashboard() {
     //     }
     // }, []);
 
+    const getCSSVariableValue = (variable) => {
+        const dsbElement = document.querySelector('.dsb');
+        return getComputedStyle(dsbElement).getPropertyValue(variable).trim();
+    }
+
+    const [secondaryColor, setSecondaryColor] = useState('');
+
+    useEffect(() => {
+        setSecondaryColor(getCSSVariableValue('--chart-color'));
+        setSecondaryColor(getCSSVariableValue('--red-color'));
+        setSecondaryColor(getCSSVariableValue('--yellow-color'));
+        setSecondaryColor(getCSSVariableValue('--blue-color'));
+
+    }, [isDarkMode]);
+
 
     return (
-        <div className="dsb">
+        <div className={`dsb ${isDarkMode ? 'darkmode': ''}`}>
             {isAuthenticated &&
             <>
                 <WidgetContainer title="Expence Break down"
                                  position={{ top: '3%', left: '2%' }}
                                  size={{ width: '25%', height: '40%' }}
                 >
-                    <PieChartComponent type={"Expense"}/>
+                    <PieChartComponent type={"Expense"} getCSSVariableValue={getCSSVariableValue}/>
                 </WidgetContainer>
                 <WidgetContainer title="Income Break down"
                                  position={{ top: '51%', left: '2%' }}
                                  size={{ width: '25%', height: '42%' }}
                 >
-                    <PieChartComponent type={"Income"}/>
+                    <PieChartComponent type={"Income"} getCSSVariableValue={getCSSVariableValue}/>
                 </WidgetContainer>
 
 
@@ -67,7 +84,11 @@ function Dashboard() {
                     <LineChartComponent labels={["January", "February", "March", "April"]}
                                         expenseData={[1000, 2000, 1500, 3000]}
                                         incomeData={[2000, 3500, 2500, 4000]}
-                                        savingsData={[1000, 1500, 1000, 1000]} />
+                                        savingsData={[1000, 1500, 1000, 1000]}
+
+                                        getCSSVariableValue={getCSSVariableValue}
+
+                    />
                 </WidgetContainer>
 
                 <WidgetContainer title="Recent Transactions"

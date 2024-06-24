@@ -13,5 +13,5 @@
     font-style: italic;
     text-align: center;
     font-size: 0.7em;
-    color: rgb(50, 4, 64);
+    color: var(--secondary-color);
 }

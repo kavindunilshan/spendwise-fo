@@ -11,6 +11,26 @@ import {createTransaction} from "../../services/axios-services.js";
 import FlatIcons from "./flat-icons.jsx";
 import Clock from 'react-live-clock';
 import dayjs from "dayjs";
+import {styled} from "@mui/material/styles";
+
+
+
+const CustomDatePicker = styled(DatePicker)({
+    '& .MuiOutlinedInput-root': {
+        color: 'var(--text-color)',
+    },
+
+    '& .MuiInputAdornment-root': {
+        color: 'var(--text-color)',
+    },
+    '& .MuiSvgIcon-root': {
+        color: 'var(--text-color)',
+    },
+    '& .MuiFormLabel-root': {
+        color: 'var(--text-color)',
+    },
+});
+
 
 function ActionStation() {
     const [date, setDate] = useState(dayjs());
@@ -104,10 +124,10 @@ function ActionStation() {
                 <div className={'action-station-l1'}>
                     <div className={'action-station-ym-picker'}>
                         <LocalizationProvider dateAdapter={AdapterDayjs}>
-                            <DatePicker
+                            <CustomDatePicker
                                 label={'"month" and "year"'}
                                 views={['month', 'year']}
-                                style={{size: 'small'}}
+                                style={{size: 'small', backgroundColor: '#111111'}}
                                 value={date}
                             />
                         </LocalizationProvider>
@@ -117,9 +137,9 @@ function ActionStation() {
                                 onClick={handleClickOpen}
                                 variant="contained"
                                 style={{
-                                    border: "1px solid #320440",
+                                    border: "1px solid var(--text-color)",
                                     backgroundColor: "rgba(251,139,36,0)",
-                                    color: "#FB8B24",
+                                    color: "var(--text-color)",
                                 }}
                                 startIcon={<Add/>}
                         >
@@ -131,11 +151,11 @@ function ActionStation() {
                         <Button disableElevation
                                 variant="contained"
                                 style={{
-                                    border: "1px solid #320440",
+                                    border: "1px solid var(--text-color)",
                                     backgroundColor: "rgba(251,139,36,0)",
-                                    color: "#036022",
+                                    color: "var(--green-color)"
                                 }}
-                                startIcon={<SportsScoreOutlinedIcon style={{color: '#9A031E'}}/>}
+                                startIcon={<SportsScoreOutlinedIcon style={{color: 'var(--red-color)'}}/>}
                         >
                             Set Goal
                         </Button>

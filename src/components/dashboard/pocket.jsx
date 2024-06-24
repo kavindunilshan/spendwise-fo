@@ -4,7 +4,7 @@ import CountUp from "react-countup";
 
 function Pocket({}) {
 
-    const [value, setValue] = React.useState(0);
+    const [value, setValue] = React.useState(185030);
     const [currency, setCurrency] = React.useState('₹');
 
     return (
