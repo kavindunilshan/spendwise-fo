@@ -56,10 +56,12 @@ export default function Transactions() {
     const [transactions, setTransactions] = React.useState([]);
 
     useEffect(() => {
-        fetchLastFiveTransactions().then((response) => {
-            setTransactions(response.data);
+        fetchLastFiveTransactions().then((data) => {
+            setTransactions(data || []);
         });
         }, []);
+
+    console.log("Transactions", transactions)
 
 
     return (
@@ -76,10 +78,10 @@ export default function Transactions() {
                 <TableBody>
                     {transactions.map((transaction, index) => (
                         <StyledTableRow key={index}>
-                            <StyledTableCell align="left">{transaction.timestamp}</StyledTableCell>
-                            <NarrowTableCell align="left">{transaction.type}</NarrowTableCell>
-                            <NarrowTableCell align="left">{transaction.category}</NarrowTableCell>
-                            <NarrowTableCell align="right">{transaction.amount}</NarrowTableCell>
+                            <StyledTableCell align="left">{transaction.timestamp.split('.')[0].replace('T', ' ')}</StyledTableCell>
+                            <NarrowTableCell align="left">{transaction.category.type}</NarrowTableCell>
+                            <NarrowTableCell align="left">{transaction.category.name}</NarrowTableCell>
+                            <NarrowTableCell align="right">{transaction.amount.toLocaleString()}</NarrowTableCell>
                         </StyledTableRow>
                     ))}
                 </TableBody>
