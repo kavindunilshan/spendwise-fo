@@ -43,14 +43,6 @@ function createData(timestamp, type, category, amount) {
     return { timestamp, type, category, amount };
 }
 
-const rows = [
-    createData('2021-10-01-11:30:33', 'Income', 'Transpotation', 1000),
-    createData('2021-10-01-11:30:27', 'Expense', 'Food', 500),
-    createData('2021-10-01-11:30:24', 'Expense', 'Rent', 1000),
-    createData('2021-10-01-11:30:23', 'Expense', 'Utilities', 300),
-    createData('2021-10-01-11:30:21', 'Expense', 'Entertainment', 150),
-];
-
 export default function Transactions() {
 
     const [transactions, setTransactions] = React.useState([]);
@@ -60,9 +52,6 @@ export default function Transactions() {
             setTransactions(data || []);
         });
         }, []);
-
-    console.log("Transactions", transactions)
-
 
     return (
         <TableContainer component={Paper} style={{marginTop: '30px'}}>
