@@ -11,7 +11,7 @@ import Milestone from "../components/dashboard/milestone.jsx";
 
 function Dashboard() {
 
-    const { isAuthenticated, loginWithRedirect, loginWithPopup } = useAuth0();
+    const { isAuthenticated, user, loginWithRedirect, loginWithPopup } = useAuth0();
     const [redirectAttempted, setRedirectAttempted] = useState(false);
 
     const [isDarkMode, setIsDarkMode] = useState(false);

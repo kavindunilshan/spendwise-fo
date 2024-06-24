@@ -13,3 +13,9 @@ export const fetchAllTransactions = async () => {
     const response = await axios.get(baseUrl + "/transactions");
     return response.data;
 }
+
+// data breakdown
+export const fetchExpenseBreakdown = async (userId, type) => {
+    const response = await axios.get(`${baseUrl}/transactions/${userId}/${type}/breakdown`);
+    return response.data;
+}

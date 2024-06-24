@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { Pie } from 'react-chartjs-2';
 import {
     Chart as ChartJS,
@@ -27,20 +27,18 @@ const PieChartComponent = ({type, getCSSVariableValue}) => {
     const [value, setValue] = React.useState(15030);
     const [currency, setCurrency] = React.useState('₹');
 
-    const expenseBreakdown = {
-        'Food': 500,
-        'Transportation': 200,
-        'Rent': 1000,
-        'Utilities': 300,
-        'Entertainment': 150,
-    };
+    const [chartData, setChartData] = React.useState({});
+
+    useEffect(() => {
+
+    }, []);
 
     const data = {
-        labels: Object.keys(expenseBreakdown),
+        labels: Object.keys(chartData),
         datasets: [
             {
                 label: 'Expense Breakdown',
-                data: Object.values(expenseBreakdown),
+                data: Object.values(chartData),
                 backgroundColor: [
                     'rgba(255, 99, 132, 1)',
                     'rgba(54, 162, 235, 1)',
