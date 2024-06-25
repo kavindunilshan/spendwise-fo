@@ -16,7 +16,7 @@ function FlatIcons({}) {
                 <ListItem button sx={{ display: 'flex', justifyContent: 'center', padding: '1rem', '&:hover': { backgroundColor: 'transparent' } }}>
                     <Tooltip title="Home" placement="top">
                         <ListItemIcon sx={{ minWidth: 'auto', color: 'var(--text-color)' }}>
-                            <HomeIcon style={{fontSize: 25}} onClick={() => handleClick()}/>
+                            <HomeIcon style={{fontSize: 25}} onClick={() => handleClick("/")}/>
         </ListItemIcon>
                     </Tooltip>
                 </ListItem>
