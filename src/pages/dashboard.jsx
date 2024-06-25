@@ -25,7 +25,10 @@ function Dashboard() {
 
     const getCSSVariableValue = (variable) => {
         const dsbElement = document.querySelector('.dsb');
-        return getComputedStyle(dsbElement).getPropertyValue(variable).trim();
+
+        if (dsbElement) {
+            return window.getComputedStyle(dsbElement).getPropertyValue(variable);
+        }
     }
 
     const [secondaryColor, setSecondaryColor] = useState('');
