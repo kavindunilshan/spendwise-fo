@@ -16,6 +16,8 @@ function Dashboard() {
 
     const [isDarkMode, setIsDarkMode] = useState(false);
 
+    const userId = isAuthenticated ? user.sub.split("|")[1] : '';
+
     // useEffect(() => {
     //     if (!isAuthenticated && !redirectAttempted) {
     //         setRedirectAttempted(true);
@@ -70,7 +72,7 @@ function Dashboard() {
                                  position={{ top: '40%', left: '31%' }}
                                  size={{ width: '25%', height: '20%' }}
                 >
-                    <Pocket/>
+                    <Pocket userId={userId}/>
                 </WidgetContainer>
                 <WidgetContainer title="Milestones"
                                  position={{ top: '67%', left: '31%' }}

@@ -25,3 +25,9 @@ export const createUser = async (user) => {
     const response = await axios.post(baseUrl + "/users", user);
     return response.data;
 }
+
+// fetch pocket balance
+export const fetchPocketBalance = async (userId) => {
+    const response = await axios.get(`${baseUrl}/transactions/pocket/${userId}`);
+    return response.data;
+}
