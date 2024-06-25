@@ -83,11 +83,11 @@ const PieChartComponent = ({value, type, getCSSVariableValue}) => {
     const styles = {
         position: 'absolute',
         bottom: '0',
-        left: '45%',
+        left: '55%',
         fontFamily: 'Open Sans, sans-serif',
         fontWeight: 500,
         fontStyle: 'italic',
-        fontSize: '1.4em',
+        fontSize: '1.2em',
         color: 'var(--secondary-color)',
     }
 
