@@ -35,6 +35,7 @@ const CustomDatePicker = styled(DatePicker)({
 
 function ActionStation() {
     const [date, setDate] = useState(dayjs());
+
     const initialFormData = {
         transactionType: 'INCOME',
         amount: '',
@@ -134,6 +135,7 @@ function ActionStation() {
                                 views={['month', 'year']}
                                 style={{size: 'small', backgroundColor: '#111111'}}
                                 value={date}
+                                onChange={(newDate) => setDate(newDate)}
                             />
                         </LocalizationProvider>
                     </div>
