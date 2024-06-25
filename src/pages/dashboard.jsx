@@ -8,15 +8,19 @@ import {useAuth0} from "@auth0/auth0-react";
 import Transactions from "../components/dashboard/transaction-table.jsx";
 import Pocket from "../components/dashboard/pocket.jsx";
 import Milestone from "../components/dashboard/milestone.jsx";
+import {fetchPocketBalance} from "../services/dashboard.js";
 
 function Dashboard() {
 
     const { isAuthenticated, user, loginWithRedirect, loginWithPopup } = useAuth0();
     const [redirectAttempted, setRedirectAttempted] = useState(false);
-
     const [isDarkMode, setIsDarkMode] = useState(false);
 
-    const userId = isAuthenticated ? user.sub.split("|")[1] : '';
+    const [pocket, setPocket] = useState(0);
+    const [income, setIncome] = useState(0);
+    const [expense, setExpense] = useState(0);
+
+    const userId = isAuthenticated ? user.sub.split("|")[1] : null;
 
     // useEffect(() => {
     //     if (!isAuthenticated && !redirectAttempted) {
@@ -24,6 +28,18 @@ function Dashboard() {
     //         loginWithPopup();
     //     }
     // }, []);
+
+    useEffect(() => {
+        // Fetch the pocket value from the server
+        if (userId) {
+            fetchPocketBalance(userId).then((data) => {
+                console.log(data)
+                setPocket(data.pocket);
+                setIncome(data.income);
+                setExpense(data.expenses);
+            });
+        }
+    }, [userId]);
 
     const getCSSVariableValue = (variable) => {
         const dsbElement = document.querySelector('.dsb');
@@ -52,13 +68,13 @@ function Dashboard() {
                                  position={{ top: '3%', left: '2%' }}
                                  size={{ width: '25%', height: '40%' }}
                 >
-                    <PieChartComponent type={"Expense"} getCSSVariableValue={getCSSVariableValue}/>
+                    <PieChartComponent value={expense} type={"Expense"} getCSSVariableValue={getCSSVariableValue}/>
                 </WidgetContainer>
                 <WidgetContainer title="Income Break down"
                                  position={{ top: '51%', left: '2%' }}
                                  size={{ width: '25%', height: '42%' }}
                 >
-                    <PieChartComponent type={"Income"} getCSSVariableValue={getCSSVariableValue}/>
+                    <PieChartComponent value={income} type={"Income"} getCSSVariableValue={getCSSVariableValue}/>
                 </WidgetContainer>
 
 
@@ -72,7 +88,7 @@ function Dashboard() {
                                  position={{ top: '40%', left: '31%' }}
                                  size={{ width: '25%', height: '20%' }}
                 >
-                    <Pocket userId={userId}/>
+                    <Pocket value={pocket}/>
                 </WidgetContainer>
                 <WidgetContainer title="Milestones"
                                  position={{ top: '67%', left: '31%' }}

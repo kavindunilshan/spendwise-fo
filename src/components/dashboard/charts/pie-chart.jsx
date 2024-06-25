@@ -24,9 +24,7 @@ ChartJS.register(
 
 
 
-const PieChartComponent = ({type, getCSSVariableValue}) => {
-
-    const [value, setValue] = React.useState(15030);
+const PieChartComponent = ({value, type, getCSSVariableValue}) => {
     const [currency, setCurrency] = React.useState('₹');
 
     const [chartData, setChartData] = React.useState({});
