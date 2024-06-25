@@ -12,6 +12,7 @@ import FlatIcons from "./flat-icons.jsx";
 import Clock from 'react-live-clock';
 import dayjs from "dayjs";
 import {styled} from "@mui/material/styles";
+import {useAuth0} from "@auth0/auth0-react";
 
 
 
@@ -52,6 +53,8 @@ function ActionStation() {
     // Format the date
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
     const formattedDate = today.toLocaleDateString('en-US', options);
+
+    const {user} = useAuth0();
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -104,7 +107,7 @@ function ActionStation() {
 
         const transaction = {
             category_id: formData.categoryId,
-            user_id: 111142,
+            user_id: user.sub.split("|")[1],
             amount: parseFloat(formData.amount),
             date: `${formData.date}T00:00:00`,
             timestamp: currentTimeStamp,

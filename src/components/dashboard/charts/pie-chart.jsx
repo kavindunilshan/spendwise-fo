@@ -10,6 +10,8 @@ import {
     LinearScale
 } from 'chart.js';
 import CountUp from "react-countup";
+import {fetchExpenseBreakdown} from "../../../services/dashboard.js";
+import {useAuth0} from "@auth0/auth0-react";
 // Register the necessary components for Chart.js
 ChartJS.register(
     ArcElement,
@@ -29,8 +31,14 @@ const PieChartComponent = ({type, getCSSVariableValue}) => {
 
     const [chartData, setChartData] = React.useState({});
 
-    useEffect(() => {
+    const {user} = useAuth0();
 
+    console.log("chartdata", chartData);
+
+    useEffect(() => {
+        fetchExpenseBreakdown(user.sub.split("|")[1], 'expense').then((data) => {
+            setChartData(data || {});
+        });
     }, []);
 
     const data = {
