@@ -34,7 +34,7 @@ const PieChartComponent = ({type, getCSSVariableValue}) => {
     const {user} = useAuth0();
 
     useEffect(() => {
-        fetchExpenseBreakdown(user.sub.split("|")[1], 'expense').then((data) => {
+        fetchExpenseBreakdown(user.sub.split("|")[1], type.toUpperCase()).then((data) => {
             setChartData(data || {});
         });
     }, []);
