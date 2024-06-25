@@ -9,6 +9,7 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import {useEffect} from "react";
 import {fetchLastFiveTransactions} from "../../services/dashboard.js";
+import {useAuth0} from "@auth0/auth0-react";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -46,9 +47,10 @@ function createData(timestamp, type, category, amount) {
 export default function Transactions() {
 
     const [transactions, setTransactions] = React.useState([]);
+    const {user} = useAuth0();
 
     useEffect(() => {
-        fetchLastFiveTransactions().then((data) => {
+        fetchLastFiveTransactions(user.sub.split('|')[1]).then((data) => {
             setTransactions(data || []);
         });
         }, []);

@@ -103,7 +103,9 @@ function ActionStation() {
             return;
         }
 
-        const currentTimeStamp = new Date().toISOString();
+        const options = { timeZone: 'Asia/Colombo', hour12: false };
+        const sriLankaTime = new Date().toLocaleString('en-CA', options);
+        const currentTimeStamp = sriLankaTime.replace(', ', 'T');
 
         const transaction = {
             category_id: formData.categoryId,

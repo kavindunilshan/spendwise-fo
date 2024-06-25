@@ -3,8 +3,8 @@ import axios from "axios";
 const baseUrl = "http://localhost:8080/api";
 
 // fetch last five transactions
-export const fetchLastFiveTransactions = async () => {
-    const response = await axios.get(baseUrl + "/transactions/last-five");
+export const fetchLastFiveTransactions = async (userId) => {
+    const response = await axios.get(`${baseUrl}/transactions/${userId}/last-five`);
     return response.data;
 }
 
