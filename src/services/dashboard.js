@@ -19,3 +19,9 @@ export const fetchExpenseBreakdown = async (userId, type) => {
     const response = await axios.get(`${baseUrl}/transactions/${userId}/${type}/breakdown`);
     return response.data;
 }
+
+// post a user
+export const createUser = async (user) => {
+    const response = await axios.post(baseUrl + "/users", user);
+    return response.data;
+}

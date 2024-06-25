@@ -1,11 +1,29 @@
-import React from "react";
+import React, {useState} from "react";
 import {useAuth0} from "@auth0/auth0-react";
 import Button from "@mui/material/Button";
 import UserMenu from "./logged-menu.jsx";
 import '/src/styles/login/login.css';
+import {createUser} from "../../services/dashboard.js";
 
 const LoginButton = () => {
-    const { isAuthenticated, user, loginWithRedirect } = useAuth0();
+    const { isAuthenticated, user, loginWithPopup, loginWithRedirect} = useAuth0();
+    const [loginAttempted, setLoginAttempted] = useState(false);
+
+    console.log(user, loginAttempted);
+
+    const handleClick = () => {
+        loginWithPopup();
+        setLoginAttempted(true);
+    }
+
+    if (isAuthenticated && loginAttempted) {
+        const newUser = {
+            name: user.name,
+            email: user.email,
+            userId: user.sub.split("|")[1],
+        }
+        createUser(newUser);
+    }
 
     return (
         <>
@@ -22,7 +40,7 @@ const LoginButton = () => {
                                 fontSize: '1rem',
                             }}
                             variant="outlined"
-                            onClick={() => loginWithRedirect()}
+                            onClick={() => handleClick()}
                         >Log In
                         </Button>
                     </div>
