@@ -9,6 +9,7 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import {useEffect} from "react";
 import {fetchLastFiveTransactions} from "../../services/dashboard.js";
+import {useAuth0} from "@auth0/auth0-react";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -43,24 +44,16 @@ function createData(timestamp, type, category, amount) {
     return { timestamp, type, category, amount };
 }
 
-const rows = [
-    createData('2021-10-01-11:30:33', 'Income', 'Transpotation', 1000),
-    createData('2021-10-01-11:30:27', 'Expense', 'Food', 500),
-    createData('2021-10-01-11:30:24', 'Expense', 'Rent', 1000),
-    createData('2021-10-01-11:30:23', 'Expense', 'Utilities', 300),
-    createData('2021-10-01-11:30:21', 'Expense', 'Entertainment', 150),
-];
-
 export default function Transactions() {
 
     const [transactions, setTransactions] = React.useState([]);
+    const {user} = useAuth0();
 
     useEffect(() => {
-        fetchLastFiveTransactions().then((response) => {
-            setTransactions(response.data);
+        fetchLastFiveTransactions(user.sub.split('|')[1]).then((data) => {
+            setTransactions(data || []);
         });
         }, []);
-
 
     return (
         <TableContainer component={Paper} style={{marginTop: '30px'}}>
@@ -76,10 +69,10 @@ export default function Transactions() {
                 <TableBody>
                     {transactions.map((transaction, index) => (
                         <StyledTableRow key={index}>
-                            <StyledTableCell align="left">{transaction.timestamp}</StyledTableCell>
-                            <NarrowTableCell align="left">{transaction.type}</NarrowTableCell>
-                            <NarrowTableCell align="left">{transaction.category}</NarrowTableCell>
-                            <NarrowTableCell align="right">{transaction.amount}</NarrowTableCell>
+                            <StyledTableCell align="left">{transaction.timestamp.split('.')[0].replace('T', ' ')}</StyledTableCell>
+                            <NarrowTableCell align="left">{transaction.category.type}</NarrowTableCell>
+                            <NarrowTableCell align="left">{transaction.category.name}</NarrowTableCell>
+                            <NarrowTableCell align="right">{transaction.amount.toLocaleString()}</NarrowTableCell>
                         </StyledTableRow>
                     ))}
                 </TableBody>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { Pie } from 'react-chartjs-2';
 import {
     Chart as ChartJS,
@@ -10,6 +10,8 @@ import {
     LinearScale
 } from 'chart.js';
 import CountUp from "react-countup";
+import {fetchExpenseBreakdown} from "../../../services/dashboard.js";
+import {useAuth0} from "@auth0/auth0-react";
 // Register the necessary components for Chart.js
 ChartJS.register(
     ArcElement,
@@ -22,25 +24,25 @@ ChartJS.register(
 
 
 
-const PieChartComponent = ({type, getCSSVariableValue}) => {
-
-    const [value, setValue] = React.useState(15030);
+const PieChartComponent = ({value, type, getCSSVariableValue}) => {
     const [currency, setCurrency] = React.useState('₹');
 
-    const expenseBreakdown = {
-        'Food': 500,
-        'Transportation': 200,
-        'Rent': 1000,
-        'Utilities': 300,
-        'Entertainment': 150,
-    };
+    const [chartData, setChartData] = React.useState({});
+
+    const {user} = useAuth0();
+
+    useEffect(() => {
+        fetchExpenseBreakdown(user.sub.split("|")[1], type.toUpperCase()).then((data) => {
+            setChartData(data || {});
+        });
+    }, []);
 
     const data = {
-        labels: Object.keys(expenseBreakdown),
+        labels: Object.keys(chartData),
         datasets: [
             {
                 label: 'Expense Breakdown',
-                data: Object.values(expenseBreakdown),
+                data: Object.values(chartData),
                 backgroundColor: [
                     'rgba(255, 99, 132, 1)',
                     'rgba(54, 162, 235, 1)',
@@ -81,11 +83,11 @@ const PieChartComponent = ({type, getCSSVariableValue}) => {
     const styles = {
         position: 'absolute',
         bottom: '0',
-        left: '45%',
+        left: '55%',
         fontFamily: 'Open Sans, sans-serif',
         fontWeight: 500,
         fontStyle: 'italic',
-        fontSize: '1.4em',
+        fontSize: '1.2em',
         color: 'var(--secondary-color)',
     }
 
