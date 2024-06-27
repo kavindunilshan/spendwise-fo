@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {useEffect} from 'react';
+import {useContext, useEffect} from 'react';
 import {styled} from '@mui/material/styles';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -10,6 +10,7 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import {useAuth0} from "@auth0/auth0-react";
 import {fetchAllTransactions} from "../../../../services/dashboard.js";
+import {SettingsContext} from "../../../settings/settings-context.jsx";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -50,6 +51,12 @@ export default function Transactions() {
     const [transactions, setTransactions] = React.useState([]);
     const {user} = useAuth0();
 
+    const { setComponentData } = useContext(SettingsContext);
+
+    useEffect(() => {
+        setComponentData({"title": "Transactions", "slogan": "View your financial transactions"});
+    }, []);
+
     console.log(user);
 
     useEffect(() => {
@@ -60,7 +67,7 @@ export default function Transactions() {
 
     return (
         <div className={'ds-transactions'} style={{width: '95%', marginLeft: '3%'}}>
-            <TableContainer component={Paper} style={{marginTop: '30px'}}>
+            <TableContainer component={Paper} style={{marginTop: '4%'}}>
                 <Table sx={{ minWidth: 200 }} aria-label="customized table">
                     <TableHead>
                         <TableRow>
