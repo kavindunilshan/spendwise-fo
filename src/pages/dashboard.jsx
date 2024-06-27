@@ -20,6 +20,8 @@ function Dashboard() {
     const [income, setIncome] = useState(0);
     const [expense, setExpense] = useState(0);
 
+    const [monthlyData, setMonthlyData] = useState([]);
+
     const userId = isAuthenticated ? user.sub.split("|")[1] : null;
 
     // useEffect(() => {
@@ -40,7 +42,7 @@ function Dashboard() {
             });
 
             fetchOverMonthlyData(userId, "EXPENSE", 4).then((data) => {
-                console.log("Here", data);
+                setMonthlyData(data);
             });
 
         }
@@ -107,9 +109,9 @@ function Dashboard() {
                                  position={{ top: '3%', left: '60%' }}
                                     size={{ width: '36%', height: '42%' }}
                 >
-                    <LineChartComponent expenseData={[1000, 2000, 1500, 3000]}
-                                        incomeData={[2000, 3500, 2500, 4000]}
-                                        savingsData={[1000, 1500, 1000, 1000]}
+                    <LineChartComponent expenseData={Object.values(monthlyData.EXPENSE || {})}
+                                        incomeData={Object.values(monthlyData.INCOME || {})}
+                                        savingsData={Object.values(monthlyData.SAVINGS || {})}
 
                                         getCSSVariableValue={getCSSVariableValue}
 
