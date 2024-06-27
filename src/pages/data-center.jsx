@@ -5,7 +5,9 @@ import HeaderWithSlogan from "../components/settings/header-slogan.jsx";
 import {SettingsContext} from "../components/settings/settings-context.jsx";
 import {NavigateNext} from "@mui/icons-material";
 import DataMenu from "../components/data-center/data-menu.jsx";
-import FlatIcons from "../components/dashboard/flat-icons.jsx";
+import '/src/styles/data-center/colors.css'
+import '/src/styles/data-center/data-center.css'
+import FlatIcons from "../components/data-center/flat-icons.jsx";
 
 function DataCenter() {
 
@@ -13,7 +15,7 @@ function DataCenter() {
 
 
     return (
-        <div className={'settings'}>
+        <div className={'settings colors'}>
             <div className={'settings-topics'}>
                 <HeaderWithSlogan title={'Data Center'} slogan={'SpendWise data center'}/>
                 <NavigateNext style={{color: '#6c757d', margin: '0 20px 0 50px'}}/>
@@ -24,7 +26,7 @@ function DataCenter() {
                     titleStyle={{fontWeight: '600', fontStyle: 'italic', fontSize: '1.7em',}}
                 />
 
-                <div className={'settings-flat-icons'}>
+                <div className={'data-center-flat-icons'}>
                     <FlatIcons/>
                 </div>
             </div>
