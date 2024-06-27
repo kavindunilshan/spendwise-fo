@@ -43,6 +43,7 @@ function Dashboard() {
 
             fetchOverMonthlyData(userId, "EXPENSE", 4).then((data) => {
                 setMonthlyData(data);
+                console.log("Hi Here", data);
             });
 
         }
@@ -111,7 +112,7 @@ function Dashboard() {
                 >
                     <LineChartComponent expenseData={Object.values(monthlyData.EXPENSE || {})}
                                         incomeData={Object.values(monthlyData.INCOME || {})}
-                                        savingsData={Object.values(monthlyData.SAVINGS || {})}
+                                        savingsData={Object.values(monthlyData.SAVING || {})}
 
                                         getCSSVariableValue={getCSSVariableValue}
 
