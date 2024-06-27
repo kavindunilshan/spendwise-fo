@@ -26,12 +26,12 @@ function Dashboard() {
 
     const userId = isAuthenticated ? user.sub.split("|")[1] : null;
 
-    // useEffect(() => {
-    //     if (!isAuthenticated && !redirectAttempted) {
-    //         setRedirectAttempted(true);
-    //         loginWithPopup();
-    //     }
-    // }, []);
+    useEffect(() => {
+        if (!isAuthenticated && !redirectAttempted) {
+            setRedirectAttempted(true);
+            loginWithPopup();
+        }
+    }, []);
 
     useEffect(() => {
         // Fetch the pocket value from the server
