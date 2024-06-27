@@ -20,6 +20,8 @@ function Dashboard() {
     const [income, setIncome] = useState(0);
     const [expense, setExpense] = useState(0);
 
+    const [changed, setChanged] = useState(false);
+
     const [monthlyData, setMonthlyData] = useState([]);
 
     const userId = isAuthenticated ? user.sub.split("|")[1] : null;
@@ -46,7 +48,12 @@ function Dashboard() {
             });
 
         }
-    }, [userId]);
+    }, [userId, changed]);
+
+    const handleChanged = () => {
+        setChanged(!changed);
+        console.log("working");
+    }
 
     const getCSSVariableValue = (variable) => {
         const dsbElement = document.querySelector('.dsb');
@@ -75,13 +82,13 @@ function Dashboard() {
                                  position={{ top: '3%', left: '2%' }}
                                  size={{ width: '25%', height: '40%' }}
                 >
-                    <PieChartComponent value={expense} type={"Expense"} getCSSVariableValue={getCSSVariableValue}/>
+                    <PieChartComponent value={expense} changed={changed} type={"Expense"} getCSSVariableValue={getCSSVariableValue}/>
                 </WidgetContainer>
                 <WidgetContainer title="Income Break down"
                                  position={{ top: '51%', left: '2%' }}
                                  size={{ width: '25%', height: '42%' }}
                 >
-                    <PieChartComponent value={income} type={"Income"} getCSSVariableValue={getCSSVariableValue}/>
+                    <PieChartComponent value={income} changed={changed} type={"Income"} getCSSVariableValue={getCSSVariableValue}/>
                 </WidgetContainer>
 
 
@@ -89,7 +96,7 @@ function Dashboard() {
                                  position={{ top: '3%', left: '31%' }}
                                  size={{ width: '25%', height: '30%' }}
                 >
-                    <ActionStation/>
+                    <ActionStation onChange={handleChanged}/>
                 </WidgetContainer>
                 <WidgetContainer title="Available Pocket"
                                  position={{ top: '40%', left: '31%' }}
@@ -112,7 +119,6 @@ function Dashboard() {
                     <LineChartComponent expenseData={Object.values(monthlyData.EXPENSE || {})}
                                         incomeData={Object.values(monthlyData.INCOME || {})}
                                         savingsData={Object.values(monthlyData.SAVING || {})}
-
                                         getCSSVariableValue={getCSSVariableValue}
 
                     />
@@ -122,7 +128,7 @@ function Dashboard() {
                                  position={{ top: '54%', left: '60%' }}
                                     size={{ width: '36%', height: '39%' }}
                 >
-                    <Transactions/>
+                    <Transactions changed={changed}/>
                 </WidgetContainer>
             </>}
         </div>

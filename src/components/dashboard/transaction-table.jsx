@@ -44,7 +44,7 @@ function createData(timestamp, type, category, amount) {
     return { timestamp, type, category, amount };
 }
 
-export default function Transactions() {
+export default function Transactions({changed}) {
 
     const [transactions, setTransactions] = React.useState([]);
     const {user} = useAuth0();
@@ -53,7 +53,7 @@ export default function Transactions() {
         fetchLastFiveTransactions(user.sub.split('|')[1]).then((data) => {
             setTransactions(data || []);
         });
-        }, []);
+        }, [changed]);
 
     return (
         <TableContainer component={Paper} style={{marginTop: '30px'}}>

@@ -24,7 +24,7 @@ ChartJS.register(
 
 
 
-const PieChartComponent = ({value, type, getCSSVariableValue}) => {
+const PieChartComponent = ({value, changed, type, getCSSVariableValue}) => {
     const [currency, setCurrency] = React.useState('₹');
 
     const [chartData, setChartData] = React.useState({});
@@ -35,7 +35,7 @@ const PieChartComponent = ({value, type, getCSSVariableValue}) => {
         fetchExpenseBreakdown(user.sub.split("|")[1], type.toUpperCase()).then((data) => {
             setChartData(data || {});
         });
-    }, []);
+    }, [changed]);
 
     const data = {
         labels: Object.keys(chartData),
