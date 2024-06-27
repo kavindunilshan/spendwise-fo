@@ -9,7 +9,7 @@ const LoginButton = () => {
     const { isAuthenticated, user, loginWithPopup, loginWithRedirect} = useAuth0();
     const [loginAttempted, setLoginAttempted] = useState(false);
 
-    console.log(user, loginAttempted);
+    
 
     const handleClick = () => {
         loginWithPopup();

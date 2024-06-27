@@ -37,7 +37,7 @@ function Dashboard() {
         // Fetch the pocket value from the server
         if (userId) {
             fetchPocketBalance(userId).then((data) => {
-                console.log(data)
+                
                 setPocket(data.pocket);
                 setIncome(data.income);
                 setExpense(data.expenses);
@@ -52,7 +52,7 @@ function Dashboard() {
 
     const handleChanged = () => {
         setChanged(!changed);
-        console.log("working");
+        
     }
 
     const getCSSVariableValue = (variable) => {

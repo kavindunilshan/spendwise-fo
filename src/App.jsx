@@ -34,13 +34,10 @@ function App() {
                         <Route path="milestones" element={<Milestones />} />
                         <Route path="goals" element={<Goals />} />
                     </Route>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/dashboard" element={<Dashboard />} />
                 </Routes>
             </SettingsProvider>
-
-            <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/dashboard" element={<Dashboard />} />
-            </Routes>
         </>
     );
 }

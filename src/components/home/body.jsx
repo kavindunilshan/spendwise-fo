@@ -12,12 +12,12 @@ function Body({overviewRef, serviceRef}) {
 
     useEffect(() => {
         if (isInView) {
-            console.log('in view');
+            
             sideAnime.start('visible');
         }
 
         if (isInView2) {
-            console.log('in view');
+            
             sideAnime2.start('visible');
         }
     }, [isInView, isInView2]);

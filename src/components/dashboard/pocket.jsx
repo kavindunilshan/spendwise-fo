@@ -13,7 +13,7 @@ function Pocket({value}) {
         setEndValue(value);
     }, [value]);
 
-    console.log("Hi Here", value, startValue, endValue);
+
 
 
     return (

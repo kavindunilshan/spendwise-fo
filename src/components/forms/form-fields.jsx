@@ -28,7 +28,7 @@ export default function SelectTextFields({ formData, handleFormChange, errors, c
             fetchCategoryByType(formData.transactionType).then(fetchedCategories => {
                 setCategories(fetchedCategories);
             }).catch(error => {
-                console.error("Error fetching categories: ", error);
+                
             });
         }
     }, [formData.transactionType]);

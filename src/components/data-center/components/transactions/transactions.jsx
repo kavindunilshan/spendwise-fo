@@ -57,7 +57,7 @@ export default function Transactions() {
         setComponentData({"title": "Transactions", "slogan": "View your financial transactions"});
     }, []);
 
-    console.log(user);
+    
 
     useEffect(() => {
         fetchAllTransactions(user?.sub.split('|')[1]).then((data) => {
