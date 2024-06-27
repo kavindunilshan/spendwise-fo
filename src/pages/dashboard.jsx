@@ -41,9 +41,8 @@ function Dashboard() {
                 setExpense(data.expenses);
             });
 
-            fetchOverMonthlyData(userId, "EXPENSE", 4).then((data) => {
+            fetchOverMonthlyData(userId, 6).then((data) => {
                 setMonthlyData(data);
-                console.log("Hi Here", data);
             });
 
         }
