@@ -21,21 +21,21 @@ function FlatIcons({}) {
                     </Tooltip>
                 </ListItem>
                 <ListItem button sx={{ display: 'flex', justifyContent: 'center', padding: '1rem', '&:hover': { backgroundColor: 'transparent' } }}>
-                    <Tooltip title="Home" placement="top">
+                    <Tooltip title="Settings" placement="top">
                         <ListItemIcon sx={{ minWidth: 'auto', color: 'var(--text-color)' }}>
                             <Settings style={{fontSize: 25}} onClick={() => handleClick("/settings/profile")}/>
                         </ListItemIcon>
                     </Tooltip>
                 </ListItem>
                 <ListItem button sx={{ display: 'flex', justifyContent: 'center', padding: '1rem', '&:hover': { backgroundColor: 'transparent' } }}>
-                    <Tooltip title="Data Center" placement="top">
+                    <Tooltip title="Data-Center" placement="top">
                         <ListItemIcon sx={{ minWidth: 'auto', color: 'var(--text-color)' }}>
-                            <TextSnippet style={{fontSize: 25}} onClick={() => handleClick("/data-center")}/>
+                            <TextSnippet style={{fontSize: 25}} onClick={() => handleClick("/data-center/transactions")}/>
                         </ListItemIcon>
                     </Tooltip>
                 </ListItem>
                 <ListItem button sx={{ display: 'flex', justifyContent: 'center', padding: '1rem', '&:hover': { backgroundColor: 'transparent' } }}>
-                    <Tooltip title="Receipt" placement="top">
+                    <Tooltip title="Profile" placement="top">
                         <ListItemIcon sx={{ minWidth: 'auto', color: 'var(--text-color)' }}>
                             <UserMenu size={25}/>
                         </ListItemIcon>
