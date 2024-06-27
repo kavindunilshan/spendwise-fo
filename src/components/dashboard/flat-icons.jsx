@@ -3,7 +3,7 @@ import {List, ListItem, ListItemIcon, Tooltip} from "@mui/material";
 import {useNavigate} from "react-router-dom";
 import HomeIcon from "@mui/icons-material/Home.js";
 import UserMenu from "../login/logged-menu.jsx";
-import {MessageOutlined, Settings} from "@mui/icons-material";
+import {MessageOutlined, Settings, TextSnippet} from "@mui/icons-material";
 
 function FlatIcons({}) {
     const navigate = useNavigate();
@@ -28,9 +28,9 @@ function FlatIcons({}) {
                     </Tooltip>
                 </ListItem>
                 <ListItem button sx={{ display: 'flex', justifyContent: 'center', padding: '1rem', '&:hover': { backgroundColor: 'transparent' } }}>
-                    <Tooltip title="Home" placement="top">
+                    <Tooltip title="Data Center" placement="top">
                         <ListItemIcon sx={{ minWidth: 'auto', color: 'var(--text-color)' }}>
-                            <MessageOutlined style={{fontSize: 25}} onClick={() => handleClick()}/>
+                            <TextSnippet style={{fontSize: 25}} onClick={() => handleClick("/data-center")}/>
                         </ListItemIcon>
                     </Tooltip>
                 </ListItem>

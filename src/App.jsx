@@ -10,6 +10,7 @@ import Customization from "./components/settings/customization/customization.jsx
 import Notifications from "./components/settings/notification/notification.jsx";
 import {SettingsProvider} from "./components/settings/settings-context.jsx";
 import Support from "./components/settings/support/support.jsx";
+import DataCenter from "./pages/data-center.jsx";
 
 function App() {
     return (
@@ -17,6 +18,13 @@ function App() {
             <SettingsProvider>
                 <Routes>
                     <Route path="/settings" element={<Settings />}>
+                        <Route path="profile" element={<Profile />} />
+                        <Route path="dashboard" element={<DashboardSettings />} />
+                        <Route path="support" element={<Support />} />
+                        <Route path="customization" element={<Customization />} />
+                        <Route path="notification" element={<Notifications />} />
+                    </Route>
+                    <Route path="/data-center" element={<DataCenter />}>
                         <Route path="profile" element={<Profile />} />
                         <Route path="dashboard" element={<DashboardSettings />} />
                         <Route path="support" element={<Support />} />
