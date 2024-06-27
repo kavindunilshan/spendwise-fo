@@ -26,10 +26,17 @@ ChartJS.register(
 
 const PieChartComponent = ({value, changed, type, getCSSVariableValue}) => {
     const [currency, setCurrency] = React.useState('₹');
-
     const [chartData, setChartData] = React.useState({});
 
     const {user} = useAuth0();
+
+    const [startValue, setStartValue] = React.useState(0);
+    const [endValue, setEndValue] = React.useState(0);
+
+    useEffect(() => {
+        setStartValue(endValue);
+        setEndValue(value);
+    }, [value]);
 
     useEffect(() => {
         fetchExpenseBreakdown(user.sub.split("|")[1], type.toUpperCase()).then((data) => {
@@ -95,7 +102,7 @@ const PieChartComponent = ({value, changed, type, getCSSVariableValue}) => {
         <div style={{position: 'relative', height: '90%', width: '100%'}}>
             <Pie data={data} options={options}/>
             <div style={styles}>
-                {type} = {currency}<CountUp end={value} duration={5} separator=","/>
+                {type} = {currency}<CountUp start={startValue} end={endValue} duration={5} separator=","/>
             </div>
         </div>
     );
