@@ -9,8 +9,8 @@ export const fetchLastFiveTransactions = async (userId) => {
 }
 
 // fetch all transactions
-export const fetchAllTransactions = async () => {
-    const response = await axios.get(baseUrl + "/transactions");
+export const fetchAllTransactions = async (userId) => {
+    const response = await axios.get(`${baseUrl}/transactions/${userId}`);
     return response.data;
 }
 
