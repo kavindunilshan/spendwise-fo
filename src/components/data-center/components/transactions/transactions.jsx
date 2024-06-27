@@ -69,7 +69,7 @@ export default function Transactions() {
                             <NarrowTableCell align={'left'}>Category</NarrowTableCell>
                             <NarrowTableCell align={'center'}>Amount</NarrowTableCell>
                             <NarrowTableCell align={'left'}>Date</NarrowTableCell>
-                            <StyledTableCell align={'left'}>Description</StyledTableCell>
+                            <StyledTableCell align={'center'}>Description</StyledTableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
