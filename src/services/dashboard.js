@@ -31,3 +31,9 @@ export const fetchPocketBalance = async (userId) => {
     const response = await axios.get(`${baseUrl}/transactions/pocket/${userId}`);
     return response.data;
 }
+
+// @GetMapping("/{userId}/monthly/{type}/{months}")
+export const fetchOverMonthlyData = async (userId, type, months) => {
+    const response = await axios.get(`${baseUrl}/transactions/${userId}/monthly/${type}/${months}`);
+    return response.data;
+}

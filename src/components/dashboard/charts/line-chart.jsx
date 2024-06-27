@@ -24,12 +24,28 @@ ChartJS.register(
     annotationPlugin
 );
 
-const LineChartComponent = ({labels, incomeData, getCSSVariableValue, expenseData, savingsData}) => {
+const LineChartComponent = ({incomeData, getCSSVariableValue, expenseData, savingsData}) => {
+
+
     const secondaryColor = getCSSVariableValue('--chart-color');
 
     const red = getCSSVariableValue('--red-color');
     const blue = getCSSVariableValue('--blue-color');
     const yellow = getCSSVariableValue('--yellow-color');
+
+    function generateMonthLabels() {
+        const months = [];
+        const currentDate = new Date();
+
+        for (let i = 5; i >= 0; i--) {
+            const date = new Date(currentDate);
+            date.setMonth(currentDate.getMonth() - i);
+            const monthLabel = `${date.getFullYear()}-${('0' + (date.getMonth() + 1)).slice(-2)}`;
+            months.push(monthLabel);
+        }
+
+        return months;
+    }
 
 
     const options = {
@@ -89,7 +105,7 @@ const LineChartComponent = ({labels, incomeData, getCSSVariableValue, expenseDat
 
 
     const data = {
-        labels: labels,
+        labels: generateMonthLabels(),
         datasets: [
             {
                 label: 'Income',
