@@ -11,6 +11,10 @@ import Notifications from "./components/settings/notification/notification.jsx";
 import {SettingsProvider} from "./components/settings/settings-context.jsx";
 import Support from "./components/settings/support/support.jsx";
 import DataCenter from "./pages/data-center.jsx";
+import Transactions from "./components/data-center/components/transactions/transactions.jsx";
+import Reports from "./components/data-center/components/reports/reports.jsx";
+import Milestones from "./components/data-center/components/milestones/milestones.jsx";
+import Goals from "./components/data-center/components/goals/goals.jsx";
 
 function App() {
     return (

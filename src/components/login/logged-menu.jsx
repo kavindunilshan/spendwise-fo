@@ -51,7 +51,6 @@ const StyledMenu = styled((props) => (
 export default function UserMenu({size}) {
     const [anchorEl, setAnchorEl] = React.useState(null);
     const { user, logout } = useAuth0();
-    const { name, picture: image } = user;
     const open = Boolean(anchorEl);
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -67,7 +66,7 @@ export default function UserMenu({size}) {
 
     return (
         <div className={'login-user-menu-container'} style={{color: '#320440'}}>
-            <Avatar className={'login-user-icon'} style={{width: size || 40, height: size || 40, cursor: 'pointer', border: '1px solid var(--text-color)'}} alt={name} src={image} onClick={handleClick} />
+            <Avatar className={'login-user-icon'} style={{width: size || 40, height: size || 40, cursor: 'pointer', border: '1px solid var(--text-color)'}} alt={user?.name || ""} src={user?.picture || ""} onClick={handleClick} />
             <StyledMenu
                 id="demo-customized-menu"
                 className={'login-user-menu'}
