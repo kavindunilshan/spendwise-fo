@@ -25,11 +25,10 @@ function App() {
                         <Route path="notification" element={<Notifications />} />
                     </Route>
                     <Route path="/data-center" element={<DataCenter />}>
-                        <Route path="profile" element={<Profile />} />
-                        <Route path="dashboard" element={<DashboardSettings />} />
-                        <Route path="support" element={<Support />} />
-                        <Route path="customization" element={<Customization />} />
-                        <Route path="notification" element={<Notifications />} />
+                        <Route path="transactions" element={<Transactions />} />
+                        <Route path="reports" element={<Reports />} />
+                        <Route path="milestones" element={<Milestones />} />
+                        <Route path="goals" element={<Goals />} />
                     </Route>
                 </Routes>
             </SettingsProvider>
