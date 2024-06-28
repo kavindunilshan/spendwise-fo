@@ -2,9 +2,7 @@ import React, {useEffect} from 'react';
 import '/src/styles/dashboard/pocket.css';
 import CountUp from "react-countup";
 
-function Pocket({value}) {
-    const [currency, setCurrency] = React.useState('₹');
-
+function Pocket({currency, value}) {
     const [startValue, setStartValue] = React.useState(0);
     const [endValue, setEndValue] = React.useState(0);
 

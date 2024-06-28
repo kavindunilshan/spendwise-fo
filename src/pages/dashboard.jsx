@@ -9,6 +9,7 @@ import Transactions from "../components/dashboard/transaction-table.jsx";
 import Pocket from "../components/dashboard/pocket.jsx";
 import Milestone from "../components/dashboard/milestone.jsx";
 import {fetchOverMonthlyData, fetchPocketBalance} from "../services/dashboard.js";
+import {fetchUserData} from "../services/settings.js";
 
 function Dashboard() {
 
@@ -21,6 +22,7 @@ function Dashboard() {
     const [expense, setExpense] = useState(0);
 
     const [changed, setChanged] = useState(false);
+    const [currency, setCurrency] = useState('₹');
 
     const [monthlyData, setMonthlyData] = useState([]);
 
@@ -37,7 +39,6 @@ function Dashboard() {
         // Fetch the pocket value from the server
         if (userId) {
             fetchPocketBalance(userId).then((data) => {
-                
                 setPocket(data.pocket);
                 setIncome(data.income);
                 setExpense(data.expenses);
@@ -45,6 +46,11 @@ function Dashboard() {
 
             fetchOverMonthlyData(userId, 6).then((data) => {
                 setMonthlyData(data);
+            });
+
+            fetchUserData(userId).then((data) => {
+                console.log("data", data);
+                setCurrency(data.currency === "" ? "₹" : data.currency);
             });
 
         }
@@ -70,7 +76,6 @@ function Dashboard() {
         setSecondaryColor(getCSSVariableValue('--red-color'));
         setSecondaryColor(getCSSVariableValue('--yellow-color'));
         setSecondaryColor(getCSSVariableValue('--blue-color'));
-
     }, [isDarkMode]);
 
 
@@ -82,13 +87,13 @@ function Dashboard() {
                                  position={{ top: '3%', left: '2%' }}
                                  size={{ width: '25%', height: '40%' }}
                 >
-                    <PieChartComponent value={expense} changed={changed} type={"Expense"} getCSSVariableValue={getCSSVariableValue}/>
+                    <PieChartComponent currency={currency} value={expense} changed={changed} type={"Expense"} getCSSVariableValue={getCSSVariableValue}/>
                 </WidgetContainer>
                 <WidgetContainer title="Income Break down"
                                  position={{ top: '51%', left: '2%' }}
                                  size={{ width: '25%', height: '42%' }}
                 >
-                    <PieChartComponent value={income} changed={changed} type={"Income"} getCSSVariableValue={getCSSVariableValue}/>
+                    <PieChartComponent currency={currency} value={income} changed={changed} type={"Income"} getCSSVariableValue={getCSSVariableValue}/>
                 </WidgetContainer>
 
 
@@ -102,7 +107,7 @@ function Dashboard() {
                                  position={{ top: '40%', left: '31%' }}
                                  size={{ width: '25%', height: '20%' }}
                 >
-                    <Pocket value={pocket}/>
+                    <Pocket currency={currency} value={pocket}/>
                 </WidgetContainer>
                 <WidgetContainer title="Milestones"
                                  position={{ top: '67%', left: '31%' }}

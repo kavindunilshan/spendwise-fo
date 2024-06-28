@@ -24,8 +24,7 @@ ChartJS.register(
 
 
 
-const PieChartComponent = ({value, changed, type, getCSSVariableValue}) => {
-    const [currency, setCurrency] = React.useState('₹');
+const PieChartComponent = ({currency, value, changed, type, getCSSVariableValue}) => {
     const [chartData, setChartData] = React.useState({});
 
     const {user} = useAuth0();
@@ -94,7 +93,7 @@ const PieChartComponent = ({value, changed, type, getCSSVariableValue}) => {
         fontFamily: 'Open Sans, sans-serif',
         fontWeight: 500,
         fontStyle: 'italic',
-        fontSize: '1.2em',
+        fontSize: '1.1em',
         color: 'var(--secondary-color)',
     }
 
