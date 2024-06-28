@@ -15,7 +15,7 @@ function Dashboard() {
 
     const { isAuthenticated, user, loginWithRedirect, loginWithPopup } = useAuth0();
     const [redirectAttempted, setRedirectAttempted] = useState(false);
-    const [isDarkMode, setIsDarkMode] = useState(false);
+    const [isDarkMode, setIsDarkMode] = useState(true);
 
     const [pocket, setPocket] = useState(0);
     const [income, setIncome] = useState(0);
