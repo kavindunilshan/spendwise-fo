@@ -67,7 +67,7 @@ export default function Transactions() {
 
     return (
         <div className={'ds-transactions'} style={{width: '95%', marginLeft: '3%'}}>
-            <TableContainer component={Paper} style={{marginTop: '4%'}}>
+            <TableContainer component={Paper} style={{marginTop: '4%', marginBottom: "15%"}}>
                 <Table sx={{ minWidth: 200 }} aria-label="customized table">
                     <TableHead>
                         <TableRow>

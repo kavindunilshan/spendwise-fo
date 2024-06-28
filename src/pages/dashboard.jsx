@@ -9,7 +9,7 @@ import Transactions from "../components/dashboard/transaction-table.jsx";
 import Pocket from "../components/dashboard/pocket.jsx";
 import Milestone from "../components/dashboard/milestone.jsx";
 import {fetchOverMonthlyData, fetchPocketBalance} from "../services/dashboard.js";
-import {fetchUserData} from "../services/settings.js";
+import {fetchUserData, getPreferences} from "../services/settings.js";
 
 function Dashboard() {
 
@@ -33,7 +33,15 @@ function Dashboard() {
             setRedirectAttempted(true);
             loginWithPopup();
         }
-    }, []);
+    }, [user]);
+
+    useEffect(() => {
+        if (userId) {
+            getPreferences(userId).then((data) => {
+                setIsDarkMode(data.isDarkMode);
+            });
+        }
+    }, [userId]);
 
     useEffect(() => {
         // Fetch the pocket value from the server
@@ -49,10 +57,8 @@ function Dashboard() {
             });
 
             fetchUserData(userId).then((data) => {
-                console.log("data", data);
                 setCurrency(data.currency === "" ? "₹" : data.currency);
             });
-
         }
     }, [userId, changed]);
 
