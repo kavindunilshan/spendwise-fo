@@ -5,19 +5,36 @@ import HeaderWithSlogan from "../header-slogan.jsx";
 import '/src/styles/settings/components/dashboard.css';
 import Button from "@mui/material/Button";
 import {Edit} from "@mui/icons-material";
+import {useAuth0} from "@auth0/auth0-react";
+import {getPreferences, updatePreferences} from "../../../services/settings.js";
 
 
 
 function DashboardSettings(props) {
     const { setComponentData } = useContext(SettingsContext);
-    const [ isDarkTheme, setIsDarkTheme ] = useState(false);
+    const [ isDarkMode, setIsDarkMode ] = useState(false);
     const [ isIncomePieChart, setIsIncomePieChart ] = useState(true);
     const [ isExpensePieChart, setIsExpensePieChart ] = useState(true);
     const [ isEditing, setIsEditing ] = useState(false);
 
+    const {user} = useAuth0();
+    const userId = user?.sub.split('|')[1];
+
     useEffect(() => {
         setComponentData({title: "Dashboard", slogan: "Manage your dashboard settings"});
     }, []);
+
+    useEffect(() => {
+        if (user) {
+            getPreferences(user?.sub.split('|')[1]).then((data) => {
+                if (data) {
+                    setIsDarkMode(data.isDarkMode);
+                    setIsIncomePieChart(data.isIncomePieChart);
+                    setIsExpensePieChart(data.isExpensePieChart);
+                }
+            });
+        }
+    }, [user]);
 
     const styles = {
         fontSize: '1.3em',
@@ -26,14 +43,21 @@ function DashboardSettings(props) {
     }
 
     const handleDarkTheme = () => {
-        setIsDarkTheme(false);
+        setIsDarkMode(false);
     }
 
     const handleLightTheme = () => {
-        setIsDarkTheme(true);
+        setIsDarkMode(true);
     }
 
     const handleSave = () => {
+        const preferences = {
+            isDarkMode,
+            isIncomePieChart,
+            isExpensePieChart
+        }
+
+        updatePreferences(userId, preferences);
         setIsEditing(false);
     }
 
@@ -67,19 +91,19 @@ function DashboardSettings(props) {
                     <div className={'settings-dashboard-img-container'}>
                         <div className={'settings-dashboard-img-content'}>
                             <img
-                                className={`settings-dashboard-img settings-d-img-${!isDarkTheme ? 'selected' : ''} ${!isEditing ? 's-d-disabled': ''}`}
+                                className={`settings-dashboard-img settings-d-img-${!isDarkMode ? 'selected' : ''} ${!isEditing ? 's-d-disabled': ''}`}
                                 src={'/src/assets/light.png'}
                                 alt={""}
-                                onClick={() => isEditing ? setIsDarkTheme(false) : null}
+                                onClick={() => isEditing ? setIsDarkMode(false) : null}
                             />
                             <div className={'settings-d-text'}>Light</div>
                         </div>
                         <div className={'settings-dashboard-img-content'}>
                             <img
-                                className={`settings-dashboard-img settings-d-img-${isDarkTheme ? 'selected' : ''} ${!isEditing ? 's-d-disabled': ''}`}
-                                src={'/src/assets/light.png'}
+                                className={`settings-dashboard-img settings-d-img-${isDarkMode ? 'selected' : ''} ${!isEditing ? 's-d-disabled': ''}`}
+                                src={'/src/assets/dark.png'}
                                 alt={""}
-                                onClick={() => isEditing ? setIsDarkTheme(true) : null}
+                                onClick={() => isEditing ? setIsDarkMode(true) : null}
                             />
                             <div className={"settings-d-text"}>Dark</div>
                         </div>
