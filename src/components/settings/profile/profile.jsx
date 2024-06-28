@@ -6,6 +6,7 @@ import Button from "@mui/material/Button";
 import {useAuth0} from "@auth0/auth0-react";
 import {Avatar} from "@mui/material";
 import {Edit} from "@mui/icons-material";
+import {fetchUserData, updateUserData} from "../../../services/settings.js";
 
 function Profile({}) {
 
@@ -13,13 +14,27 @@ function Profile({}) {
 
     let { user, logout } = useAuth0();
 
+    const [name, setName] = React.useState('');
+    const [email, setEmail] = React.useState('');
     const [country, setCountry] = React.useState('');
+    const [currency, setCurrency] = React.useState('');
+
     const [isEditing, setIsEditing] = React.useState(false);
-    const [currency, setCurrency] = React.useState([]);
 
     useEffect(() => {
         setComponentData({"title": "Profile", "slogan": "View and edit your profile information"});
     }, []);
+
+    useEffect(() => {
+        fetchUserData(user?.sub.split("|")[1]).then((data) => {
+            setName(data.name);
+            setEmail(data.email);
+            setCountry(data.country);
+            setCurrency(data.currency);
+
+            console.log("Data", data);
+        });
+    }, [user]);
 
 
     const selectCountry = (val) => {
@@ -28,11 +43,16 @@ function Profile({}) {
 
     const handleSave = () => {
         setIsEditing(false);
-    }
 
-    const handleCurrencyChange = (event) => {
-        const value = event.target.value;
-        setCurrency(value);
+        const data = {
+            name: name,
+            email: email,
+            country: country,
+            currency: currency
+        };
+
+        updateUserData(user?.sub.split("|")[1], data);
+
     }
 
     const btnStyle = {
@@ -63,12 +83,16 @@ function Profile({}) {
                 <div className={'profile-content-item'}>
                     <label htmlFor={'profile-name'}>Name</label>
                     <input disabled={!isEditing} type={'text'} id={'profile-name'} name={'profile-name'}
-                           placeholder={'Your name'}/>
+                           placeholder={'Your name'}
+                           value={name} onChange={(event) => setName(event.target.value)}
+                    />
                 </div>
                 <div className={'profile-content-item'}>
                     <label htmlFor={'profile-email'}>Email</label>
                     <input disabled={!isEditing} type={'email'} id={'profile-email'} name={'profile-email'}
-                           placeholder={'Your email'}/>
+                           placeholder={'Your email'}
+                            value={email} onChange={(event) => setEmail(event.target.value)}
+                    />
                 </div>
                 <div className={'profile-content-item'}>
                     <label htmlFor={'profile-city'}>Country</label>
@@ -90,7 +114,7 @@ function Profile({}) {
                     <label htmlFor={'profile-currency'}>Currency</label>
                     <input disabled={!isEditing} type={'text'} id={'profile-currency'} name={'profile-currency'}
                            placeholder={'Currency (max 3 letters)'}
-                           onChange={handleCurrencyChange} value={currency} maxLength={3}
+                           onChange={(event) => setCurrency(event.target.value)} value={currency} maxLength={3}
                     />
                 </div>
             </div>

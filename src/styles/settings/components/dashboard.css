@@ -24,24 +24,20 @@
     margin-right: 40px;
 }
 
-.settings-d-text {
-    text-align: center;
-}
-
 .settings-dashboard-img {
     width: 100%;
-    border: 1px solid rgba(50, 4, 64, 0);
+    border: 2px solid rgba(50, 4, 64, 0);
     border-radius: 5px;
     margin: 2%;
 }
 
-.settings-dashboard-img:hover {
-    cursor: pointer;
-    border: 1px solid #320440;
+.settings-d-text {
+    text-align: center;
 }
 
-.settings-d-img-selected {
-    border: 1px solid rgb(50, 4, 64);
+.settings-dashboard-img:hover {
+    cursor: pointer;
+    border: 2px solid #973fb2;
 }
 
 .settings-d-btns {
@@ -53,5 +49,13 @@
 
 .s-d-disabled:hover {
     cursor: not-allowed;
-    border: 1px solid rgba(50, 4, 64, 0);
+    border: 2px solid rgba(50, 4, 64, 0);
+}
+
+.settings-d-img-selected {
+    border: 2px solid rgb(203, 130, 225);
+}
+
+.settings-d-img-selected:hover {
+    border: 2px solid rgb(203, 130, 225);
 }

@@ -9,33 +9,44 @@ import Transactions from "../components/dashboard/transaction-table.jsx";
 import Pocket from "../components/dashboard/pocket.jsx";
 import Milestone from "../components/dashboard/milestone.jsx";
 import {fetchOverMonthlyData, fetchPocketBalance} from "../services/dashboard.js";
+import {fetchUserData, getPreferences} from "../services/settings.js";
 
 function Dashboard() {
 
     const { isAuthenticated, user, loginWithRedirect, loginWithPopup } = useAuth0();
     const [redirectAttempted, setRedirectAttempted] = useState(false);
-    const [isDarkMode, setIsDarkMode] = useState(false);
+    const [isDarkMode, setIsDarkMode] = useState(true);
 
     const [pocket, setPocket] = useState(0);
     const [income, setIncome] = useState(0);
     const [expense, setExpense] = useState(0);
 
+    const [changed, setChanged] = useState(false);
+    const [currency, setCurrency] = useState('₹');
+
     const [monthlyData, setMonthlyData] = useState([]);
 
     const userId = isAuthenticated ? user.sub.split("|")[1] : null;
 
-    // useEffect(() => {
-    //     if (!isAuthenticated && !redirectAttempted) {
-    //         setRedirectAttempted(true);
-    //         loginWithPopup();
-    //     }
-    // }, []);
+    useEffect(() => {
+        if (!isAuthenticated && !redirectAttempted) {
+            setRedirectAttempted(true);
+            loginWithPopup();
+        }
+    }, [user]);
+
+    useEffect(() => {
+        if (userId) {
+            getPreferences(userId).then((data) => {
+                setIsDarkMode(data.isDarkMode);
+            });
+        }
+    }, [userId]);
 
     useEffect(() => {
         // Fetch the pocket value from the server
         if (userId) {
             fetchPocketBalance(userId).then((data) => {
-                console.log(data)
                 setPocket(data.pocket);
                 setIncome(data.income);
                 setExpense(data.expenses);
@@ -45,8 +56,16 @@ function Dashboard() {
                 setMonthlyData(data);
             });
 
+            fetchUserData(userId).then((data) => {
+                setCurrency(data.currency === "" ? "₹" : data.currency);
+            });
         }
-    }, [userId]);
+    }, [userId, changed]);
+
+    const handleChanged = () => {
+        setChanged(!changed);
+        
+    }
 
     const getCSSVariableValue = (variable) => {
         const dsbElement = document.querySelector('.dsb');
@@ -63,7 +82,6 @@ function Dashboard() {
         setSecondaryColor(getCSSVariableValue('--red-color'));
         setSecondaryColor(getCSSVariableValue('--yellow-color'));
         setSecondaryColor(getCSSVariableValue('--blue-color'));
-
     }, [isDarkMode]);
 
 
@@ -75,13 +93,13 @@ function Dashboard() {
                                  position={{ top: '3%', left: '2%' }}
                                  size={{ width: '25%', height: '40%' }}
                 >
-                    <PieChartComponent value={expense} type={"Expense"} getCSSVariableValue={getCSSVariableValue}/>
+                    <PieChartComponent currency={currency} value={expense} changed={changed} type={"Expense"} getCSSVariableValue={getCSSVariableValue}/>
                 </WidgetContainer>
                 <WidgetContainer title="Income Break down"
                                  position={{ top: '51%', left: '2%' }}
                                  size={{ width: '25%', height: '42%' }}
                 >
-                    <PieChartComponent value={income} type={"Income"} getCSSVariableValue={getCSSVariableValue}/>
+                    <PieChartComponent currency={currency} value={income} changed={changed} type={"Income"} getCSSVariableValue={getCSSVariableValue}/>
                 </WidgetContainer>
 
 
@@ -89,13 +107,13 @@ function Dashboard() {
                                  position={{ top: '3%', left: '31%' }}
                                  size={{ width: '25%', height: '30%' }}
                 >
-                    <ActionStation/>
+                    <ActionStation onChange={handleChanged}/>
                 </WidgetContainer>
                 <WidgetContainer title="Available Pocket"
                                  position={{ top: '40%', left: '31%' }}
                                  size={{ width: '25%', height: '20%' }}
                 >
-                    <Pocket value={pocket}/>
+                    <Pocket currency={currency} value={pocket}/>
                 </WidgetContainer>
                 <WidgetContainer title="Milestones"
                                  position={{ top: '67%', left: '31%' }}
@@ -112,7 +130,6 @@ function Dashboard() {
                     <LineChartComponent expenseData={Object.values(monthlyData.EXPENSE || {})}
                                         incomeData={Object.values(monthlyData.INCOME || {})}
                                         savingsData={Object.values(monthlyData.SAVING || {})}
-
                                         getCSSVariableValue={getCSSVariableValue}
 
                     />
@@ -122,7 +139,7 @@ function Dashboard() {
                                  position={{ top: '54%', left: '60%' }}
                                     size={{ width: '36%', height: '39%' }}
                 >
-                    <Transactions/>
+                    <Transactions changed={changed}/>
                 </WidgetContainer>
             </>}
         </div>

@@ -24,18 +24,24 @@ ChartJS.register(
 
 
 
-const PieChartComponent = ({value, type, getCSSVariableValue}) => {
-    const [currency, setCurrency] = React.useState('₹');
-
+const PieChartComponent = ({currency, value, changed, type, getCSSVariableValue}) => {
     const [chartData, setChartData] = React.useState({});
 
     const {user} = useAuth0();
+
+    const [startValue, setStartValue] = React.useState(0);
+    const [endValue, setEndValue] = React.useState(0);
+
+    useEffect(() => {
+        setStartValue(endValue);
+        setEndValue(value);
+    }, [value]);
 
     useEffect(() => {
         fetchExpenseBreakdown(user.sub.split("|")[1], type.toUpperCase()).then((data) => {
             setChartData(data || {});
         });
-    }, []);
+    }, [changed]);
 
     const data = {
         labels: Object.keys(chartData),
@@ -87,7 +93,7 @@ const PieChartComponent = ({value, type, getCSSVariableValue}) => {
         fontFamily: 'Open Sans, sans-serif',
         fontWeight: 500,
         fontStyle: 'italic',
-        fontSize: '1.2em',
+        fontSize: '1.1em',
         color: 'var(--secondary-color)',
     }
 
@@ -95,7 +101,7 @@ const PieChartComponent = ({value, type, getCSSVariableValue}) => {
         <div style={{position: 'relative', height: '90%', width: '100%'}}>
             <Pie data={data} options={options}/>
             <div style={styles}>
-                {type} = {currency}<CountUp end={value} duration={5} separator=","/>
+                {type} = {currency}<CountUp start={startValue} end={endValue} duration={5} separator=","/>
             </div>
         </div>
     );

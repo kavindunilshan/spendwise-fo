@@ -1,23 +1,23 @@
 import React, {useContext} from 'react';
-import SettingsMenu from "../components/settings/settings-menu.jsx";
 import '/src/styles/settings/settings.css';
 import {Outlet} from "react-router-dom";
 import HeaderWithSlogan from "../components/settings/header-slogan.jsx";
 import {SettingsContext} from "../components/settings/settings-context.jsx";
 import {NavigateNext} from "@mui/icons-material";
+import DataMenu from "../components/data-center/data-menu.jsx";
+import '/src/styles/data-center/colors.css'
+import '/src/styles/data-center/data-center.css'
 import FlatIcons from "../components/data-center/flat-icons.jsx";
 
-function Settings() {
+function DataCenter() {
 
     const { componentData } = useContext(SettingsContext);
 
 
     return (
-        <div className={'settings'}>
-
-
+        <div className={'settings colors'}>
             <div className={'settings-topics'}>
-                <HeaderWithSlogan title={'Settings'} slogan={'Manage your dashboard settings'}/>
+                <HeaderWithSlogan title={'Data Center'} slogan={'SpendWise data center'}/>
                 <NavigateNext style={{color: '#6c757d', margin: '0 20px 0 50px'}}/>
                 <HeaderWithSlogan
                     isSubTopic={true}
@@ -29,7 +29,6 @@ function Settings() {
                 <div className={'data-center-flat-icons'}>
                     <FlatIcons/>
                 </div>
-
             </div>
 
             <hr className={'settings-header-separator'}/>
@@ -37,7 +36,7 @@ function Settings() {
 
             <div className="settings-sub-container">
                 <div className="settings-left">
-                    <SettingsMenu/>
+                    <DataMenu/>
                 </div>
                 <div className="settings-right">
                     <Outlet/>
@@ -47,4 +46,4 @@ function Settings() {
     );
 }
 
-export default Settings;
+export default DataCenter;

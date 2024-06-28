@@ -33,7 +33,7 @@ const CustomDatePicker = styled(DatePicker)({
 });
 
 
-function ActionStation() {
+function ActionStation({onChange}) {
     const [date, setDate] = useState(dayjs());
 
     const initialFormData = {
@@ -122,6 +122,8 @@ function ActionStation() {
         setFormData(initialFormData);  // Reset the form
         setErrors({});
         setOpen(false);
+
+        onChange();
     };
 
     return (
