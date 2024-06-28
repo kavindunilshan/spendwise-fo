@@ -3,7 +3,7 @@ import {List, ListItem, ListItemIcon, Tooltip} from "@mui/material";
 import {useNavigate} from "react-router-dom";
 import HomeIcon from "@mui/icons-material/Home.js";
 import UserMenu from "../login/logged-menu.jsx";
-import {Settings, TextSnippet} from "@mui/icons-material";
+import {Dashboard, Settings, TextSnippet} from "@mui/icons-material";
 
 function FlatIcons({}) {
     const navigate = useNavigate();
@@ -17,6 +17,13 @@ function FlatIcons({}) {
                     <Tooltip title="Home" placement="top">
                         <ListItemIcon sx={{ minWidth: 'auto', color: 'var(--text-color)', marginLeft: '5px', '&:hover': { color: '#68066d' }  }}>
                             <HomeIcon style={{fontSize: 30}} onClick={() => handleClick("/")}/>
+                        </ListItemIcon>
+                    </Tooltip>
+                </ListItem>
+                <ListItem button sx={{ display: 'flex', justifyContent: 'center', padding: '1rem', '&:hover': { backgroundColor: 'transparent' } }}>
+                    <Tooltip title="Dashboard" placement="top">
+                        <ListItemIcon sx={{ minWidth: 'auto', color: 'var(--text-color)', marginLeft: '5px', '&:hover': { color: '#68066d' }  }}>
+                            <Dashboard style={{fontSize: 30}} onClick={() => handleClick("/dashboard")}/>
                         </ListItemIcon>
                     </Tooltip>
                 </ListItem>
