@@ -16,7 +16,10 @@ function Dashboard() {
 
     const { isAuthenticated, user, loginWithRedirect, loginWithPopup } = useAuth0();
     const [redirectAttempted, setRedirectAttempted] = useState(false);
-    const [isDarkMode, setIsDarkMode] = useState(true);
+
+    const [isDarkMode, setIsDarkMode] = useState(false);
+    const [ isIncomePieChart, setIsIncomePieChart ] = useState(true);
+    const [ isExpensePieChart, setIsExpensePieChart ] = useState(true);
 
     const [pocket, setPocket] = useState(0);
     const [income, setIncome] = useState(0);
@@ -26,7 +29,6 @@ function Dashboard() {
     const [currency, setCurrency] = useState('₹');
 
     const [monthlyData, setMonthlyData] = useState([]);
-
     const userId = isAuthenticated ? user.sub.split("|")[1] : null;
 
     useEffect(() => {
@@ -40,6 +42,8 @@ function Dashboard() {
         if (userId) {
             getPreferences(userId).then((data) => {
                 setIsDarkMode(data.isDarkMode);
+                setIsIncomePieChart(data.isIncomePieChart);
+                setIsExpensePieChart(data.isExpensePieChart);
             });
         }
     }, [userId]);
@@ -94,13 +98,15 @@ function Dashboard() {
                                  position={{ top: '3%', left: '2%' }}
                                  size={{ width: '25%', height: '40%' }}
                 >
-                    <BarChartComponent currency={currency} value={expense} changed={changed} type={"Expense"} getCSSVariableValue={getCSSVariableValue}/>
+                    {isExpensePieChart && <PieChartComponent currency={currency} value={expense} changed={changed} type={"Expense"} getCSSVariableValue={getCSSVariableValue}/>}
+                    {!isExpensePieChart && <BarChartComponent currency={currency} value={expense} changed={changed} type={"Expense"} getCSSVariableValue={getCSSVariableValue}/>}
                 </WidgetContainer>
                 <WidgetContainer title="Income Break down"
                                  position={{ top: '51%', left: '2%' }}
                                  size={{ width: '25%', height: '42%' }}
                 >
-                    <PieChartComponent currency={currency} value={income} changed={changed} type={"Income"} getCSSVariableValue={getCSSVariableValue}/>
+                    {isIncomePieChart && <PieChartComponent currency={currency} value={income} changed={changed} type={"Income"} getCSSVariableValue={getCSSVariableValue}/>}
+                    {!isIncomePieChart && <BarChartComponent currency={currency} value={income} changed={changed} type={"Income"} getCSSVariableValue={getCSSVariableValue}/>}
                 </WidgetContainer>
 
 
