@@ -6,8 +6,8 @@
 
 .pocket-img {
     margin-top: 5%;
-    margin-left: 15px;
-    height: 80%;
+    margin-left: 5px;
+    height: 85%;
     transform: rotate(-10deg);
 }
 
@@ -16,6 +16,6 @@
     font-weight: 500;
     font-style: italic;
     margin: 8% auto;
-    font-size: 3em;
+    font-size: 2.8em;
     color: var(--secondary-color);
 }

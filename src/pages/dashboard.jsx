@@ -10,6 +10,7 @@ import Pocket from "../components/dashboard/pocket.jsx";
 import Milestone from "../components/dashboard/milestone.jsx";
 import {fetchOverMonthlyData, fetchPocketBalance} from "../services/dashboard.js";
 import {fetchUserData, getPreferences} from "../services/settings.js";
+import BarChartComponent from "../components/dashboard/charts/bar-chart.jsx";
 
 function Dashboard() {
 
@@ -93,7 +94,7 @@ function Dashboard() {
                                  position={{ top: '3%', left: '2%' }}
                                  size={{ width: '25%', height: '40%' }}
                 >
-                    <PieChartComponent currency={currency} value={expense} changed={changed} type={"Expense"} getCSSVariableValue={getCSSVariableValue}/>
+                    <BarChartComponent currency={currency} value={expense} changed={changed} type={"Expense"} getCSSVariableValue={getCSSVariableValue}/>
                 </WidgetContainer>
                 <WidgetContainer title="Income Break down"
                                  position={{ top: '51%', left: '2%' }}

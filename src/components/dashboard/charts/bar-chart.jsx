@@ -46,7 +46,6 @@ const BarChartComponent = ({currency, value, changed, type, getCSSVariableValue}
         labels: Object.keys(chartData),
         datasets: [
             {
-                label: 'Expense Breakdown',
                 data: Object.values(chartData),
                 backgroundColor: [
                     'rgba(255, 99, 132, 1)',
@@ -67,7 +66,7 @@ const BarChartComponent = ({currency, value, changed, type, getCSSVariableValue}
         maintainAspectRatio: false,
         plugins: {
             legend: {
-                display: true,
+                display: false,
                 position: 'right',
                 labels: {
                     color: secondaryColor,
@@ -92,6 +91,7 @@ const BarChartComponent = ({currency, value, changed, type, getCSSVariableValue}
             y: {
                 ticks: {
                     color: secondaryColor,
+                    maxTicksLimit: 6,
                 },
                 beginAtZero: true,
             }
@@ -99,9 +99,6 @@ const BarChartComponent = ({currency, value, changed, type, getCSSVariableValue}
     };
 
     const styles = {
-        position: 'absolute',
-        bottom: '0',
-        left: '55%',
         fontFamily: 'Open Sans, sans-serif',
         fontWeight: 500,
         fontStyle: 'italic',
@@ -110,12 +107,14 @@ const BarChartComponent = ({currency, value, changed, type, getCSSVariableValue}
     }
 
     return (
-        <div style={{position: 'relative', height: '90%', width: '100%'}}>
-            <Bar data={data} options={options}/>
-            <div style={styles}>
-                {type} = {currency}<CountUp start={startValue} end={endValue} duration={5} separator=","/>
+        <>
+            <div style={{position: 'relative', height: '85%', width: '95%'}}>
+                <Bar data={data} options={options}/>
             </div>
-        </div>
+            <div style={styles}>
+                Total {type}s = {currency}<CountUp start={startValue} end={endValue} duration={5} separator=","/>
+            </div>
+        </>
     );
 };
 

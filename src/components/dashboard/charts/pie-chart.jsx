@@ -79,7 +79,7 @@ const PieChartComponent = ({currency, value, changed, type, getCSSVariableValue}
                     label: function(context) {
                         const label = context.label || '';
                         const value = context.parsed || 0;
-                        return `${label}: $${value.toFixed(2)}`;
+                        return `${label}: ${value.toFixed(2)}`;
                     },
                 },
             },
