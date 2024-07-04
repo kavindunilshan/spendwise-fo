@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import { Pie } from 'react-chartjs-2';
+import {Bar, Pie} from 'react-chartjs-2';
 import {
     Chart as ChartJS,
     ArcElement,
@@ -87,9 +87,6 @@ const PieChartComponent = ({currency, value, changed, type, getCSSVariableValue}
     };
 
     const styles = {
-        position: 'absolute',
-        bottom: '0',
-        left: '55%',
         fontFamily: 'Open Sans, sans-serif',
         fontWeight: 500,
         fontStyle: 'italic',
@@ -98,12 +95,14 @@ const PieChartComponent = ({currency, value, changed, type, getCSSVariableValue}
     }
 
     return (
-        <div style={{position: 'relative', height: '90%', width: '100%'}}>
-            <Pie data={data} options={options}/>
-            <div style={styles}>
-                {type} = {currency}<CountUp start={startValue} end={endValue} duration={5} separator=","/>
+        <>
+            <div style={{position: 'relative', height: '85%', width: '95%'}}>
+                <Pie data={data} options={options}/>
             </div>
-        </div>
+            <div style={styles}>
+                Total {type}s = {currency}<CountUp start={startValue} end={endValue} duration={5} separator=","/>
+            </div>
+        </>
     );
 };
 
