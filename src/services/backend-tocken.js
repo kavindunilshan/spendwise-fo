@@ -17,7 +17,7 @@ const getAccessToken = async () => {
         });
 
         const accessToken = response.data.access_token;
-        return accessToken;
+        return  "Bearer" + accessToken;
     } catch (error) {
         console.error('Error fetching access token:', error);
     }
