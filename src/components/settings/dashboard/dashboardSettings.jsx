@@ -128,7 +128,7 @@ function DashboardSettings(props) {
                         <div className={'settings-dashboard-img-content'}>
                             <img
                                 className={`settings-dashboard-img settings-d-img-${!isIncomePieChart ? 'selected' : ''} ${!isEditing ? 's-d-disabled': ''}`}
-                                src={'/src/assets/income.png'}
+                                src={'/src/assets/income-bar.png'}
                                 alt={""}
                                 onClick={() => isEditing ? setIsIncomePieChart(false) : null}
                             />
@@ -155,7 +155,7 @@ function DashboardSettings(props) {
                         <div className={'settings-dashboard-img-content'}>
                             <img
                                 className={`settings-dashboard-img settings-d-img-${!isExpensePieChart ? 'selected' : ''} ${!isEditing ? 's-d-disabled': ''}`}
-                                src={'/src/assets/expense.png'}
+                                src={'/src/assets/expense-bar.png'}
                                 alt={""}
                                 onClick={() => isEditing ? setIsExpensePieChart(false) : null}
                             />

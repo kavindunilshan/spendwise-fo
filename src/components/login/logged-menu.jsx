@@ -6,6 +6,7 @@ import Divider from '@mui/material/Divider';
 import {Avatar} from "@mui/material";
 import {Logout, Settings, Subscriptions, Visibility} from "@mui/icons-material";
 import {useAuth0} from "@auth0/auth0-react";
+import {useNavigate} from "react-router-dom";
 
 const StyledMenu = styled((props) => (
     <Menu
@@ -51,6 +52,7 @@ const StyledMenu = styled((props) => (
 export default function UserMenu({size}) {
     const [anchorEl, setAnchorEl] = React.useState(null);
     const { user, logout } = useAuth0();
+    const navigate = useNavigate();
     const open = Boolean(anchorEl);
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -77,7 +79,7 @@ export default function UserMenu({size}) {
                 open={open}
                 onClose={handleClose}
             >
-                <MenuItem onClick={handleClose} style={{color: '#320440'}} disableRipple>
+                <MenuItem onClick={() => navigate('/settings/profile')} style={{color: '#320440'}} disableRipple>
                     <Visibility style={{color: '#320440'}} />
                     View Profile
                 </MenuItem>
@@ -85,7 +87,7 @@ export default function UserMenu({size}) {
                     <Subscriptions style={{color: '#320440'}} />
                     Subscriptions
                 </MenuItem>
-                <MenuItem onClick={handleClose} style={{color: '#320440'}} disableRipple>
+                <MenuItem onClick={() => navigate('/settings')} style={{color: '#320440'}} disableRipple>
                     <Settings style={{color: '#320440'}} />
                     Settings
                 </MenuItem>

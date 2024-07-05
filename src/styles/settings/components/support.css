@@ -1,0 +1,24 @@
+.settings-support {
+    display: flex;
+    margin: 3% 5%;
+    flex-direction: column;
+    height: 100%;
+}
+
+.settings-support-faq {
+    display: flex;
+    flex-direction: row;
+}
+
+.faq-container {
+    width: 60%;
+}
+
+.settings-faq-img {
+    width: 40%;
+}
+
+.faq-img {
+    width: 90%;
+    margin-left: 50px;
+}

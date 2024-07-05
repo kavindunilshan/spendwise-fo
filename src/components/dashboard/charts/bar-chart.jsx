@@ -1,8 +1,8 @@
 import React, {useEffect} from 'react';
-import {Bar, Pie} from 'react-chartjs-2';
+import { Bar } from 'react-chartjs-2';
 import {
     Chart as ChartJS,
-    ArcElement,
+    BarElement,
     Tooltip,
     Legend,
     Title,
@@ -12,9 +12,10 @@ import {
 import CountUp from "react-countup";
 import {fetchExpenseBreakdown} from "../../../services/dashboard.js";
 import {useAuth0} from "@auth0/auth0-react";
+
 // Register the necessary components for Chart.js
 ChartJS.register(
-    ArcElement,
+    BarElement,
     Tooltip,
     Legend,
     Title,
@@ -22,9 +23,7 @@ ChartJS.register(
     LinearScale
 );
 
-
-
-const PieChartComponent = ({currency, value, changed, type, getCSSVariableValue}) => {
+const BarChartComponent = ({currency, value, changed, type, getCSSVariableValue}) => {
     const [chartData, setChartData] = React.useState({});
 
     const {user} = useAuth0();
@@ -47,7 +46,6 @@ const PieChartComponent = ({currency, value, changed, type, getCSSVariableValue}
         labels: Object.keys(chartData),
         datasets: [
             {
-                label: 'Expense Breakdown',
                 data: Object.values(chartData),
                 backgroundColor: [
                     'rgba(255, 99, 132, 1)',
@@ -68,7 +66,7 @@ const PieChartComponent = ({currency, value, changed, type, getCSSVariableValue}
         maintainAspectRatio: false,
         plugins: {
             legend: {
-                display: true,
+                display: false,
                 position: 'right',
                 labels: {
                     color: secondaryColor,
@@ -78,12 +76,26 @@ const PieChartComponent = ({currency, value, changed, type, getCSSVariableValue}
                 callbacks: {
                     label: function(context) {
                         const label = context.label || '';
-                        const value = context.parsed || 0;
-                        return `${label}: ${value.toFixed(2)}`;
+                        const value = context.parsed.y || 0;
+                        return `${label}: $${value.toFixed(2)}`;
                     },
                 },
             },
         },
+        scales: {
+            x: {
+                ticks: {
+                    color: secondaryColor,
+                },
+            },
+            y: {
+                ticks: {
+                    color: secondaryColor,
+                    maxTicksLimit: 6,
+                },
+                beginAtZero: true,
+            }
+        }
     };
 
     const styles = {
@@ -97,7 +109,7 @@ const PieChartComponent = ({currency, value, changed, type, getCSSVariableValue}
     return (
         <>
             <div style={{position: 'relative', height: '85%', width: '95%'}}>
-                <Pie data={data} options={options}/>
+                <Bar data={data} options={options}/>
             </div>
             <div style={styles}>
                 Total {type}s = {currency}<CountUp start={startValue} end={endValue} duration={5} separator=","/>
@@ -106,4 +118,4 @@ const PieChartComponent = ({currency, value, changed, type, getCSSVariableValue}
     );
 };
 
-export default PieChartComponent;
+export default BarChartComponent;
