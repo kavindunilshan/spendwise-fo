@@ -192,8 +192,7 @@ export default function Transactions() {
                                 <StyledTableCell align="left">
                                     <Tooltip title="Edit" placement="left">
                                         <Edit onClick={() => handleClickOpen(index, transaction)}/>
-                                    </Tooltip>
-                                    {transaction.timestamp.split('.')[0].replace('T', ' ')}
+                                    </Tooltip> {transaction.timestamp.split('.')[0].replace('T', ' ')}
                                 </StyledTableCell>
                                 <NarrowTableCell align="left">{transaction.category.type}</NarrowTableCell>
                                 <NarrowTableCell align="left">{transaction.category.name}</NarrowTableCell>
