@@ -7,7 +7,6 @@ import {BrowserRouter} from "react-router-dom";
 const root = createRoot(document.getElementById('root'));
 
 root.render(
-
         <BrowserRouter>
             <Auth0Provider
                 domain="dev-c5ls7veng3ljfc5g.us.auth0.com"
