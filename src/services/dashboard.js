@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseUrl = "http://localhost:8080/api";
+const baseUrl = "http://localhost:8080/api/private";
 
 // fetch last five transactions
 export const fetchLastFiveTransactions = async (userId) => {

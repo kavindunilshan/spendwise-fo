@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseUrl = "http://localhost:8080/api";
+const baseUrl = "http://localhost:8080/api/private";
 
 export const fetchAllCategories = async () => {
     const response = await axios.get(baseUrl + "/categories");
