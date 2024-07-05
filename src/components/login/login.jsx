@@ -6,10 +6,8 @@ import '/src/styles/login/login.css';
 import {createUser} from "../../services/dashboard.js";
 
 const LoginButton = () => {
-    const { isAuthenticated, user, loginWithPopup, loginWithRedirect} = useAuth0();
+    const { isAuthenticated, user, loginWithPopup} = useAuth0();
     const [loginAttempted, setLoginAttempted] = useState(false);
-
-    
 
     const handleClick = () => {
         loginWithPopup();
