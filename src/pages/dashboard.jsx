@@ -92,6 +92,7 @@ function Dashboard() {
 
     return (
         <div className={`dsb ${isDarkMode ? 'darkmode': ''}`}>
+
             {isAuthenticated &&
             <>
                 <WidgetContainer title="Expence Break down"

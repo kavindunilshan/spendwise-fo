@@ -1,5 +1,7 @@
-import React, {useContext, useEffect} from 'react';
+import React, {useContext, useEffect, useRef} from 'react';
 import {SettingsContext} from "../../../settings/settings-context.jsx";
+import Button from "@mui/material/Button";
+import html2pdf from 'html2pdf.js';
 
 function Reports(props) {
 
@@ -9,8 +11,19 @@ function Reports(props) {
         setComponentData({"title": "Reports", "slogan": "Generate your spendWise reports"});
     }, []);
 
+    const handleDownload = () => {
+        window.print();
+    };
+
+
     return (
-        <div></div>
+        <div className={'printable'} ref={printableRef}>
+            <Button variant="contained" color="primary"
+                    onClick={handleDownload}
+            >
+                Download Report
+            </Button>
+        </div>
     );
 }
 
