@@ -1,0 +1,43 @@
+.report-container {
+    font-family: "Open Sans", sans-serif;
+    margin: 2% 5%;
+}
+
+.report-header {
+    display: flex;
+    flex-direction: row;
+}
+
+
+.report-logo {
+    transform: rotate(-8deg);
+    height: 100px;
+    margin: 2%;
+}
+
+.report-content-header p {
+    font-weight: 400;
+    font-size: 1.2rem;
+    color: #320440;
+    width: 90%;
+    padding: 3% 2%;
+    line-height: 1.5;
+    margin-bottom: 4%;
+
+}
+
+.report-title {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 600;
+    font-style: italic;
+    font-size: 2.4rem;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+}
+
+.report-content {
+    margin: 2% 5%;
+    padding: 2% 5%;
+    border: #320440 1px solid;
+}

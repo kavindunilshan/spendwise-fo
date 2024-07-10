@@ -26,7 +26,7 @@ export const fetchAllTransactions = async (userId) => {
 }
 
 // data breakdown
-export const fetchExpenseBreakdown = async (userId, type) => {
+export const fetchExpenseBreakdown = async (userId, type, month) => {
     const token = await getAccessToken(); // Wait for token to be fetched
     const response = await axios.get(`${baseUrl}/transactions/${userId}/${type}/breakdown`, {
         headers: {
