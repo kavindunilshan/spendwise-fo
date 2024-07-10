@@ -23,7 +23,7 @@ ChartJS.register(
     LinearScale
 );
 
-const BarChartComponent = ({currency, value, changed, type, getCSSVariableValue}) => {
+const BarChartComponent = ({month, currency, value, changed, type, getCSSVariableValue}) => {
     const [chartData, setChartData] = React.useState({});
 
     const {user} = useAuth0();
@@ -37,7 +37,8 @@ const BarChartComponent = ({currency, value, changed, type, getCSSVariableValue}
     }, [value]);
 
     useEffect(() => {
-        fetchExpenseBreakdown(user.sub.split("|")[1], type.toUpperCase()).then((data) => {
+        console.log("here")
+        fetchExpenseBreakdown(user.sub.split("|")[1], type.toUpperCase(), month).then((data) => {
             setChartData(data || {});
         });
     }, [changed]);
