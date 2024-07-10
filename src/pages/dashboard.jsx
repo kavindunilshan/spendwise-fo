@@ -11,6 +11,7 @@ import Milestone from "../components/dashboard/milestone.jsx";
 import {fetchOverMonthlyData, fetchPocketBalance} from "../services/dashboard.js";
 import {fetchUserData, getPreferences} from "../services/settings.js";
 import BarChartComponent from "../components/dashboard/charts/bar-chart.jsx";
+import dayjs from "dayjs";
 
 function Dashboard() {
 
@@ -26,8 +27,9 @@ function Dashboard() {
     const [expense, setExpense] = useState(0);
 
     const [changed, setChanged] = useState(false);
-    const [currency, setCurrency] = useState('₹');
+    const [month, setMonth] = useState(dayjs().format('MM YYYY'));
 
+    const [currency, setCurrency] = useState('₹');
     const [monthlyData, setMonthlyData] = useState([]);
     const userId = isAuthenticated ? user.sub.split("|")[1] : null;
 
@@ -49,8 +51,12 @@ function Dashboard() {
     }, [userId]);
 
     useEffect(() => {
+
+        console.log("Hi 1")
+
         // Fetch the pocket value from the server
         if (userId) {
+            console.log("Hi 2")
             fetchPocketBalance(userId).then((data) => {
                 setPocket(data.pocket);
                 setIncome(data.income);
@@ -69,7 +75,6 @@ function Dashboard() {
 
     const handleChanged = () => {
         setChanged(!changed);
-        
     }
 
     const getCSSVariableValue = (variable) => {
@@ -99,15 +104,15 @@ function Dashboard() {
                                  position={{ top: '3%', left: '2%' }}
                                  size={{ width: '25%', height: '40%' }}
                 >
-                    {isExpensePieChart && <PieChartComponent currency={currency} value={expense} changed={changed} type={"Expense"} getCSSVariableValue={getCSSVariableValue}/>}
-                    {!isExpensePieChart && <BarChartComponent currency={currency} value={expense} changed={changed} type={"Expense"} getCSSVariableValue={getCSSVariableValue}/>}
+                    {isExpensePieChart && <PieChartComponent month={month} currency={currency} value={expense} changed={changed} type={"Expense"} getCSSVariableValue={getCSSVariableValue}/>}
+                    {!isExpensePieChart && <BarChartComponent month={month} currency={currency} value={expense} changed={changed} type={"Expense"} getCSSVariableValue={getCSSVariableValue}/>}
                 </WidgetContainer>
                 <WidgetContainer title="Income Break down"
                                  position={{ top: '51%', left: '2%' }}
                                  size={{ width: '25%', height: '42%' }}
                 >
-                    {isIncomePieChart && <PieChartComponent currency={currency} value={income} changed={changed} type={"Income"} getCSSVariableValue={getCSSVariableValue}/>}
-                    {!isIncomePieChart && <BarChartComponent currency={currency} value={income} changed={changed} type={"Income"} getCSSVariableValue={getCSSVariableValue}/>}
+                    {isIncomePieChart && <PieChartComponent month={month} currency={currency} value={income} changed={changed} type={"Income"} getCSSVariableValue={getCSSVariableValue}/>}
+                    {!isIncomePieChart && <BarChartComponent month={month} currency={currency} value={income} changed={changed} type={"Income"} getCSSVariableValue={getCSSVariableValue}/>}
                 </WidgetContainer>
 
 
@@ -115,7 +120,7 @@ function Dashboard() {
                                  position={{ top: '3%', left: '31%' }}
                                  size={{ width: '25%', height: '30%' }}
                 >
-                    <ActionStation onChange={handleChanged}/>
+                    <ActionStation onChange={handleChanged} setMonth={setMonth}/>
                 </WidgetContainer>
                 <WidgetContainer title="Available Pocket"
                                  position={{ top: '40%', left: '31%' }}

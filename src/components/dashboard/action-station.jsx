@@ -33,7 +33,7 @@ const CustomDatePicker = styled(DatePicker)({
 });
 
 
-function ActionStation({onChange}) {
+function ActionStation({onChange, setMonth}) {
     const [date, setDate] = useState(dayjs());
 
     const initialFormData = {
@@ -66,6 +66,12 @@ function ActionStation({onChange}) {
         setFormData(initialFormData);
         setErrors({});
     };
+
+    const handleMonthChange = (date) => {
+        setDate(date);
+        setMonth(date.format('MM YYYY'));
+        onChange()
+    }
 
     const handleFormChange = (e) => {
         const { name, value } = e.target;
@@ -137,7 +143,7 @@ function ActionStation({onChange}) {
                                 views={['month', 'year']}
                                 style={{size: 'small', backgroundColor: '#111111'}}
                                 value={date}
-                                onChange={(newDate) => setDate(newDate)}
+                                onChange={(newDate) => handleMonthChange(newDate)}
                             />
                         </LocalizationProvider>
                     </div>
