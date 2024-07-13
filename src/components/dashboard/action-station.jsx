@@ -33,7 +33,7 @@ const CustomDatePicker = styled(DatePicker)({
 });
 
 
-function ActionStation({onChange, setMonth}) {
+function ActionStation({onChange, setMonth, period}) {
     const [date, setDate] = useState(dayjs());
 
     const initialFormData = {
@@ -69,7 +69,7 @@ function ActionStation({onChange, setMonth}) {
 
     const handleMonthChange = (date) => {
         setDate(date);
-        setMonth(date.format('MM YYYY'));
+        setMonth(period === 'MONTHLY' ? date.format('MM YYYY') : date.format('YYYY'));
         onChange()
     }
 
@@ -132,21 +132,23 @@ function ActionStation({onChange, setMonth}) {
         onChange();
     };
 
+    const views = period === 'MONTHLY' ? ['month', 'year'] : period === 'YEARLY' ? ['year'] : null;
+
     return (
         <>
             <div className={'action-station-container'}>
                 <div className={'action-station-l1'}>
-                    <div className={'action-station-ym-picker'}>
+                    {views  && <div className={'action-station-ym-picker'}>
                         <LocalizationProvider dateAdapter={AdapterDayjs}>
                             <CustomDatePicker
-                                label={'"month" and "year"'}
-                                views={['month', 'year']}
+                                label={'Time period'}
+                                views={views}
                                 style={{size: 'small', backgroundColor: '#111111'}}
                                 value={date}
                                 onChange={(newDate) => handleMonthChange(newDate)}
                             />
                         </LocalizationProvider>
-                    </div>
+                    </div>}
                     <div className={'action-station-add-btn'}>
                         <Button disableElevation
                                 onClick={handleClickOpen}

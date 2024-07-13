@@ -59,3 +59,9 @@
 .settings-d-img-selected:hover {
     border: 2px solid rgb(203, 130, 225);
 }
+
+.settings-dashboard-form-container {
+    margin-left: 15%;
+    margin-right: 10%;
+    margin-top: 4%;
+}

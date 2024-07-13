@@ -54,7 +54,7 @@ function Dashboard() {
 
     useEffect(() => {
 
-        const value = period === 'ALL' ? 0 : period === 'MONTHLY' ? month : month.split(' ')[1];
+        const value = period === 'ALL' ? 0 : month;
 
         // Fetch the pocket value from the server
         if (userId) {
@@ -121,7 +121,7 @@ function Dashboard() {
                                  position={{ top: '3%', left: '31%' }}
                                  size={{ width: '25%', height: '30%' }}
                 >
-                    <ActionStation onChange={handleChanged} setMonth={setMonth}/>
+                    <ActionStation onChange={handleChanged} setMonth={setMonth} period={period}/>
                 </WidgetContainer>
                 <WidgetContainer title="Available Pocket"
                                  position={{ top: '40%', left: '31%' }}

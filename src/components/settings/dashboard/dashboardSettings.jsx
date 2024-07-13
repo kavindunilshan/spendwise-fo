@@ -1,21 +1,21 @@
-import React, {useEffect, useState} from 'react';
-import { useContext } from 'react';
-import { SettingsContext } from '../settings-context.jsx';
+import React, {useContext, useEffect, useState} from 'react';
+import {SettingsContext} from '../settings-context.jsx';
 import HeaderWithSlogan from "../header-slogan.jsx";
 import '/src/styles/settings/components/dashboard.css';
 import Button from "@mui/material/Button";
 import {Edit} from "@mui/icons-material";
 import {useAuth0} from "@auth0/auth0-react";
 import {getPreferences, updatePreferences} from "../../../services/settings.js";
+import {FormControl, FormControlLabel, Radio, RadioGroup} from "@mui/material";
 
 
-
-function DashboardSettings(props) {
+function DashboardSettings() {
     const { setComponentData } = useContext(SettingsContext);
     const [ isDarkMode, setIsDarkMode ] = useState(false);
     const [ isIncomePieChart, setIsIncomePieChart ] = useState(true);
     const [ isExpensePieChart, setIsExpensePieChart ] = useState(true);
     const [ isEditing, setIsEditing ] = useState(false);
+    const [dataViewPeriod, setDataViewPeriod] = useState('ALL');
 
     const {user} = useAuth0();
     const userId = user?.sub.split('|')[1];
@@ -31,6 +31,7 @@ function DashboardSettings(props) {
                     setIsDarkMode(data.isDarkMode);
                     setIsIncomePieChart(data.isIncomePieChart);
                     setIsExpensePieChart(data.isExpensePieChart);
+                    setDataViewPeriod(data.dataViewPeriod);
                 }
             });
         }
@@ -42,23 +43,21 @@ function DashboardSettings(props) {
         color: '#320440'
     }
 
-    const handleDarkTheme = () => {
-        setIsDarkMode(false);
-    }
-
-    const handleLightTheme = () => {
-        setIsDarkMode(true);
-    }
-
     const handleSave = () => {
         const preferences = {
             isDarkMode,
             isIncomePieChart,
-            isExpensePieChart
+            isExpensePieChart,
+            dataViewPeriod
         }
 
         updatePreferences(userId, preferences);
         setIsEditing(false);
+    }
+
+    const handleChange = (event) => {
+        console.log(event.target.value);
+        setDataViewPeriod(event.target.value);
     }
 
     const btnStyle = {
@@ -91,7 +90,7 @@ function DashboardSettings(props) {
                     <div className={'settings-dashboard-img-container'}>
                         <div className={'settings-dashboard-img-content'}>
                             <img
-                                className={`settings-dashboard-img settings-d-img-${!isDarkMode ? 'selected' : ''} ${!isEditing ? 's-d-disabled': ''}`}
+                                className={`settings-dashboard-img settings-d-img-${!isDarkMode ? 'selected' : ''} ${!isEditing ? 's-d-disabled' : ''}`}
                                 src={'/src/assets/light.png'}
                                 alt={""}
                                 onClick={() => isEditing ? setIsDarkMode(false) : null}
@@ -100,7 +99,7 @@ function DashboardSettings(props) {
                         </div>
                         <div className={'settings-dashboard-img-content'}>
                             <img
-                                className={`settings-dashboard-img settings-d-img-${isDarkMode ? 'selected' : ''} ${!isEditing ? 's-d-disabled': ''}`}
+                                className={`settings-dashboard-img settings-d-img-${isDarkMode ? 'selected' : ''} ${!isEditing ? 's-d-disabled' : ''}`}
                                 src={'/src/assets/dark.png'}
                                 alt={""}
                                 onClick={() => isEditing ? setIsDarkMode(true) : null}
@@ -118,7 +117,7 @@ function DashboardSettings(props) {
                     <div className={'settings-dashboard-img-container'}>
                         <div className={'settings-dashboard-img-content'}>
                             <img
-                                className={`settings-dashboard-img settings-d-img-${isIncomePieChart ? 'selected' : ''} ${!isEditing ? 's-d-disabled': ''}`}
+                                className={`settings-dashboard-img settings-d-img-${isIncomePieChart ? 'selected' : ''} ${!isEditing ? 's-d-disabled' : ''}`}
                                 src={'/src/assets/income.png'}
                                 alt={""}
                                 onClick={() => isEditing ? setIsIncomePieChart(true) : null}
@@ -127,7 +126,7 @@ function DashboardSettings(props) {
                         </div>
                         <div className={'settings-dashboard-img-content'}>
                             <img
-                                className={`settings-dashboard-img settings-d-img-${!isIncomePieChart ? 'selected' : ''} ${!isEditing ? 's-d-disabled': ''}`}
+                                className={`settings-dashboard-img settings-d-img-${!isIncomePieChart ? 'selected' : ''} ${!isEditing ? 's-d-disabled' : ''}`}
                                 src={'/src/assets/income-bar.png'}
                                 alt={""}
                                 onClick={() => isEditing ? setIsIncomePieChart(false) : null}
@@ -145,7 +144,7 @@ function DashboardSettings(props) {
                     <div className={'settings-dashboard-img-container'}>
                         <div className={'settings-dashboard-img-content'}>
                             <img
-                                className={`settings-dashboard-img settings-d-img-${isExpensePieChart ? 'selected' : ''} ${!isEditing ? 's-d-disabled': ''}`}
+                                className={`settings-dashboard-img settings-d-img-${isExpensePieChart ? 'selected' : ''} ${!isEditing ? 's-d-disabled' : ''}`}
                                 src={'/src/assets/Expense.png'}
                                 alt={""}
                                 onClick={() => isEditing ? setIsExpensePieChart(true) : null}
@@ -154,13 +153,61 @@ function DashboardSettings(props) {
                         </div>
                         <div className={'settings-dashboard-img-content'}>
                             <img
-                                className={`settings-dashboard-img settings-d-img-${!isExpensePieChart ? 'selected' : ''} ${!isEditing ? 's-d-disabled': ''}`}
+                                className={`settings-dashboard-img settings-d-img-${!isExpensePieChart ? 'selected' : ''} ${!isEditing ? 's-d-disabled' : ''}`}
                                 src={'/src/assets/expense-bar.png'}
                                 alt={""}
                                 onClick={() => isEditing ? setIsExpensePieChart(false) : null}
                             />
                             <div className={"settings-d-text"}>Bar Chart</div>
                         </div>
+                    </div>
+                </div>
+
+
+                <div className={'settings-dashboard-item'}>
+                    <HeaderWithSlogan isSubTopic={true} title={'Data View Period'}
+                                      slogan={"select the period for data view"}
+                                      titleStyle={styles}
+                    />
+                    <div className={'settings-dashboard-form-container'}>
+                        <FormControl disabled={!isEditing}>
+                            <RadioGroup
+                                aria-labelledby="demo-controlled-radio-buttons-group"
+                                name="controlled-radio-buttons-group"
+                                value={dataViewPeriod}
+                                onChange={handleChange}
+                            >
+                                <FormControlLabel value="ALL" control={
+                                    <Radio
+                                        sx={{
+                                            color: '#320440',
+                                            '&.Mui-checked': {
+                                                color: '#320440',
+                                            },
+                                        }}
+                                    />
+                                } label="ALL" />
+                                <FormControlLabel value="MONTHLY" control={
+                                    <Radio
+                                        sx={{
+                                            color: '#320440',
+                                            '&.Mui-checked': {
+                                                color: '#320440',
+                                            },
+                                        }}/>} label="MONTHLY"
+                                    />
+                                <FormControlLabel value="YEARLY" control={
+                                    <Radio
+                                        sx={{
+                                            color: '#320440',
+                                            '&.Mui-checked': {
+                                                color: '#320440',
+                                            },
+                                        }}
+                                    />
+                                } label="YEARLY" />
+                            </RadioGroup>
+                        </FormControl>
                     </div>
                 </div>
             </div>
