@@ -157,6 +157,7 @@ function ActionStation({onChange, setMonth, period}) {
                                     border: "1px solid var(--text-color)",
                                     backgroundColor: "rgba(251,139,36,0)",
                                     color: "var(--text-color)",
+                                    width: '100%',
                                 }}
                                 startIcon={<Add/>}
                         >
