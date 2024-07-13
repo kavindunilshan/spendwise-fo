@@ -78,7 +78,7 @@ const BarChartComponent = ({month, currency, value, changed, type, getCSSVariabl
                     label: function(context) {
                         const label = context.label || '';
                         const value = context.parsed.y || 0;
-                        return `${label}: $${value.toFixed(2)}`;
+                        return `${label}: ${currency}${value.toFixed(2)}`;
                     },
                 },
             },

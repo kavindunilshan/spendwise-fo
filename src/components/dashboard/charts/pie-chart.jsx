@@ -38,7 +38,6 @@ const PieChartComponent = ({month, currency, value, changed, type, getCSSVariabl
     }, [value]);
 
     useEffect(() => {
-        console.log("here 23")
         fetchExpenseBreakdown(user.sub.split("|")[1], type.toUpperCase(), month).then((data) => {
             setChartData(data || {});
             console.log("data", data);
@@ -81,7 +80,7 @@ const PieChartComponent = ({month, currency, value, changed, type, getCSSVariabl
                     label: function(context) {
                         const label = context.label || '';
                         const value = context.parsed || 0;
-                        return `${label}: ${value.toFixed(2)}`;
+                        return `${label}: ${currency}${value.toFixed(2)}`;
                     },
                 },
             },

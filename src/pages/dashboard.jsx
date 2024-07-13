@@ -21,6 +21,7 @@ function Dashboard() {
     const [isDarkMode, setIsDarkMode] = useState(false);
     const [ isIncomePieChart, setIsIncomePieChart ] = useState(true);
     const [ isExpensePieChart, setIsExpensePieChart ] = useState(true);
+    const [ period, setPeriod ] = useState('ALL');
 
     const [pocket, setPocket] = useState(0);
     const [income, setIncome] = useState(0);
@@ -46,18 +47,18 @@ function Dashboard() {
                 setIsDarkMode(data.isDarkMode);
                 setIsIncomePieChart(data.isIncomePieChart);
                 setIsExpensePieChart(data.isExpensePieChart);
+                setPeriod(data.dataViewPeriod);
             });
         }
     }, [userId]);
 
     useEffect(() => {
 
-        console.log("Hi 1")
+        const value = period === 'ALL' ? 0 : period === 'MONTHLY' ? month : month.split(' ')[1];
 
         // Fetch the pocket value from the server
         if (userId) {
-            console.log("Hi 2")
-            fetchPocketBalance(userId).then((data) => {
+            fetchPocketBalance(userId, period, value).then((data) => {
                 setPocket(data.pocket);
                 setIncome(data.income);
                 setExpense(data.expenses);
@@ -71,7 +72,7 @@ function Dashboard() {
                 setCurrency(data.currency === "" ? "₹" : data.currency);
             });
         }
-    }, [userId, changed]);
+    }, [userId, period, changed]);
 
     const handleChanged = () => {
         setChanged(!changed);

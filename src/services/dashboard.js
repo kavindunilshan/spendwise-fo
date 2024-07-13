@@ -48,9 +48,9 @@ export const createUser = async (user) => {
 }
 
 // fetch pocket balance
-export const fetchPocketBalance = async (userId) => {
+export const fetchPocketBalance = async (userId, period, value) => {
     const token = await getAccessToken(); // Wait for token to be fetched
-    const response = await axios.get(`${baseUrl}/transactions/pocket/${userId}`, {
+    const response = await axios.get(`${baseUrl}/transactions/pocket/${userId}/${period}/${value}`, {
         headers: {
             Authorization: `Bearer ${token}`
         }
