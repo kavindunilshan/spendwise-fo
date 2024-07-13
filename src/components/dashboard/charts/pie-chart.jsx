@@ -62,7 +62,7 @@ const PieChartComponent = ({month, currency, value, changed, type, getCSSVariabl
         ],
     };
 
-    const secondaryColor = getCSSVariableValue('--chart-color');
+    const secondaryColor = getCSSVariableValue && getCSSVariableValue('--chart-color');
 
     const options = {
         responsive: true,

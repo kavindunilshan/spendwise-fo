@@ -18,6 +18,8 @@
 .report-content-header p {
     font-weight: 400;
     font-size: 1.2rem;
+    font-style: italic;
+    text-align: center;
     color: #320440;
     width: 90%;
     padding: 3% 2%;
@@ -40,4 +42,11 @@
     margin: 2% 5%;
     padding: 2% 5%;
     border: #320440 1px solid;
+}
+
+.report-body-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }

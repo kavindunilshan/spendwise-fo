@@ -39,7 +39,7 @@ function Dashboard() {
             setRedirectAttempted(true);
             loginWithPopup();
         }
-    }, [user]);
+    }, [user, isAuthenticated]);
 
     useEffect(() => {
         if (userId) {
