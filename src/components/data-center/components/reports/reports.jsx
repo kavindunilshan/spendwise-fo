@@ -121,60 +121,82 @@ function Reports(props) {
 
                             <HeaderWithSlogan
                                 isSubTopic={true}
-                                title={'Income'}
-                                slogan={'Income data analysis'}
-                                titleStyle={{fontWeight: '600', fontStyle: 'italic', fontSize: '1.7em',}}
-                            />
-                            <div className={'report-body-item'}>
-                                <WidgetContainer title="Income Break down"
-                                                 place={'relative'}
-                                                 position={{top: '0', left: '0'}}
-                                                 size={{width: '500px', height: '350px'}}
-                                >
-                                    <PieChartComponent month={date.format('MM YYYY')} changed={date}
-                                                       currency={currency} value={income} type={"Income"}/>
-                                </WidgetContainer>
-                            </div>
-
-                            <HeaderWithSlogan
-                                isSubTopic={true}
-                                title={'Expenses'}
-                                slogan={'Expenses data analysis'}
-                                titleStyle={{fontWeight: '600', fontStyle: 'italic', fontSize: '1.7em',}}
+                                title={'Visual Data Breakdowns'}
+                                slogan={''}
+                                titleStyle={{fontWeight: '700', fontStyle: 'italic', fontSize: '2.0em',}}
                             />
 
-                            <div className={'report-body-item'}>
+                            <div className={'report-content-item'}>
+                                <HeaderWithSlogan
+                                    isSubTopic={true}
+                                    title={'Income'}
+                                    slogan={'Income data analysis'}
+                                    titleStyle={{fontWeight: '600', fontStyle: 'italic', fontSize: '1.7em',}}
+                                />
+                                <div className={'report-body-item'}>
+                                    {
+                                        income > 0 ?
+                                        <WidgetContainer title="Income Break down"
+                                                         place={'relative'}
+                                                         position={{top: '0', left: '0'}}
+                                                         size={{width: '500px', height: '350px'}}
+                                        >
+                                            <PieChartComponent month={date.format('MM YYYY')} changed={date}
+                                                               currency={currency} value={income} type={"Income"}/>
+                                        </WidgetContainer>
+                                        :
+                                        <div className={'no-data'}>No Income for this month</div>
+                                    }
+                                </div>
 
-                                <WidgetContainer title="Expense Break down"
-                                                 place={'relative'}
-                                                 position={{top: '0', left: '0'}}
-                                                 size={{width: '500px', height: '350px'}}
-                                >
-                                    <PieChartComponent month={date.format('MM YYYY')} changed={date}
-                                                       currency={currency} value={expense} type={"Expense"}/>
-                                </WidgetContainer>
+                                <HeaderWithSlogan
+                                    isSubTopic={true}
+                                    title={'Expenses'}
+                                    slogan={'Expenses data analysis'}
+                                    titleStyle={{fontWeight: '600', fontStyle: 'italic', fontSize: '1.7em',}}
+                                />
 
-                            </div>
+                                <div className={'report-body-item'}>
 
-                            <HeaderWithSlogan
-                                isSubTopic={true}
-                                title={'Savings'}
-                                slogan={'Savings data analysis'}
-                                titleStyle={{fontWeight: '600', fontStyle: 'italic', fontSize: '1.7em',}}
-                            />
+                                    {
+                                        expense > 0 ?
+                                        <WidgetContainer title="Expenses Break down"
+                                                         place={'relative'}
+                                                         position={{top: '0', left: '0'}}
+                                                         size={{width: '500px', height: '350px'}}
+                                        >
+                                            <PieChartComponent month={date.format('MM YYYY')} changed={date}
+                                                               currency={currency} value={expense} type={"Expense"}/>
+                                        </WidgetContainer>
+                                        :
+                                        <div className={'no-data'}>No Expenses for this month</div>
+                                    }
 
-                            <div className={'report-body-item'}>
+                                </div>
 
-                                <WidgetContainer title="Savings Break down"
-                                                 place={'relative'}
-                                                 position={{top: '0', left: '0'}}
-                                                 size={{width: '500px', height: '350px'}}
-                                >
-                                    <PieChartComponent month={date.format('MM YYYY')} changed={date}
-                                                       currency={currency} value={saving} type={"Saving"}/>
-                                </WidgetContainer>
+                                <HeaderWithSlogan
+                                    isSubTopic={true}
+                                    title={'Savings'}
+                                    slogan={'Savings data analysis'}
+                                    titleStyle={{fontWeight: '600', fontStyle: 'italic', fontSize: '1.7em',}}
+                                />
 
+                                <div className={'report-body-item'}>
 
+                                    {
+                                        saving > 0 ?
+                                        <WidgetContainer title="Savings Break down"
+                                                         place={'relative'}
+                                                         position={{top: '0', left: '0'}}
+                                                         size={{width: '500px', height: '350px'}}
+                                        >
+                                            <PieChartComponent month={date.format('MM YYYY')} changed={date}
+                                                               currency={currency} value={saving} type={"Savings"}/>
+                                        </WidgetContainer>
+                                        :
+                                        <div className={'no-data'}>No Savings for this month</div>
+                                    }
+                                </div>
                             </div>
                         </div>
                     </div>
