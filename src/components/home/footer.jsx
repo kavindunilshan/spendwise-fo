@@ -12,16 +12,16 @@ function Footer() {
             <div className={'home-footer-content-right'}>
                 <div className={'home-footer-socials'}>
                     <a href={'https://www.linkedin.com'} target="_blank" className={'home-footer-social-icon'}>
-                        <LinkedIn style={{color: "#320440", fontSize: '40px'}}/>
+                        <LinkedIn style={{color: "#fff", fontSize: '40px'}}/>
                     </a>
                     <a href={'https://www.facebook.com'} target="_blank" className={'home-footer-social-icon'}>
-                        <Facebook style={{color: "#320440", fontSize: '40px'}}/>
+                        <Facebook style={{color: "#fff", fontSize: '40px'}}/>
                     </a>
                     <a href={'https://www.instagram.com'} target="_blank" className={'home-footer-social-icon'}>
-                        <Instagram style={{color: "#320440", fontSize: '40px'}}/>
+                        <Instagram style={{color: "#fff", fontSize: '40px'}}/>
                     </a>
                     <a href={'https://www.twitter.com'} target="_blank" className={'home-footer-social-icon'}>
-                        <Twitter style={{color: "#320440", fontSize: '40px'}}/>
+                        <Twitter style={{color: "#fff", fontSize: '40px'}}/>
                     </a>
                 </div>
                 <div className={'home-footer-legal'}>
