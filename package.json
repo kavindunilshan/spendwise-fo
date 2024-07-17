@@ -17,6 +17,7 @@
     "@mui/lab": "^5.0.0-alpha.170",
     "@mui/material": "^5.15.20",
     "@mui/x-date-pickers": "^7.6.2",
+    "@mui/x-date-pickers-pro": "^7.10.0",
     "axios": "^1.7.2",
     "chart.js": "^4.4.3",
     "chartjs-plugin-annotation": "^3.0.1",
