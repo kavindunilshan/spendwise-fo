@@ -13,8 +13,14 @@ import {fetchAllTransactions} from "../../../../services/dashboard.js";
 import {SettingsContext} from "../../../settings/settings-context.jsx";
 import {Edit} from "@mui/icons-material";
 import {Tooltip} from "@mui/material";
-import {createTransaction, editTransaction} from "../../../../services/axios-services.js";
+import {editTransaction} from "../../../../services/axios-services.js";
 import CustomizedDialogs from "../../../forms/add-transaction.jsx";
+
+import dayjs from 'dayjs';
+import {DemoItem} from '@mui/x-date-pickers/internals/demo';
+import {AdapterDayjs} from '@mui/x-date-pickers/AdapterDayjs';
+import {LocalizationProvider} from '@mui/x-date-pickers/LocalizationProvider';
+import {DateRangePicker} from "@mui/x-date-pickers-pro";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -66,6 +72,11 @@ export default function Transactions() {
     const [open, setOpen] = React.useState(false);
     const [formData, setFormData] = useState(initialFormData);
     const [errors, setErrors] = useState({});
+
+    const [value, setValue] = React.useState([
+        dayjs().add(-1, 'month'),
+        dayjs(),
+    ]);
 
     const [transactions, setTransactions] = React.useState([]);
     const {user} = useAuth0();
@@ -174,6 +185,16 @@ export default function Transactions() {
 
     return (
         <div className={'ds-transactions'} style={{width: '95%', marginLeft: '3%'}}>
+            <div className={'date-range-picker'} style={{width: '25%', margin: '3%'}}>
+                <LocalizationProvider dateAdapter={AdapterDayjs}>
+                    <DemoItem label="Pick date range" component="DateRangePicker">
+                        <DateRangePicker
+                            value={value}
+                            onChange={(newValue) => setValue(newValue)}
+                        />
+                    </DemoItem>
+                </LocalizationProvider>
+            </div>
             <TableContainer component={Paper} style={{marginTop: '4%', marginBottom: "15%"}}>
                 <Table sx={{ minWidth: 200 }} aria-label="customized table">
                     <TableHead>

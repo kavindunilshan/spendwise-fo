@@ -14,12 +14,20 @@ function Home() {
     }
 
     return (
-        <div className="home">
-            <LoginButton></LoginButton>
-            <Header overviewRef={overviewRef} serviceRef={serviceRef} scrollToSection={scrollToSection}/>
-            <Body overviewRef={overviewRef} serviceRef={serviceRef}/>
-            <Footer/>
-        </div>
+
+        <>
+            <img className={'home-landing-img'}
+                 src={'./src/assets/b2.jpg'}
+                 alt={'home-base-image'}
+                 style={{position: 'absolute', top: '0', bottom: '0',  width: '100%', height: '100%', objectFit: 'cover'}}
+            />
+            <div className="home">
+                <LoginButton></LoginButton>
+                <Header overviewRef={overviewRef} serviceRef={serviceRef} scrollToSection={scrollToSection}/>
+                <Body overviewRef={overviewRef} serviceRef={serviceRef}/>
+                <Footer/>
+            </div>
+        </>
     );
 }
 
