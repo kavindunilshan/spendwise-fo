@@ -42,7 +42,7 @@ const periods = [
     },
 ];
 
-export default function AddGoalForm({ formData, handleFormChange, errors, currency }) {
+export default function GoalFormFields({ formData, handleFormChange, errors, currency }) {
     const [categories, setCategories] = React.useState([]);
 
     useEffect(() => {

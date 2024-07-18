@@ -66,7 +66,7 @@ export default function SelectTextFields({ formData, handleFormChange, errors, c
                     type="number"
                     value={formData.amount}
                     onChange={handleFormChange}
-                    helperText={errors.amount ? errors.amount : "Please enter the amount"}
+                    helperText={errors.amount ? "Amount can not be null" : "Please enter the amount"}
                     error={Boolean(errors.amount)}
                     required
                     InputProps={{

@@ -23,9 +23,8 @@ function Dashboard() {
     const [isDarkMode, setIsDarkMode] = useState(false);
     const [ isIncomePieChart, setIsIncomePieChart ] = useState(true);
     const [ isExpensePieChart, setIsExpensePieChart ] = useState(true);
-    const [ period, setPeriod ] = useState('ALL');
+    const [ period, setPeriod ] = useState('');
 
-    // search query param use searchparam
     const [searchParams, setSearchParams] = useSearchParams();
 
     const [loading, setLoading] = useState(searchParams.get('loading') || false);
