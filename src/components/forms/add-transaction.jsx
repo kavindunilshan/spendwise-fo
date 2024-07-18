@@ -26,7 +26,14 @@ export default function CustomizedDialogs({title, open, handleClose, handleSaveC
                 aria-labelledby="customized-dialog-title"
                 open={open}
             >
-                <DialogTitle sx={{ m: 0, p: 2, textAlign: 'center' }} id="customized-dialog-title">
+                <DialogTitle
+                    sx={{
+                        m: 0,
+                        p: 2,
+                        textAlign: 'center',
+                        backgroundColor: '#320440',
+                        color: 'white'
+                }} id="customized-dialog-title">
                     {title}
                 </DialogTitle>
                 <IconButton
@@ -44,8 +51,16 @@ export default function CustomizedDialogs({title, open, handleClose, handleSaveC
                 <DialogContent dividers>
                     {children}
                 </DialogContent>
-                <DialogActions>
-                    <Button autoFocus onClick={handleSaveChanges}>
+                <DialogActions
+                sx={{
+                    backgroundColor: '#320440',
+                    color: 'white'
+                }}>
+                    <Button autoFocus onClick={handleSaveChanges} sx={{
+                        backgroundColor: '#320440',
+                        color: 'white',
+                        border: '1px solid white',
+                    }}>
                         Save
                     </Button>
                 </DialogActions>
