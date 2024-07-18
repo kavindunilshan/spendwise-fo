@@ -13,6 +13,7 @@ import {fetchUserData, getPreferences} from "../services/settings.js";
 import BarChartComponent from "../components/dashboard/charts/bar-chart.jsx";
 import dayjs from "dayjs";
 import Loading from "../components/utils/loading-image.jsx";
+import {useSearchParams} from "react-router-dom";
 
 function Dashboard() {
 
@@ -23,6 +24,13 @@ function Dashboard() {
     const [ isIncomePieChart, setIsIncomePieChart ] = useState(true);
     const [ isExpensePieChart, setIsExpensePieChart ] = useState(true);
     const [ period, setPeriod ] = useState('ALL');
+
+    // search query param use searchparam
+    const [searchParams, setSearchParams] = useSearchParams();
+
+    const [loading, setLoading] = useState(searchParams.get('loading') || false);
+
+    console.log(" Here ", loading);
 
     const [isContentLoaded, setIsContentLoaded] = useState(false);
 
@@ -40,7 +48,10 @@ function Dashboard() {
     useEffect(() => {
         if (!isAuthenticated && !redirectAttempted) {
             setRedirectAttempted(true);
-            loginWithPopup();
+
+            loginWithRedirect().then(() => {
+                console.log('Redirected');
+            });
         }
     }, [user, isAuthenticated]);
 
@@ -65,6 +76,7 @@ function Dashboard() {
                 setPocket(data.pocket);
                 setIncome(data.income);
                 setExpense(data.expenses);
+                setIsContentLoaded(true);
             });
 
             fetchOverMonthlyData(userId, 6).then((data) => {
@@ -74,8 +86,6 @@ function Dashboard() {
             fetchUserData(userId).then((data) => {
                 setCurrency(data.currency === "" ? "₹" : data.currency);
             });
-
-            setIsContentLoaded(true);
         }
     }, [userId, period, changed]);
 
