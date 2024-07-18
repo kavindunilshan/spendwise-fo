@@ -36,6 +36,17 @@ export const createTransaction = async (transaction) => {
     return response.data;
 }
 
+// Create Goal
+export const createGoal = async (goal) => {
+    const token = await getAccessToken(); // Wait for token to be fetched
+    const response = await axios.post(baseUrl + "/goals", goal, {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    });
+    return response.data;
+}
+
 // edit a transaction
 export const editTransaction = async (tid, transaction) => {
     const token = await getAccessToken(); // Wait for token to be fetched

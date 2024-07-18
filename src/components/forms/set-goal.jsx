@@ -68,7 +68,7 @@ export default function GoalFormFields({ formData, handleFormChange, errors, cur
                 <TextField
                     id="outlined-goal-name"
                     label="Goal Name"
-                    name="goalName"
+                    name="name"
                     value={formData.name}
                     onChange={handleFormChange}
                     helperText={errors.name ? errors.name : "Please enter the goal name"}
@@ -80,7 +80,7 @@ export default function GoalFormFields({ formData, handleFormChange, errors, cur
                     id="outlined-select-goal-type"
                     select
                     label="Goal Type"
-                    name="goalType"
+                    name="type"
                     value={formData.type}
                     onChange={handleFormChange}
                     helperText="Please select goal type"

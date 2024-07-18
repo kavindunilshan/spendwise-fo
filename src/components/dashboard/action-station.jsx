@@ -53,6 +53,8 @@ function ActionStation({onChange, setMonth, period}) {
         amount: '',
         period: 'Monthly',
         transactionType: 'Income',
+        sign: '',
+        category: '',
         categoryId: '',
     }
 
@@ -150,11 +152,16 @@ function ActionStation({onChange, setMonth, period}) {
 
         if (name === "category") {
             const [categoryId, category] = value.split("-");
+
+            const sign = category === "Expense" ? "-" : "+";
+            console.log(categoryId, category);
             setGoalFormData((prevData) => ({
                 ...prevData,
-                categoryId: parseInt(categoryId), // Ensure
+                categoryId: parseInt(categoryId), // Ensure categoryId is an integer
                 category,
+                sign,
             }));
+            return;
         }
 
         setGoalFormData((prevData) => ({
@@ -169,6 +176,35 @@ function ActionStation({onChange, setMonth, period}) {
     }
 
     const handleGoalFormSaveChanges = () => {
+
+        let hasError = false;
+        let newErrors = {};
+
+        if (!goalFormData.amount) {
+            hasError = true;
+            newErrors.amount = "Amount is required";
+        }
+
+        if (hasError) {
+            setGoalErrors(newErrors);
+            return;
+        }
+
+        const goal = {
+            category_id: goalFormData.categoryId,
+            user_id: user.sub.split("|")[1],
+            amount: parseFloat(goalFormData.amount),
+            name: goalFormData.name,
+            sign: goalFormData.sign,
+            period: goalFormData.period,
+            type: goalFormData.type,
+            transaction_type: goalFormData.transactionType,
+        }
+
+
+        setGoalFormData(initialGoalFormData);
+        setGoalErrors({});
+        setGoalOpen(false);
 
     }
 

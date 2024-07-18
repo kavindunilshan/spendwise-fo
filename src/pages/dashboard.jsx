@@ -187,7 +187,8 @@ function Dashboard() {
                                 >
                                     <Transactions changed={changed}/>
                                 </WidgetContainer>
-                            </>}
+                            </>
+                        }
                     </div>
             }
         </>
