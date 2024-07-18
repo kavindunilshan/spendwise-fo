@@ -188,6 +188,7 @@ function ActionStation({onChange, setMonth, period}) {
                     </div>
                 </div>
                 <CustomizedDialogs
+                    title={"Add Transaction"}
                     open={open}
                     handleClose={handleClose}
                     handleSaveChanges={handleSaveChanges}

@@ -292,6 +292,7 @@ export default function Transactions() {
                 </Table>
             </TableContainer>
             <CustomizedDialogs
+                title={"Edit Transaction"}
                 open={open}
                 handleClose={handleClose}
                 handleSaveChanges={handleSaveChanges}

@@ -182,7 +182,6 @@ function Dashboard() {
 
                                     />
                                 </WidgetContainer>
-
                                 <WidgetContainer title="Recent Transactions"
                                                  position={{top: '54%', left: '60%'}}
                                                  size={{width: '36%', height: '39%'}}
