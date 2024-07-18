@@ -72,7 +72,7 @@ export default function GoalFormFields({ formData, handleFormChange, errors, cur
                     value={formData.name}
                     onChange={handleFormChange}
                     helperText={errors.name ? errors.name : "Please enter the goal name"}
-                    error={Boolean(errors.goalName)}
+                    error={Boolean(errors.name)}
                     required
                     placeholder="Goal Name"
                 />

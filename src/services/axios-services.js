@@ -39,7 +39,7 @@ export const createTransaction = async (transaction) => {
 // Create Goal
 export const createGoal = async (goal) => {
     const token = await getAccessToken(); // Wait for token to be fetched
-    const response = await axios.post(baseUrl + "/goals", goal, {
+    const response = await axios.post(baseUrl + "/goal", goal, {
         headers: {
             Authorization: `Bearer ${token}`
         }

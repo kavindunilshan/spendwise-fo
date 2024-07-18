@@ -7,7 +7,7 @@ import {Add} from "@mui/icons-material";
 import Button from "@mui/material/Button";
 import SportsScoreOutlinedIcon from '@mui/icons-material/SportsScoreOutlined';
 import CustomizedDialogs from "../forms/add-transaction.jsx";
-import {createTransaction} from "../../services/axios-services.js";
+import {createGoal, createTransaction} from "../../services/axios-services.js";
 import FlatIcons from "./flat-icons.jsx";
 import Clock from 'react-live-clock';
 import dayjs from "dayjs";
@@ -49,11 +49,11 @@ function ActionStation({onChange, setMonth, period}) {
 
     const initialGoalFormData = {
         name: 'Goal',
-        type: 'General',
+        type: 'GENERAL',
         amount: '',
-        period: 'Monthly',
-        transactionType: 'Income',
-        sign: '',
+        period: 'MONTHLY',
+        transactionType: 'INCOME',
+        sign: '+',
         category: '',
         categoryId: '',
     }
@@ -185,21 +185,29 @@ function ActionStation({onChange, setMonth, period}) {
             newErrors.amount = "Amount is required";
         }
 
+        if (!goalFormData.name) {
+            hasError = true;
+            newErrors.name = "Name is required";
+        }
+
         if (hasError) {
             setGoalErrors(newErrors);
             return;
         }
 
         const goal = {
-            category_id: goalFormData.categoryId,
+            category_id: goalFormData.type.toUpperCase() === "SPECIFIC" ? goalFormData.categoryId: null,
             user_id: user.sub.split("|")[1],
             amount: parseFloat(goalFormData.amount),
             name: goalFormData.name,
-            sign: goalFormData.sign,
-            period: goalFormData.period,
-            type: goalFormData.type,
-            transaction_type: goalFormData.transactionType,
+            sign: goalFormData.sign.charAt(0),
+            period: goalFormData.period.toUpperCase(),
+            type: goalFormData.type.toUpperCase(),
         }
+
+        console.log("Goal", goal);
+
+        createGoal(goal);
 
 
         setGoalFormData(initialGoalFormData);
