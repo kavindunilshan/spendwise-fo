@@ -18,7 +18,7 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
     },
 }));
 
-export default function CustomizedDialogs({ open, handleClose, handleSaveChanges, formData, handleFormChange, errors, currency }) {
+export default function CustomizedDialogs({title, open, handleClose, handleSaveChanges, children}) {
     return (
         <React.Fragment>
             <BootstrapDialog
@@ -27,7 +27,7 @@ export default function CustomizedDialogs({ open, handleClose, handleSaveChanges
                 open={open}
             >
                 <DialogTitle sx={{ m: 0, p: 2, textAlign: 'center' }} id="customized-dialog-title">
-                    Add Transaction
+                    {title}
                 </DialogTitle>
                 <IconButton
                     aria-label="close"
@@ -42,16 +42,11 @@ export default function CustomizedDialogs({ open, handleClose, handleSaveChanges
                     <CloseIcon />
                 </IconButton>
                 <DialogContent dividers>
-                    <SelectTextFields
-                        formData={formData}
-                        handleFormChange={handleFormChange}
-                        errors={errors}
-                        currency={currency}
-                    />
+                    {children}
                 </DialogContent>
                 <DialogActions>
                     <Button autoFocus onClick={handleSaveChanges}>
-                        Save changes
+                        Save
                     </Button>
                 </DialogActions>
             </BootstrapDialog>

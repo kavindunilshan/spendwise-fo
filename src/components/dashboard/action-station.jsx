@@ -13,6 +13,7 @@ import Clock from 'react-live-clock';
 import dayjs from "dayjs";
 import {styled} from "@mui/material/styles";
 import {useAuth0} from "@auth0/auth0-react";
+import SelectTextFields from "../forms/form-fields.jsx";
 
 
 
@@ -190,11 +191,14 @@ function ActionStation({onChange, setMonth, period}) {
                     open={open}
                     handleClose={handleClose}
                     handleSaveChanges={handleSaveChanges}
-                    formData={formData}
-                    handleFormChange={handleFormChange}
-                    errors={errors}
-                    currency={"LKR"}
-                />
+                >
+                    <SelectTextFields
+                        formData={formData}
+                        handleFormChange={handleFormChange}
+                        errors={errors}
+                        currency={"LKR"}
+                    />
+                </CustomizedDialogs>
             </>
             );
             }

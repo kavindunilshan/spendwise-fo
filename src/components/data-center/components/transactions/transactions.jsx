@@ -24,6 +24,7 @@ import {DateRangePicker} from "@mui/x-date-pickers-pro";
 import TextField from "@mui/material/TextField";
 import MenuItem from "@mui/material/MenuItem";
 import Button from "@mui/material/Button";
+import SelectTextFields from "../../../forms/form-fields.jsx";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -294,11 +295,14 @@ export default function Transactions() {
                 open={open}
                 handleClose={handleClose}
                 handleSaveChanges={handleSaveChanges}
-                formData={formData}
-                handleFormChange={handleFormChange}
-                errors={errors}
-                currency={"LKR"}
-            />
+            >
+                <SelectTextFields
+                    formData={formData}
+                    handleFormChange={handleFormChange}
+                    errors={errors}
+                    currency={"LKR"}
+                />
+            </CustomizedDialogs>
         </div>
     );
 }
