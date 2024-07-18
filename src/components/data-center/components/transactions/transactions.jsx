@@ -9,7 +9,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import {useAuth0} from "@auth0/auth0-react";
-import {fetchAllTransactions} from "../../../../services/dashboard.js";
+import {fetchAllTransactionsBetweenDates, fetchTransactionsBetweenDates} from "../../../../services/dashboard.js";
 import {SettingsContext} from "../../../settings/settings-context.jsx";
 import {Edit} from "@mui/icons-material";
 import {Tooltip} from "@mui/material";
@@ -21,6 +21,9 @@ import {DemoItem} from '@mui/x-date-pickers/internals/demo';
 import {AdapterDayjs} from '@mui/x-date-pickers/AdapterDayjs';
 import {LocalizationProvider} from '@mui/x-date-pickers/LocalizationProvider';
 import {DateRangePicker} from "@mui/x-date-pickers-pro";
+import TextField from "@mui/material/TextField";
+import MenuItem from "@mui/material/MenuItem";
+import Button from "@mui/material/Button";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -48,13 +51,32 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 
 const NarrowTableCell = styled(StyledTableCell)({
-    width: '100px', // Set a specific width for this cell
+    width: '15%', // Set a specific width for this cell
     padding: '4px',
 });
 
 function createData(timestamp, type, category, amount) {
     return { timestamp, type, category, amount };
 }
+
+const transactionTypes = [
+    {
+        value: 'ALL',
+        label: 'All',
+    },
+    {
+        value: 'INCOME',
+        label: 'Income',
+    },
+    {
+        value: 'EXPENSE',
+        label: 'Expense',
+    },
+    {
+        value: 'SAVING',
+        label: 'Saving',
+    },
+];
 
 export default function Transactions() {
 
@@ -73,6 +95,10 @@ export default function Transactions() {
     const [formData, setFormData] = useState(initialFormData);
     const [errors, setErrors] = useState({});
 
+    const [isFetch, setIsFetch] = useState(false);
+
+    const [type, setType] = React.useState('INCOME');
+
     const [value, setValue] = React.useState([
         dayjs().add(-1, 'month'),
         dayjs(),
@@ -90,10 +116,24 @@ export default function Transactions() {
     
 
     useEffect(() => {
-        fetchAllTransactions(user?.sub.split('|')[1]).then((data) => {
-            setTransactions(data || []);
-        });
-    }, [user]);
+
+        if ( type === 'ALL') {
+            fetchAllTransactionsBetweenDates(user?.sub.split('|')[1],
+                value[0].format('YYYY-MM-DDTHH:mm:ss'),
+                value[1].format('YYYY-MM-DDTHH:mm:ss')).then((data) => {
+                setTransactions(data)
+            });
+        }
+        else {
+            fetchTransactionsBetweenDates(user?.sub.split('|')[1], type,
+                value[0].format('YYYY-MM-DDTHH:mm:ss'),
+                value[1].format('YYYY-MM-DDTHH:mm:ss')).then((data) => {
+                console.log("Data coming", data);
+                setTransactions(data)
+            });
+        }
+
+    }, [user, isFetch]);
 
 
     const handleClickOpen = (index, transaction) => {
@@ -182,10 +222,15 @@ export default function Transactions() {
         setOpen(false);
     };
 
+    const handleTransactionTypeSelect = (event) => {
+        setType(event.target.value);
+    }
+
 
     return (
         <div className={'ds-transactions'} style={{width: '95%', marginLeft: '3%'}}>
-            <div className={'date-range-picker'} style={{width: '25%', margin: '3%'}}>
+            <div className={'date-range-picker'} style={{width: '90%', margin: '3%', display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
+
                 <LocalizationProvider dateAdapter={AdapterDayjs}>
                     <DemoItem label="Pick date range" component="DateRangePicker">
                         <DateRangePicker
@@ -194,6 +239,26 @@ export default function Transactions() {
                         />
                     </DemoItem>
                 </LocalizationProvider>
+
+
+                <DemoItem label={'Pick transaction type'} sx={{marginLeft: '40px', width: '20%'}}>
+                    <TextField
+                        id="outlined-select-transaction-type"
+                        select
+                        label="Transaction Type"
+                        name="transactionType"
+                        value={type}
+                        onChange={handleTransactionTypeSelect}
+                    >
+                        {transactionTypes.map((option) => (
+                            <MenuItem key={option.value} value={option.value}>
+                                {option.label}
+                            </MenuItem>
+                        ))}
+                    </TextField>
+                </DemoItem>
+
+                <Button variant="contained" color="primary" style={{marginLeft: '5%', marginTop: '20px', padding: '15px 20px'}} onClick={() => setIsFetch(!isFetch)}>Fetch Data</Button>
             </div>
             <TableContainer component={Paper} style={{marginTop: '4%', marginBottom: "15%"}}>
                 <Table sx={{ minWidth: 200 }} aria-label="customized table">
