@@ -7,12 +7,14 @@ import {Add} from "@mui/icons-material";
 import Button from "@mui/material/Button";
 import SportsScoreOutlinedIcon from '@mui/icons-material/SportsScoreOutlined';
 import CustomizedDialogs from "../forms/add-transaction.jsx";
-import {createTransaction} from "../../services/axios-services.js";
+import {createGoal, createTransaction} from "../../services/axios-services.js";
 import FlatIcons from "./flat-icons.jsx";
 import Clock from 'react-live-clock';
 import dayjs from "dayjs";
 import {styled} from "@mui/material/styles";
 import {useAuth0} from "@auth0/auth0-react";
+import SelectTextFields from "../forms/form-fields.jsx";
+import GoalFormFields from "../forms/set-goal.jsx";
 
 
 
@@ -36,7 +38,7 @@ const CustomDatePicker = styled(DatePicker)({
 function ActionStation({onChange, setMonth, period}) {
     const [date, setDate] = useState(dayjs());
 
-    const initialFormData = {
+    const initialTransactionFormData = {
         transactionType: 'INCOME',
         amount: '',
         date: new Date().toISOString().slice(0, 10),
@@ -45,9 +47,26 @@ function ActionStation({onChange, setMonth, period}) {
         description: '',
     };
 
-    const [open, setOpen] = useState(false);
-    const [formData, setFormData] = useState(initialFormData);
-    const [errors, setErrors] = useState({});
+    const initialGoalFormData = {
+        name: 'Goal',
+        type: 'GENERAL',
+        amount: '',
+        period: 'MONTHLY',
+        transactionType: 'INCOME',
+        sign: '+',
+        category: '',
+        categoryId: '',
+    }
+
+    const [transactionOpen, setTransactionOpen] = useState(false);
+    const [TransactionFormData, setTransactionFormData] = useState(initialTransactionFormData);
+    const [transactionErrors, setTransactionErrors] = useState({});
+
+    const [goalOpen, setGoalOpen] = useState(false);
+    const [goalFormData, setGoalFormData] = useState(initialGoalFormData);
+    const [goalErrors, setGoalErrors] = useState({});
+
+
 
     const today = new Date();
 
@@ -57,14 +76,10 @@ function ActionStation({onChange, setMonth, period}) {
 
     const {user} = useAuth0();
 
-    const handleClickOpen = () => {
-        setOpen(true);
-    };
-
-    const handleClose = () => {
-        setOpen(false);
-        setFormData(initialFormData);
-        setErrors({});
+    const handleTransactionFormClose = () => {
+        setTransactionOpen(false);
+        setTransactionFormData(initialTransactionFormData);
+        setTransactionErrors({});
     };
 
     const handleMonthChange = (date) => {
@@ -73,12 +88,12 @@ function ActionStation({onChange, setMonth, period}) {
         onChange()
     }
 
-    const handleFormChange = (e) => {
+    const handleTransactionFormChange = (e) => {
         const { name, value } = e.target;
 
         if (name === "category") {
             const [categoryId, category] = value.split("-");
-            setFormData((prevData) => ({
+            setTransactionFormData((prevData) => ({
                 ...prevData,
                 categoryId: parseInt(categoryId), // Ensure categoryId is an integer
                 category,
@@ -86,27 +101,27 @@ function ActionStation({onChange, setMonth, period}) {
             return;
         }
 
-        setFormData((prevData) => ({
+        setTransactionFormData((prevData) => ({
             ...prevData,
             [name]: value,
         }));
-        setErrors((prevErrors) => ({
+        setTransactionErrors((prevErrors) => ({
             ...prevErrors,
             [name]: !value,
         }));
     };
 
-    const handleSaveChanges = () => {
+    const handleTransactionFormSaveChanges = () => {
         let hasError = false;
         let newErrors = {};
 
-        if (!formData.amount) {
+        if (!TransactionFormData.amount) {
             hasError = true;
             newErrors.amount = "Amount is required";
         }
 
         if (hasError) {
-            setErrors(newErrors);
+            setTransactionErrors(newErrors);
             return;
         }
 
@@ -115,22 +130,98 @@ function ActionStation({onChange, setMonth, period}) {
         const currentTimeStamp = sriLankaTime.replace(', ', 'T');
 
         const transaction = {
-            category_id: formData.categoryId,
+            category_id: TransactionFormData.categoryId,
             user_id: user.sub.split("|")[1],
-            amount: parseFloat(formData.amount),
-            date: `${formData.date}T00:00:00`,
+            amount: parseFloat(TransactionFormData.amount),
+            date: `${TransactionFormData.date}T00:00:00`,
             timestamp: currentTimeStamp,
-            description: formData.description,
+            description: TransactionFormData.description,
         };
 
         createTransaction(transaction);
 
-        setFormData(initialFormData);  // Reset the form
-        setErrors({});
-        setOpen(false);
+        setTransactionFormData(initialTransactionFormData);  // Reset the form
+        setTransactionErrors({});
+        setTransactionOpen(false);
 
         onChange();
     };
+
+    const handleGoalFormChange = (e) => {
+        const {name, value} = e.target;
+
+        if (name === "category") {
+            const [categoryId, category] = value.split("-");
+
+            const sign = category === "Expense" ? "-" : "+";
+            console.log(categoryId, category);
+            setGoalFormData((prevData) => ({
+                ...prevData,
+                categoryId: parseInt(categoryId), // Ensure categoryId is an integer
+                category,
+                sign,
+            }));
+            return;
+        }
+
+        setGoalFormData((prevData) => ({
+            ...prevData,
+            [name]: value,
+        }));
+        setGoalErrors((prevErrors) => ({
+            ...prevErrors,
+            [name]: !value,
+        }));
+
+    }
+
+    const handleGoalFormSaveChanges = () => {
+
+        let hasError = false;
+        let newErrors = {};
+
+        if (!goalFormData.amount) {
+            hasError = true;
+            newErrors.amount = "Amount is required";
+        }
+
+        if (!goalFormData.name) {
+            hasError = true;
+            newErrors.name = "Name is required";
+        }
+
+        if (hasError) {
+            setGoalErrors(newErrors);
+            return;
+        }
+
+        const goal = {
+            category_id: goalFormData.type.toUpperCase() === "SPECIFIC" ? goalFormData.categoryId: null,
+            user_id: user.sub.split("|")[1],
+            amount: parseFloat(goalFormData.amount),
+            name: goalFormData.name,
+            sign: goalFormData.sign.charAt(0),
+            period: goalFormData.period.toUpperCase(),
+            type: goalFormData.type.toUpperCase(),
+        }
+
+        console.log("Goal", goal);
+
+        createGoal(goal);
+
+
+        setGoalFormData(initialGoalFormData);
+        setGoalErrors({});
+        setGoalOpen(false);
+
+    }
+
+    const handleGoalFormClose = () => {
+        setGoalOpen(false);
+        setGoalFormData(initialGoalFormData);
+        setGoalErrors({});
+
+    }
 
     const views = period === 'MONTHLY' ? ['month', 'year'] : period === 'YEARLY' ? ['year'] : null;
 
@@ -151,7 +242,7 @@ function ActionStation({onChange, setMonth, period}) {
                     </div>}
                     <div className={'action-station-add-btn'}>
                         <Button disableElevation
-                                onClick={handleClickOpen}
+                                onClick={() => setTransactionOpen(true)}
                                 variant="contained"
                                 style={{
                                     border: "1px solid var(--text-color)",
@@ -167,6 +258,7 @@ function ActionStation({onChange, setMonth, period}) {
                 </div>
                     <div className={'action-station-goal-btn'}>
                         <Button disableElevation
+                                onClick={() => setGoalOpen(true)}
                                 variant="contained"
                                 style={{
                                     border: "1px solid var(--text-color)",
@@ -187,16 +279,34 @@ function ActionStation({onChange, setMonth, period}) {
                     </div>
                 </div>
                 <CustomizedDialogs
-                    open={open}
-                    handleClose={handleClose}
-                    handleSaveChanges={handleSaveChanges}
-                    formData={formData}
-                    handleFormChange={handleFormChange}
-                    errors={errors}
+                    title={"Add Transaction"}
+                    open={transactionOpen}
+                    handleClose={handleTransactionFormClose}
+                    handleSaveChanges={handleTransactionFormSaveChanges}
+                >
+                    <SelectTextFields
+                        formData={TransactionFormData}
+                        handleFormChange={handleTransactionFormChange}
+                        errors={transactionErrors}
+                        currency={"LKR"}
+                    />
+                </CustomizedDialogs>
+
+            <CustomizedDialogs
+                title={"Set up new Goal"}
+                open={goalOpen}
+                handleClose={handleGoalFormClose}
+                handleSaveChanges={handleGoalFormSaveChanges}
+            >
+                <GoalFormFields
+                    formData={goalFormData}
+                    handleFormChange={handleGoalFormChange}
+                    errors={goalErrors}
                     currency={"LKR"}
                 />
+            </CustomizedDialogs>
             </>
-            );
-            }
+    );
+}
 
             export default ActionStation;

@@ -23,9 +23,8 @@ function Dashboard() {
     const [isDarkMode, setIsDarkMode] = useState(false);
     const [ isIncomePieChart, setIsIncomePieChart ] = useState(true);
     const [ isExpensePieChart, setIsExpensePieChart ] = useState(true);
-    const [ period, setPeriod ] = useState('ALL');
+    const [ period, setPeriod ] = useState('');
 
-    // search query param use searchparam
     const [searchParams, setSearchParams] = useSearchParams();
 
     const [loading, setLoading] = useState(searchParams.get('loading') || false);
@@ -182,14 +181,14 @@ function Dashboard() {
 
                                     />
                                 </WidgetContainer>
-
                                 <WidgetContainer title="Recent Transactions"
                                                  position={{top: '54%', left: '60%'}}
                                                  size={{width: '36%', height: '39%'}}
                                 >
                                     <Transactions changed={changed}/>
                                 </WidgetContainer>
-                            </>}
+                            </>
+                        }
                     </div>
             }
         </>

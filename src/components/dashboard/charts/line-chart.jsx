@@ -27,12 +27,6 @@ ChartJS.register(
 const LineChartComponent = ({incomeData, getCSSVariableValue, expenseData, savingsData}) => {
 
 
-    const secondaryColor = getCSSVariableValue('--chart-color');
-
-    const red = getCSSVariableValue('--red-color');
-    const blue = getCSSVariableValue('--blue-color');
-    const yellow = getCSSVariableValue('--yellow-color');
-
     function generateMonthLabels() {
         const months = [];
         const currentDate = new Date();
@@ -46,6 +40,19 @@ const LineChartComponent = ({incomeData, getCSSVariableValue, expenseData, savin
 
         return months;
     }
+
+    const [secondaryColor, setSecondaryColor] = React.useState(getCSSVariableValue('--chart-color'));
+    const [red, setRed] = React.useState(getCSSVariableValue('--red-color'));
+    const [blue, setBlue] = React.useState(getCSSVariableValue('--blue-color'));
+    const [yellow, setYellow] = React.useState(getCSSVariableValue('--yellow-color'));
+
+    React.useEffect(() => {
+        setSecondaryColor(getCSSVariableValue('--chart-color'));
+        setRed(getCSSVariableValue('--red-color'));
+        setBlue(getCSSVariableValue('--blue-color'));
+        setYellow(getCSSVariableValue('--yellow-color'));
+    }, [getCSSVariableValue] );
+
 
 
     const options = {

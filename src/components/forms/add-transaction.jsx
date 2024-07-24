@@ -18,7 +18,7 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
     },
 }));
 
-export default function CustomizedDialogs({ open, handleClose, handleSaveChanges, formData, handleFormChange, errors, currency }) {
+export default function CustomizedDialogs({title, open, handleClose, handleSaveChanges, children}) {
     return (
         <React.Fragment>
             <BootstrapDialog
@@ -26,8 +26,15 @@ export default function CustomizedDialogs({ open, handleClose, handleSaveChanges
                 aria-labelledby="customized-dialog-title"
                 open={open}
             >
-                <DialogTitle sx={{ m: 0, p: 2, textAlign: 'center' }} id="customized-dialog-title">
-                    Add Transaction
+                <DialogTitle
+                    sx={{
+                        m: 0,
+                        p: 2,
+                        textAlign: 'center',
+                        backgroundColor: '#320440',
+                        color: 'white'
+                }} id="customized-dialog-title">
+                    {title}
                 </DialogTitle>
                 <IconButton
                     aria-label="close"
@@ -42,16 +49,19 @@ export default function CustomizedDialogs({ open, handleClose, handleSaveChanges
                     <CloseIcon />
                 </IconButton>
                 <DialogContent dividers>
-                    <SelectTextFields
-                        formData={formData}
-                        handleFormChange={handleFormChange}
-                        errors={errors}
-                        currency={currency}
-                    />
+                    {children}
                 </DialogContent>
-                <DialogActions>
-                    <Button autoFocus onClick={handleSaveChanges}>
-                        Save changes
+                <DialogActions
+                sx={{
+                    backgroundColor: '#320440',
+                    color: 'white'
+                }}>
+                    <Button autoFocus onClick={handleSaveChanges} sx={{
+                        backgroundColor: '#320440',
+                        color: 'white',
+                        border: '1px solid white',
+                    }}>
+                        Save
                     </Button>
                 </DialogActions>
             </BootstrapDialog>
