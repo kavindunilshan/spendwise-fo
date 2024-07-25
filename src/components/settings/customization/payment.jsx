@@ -1,21 +1,22 @@
 import React, {useContext, useEffect} from 'react';
-import HeaderWithSlogan from "../header-slogan.jsx";
 import '/src/styles/settings/components/customization.css';
 import {SettingsContext} from "../settings-context.jsx";
 
-function Customization({}) {
+function Payment({}) {
     const { setComponentData } = useContext(SettingsContext);
 
     useEffect(() => {
-        setComponentData({"title": "Customization", "slogan": "Customize your spendWise experience"});
+        setComponentData({
+            title: 'Payment', slogan: 'Manage payment data and refer history'
+        });
     }, []);
     return (
-        <div className={'customization'}>
-            <div className={'customization-content'}>
+        <div className={'payment'}>
+            <div className={'payment-content'}>
 
             </div>
         </div>
     );
 }
 
-export default Customization;
+export default Payment;

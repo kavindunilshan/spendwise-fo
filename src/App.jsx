@@ -6,7 +6,7 @@ import Dashboard from "./pages/dashboard.jsx";
 import Settings from "./pages/settings.jsx";
 import Profile from "./components/settings/profile/profile.jsx";
 import DashboardSettings from "./components/settings/dashboard/dashboardSettings.jsx";
-import Customization from "./components/settings/customization/customization.jsx";
+import Payment from "./components/settings/customization/payment.jsx";
 import Notifications from "./components/settings/notification/notification.jsx";
 import {SettingsProvider} from "./components/settings/settings-context.jsx";
 import Support from "./components/settings/support/support.jsx";
@@ -25,7 +25,7 @@ function App() {
                         <Route path="profile" element={<Profile />} />
                         <Route path="dashboard" element={<DashboardSettings />} />
                         <Route path="support" element={<Support />} />
-                        <Route path="customization" element={<Customization />} />
+                        <Route path="payment" element={<Payment />} />
                         <Route path="notification" element={<Notifications />} />
                     </Route>
                     <Route path="/data-center" element={<DataCenter />}>

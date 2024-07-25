@@ -26,9 +26,9 @@ function SettingsMenu({}) {
                         </NavLink>
                     </li>
                     <li className="settings-sidebar-item">
-                        <NavLink to="/settings/customization"
+                        <NavLink to="/settings/payment"
                             style={({ isActive }) => (isActive ? { color: "#faf7f7", backgroundColor: '#320440'}  : {})}
-                            >Customization
+                            >Payment
                         </NavLink>
                     </li>
                     <li className="settings-sidebar-item">
