@@ -2,6 +2,7 @@ import React, {useContext, useEffect} from 'react';
 import HeaderWithSlogan from "../../../settings/header-slogan.jsx";
 import '/src/styles/data-center/advice.css';
 import {SettingsContext} from "../../../settings/settings-context.jsx";
+import RequestForm from "./request-form.jsx";
 
 function Advices(props) {
 
@@ -29,6 +30,8 @@ function Advices(props) {
                     <HeaderWithSlogan title={'Request for Advice'}
                                       titleStyle={titleStyle}
                     />
+
+                    <RequestForm/>
                 </div>
             </div>
         </div>
