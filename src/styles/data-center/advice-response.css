@@ -1,0 +1,73 @@
+.advice-response {
+    font-family: 'Open Sans', sans-serif;
+    color: #320440;
+    border: 1px solid #ccc;
+    padding: 0 16px 40px 16px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    margin-left: 40px;
+    margin-top: 20px;
+    width: 80%;
+}
+
+.advice-response-header {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+    margin-bottom: 8px;
+}
+
+.advice-response-header h2 {
+    color: #320440;
+    font-size: 1.4em;
+    font-style: italic;
+    font-weight: 500;
+}
+
+.advice-response-status-timestamp {
+    display: flex;
+    align-items: center;
+}
+
+.advice-response-timestamp {
+    font-style: italic;
+}
+
+.advice-response-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.advice-response-problem-section {
+    margin-bottom: 16px;
+}
+
+.advice-response-result {
+    display: flex;
+    align-items: center;
+}
+
+.advice-response-text-box {
+    background-color: #f1f1f1;
+    border-radius: 15px;
+    padding: 10px 15px;
+    margin-top: 5px;
+    font-size: 14px;
+    color: #320440;
+    max-width: 70%;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    word-wrap: break-word;
+}
+
+.advice-response-answer-area {
+    height: 150px;
+    resize: vertical;
+    width: 80%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.2em;
+    color: #320440;
+}

@@ -55,6 +55,15 @@ function DataMenu({}) {
                         />
                         </NavLink>
                     </li>
+                    <li className="settings-sidebar-item">
+                        <NavLink to="/admin/data-center/advice"
+                                 style={({isActive}) => (isActive ? {
+                                     color: "#faf7f7",
+                                     backgroundColor: '#320440'
+                                 } : {color: '#7d0a0a'})}
+                        >WiseAdvice-Res
+                        </NavLink>
+                    </li>
                 </ul>
             </div>
         </div>
