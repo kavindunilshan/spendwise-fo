@@ -1,19 +1,32 @@
-import React, {useContext, useEffect} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import HeaderWithSlogan from "../../../settings/header-slogan.jsx";
 import '/src/styles/data-center/advice.css';
 import {SettingsContext} from "../../../settings/settings-context.jsx";
 import RequestForm from "./request-form.jsx";
 import AdviceResult from "./result.jsx";
+import {useAuth0} from "@auth0/auth0-react";
+import {fetchAdvices} from "../../../../services/data-center.js";
 
 function Advices(props) {
 
 
     const { setComponentData } = useContext(SettingsContext);
+    const [advices, setAdvices] = useState([]);
+    const { isAuthenticated, user, loginWithPopup} = useAuth0();
 
 
     useEffect(() => {
         setComponentData({"title": "WiseAdvice", "slogan": "Get solved your financial Problem"});
     }, []);
+
+    useEffect(() => {
+        if (isAuthenticated) {
+            fetchAdvices(user.sub.split("|")[1]).then((data) => {
+                setAdvices(data);
+            });
+        }
+
+    }, [user]);
 
 
     const titleStyle = {
@@ -29,16 +42,6 @@ function Advices(props) {
         fontStyle: 'italic',
         color: '#04504d'
     }
-
-    const advice = {
-        title: 'Thread 1',
-        status: 'Processing',
-        timestamp: '2024-07-26 14:30',
-        problem: 'This is the problem description.',
-        result: 'This is the result of the advice.',
-        answerImage: './src/assets/b1.jpg',
-        resultImage: './src/assets/b2.jpg'
-    };
 
 
 
@@ -59,7 +62,18 @@ function Advices(props) {
                                       titleStyle={titleStyle}
                     />
 
-                    <AdviceResult {...advice}/>
+                    {advices.map((advice, index) => {
+                        return (
+                            <AdviceResult key={index}
+                                          index={index + 1}
+                                          title={advice.title}
+                                          status={advice.status}
+                                          timestamp={advice.timestamp}
+                                          problem={advice.problem}
+                                          advice={advice.advice}
+                            />
+                        );
+                    })}
                 </div>
             </div>
         </div>

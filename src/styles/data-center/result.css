@@ -30,8 +30,14 @@
 }
 
 .advice-result-status {
+    display: flex;
     margin-left: 50px;
+    color: #0b7b04;
     margin-right: 8px;
+}
+
+.processing {
+    color: #7d540b;
 }
 
 .advice-result-timestamp {
