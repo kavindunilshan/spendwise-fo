@@ -13,7 +13,6 @@ function Response(props) {
     const [changed, setChanged] = useState(false);
     const { isAuthenticated, user, loginWithPopup} = useAuth0();
     const [isAdmin, setIsAdmin] = React.useState(false);
-    const [isLoading, setIsLoading] = React.useState(true);
 
     // use navigate
     const navigate = useNavigate();
@@ -24,7 +23,6 @@ function Response(props) {
             fetchUserData(user?.sub.split("|")[1]).then((data) => {
                 if (data?.is_admin) {
                     setIsAdmin(true);
-                    setIsLoading(false);
                     setComponentData({"title": "WiseAdvice-Response", "slogan": "You logged as an admin user."});
                 } else {
                     navigate('/');
