@@ -1,4 +1,12 @@
+.advices {
+    width: 100%;
+}
+
 .advices-content {
-    display: flex;
+    width: 100%;
     margin: 3% 4%;
+}
+
+.advices-request {
+    width: 80%;
 }

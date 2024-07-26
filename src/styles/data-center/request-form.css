@@ -1,15 +1,11 @@
 .request-form {
     width: 100%;
-    max-width: 600px;
     margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    background-color: #fff;
+    padding-left: 40px;
+    position: relative;
 }
 
-.form-group {
+.request-form-group {
     margin-bottom: 15px;
 }
 
@@ -25,6 +21,10 @@
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.2em;
+    color: #320440;
+
 }
 
 .problem-field {
@@ -32,16 +32,15 @@
     resize: vertical;
 }
 
-.btn-submit {
-    padding: 10px 15px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+.request-form-bottom {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
 }
 
-.btn-submit:hover {
-    background-color: #0056b3;
+.request-form-side-info {
+    font-size: small;
+    font-style: italic;
+    color: #32393e;
+    width: 70%;
 }
