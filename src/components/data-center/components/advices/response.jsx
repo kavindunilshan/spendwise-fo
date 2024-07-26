@@ -1,5 +1,5 @@
 import React, {useContext, useEffect, useState} from 'react';
-import {fetchAdvices} from "../../../../services/data-center.js";
+import {fetchAdvices, updateAdvice} from "../../../../services/data-center.js";
 import {SettingsContext} from "../../../settings/settings-context.jsx";
 import {useAuth0} from "@auth0/auth0-react";
 import AdviceResponse from "./advice-response.jsx";
@@ -8,12 +8,23 @@ function Response(props) {
 
     const { setComponentData } = useContext(SettingsContext);
     const [advices, setAdvices] = useState([]);
+    const [changed, setChanged] = useState(false);
     const { isAuthenticated, user, loginWithPopup} = useAuth0();
 
 
     useEffect(() => {
         setComponentData({"title": "WiseAdvice-Response", "slogan": "You logged as an admin user."});
     }, []);
+
+    const handleSetAnswer = (index, answer) => {
+        const newAdvices = [...advices];
+        newAdvices[index].advice = answer;
+        setAdvices(newAdvices);
+
+        updateAdvice(newAdvices[index]).then((data) => {
+            setChanged(!changed);
+        });
+    }
 
     useEffect(() => {
         if (isAuthenticated) {
@@ -22,15 +33,18 @@ function Response(props) {
             });
         }
 
-    }, [user]);
+    }, [user, changed]);
     return (
         <div>
-            <AdviceResponse
-                index={1}
-                title={'Title of the Problem'}
-                timestamp={'2022-01-01 12:00:00'}
-                problem={'This is the problem description.'}
-            />
+            {advices.map((advice, index) => {
+                return <AdviceResponse key={index}
+                                       index={index}
+                                       title={advice.title}
+                                       timestamp={advice.timestamp}
+                                       problem={advice.problem}
+                                       onSetAnswer={handleSetAnswer}
+                />
+            })}
         </div>
     );
 }
