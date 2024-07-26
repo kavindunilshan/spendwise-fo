@@ -22,7 +22,7 @@
     background: linear-gradient(to right, #320440, #7d0a0a);
     -webkit-background-clip: text; /* For webkit browsers */
     background-clip: text; /* For other browsers that support it */
-    text-align: left;
+    text-align: center;
 }
 
 .home-li-content {

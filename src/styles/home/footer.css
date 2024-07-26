@@ -40,7 +40,6 @@
 .home-footer-content-right {
     display: flex;
     flex-direction: column;
-    margin-top: 5%;
     width: 60%;
     height: 100%;
 }
@@ -48,9 +47,9 @@
 .home-footer-socials {
     display: flex;
     flex-direction: row;
+    margin-top: 5%;
     justify-content: center;
     width: 100%;
-    margin-top: 5%;
 }
 
 .home-footer-social-icon {
