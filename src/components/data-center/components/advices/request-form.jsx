@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import '/src/styles/data-center/request-form.css';
 import HeaderWithSlogan from "../../../settings/header-slogan.jsx";
 import Button from "@mui/material/Button";
-import {Add, AutoAwesome} from "@mui/icons-material";
+import {AutoAwesome} from "@mui/icons-material";
 
 function RequestForm(props) {
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import '/src/styles/data-center/result.css';
 import {useAuth0} from "@auth0/auth0-react";
-import {Done, FiberManualRecord} from "@mui/icons-material";
+import {FiberManualRecord} from "@mui/icons-material";
 
 const AdviceResult = ({ index, title, status, timestamp, problem, advice}) => {
 
