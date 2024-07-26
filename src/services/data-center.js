@@ -14,6 +14,16 @@ export const fetchAdvices = async (userId) => {
     return response.data;
 }
 
+export const fetchAllAdvices = async (userId) => {
+    const token = await getAccessToken(); // Wait for token to be fetched
+    const response = await axios.get(`${baseUrl}/advices/admin/${userId}`, {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    });
+    return response.data;
+}
+
 // post advice
 export const postAdvice = async (advice) => {
     const token = await getAccessToken(); // Wait for token to be fetched

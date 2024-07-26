@@ -1,9 +1,26 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { NavLink } from "react-router-dom";
 import '/src/styles/settings/settings-menu.css'
 import {AutoAwesome} from "@mui/icons-material";
+import {useAuth0} from "@auth0/auth0-react";
+import {fetchUserData} from "../../services/settings.js";
 
 function DataMenu({}) {
+
+    const {user} = useAuth0();
+
+    const [isAdmin, setIsAdmin] = React.useState(false);
+
+
+    useEffect(() => {
+        fetchUserData(user?.sub.split("|")[1]).then((data) => {
+            if (data.is_admin) {
+                setIsAdmin(true);
+            }
+        });
+    }, [user]);
+
+
     return (
         <div className="settings-sidebar-container">
             <div className="sidebar-menu">
@@ -55,15 +72,18 @@ function DataMenu({}) {
                         />
                         </NavLink>
                     </li>
-                    <li className="settings-sidebar-item">
-                        <NavLink to="/admin/data-center/advice"
-                                 style={({isActive}) => (isActive ? {
-                                     color: "#faf7f7",
-                                     backgroundColor: '#320440'
-                                 } : {color: '#7d0a0a'})}
-                        >WiseAdvice-Res
-                        </NavLink>
-                    </li>
+                    {isAdmin &&
+
+                        <li className="settings-sidebar-item">
+                            <NavLink to="/admin/data-center/advice"
+                                     style={({isActive}) => (isActive ? {
+                                         color: "#faf7f7",
+                                         backgroundColor: '#320440'
+                                     } : {color: '#7d0a0a'})}
+                            >WiseAdvice-Res
+                            </NavLink>
+                        </li>
+                    }
                 </ul>
             </div>
         </div>
