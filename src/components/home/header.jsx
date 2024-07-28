@@ -4,7 +4,7 @@ import "/src/styles/home/header.css";
 
 function Header({overviewRef, serviceRef, scrollToSection}) {
     return (
-        <header className="home-header">
+        <div className="home-header">
             <div className={'home-header-nav'}>
                 <Navbar overviewRef={overviewRef} serviceRef={serviceRef} scrollToSection={scrollToSection}/>
             </div>
@@ -18,10 +18,12 @@ function Header({overviewRef, serviceRef, scrollToSection}) {
                         <span className="small-text">-- Robert Kiyosaki --</span>
                     </div>
                 </div>
-                <img src={'./src/assets/a.webp'} alt={'home-base-image'} className={'home-base'}/>
-                <div className="home-action-btn"></div>
+                <div className={'home-header-content-right'}>
+                    <img src={'./src/assets/a.webp'} alt={'home-base-image'} className={'home-base'}/>
+                    <div className="home-action-btn"></div>
+                </div>
             </div>
-        </header>
+        </div>
     );
 }
 
