@@ -13,6 +13,10 @@
     width: 40%;
 }
 
+.hl-tc-small {
+    width: 90%;
+}
+
 .home-li-title {
     font-family: "Open Sans", sans-serif;
     font-weight: 600;
@@ -22,7 +26,7 @@
     background: linear-gradient(to right, #320440, #7d0a0a);
     -webkit-background-clip: text; /* For webkit browsers */
     background-clip: text; /* For other browsers that support it */
-    text-align: left;
+    text-align: center;
 }
 
 .home-li-content {
@@ -33,10 +37,18 @@
   padding: 1rem;
 }
 
+.hl-c-small {
+    flex-direction: column;
+}
+
 .home-li {
   width: 35%;
   border-radius: 5%;
   margin-left: 5%;
+}
+
+.hl-small {
+    width: 80%;
 }
 
 .home-li-description {

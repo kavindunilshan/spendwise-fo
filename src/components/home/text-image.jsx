@@ -1,6 +1,7 @@
-import React, {useEffect, useRef} from 'react';
-import "/src/styles/home/left-image.css";
+import React, {useEffect, useRef, useState} from 'react';
+import "/src/styles/home/text-image.css";
 import {motion, useAnimation, useInView} from "framer-motion";
+import useWindowResize from "../../services/useResize.js";
 
 function TextImageContainer({ isLeft, image, title, description }) {
     const ref = useRef();
@@ -8,6 +9,8 @@ function TextImageContainer({ isLeft, image, title, description }) {
     const isInView = useInView(ref, {once: false});
 
     const anime = useAnimation();
+
+    const isWidthThresholdPassed = useWindowResize(768);
 
     useEffect(() => {
         if (isInView) {
@@ -19,7 +22,20 @@ function TextImageContainer({ isLeft, image, title, description }) {
 
     const tags = (
         <>
-            {!isLeft ? (
+            {
+                isWidthThresholdPassed ?
+                    (
+                        <>
+                            <div className={'home-li-text-container hl-tc-small'}>
+                                <h2 className={'home-li-title'}>{title}</h2>
+                                <div className={'home-li-description'}>{description}</div>
+                            </div>
+                            <img src={image} alt={'home-li'} className={'home-li hl-small'} />
+                        </>
+                    )
+                :
+
+                !isLeft ? (
                 <>
                     <div className={'home-li-text-container'}>
                         <h2 className={'home-li-title'}>{title}</h2>
@@ -49,7 +65,7 @@ function TextImageContainer({ isLeft, image, title, description }) {
                 initial={'hidden'}
                 animate={anime}
                 transition={{duration: 0.5, delay: 0.25}}
-                className={'home-li-content'}>
+                className={`home-li-content ${isWidthThresholdPassed ? 'hl-c-small': ''}`}>
                 {tags}
             </motion.div>
         </div>
