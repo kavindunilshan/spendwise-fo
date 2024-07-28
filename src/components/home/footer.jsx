@@ -1,24 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import "/src/styles/home/footer.css";
 import {Facebook, Instagram, LinkedIn, Twitter} from "@mui/icons-material";
+import useWindowResize from "../../services/useResize.js";
 
 function Footer() {
 
-    const [isWidthThresholdPassed, setIsWidthThresholdPassed] = useState(window.innerWidth < 768);
-
-    useEffect(() => {
-        const handleResize = () => {
-            setIsWidthThresholdPassed(window.innerWidth < 768);
-        };
-
-        window.addEventListener('resize', handleResize);
-
-        // Clean up the event listener on component unmount
-        return () => {
-            window.removeEventListener('resize', handleResize);
-        };
-    }, []);
-
+    const isWidthThresholdPassed = useWindowResize(768);
 
     return (
         <div className={'home-footer'}>

@@ -1,6 +1,7 @@
 import React, {useEffect, useRef, useState} from 'react';
 import "/src/styles/home/text-image.css";
 import {motion, useAnimation, useInView} from "framer-motion";
+import useWindowResize from "../../services/useResize.js";
 
 function TextImageContainer({ isLeft, image, title, description }) {
     const ref = useRef();
@@ -9,22 +10,7 @@ function TextImageContainer({ isLeft, image, title, description }) {
 
     const anime = useAnimation();
 
-    const [isWidthThresholdPassed, setIsWidthThresholdPassed] = useState(window.innerWidth < 768);
-
-    useEffect(() => {
-        const handleResize = () => {
-            setIsWidthThresholdPassed(window.innerWidth < 768);
-        };
-
-        window.addEventListener('resize', handleResize);
-
-        // Clean up the event listener on component unmount
-        return () => {
-            window.removeEventListener('resize', handleResize);
-        };
-    }, []);
-
-
+    const isWidthThresholdPassed = useWindowResize(768);
 
     useEffect(() => {
         if (isInView) {
