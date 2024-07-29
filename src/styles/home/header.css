@@ -65,7 +65,7 @@
 .home-slogan {
   font-family: "Open Sans", sans-serif;
   font-weight: 800;
-  font-size: 40px;
+  font-size: 5vh;
   color: #320440;
   text-align: center;
   margin-top: 2vh;
@@ -99,6 +99,7 @@
     text-align: center;
     color: #320440;
     margin: 0 auto;
+    margin-top: 20px;
     width: 80%;
 }
 
