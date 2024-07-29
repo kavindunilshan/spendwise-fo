@@ -58,7 +58,7 @@
 
 .home-logo {
   transform: rotate(-8deg);
-    width: 27vw;
+    width: clamp(10vh, 27vw, 45vh);
   margin-top: 5vh;
 }
 
