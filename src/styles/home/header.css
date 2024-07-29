@@ -32,14 +32,15 @@
 }
 
 .home-header-content-left {
-  width: 40%;
+  width: 45%;
   display: flex;
   flex-direction: column;
+    justify-content: center;
   align-items: center;
 }
 
 .home-header-content-right {
-    width: 60%;
+    width: 55%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -47,8 +48,8 @@
 
 .home-logo {
   transform: rotate(-8deg);
-  height: 100px;
-  margin-top: 15%;
+    width: 27vw;
+  margin-top: 5vh;
 }
 
 .home-slogan {
@@ -56,16 +57,16 @@
   font-weight: 800;
   font-size: 40px;
   color: #320440;
-  width: 350px;
   text-align: center;
-  margin-top: 6%;
+  margin-top: 2vh;
   margin-left: 15%;
 }
 
 .home-header-side-text {
     font-family: "Open Sans", sans-serif;
     font-weight: 400;
-    font-size: 20px;
+    font-size:  clamp(14px, 1.4vw, 20px);
+    line-height: 3vh;
     text-align: center;
     color: #320440;
     margin-top: 5%;
@@ -73,7 +74,7 @@
 }
 
 .small-text {
-  font-size: 15px;
+  font-size: 1.2vw;
   font-weight: 400;
 }
 
