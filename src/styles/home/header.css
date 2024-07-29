@@ -9,7 +9,16 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     transition: background-color 0.3s, box-shadow 0.3s, transform 1s;
+}
+
+.home-header-main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .home-header:hover {
@@ -42,6 +51,7 @@
 .home-header-content-right {
     width: 55%;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
@@ -62,6 +72,10 @@
   margin-left: 15%;
 }
 
+.hs-small {
+    font-size: 5vw;
+}
+
 .home-header-side-text {
     font-family: "Open Sans", sans-serif;
     font-weight: 400;
@@ -71,6 +85,21 @@
     color: #320440;
     margin-top: 5%;
     margin-left: 15%;
+}
+
+.hh-st-small {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: "Open Sans", sans-serif;
+    font-weight: 400;
+    font-size:  clamp(16px, 1.4vw, 20px);
+    line-height: 2.5vh;
+    text-align: center;
+    color: #320440;
+    margin: 0 auto;
+    width: 80%;
 }
 
 .small-text {
@@ -83,4 +112,9 @@
   height: 60vh;
     width: 40vw;
   border-radius: 50px;
+}
+
+.hb-small {
+    height: 30vh;
+    width: 40vw;
 }
