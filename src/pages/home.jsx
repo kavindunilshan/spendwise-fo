@@ -3,6 +3,7 @@ import Header from "../components/home/header.jsx";
 import Body from "../components/home/body.jsx";
 import LoginButton from "../components/login/login.jsx";
 import Footer from "../components/home/footer.jsx";
+import "/src/styles/home/home.css";
 
 function Home() {
 
@@ -24,7 +25,9 @@ function Home() {
             <div className="home">
                 <LoginButton></LoginButton>
                 <Header overviewRef={overviewRef} serviceRef={serviceRef} scrollToSection={scrollToSection}/>
-                <Body overviewRef={overviewRef} serviceRef={serviceRef}/>
+                <div className={'home-body'}>
+                    <Body overviewRef={overviewRef} serviceRef={serviceRef}/>
+                </div>
                 <Footer/>
             </div>
         </>

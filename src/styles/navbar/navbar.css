@@ -6,7 +6,7 @@
 .navbar-nav {
     list-style-type: none;
     display: flex;
-    gap: 4rem;
+    gap: 5vw;
     padding: 0;
     margin: 0;
 }
@@ -33,3 +33,14 @@
     -webkit-background-clip: text;
 }
 
+.ni-small {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.ni-small span {
+    font-size: 2.4vw;
+}
