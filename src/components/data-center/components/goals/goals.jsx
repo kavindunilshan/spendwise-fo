@@ -1,5 +1,6 @@
 import React, {useContext, useEffect} from 'react';
 import {SettingsContext} from "../../../settings/settings-context.jsx";
+import GoalTable from "./goal-table.jsx";
 
 function Goals(props) {
 
@@ -10,7 +11,9 @@ function Goals(props) {
     }, []);
 
     return (
-        <div></div>
+        <div>
+            <GoalTable/>
+        </div>
     );
 }
 
