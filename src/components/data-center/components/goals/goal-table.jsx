@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {useEffect, useState} from 'react';
 import {styled} from '@mui/material/styles';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -10,17 +11,7 @@ import Paper from '@mui/material/Paper';
 import {Edit} from "@mui/icons-material";
 import {Tooltip} from "@mui/material";
 import CustomizedDialogs from "../../../forms/add-transaction.jsx";
-import {DemoItem} from '@mui/x-date-pickers/internals/demo';
-import {AdapterDayjs} from '@mui/x-date-pickers/AdapterDayjs';
-import {LocalizationProvider} from '@mui/x-date-pickers/LocalizationProvider';
-import {DateRangePicker} from "@mui/x-date-pickers-pro";
-import TextField from "@mui/material/TextField";
-import MenuItem from "@mui/material/MenuItem";
-import Button from "@mui/material/Button";
-import SelectTextFields from "../../../forms/form-fields.jsx";
 import GoalFormFields from "../../../forms/set-goal.jsx";
-import {createGoal} from "../../../../services/axios-services.js";
-import {useEffect, useState} from "react";
 import {useAuth0} from "@auth0/auth0-react";
 import {fetchGoals, updateGoal} from "../../../../services/data-center.js";
 

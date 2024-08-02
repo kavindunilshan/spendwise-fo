@@ -8,13 +8,11 @@ import {LocalizationProvider} from "@mui/x-date-pickers";
 import {AdapterDayjs} from "@mui/x-date-pickers/AdapterDayjs"
 import dayjs from "dayjs";
 import HeaderWithSlogan from "../../../settings/header-slogan.jsx";
-import Dashboard from "../../../../pages/dashboard.jsx";
 import {useAuth0} from "@auth0/auth0-react";
-import {fetchOverMonthlyData, fetchPocketBalance} from "../../../../services/dashboard.js";
+import {fetchPocketBalance} from "../../../../services/dashboard.js";
 import {fetchUserData} from "../../../../services/settings.js";
 import WidgetContainer from "../../../dashboard/charts/chart-container.jsx";
 import PieChartComponent from "../../../dashboard/charts/pie-chart.jsx";
-import BarChartComponent from "../../../dashboard/charts/bar-chart.jsx";
 
 
 const CustomDatePicker = styled(DatePicker)({

@@ -1,14 +1,6 @@
 import React, {useEffect} from 'react';
-import {Bar, Pie} from 'react-chartjs-2';
-import {
-    Chart as ChartJS,
-    ArcElement,
-    Tooltip,
-    Legend,
-    Title,
-    CategoryScale,
-    LinearScale
-} from 'chart.js';
+import {Pie} from 'react-chartjs-2';
+import {ArcElement, CategoryScale, Chart as ChartJS, Legend, LinearScale, Title, Tooltip} from 'chart.js';
 import CountUp from "react-countup";
 import {fetchExpenseBreakdown} from "../../../services/dashboard.js";
 import {useAuth0} from "@auth0/auth0-react";
