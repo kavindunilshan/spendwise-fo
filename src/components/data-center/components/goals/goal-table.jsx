@@ -22,7 +22,7 @@ import GoalFormFields from "../../../forms/set-goal.jsx";
 import {createGoal} from "../../../../services/axios-services.js";
 import {useEffect, useState} from "react";
 import {useAuth0} from "@auth0/auth0-react";
-import {fetchGoals} from "../../../../services/data-center.js";
+import {fetchGoals, updateGoal} from "../../../../services/data-center.js";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -58,6 +58,7 @@ const NarrowTableCell = styled(StyledTableCell)({
 export default function GoalTable() {
 
     const initialGoalFormData = {
+        id: '',
         name: 'Goal',
         type: 'GENERAL',
         amount: '',
@@ -72,6 +73,8 @@ export default function GoalTable() {
     const [goalFormData, setGoalFormData] = useState(initialGoalFormData);
     const [goalErrors, setGoalErrors] = useState({});
 
+    const [changed, setChanged] = useState(false);
+
     const {user, isAuthenticated} = useAuth0();
 
     const [goals, setGoals] = useState([]);
@@ -80,18 +83,18 @@ export default function GoalTable() {
     useEffect(() => {
         if (isAuthenticated) {
             fetchGoals(user.sub.split("|")[1]).then((data) => {
-                console.log("Here", data);
                 setGoals(data);
             });
         }
-    }, [user]);
+    }, [user, changed]);
 
     const handleClickOpen = (index, goal) => {
         setGoalOpen(true);
 
-        console.log("first set goal", goal);
+        
 
         const newGoal = {
+            id: goal.goalId,
             name: goal.name,
             type: goal.type,
             amount: goal.amount,
@@ -102,7 +105,7 @@ export default function GoalTable() {
             categoryId: goal.category_id,
         }
 
-        console.log("second set new goal", newGoal);
+        
 
         setGoalFormData(newGoal);
     };
@@ -114,7 +117,7 @@ export default function GoalTable() {
             const [categoryId, category] = value.split("-");
 
             const sign = category === "Expense" ? "-" : "+";
-            console.log(categoryId, category);
+            
             setGoalFormData((prevData) => ({
                 ...prevData,
                 categoryId: parseInt(categoryId), // Ensure categoryId is an integer
@@ -156,6 +159,7 @@ export default function GoalTable() {
         }
 
         const goal = {
+            goalId: goalFormData.id,
             category_id: goalFormData.type.toUpperCase() === "SPECIFIC" ? goalFormData.categoryId: null,
             user_id: user.sub.split("|")[1],
             amount: parseFloat(goalFormData.amount),
@@ -166,9 +170,14 @@ export default function GoalTable() {
             type: goalFormData.type.toUpperCase(),
         }
 
-        console.log("Goal", goal);
+        
 
-        createGoal(goal);
+        updateGoal(goal.goalId, goal).then(
+            (data) => {
+                
+                setChanged(!changed);
+            }
+        );
 
 
         setGoalFormData(initialGoalFormData);

@@ -22,7 +22,7 @@ const getAccessToken = async () => {
 
     if (!token || isTokenExpired(token)) {
         try {
-            console.log('Fetching access token...');
+            
             const response = await axios.post(`https://${auth0Domain}/oauth/token`, {
                 client_id: clientId,
                 client_secret: clientSecret,

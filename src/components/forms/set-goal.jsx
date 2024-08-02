@@ -45,7 +45,7 @@ const periods = [
 export default function GoalFormFields({ formData, handleFormChange, errors, currency }) {
     const [categories, setCategories] = React.useState([]);
 
-    console.log("Here inside place", formData);
+    
 
     useEffect(() => {
         if (formData.transactionType) {

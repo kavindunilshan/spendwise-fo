@@ -54,7 +54,7 @@ function Reports(props) {
     useEffect(() => {
         // Fetch the pocket value from the server
         if (userId) {
-            console.log("date", date.format('MM YYYY'))
+            
             fetchPocketBalance(userId, "MONTHLY", date.format('MM YYYY')).then((data) => {
                 setPocket(data.pocket);
                 setIncome(data.income);

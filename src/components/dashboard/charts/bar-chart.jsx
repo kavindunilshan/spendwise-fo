@@ -37,7 +37,7 @@ const BarChartComponent = ({month, currency, value, changed, type, getCSSVariabl
     }, [value]);
 
     useEffect(() => {
-        console.log("here")
+        
         fetchExpenseBreakdown(user.sub.split("|")[1], type.toUpperCase(), month).then((data) => {
             setChartData(data || {});
         });

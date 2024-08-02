@@ -40,7 +40,7 @@ const PieChartComponent = ({month, currency, value, changed, type, getCSSVariabl
     useEffect(() => {
         fetchExpenseBreakdown(user.sub.split("|")[1], type.toUpperCase(), month).then((data) => {
             setChartData(data || {});
-            console.log("data", data);
+            
         });
     }, [changed]);
 

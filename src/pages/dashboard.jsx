@@ -29,7 +29,7 @@ function Dashboard() {
 
     const [loading, setLoading] = useState(searchParams.get('loading') || false);
 
-    console.log(" Here ", loading);
+    
 
     const [isContentLoaded, setIsContentLoaded] = useState(false);
 
@@ -49,7 +49,7 @@ function Dashboard() {
             setRedirectAttempted(true);
 
             loginWithRedirect().then(() => {
-                console.log('Redirected');
+                
             });
         }
     }, [user, isAuthenticated]);

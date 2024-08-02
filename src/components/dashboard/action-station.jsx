@@ -154,7 +154,7 @@ function ActionStation({onChange, setMonth, period}) {
             const [categoryId, category] = value.split("-");
 
             const sign = category === "Expense" ? "-" : "+";
-            console.log(categoryId, category);
+            
             setGoalFormData((prevData) => ({
                 ...prevData,
                 categoryId: parseInt(categoryId), // Ensure categoryId is an integer
@@ -206,7 +206,7 @@ function ActionStation({onChange, setMonth, period}) {
             type: goalFormData.type.toUpperCase(),
         }
 
-        console.log("Goal", goal);
+        
 
         createGoal(goal);
 
