@@ -45,3 +45,24 @@ export const updateAdvice = async (advice) => {
     });
     return response.data;
 }
+
+export const fetchGoals = async (userId) => {
+    const token = await getAccessToken(); // Wait for token to be fetched
+    const response = await axios.get(`${baseUrl}/goals/${userId}`, {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    });
+    return response.data;
+}
+
+// update a goal
+export const updateGoal = async (id, goal) => {
+    const token = await getAccessToken(); // Wait for token to be fetched
+    const response = await axios.put(`${baseUrl}/goals/${id}`, goal, {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    });
+    return response.data;
+}

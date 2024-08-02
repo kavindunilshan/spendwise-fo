@@ -129,7 +129,7 @@ export default function Transactions() {
             fetchTransactionsBetweenDates(user?.sub.split('|')[1], type,
                 value[0].format('YYYY-MM-DDTHH:mm:ss'),
                 value[1].format('YYYY-MM-DDTHH:mm:ss')).then((data) => {
-                console.log("Data coming", data);
+                
                 setTransactions(data)
             });
         }
@@ -214,7 +214,7 @@ export default function Transactions() {
             const newTransactions = [...transactions];
             newTransactions[formData.index] = data;
 
-            console.log("data", data);
+            
             setTransactions(newTransactions);
         });
 

@@ -32,7 +32,7 @@ function Profile({}) {
             setCountry(data.country);
             setCurrency(data.currency);
 
-            console.log("Data", data);
+            
         });
     }, [user]);
 

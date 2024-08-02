@@ -64,7 +64,7 @@ function TextImageContainer({ isLeft, image, title, description }) {
                 }}
                 initial={'hidden'}
                 animate={anime}
-                transition={{duration: 0.5, delay: 0.25}}
+                transition={{duration: 0.25, delay: 0.25}}
                 className={`home-li-content ${isWidthThresholdPassed ? 'hl-c-small': ''}`}>
                 {tags}
             </motion.div>
