@@ -45,6 +45,8 @@ const periods = [
 export default function GoalFormFields({ formData, handleFormChange, errors, currency }) {
     const [categories, setCategories] = React.useState([]);
 
+    console.log("Here inside place", formData);
+
     useEffect(() => {
         if (formData.transactionType) {
             fetchCategoryByType(formData.transactionType).then(fetchedCategories => {
@@ -146,7 +148,7 @@ export default function GoalFormFields({ formData, handleFormChange, errors, cur
                         select
                         label="Category"
                         name="category"
-                        value={formData.category === "" ? "":`${formData.categoryId}-${formData.category}`}
+                        value={formData.category === "" ? "a":`${formData.categoryId}-${formData.category}`}
                         onChange={handleFormChange}
                         helperText="Please select Category"
                         sx={{ marginLeft : 2 }}

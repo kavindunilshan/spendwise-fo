@@ -89,7 +89,22 @@ export default function GoalTable() {
     const handleClickOpen = (index, goal) => {
         setGoalOpen(true);
 
-        setGoalFormData(goal);
+        console.log("first set goal", goal);
+
+        const newGoal = {
+            name: goal.name,
+            type: goal.type,
+            amount: goal.amount,
+            period: goal.period,
+            transactionType: goal.transactionType,
+            sign: goal.sign,
+            category: goal.category.name,
+            categoryId: goal.category_id,
+        }
+
+        console.log("second set new goal", newGoal);
+
+        setGoalFormData(newGoal);
     };
 
     const handleGoalFormChange = (e) => {
@@ -144,6 +159,7 @@ export default function GoalTable() {
             category_id: goalFormData.type.toUpperCase() === "SPECIFIC" ? goalFormData.categoryId: null,
             user_id: user.sub.split("|")[1],
             amount: parseFloat(goalFormData.amount),
+            transactionType: goalFormData.transactionType.toUpperCase(),
             name: goalFormData.name,
             sign: goalFormData.sign.charAt(0),
             period: goalFormData.period.toUpperCase(),
@@ -175,26 +191,29 @@ export default function GoalTable() {
                 <Table sx={{ minWidth: 200 }} aria-label="customized table">
                     <TableHead>
                         <TableRow>
+                            <StyledTableCell align={'left'}></StyledTableCell>
                             <StyledTableCell align={'left'}>Name</StyledTableCell>
                             <NarrowTableCell align={'left'}>Type</NarrowTableCell>
                             <NarrowTableCell align={'left'}>Period</NarrowTableCell>
                             <NarrowTableCell align={'center'}>Amount</NarrowTableCell>
                             <NarrowTableCell align={'left'}>Category</NarrowTableCell>
+                            <NarrowTableCell align={'left'}>Sub Category</NarrowTableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {goals?.name && goals.map((goal, index) => (
+                        {goals.map((goal, index) => (
                             <StyledTableRow key={index}>
-                                <StyledTableCell align="left">
+                                <StyledTableCell align="center">
                                     <Tooltip title="Edit" placement="left">
                                         <Edit onClick={() => handleClickOpen(index, goal)}/>
-                                    </Tooltip> {goal.timestamp.split('.')[0].replace('T', ' ')}
+                                    </Tooltip>
                                 </StyledTableCell>
-                                <NarrowTableCell align="left">{goal.category.type}</NarrowTableCell>
-                                <NarrowTableCell align="left">{goal.category.name}</NarrowTableCell>
+                                <NarrowTableCell align="left">{goal.name}</NarrowTableCell>
+                                <NarrowTableCell align="left">{goal.type}</NarrowTableCell>
+                                <NarrowTableCell align="left">{goal.period}</NarrowTableCell>
                                 <NarrowTableCell align="center">{goal.amount.toLocaleString()}</NarrowTableCell>
-                                <NarrowTableCell align="left">{goal.date.split('T')[0]}</NarrowTableCell>
-                                <StyledTableCell align="left">{goal.description}</StyledTableCell>
+                                <StyledTableCell align="left">{goal.transactionType}</StyledTableCell>
+                                <StyledTableCell align="left">{goal?.category.name}</StyledTableCell>
                             </StyledTableRow>
                         ))}
                     </TableBody>

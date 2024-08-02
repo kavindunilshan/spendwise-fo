@@ -199,6 +199,7 @@ function ActionStation({onChange, setMonth, period}) {
             category_id: goalFormData.type.toUpperCase() === "SPECIFIC" ? goalFormData.categoryId: null,
             user_id: user.sub.split("|")[1],
             amount: parseFloat(goalFormData.amount),
+            transactionType: goalFormData.transactionType.toUpperCase(),
             name: goalFormData.name,
             sign: goalFormData.sign.charAt(0),
             period: goalFormData.period.toUpperCase(),
