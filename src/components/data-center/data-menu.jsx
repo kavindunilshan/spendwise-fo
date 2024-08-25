@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import { NavLink } from "react-router-dom";
 import '/src/styles/settings/settings-menu.css'
-import {AutoAwesome} from "@mui/icons-material";
+import {AutoAwesome, CastForEducation, School} from "@mui/icons-material";
 import {useAuth0} from "@auth0/auth0-react";
 import {fetchUserData} from "../../services/settings.js";
 
@@ -66,9 +66,20 @@ function DataMenu({}) {
                                  style={({isActive}) => (isActive ? {
                                      color: "#faf7f7",
                                      backgroundColor: '#320440'
-                                 } : {color: '#059434'})}
+                                 } : {color: '#026021'})}
                         >WiseAdvice<AutoAwesome fontSize={'18'}
                                                 style={{marginLeft: '10px', color: '#cdcd04'}}
+                        />
+                        </NavLink>
+                    </li>
+                    <li className="settings-sidebar-item">
+                        <NavLink to="/data-center/education"
+                                 style={({isActive}) => (isActive ? {
+                                     color: "#faf7f7",
+                                     backgroundColor: '#320440'
+                                 } : {color: '#026021'})}
+                        >WiseLearn<School fontSize={'24'}
+                                                style={{marginLeft: '10px', color: '#987f06'}}
                         />
                         </NavLink>
                     </li>

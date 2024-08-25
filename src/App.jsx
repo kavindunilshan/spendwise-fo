@@ -17,6 +17,7 @@ import Milestones from "./components/data-center/components/milestones/milestone
 import Goals from "./components/data-center/components/goals/goals.jsx";
 import Advices from "./components/data-center/components/advices/advices.jsx";
 import Response from "./components/data-center/components/advices/response.jsx";
+import Learn from "./components/data-center/components/learn/learn.jsx";
 
 function App() {
     return (
@@ -34,6 +35,7 @@ function App() {
                         <Route path="transactions" element={<Transactions />} />
                         <Route path="reports" element={<Reports />} />
                         <Route path="milestones" element={<Milestones />} />
+                        <Route path="education" element={<Learn />} />
                         <Route path="goals" element={<Goals />} />
                         <Route path="advice" element={<Advices/>} />
                     </Route>
