@@ -79,7 +79,7 @@ function DataMenu({}) {
                                      backgroundColor: '#320440'
                                  } : {color: '#026021'})}
                         >WiseLearn<School fontSize={'24'}
-                                                style={{marginLeft: '10px', color: '#987f06'}}
+                                                style={{marginLeft: '10px', color: '#cdcd04'}}
                         />
                         </NavLink>
                     </li>
