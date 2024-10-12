@@ -91,7 +91,7 @@ function DashboardSettings() {
                         <div className={'settings-dashboard-img-content'}>
                             <img
                                 className={`settings-dashboard-img settings-d-img-${!isDarkMode ? 'selected' : ''} ${!isEditing ? 's-d-disabled' : ''}`}
-                                src={'/src/assets/light.png'}
+                                src={'/light.png'}
                                 alt={""}
                                 onClick={() => isEditing ? setIsDarkMode(false) : null}
                             />
@@ -100,7 +100,7 @@ function DashboardSettings() {
                         <div className={'settings-dashboard-img-content'}>
                             <img
                                 className={`settings-dashboard-img settings-d-img-${isDarkMode ? 'selected' : ''} ${!isEditing ? 's-d-disabled' : ''}`}
-                                src={'/src/assets/dark.png'}
+                                src={'/dark.png'}
                                 alt={""}
                                 onClick={() => isEditing ? setIsDarkMode(true) : null}
                             />
@@ -118,7 +118,7 @@ function DashboardSettings() {
                         <div className={'settings-dashboard-img-content'}>
                             <img
                                 className={`settings-dashboard-img settings-d-img-${isIncomePieChart ? 'selected' : ''} ${!isEditing ? 's-d-disabled' : ''}`}
-                                src={'/src/assets/income.png'}
+                                src={'/income.png'}
                                 alt={""}
                                 onClick={() => isEditing ? setIsIncomePieChart(true) : null}
                             />
@@ -127,7 +127,7 @@ function DashboardSettings() {
                         <div className={'settings-dashboard-img-content'}>
                             <img
                                 className={`settings-dashboard-img settings-d-img-${!isIncomePieChart ? 'selected' : ''} ${!isEditing ? 's-d-disabled' : ''}`}
-                                src={'/src/assets/income-bar.png'}
+                                src={'/income-bar.png'}
                                 alt={""}
                                 onClick={() => isEditing ? setIsIncomePieChart(false) : null}
                             />
@@ -145,7 +145,7 @@ function DashboardSettings() {
                         <div className={'settings-dashboard-img-content'}>
                             <img
                                 className={`settings-dashboard-img settings-d-img-${isExpensePieChart ? 'selected' : ''} ${!isEditing ? 's-d-disabled' : ''}`}
-                                src={'/src/assets/Expense.png'}
+                                src={'/Expense.png'}
                                 alt={""}
                                 onClick={() => isEditing ? setIsExpensePieChart(true) : null}
                             />
@@ -154,7 +154,7 @@ function DashboardSettings() {
                         <div className={'settings-dashboard-img-content'}>
                             <img
                                 className={`settings-dashboard-img settings-d-img-${!isExpensePieChart ? 'selected' : ''} ${!isEditing ? 's-d-disabled' : ''}`}
-                                src={'/src/assets/expense-bar.png'}
+                                src={'/expense-bar.png'}
                                 alt={""}
                                 onClick={() => isEditing ? setIsExpensePieChart(false) : null}
                             />

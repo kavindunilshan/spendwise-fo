@@ -100,7 +100,7 @@ function Reports(props) {
                     </div>
                     <div className={'report-content printable'}>
                         <div className={'report-content-header'}>
-                            {/*<img src={'../src/assets/logoa.png'} alt={'home-base-image'} className={'report-logo'}/>*/}
+                            {/*<img src={'./logoa.png'} alt={'home-base-image'} className={'report-logo'}/>*/}
 
                             <div className={'report-title'}>SpendWise Monthly Transaction Report</div>
                             <p>

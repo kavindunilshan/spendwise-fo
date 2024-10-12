@@ -35,7 +35,7 @@ function Learn({}) {
                     <TextImageContainer isLeft={true} title={'Welcome to WiseLearn'}
                                         description={description}/>
                 </div>
-                <img className={'learn-image'} src={'/src/assets/finance.png'} alt={'learn'}/>
+                <img className={'learn-image'} src={'/finance.png'} alt={'learn'}/>
             </div>
         </div>
     );

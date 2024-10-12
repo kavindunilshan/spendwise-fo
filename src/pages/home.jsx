@@ -18,7 +18,7 @@ function Home() {
 
         <>
             <img className={'home-landing-img'}
-                 src={'./src/assets/b2.jpg'}
+                 src={'/b2.jpg'}
                  alt={'home-base-image'}
                  style={{
                      position: 'absolute',

@@ -24,7 +24,7 @@ function Loading(props) {
                     aria-label="Loading Spinner"
                     data-testid="loader"
                 />
-                <img src={"./src/assets/loading.svg"} alt="Loading..." style={{width: '150px'}}/>
+                <img src={"/loading.svg"} alt="Loading..." style={{width: '150px'}}/>
             </div>
         </div>
     );

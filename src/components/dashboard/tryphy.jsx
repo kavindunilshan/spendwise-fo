@@ -6,7 +6,7 @@ function Trophy({img, date, reason}) {
     return (
         <Tooltip title={reason} arrow>
             <div className={'trophy-container'}>
-                <img className={'trophy-img'} src={'./src/assets/m1.png'} alt={''}/>
+                <img className={'trophy-img'} src={'/m1.png'} alt={''}/>
                 <div className={'trophy-reason'}>{date}</div>
             </div>
         </Tooltip>

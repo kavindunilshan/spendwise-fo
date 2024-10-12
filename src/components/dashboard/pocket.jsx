@@ -16,7 +16,7 @@ function Pocket({currency, value}) {
 
     return (
         <div className={'pocket'}>
-            <img className={'pocket-img'} src={'./src/assets/wp.jpg'} alt={''}/>
+            <img className={'pocket-img'} src={'/wp.jpg'} alt={''}/>
             <div className={'pocket-value'}>
                 {currency}<CountUp start={startValue} end={endValue} duration={3} separator=","/>
             </div>
