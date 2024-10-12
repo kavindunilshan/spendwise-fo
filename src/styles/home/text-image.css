@@ -2,7 +2,10 @@
   display: flex;
   flex-direction: column;
   padding: 1rem;
-  margin-top: 3%;
+  margin: 3%;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.11);
+    border-radius: 40px;
+
 }
 
 .home-li-text-container {
@@ -21,7 +24,7 @@
     font-family: "Open Sans", sans-serif;
     font-weight: 600;
     font-style: italic;
-    font-size: 2.4rem;
+    font-size: 2rem;
     color: transparent; /* Set the text color to transparent */
     background: linear-gradient(to right, #320440, #7d0a0a);
     -webkit-background-clip: text; /* For webkit browsers */
@@ -54,9 +57,9 @@
 .home-li-description {
   font-family: "Open Sans", sans-serif;
   font-weight: 400;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   color: #320440;
-  width: 90%;
+  width: 80%;
   padding: 3% 2%;
     line-height: 1.5;
   margin-bottom: 4%;
