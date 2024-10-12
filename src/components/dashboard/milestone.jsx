@@ -19,9 +19,9 @@ function Milestone(props) {
             })
             }
 
-            <Trophy img={'./src/assets/m1.png'} date={'2021-10-10'} reason={'First 1000 users'}/>
-            <Trophy img={'./src/assets/m1.png'} date={'2021-10-10'} reason={'First 1000 users'}/>
-            <Trophy img={'./src/assets/m1.png'} date={'2021-10-10'} reason={'First 1000 users'}/>
+            <Trophy img={'/m1.png'} date={'2021-10-10'} reason={'First 1000 users'}/>
+            <Trophy img={'/m1.png'} date={'2021-10-10'} reason={'First 1000 users'}/>
+            <Trophy img={'/m1.png'} date={'2021-10-10'} reason={'First 1000 users'}/>
 
         </div>
     );

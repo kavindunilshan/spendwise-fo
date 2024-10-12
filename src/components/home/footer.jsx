@@ -11,7 +11,7 @@ function Footer() {
         <div className={'home-footer'}>
             <div className={`home-footer-container ${isWidthThresholdPassed ? 'hf-c-small': ''}`}>
                 <div className={'home-footer-content-left'}>
-                    <img src={'./src/assets/logoa.png'} alt={'home-base-image'} className={'home-footer-logo'}/>
+                    <img src={'/logoa.png'} alt={'home-base-image'} className={'home-footer-logo'}/>
                     <div className={'home-footer-slogan'}>Personal Expense Tracker</div>
                 </div>
                 <div className={'home-footer-content-right'}>

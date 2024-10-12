@@ -43,7 +43,7 @@ const AdviceResult = ({ index, title, status, timestamp, problem, advice}) => {
                                     <div className={'advice-result-text-box advice-result-answer'}>
                                         {advice}
                                     </div>
-                                    <img src={'../src/assets/advice.jpg'} alt="Result Avatar"
+                                    <img src={'./advice.jpg'} alt="Result Avatar"
                                          className="advice-result-avatar"/>
                                 </div>
                             </div>

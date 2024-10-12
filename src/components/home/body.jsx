@@ -67,9 +67,9 @@ function Body({overviewRef, serviceRef}) {
                     animate={sideAnime}
                     transition={{duration: 0.5, delay: 0.25}}
                     className={'body-item-title'}>Overview</motion.div>
-                <TextImageContainer isLeft={true} title={'Who We Are?'} image={'./src/assets/li1.png'}
+                <TextImageContainer isLeft={true} title={'Who We Are?'} image={'/li1.png'}
                                     description={description1}/>
-                <TextImageContainer isLeft={false} title={'Why to Track Expenses?'} image={'./src/assets/li4.png'}
+                <TextImageContainer isLeft={false} title={'Why to Track Expenses?'} image={'/li4.png'}
                                     description={description2}/>
             </div>
 
@@ -84,11 +84,11 @@ function Body({overviewRef, serviceRef}) {
                     transition={{duration: 0.5, delay: 0.25}}
                     className={'body-item-title'}>Our Services
                 </motion.div>
-                <TextImageContainer isLeft={true} title={'Track Your Spending'} image={'./src/assets/li3.png'}
+                <TextImageContainer isLeft={true} title={'Track Your Spending'} image={'/li3.png'}
                                     description={description3}/>
-                <TextImageContainer isLeft={false} title={'Set Financial Goals'} image={'./src/assets/li5.jpg'}
+                <TextImageContainer isLeft={false} title={'Set Financial Goals'} image={'/li5.jpg'}
                                     description={description4}/>
-                <TextImageContainer isLeft={true} title={'Easy Expense Tracking'} image={'./src/assets/li2.png'}
+                <TextImageContainer isLeft={true} title={'Easy Expense Tracking'} image={'/li2.png'}
                                     description={description5}/>
             </div>
         </div>

@@ -15,7 +15,7 @@ function Header({overviewRef, serviceRef, scrollToSection}) {
             <div className={'home-header-main'}>
                 <div className="home-header-content">
                     <div className={'home-header-content-left'}>
-                        <img src={'./src/assets/logoa.png'} alt={'home-base-image'} className={'home-logo'}/>
+                        <img src={'/logoa.png'} alt={'home-base-image'} className={'home-logo'}/>
                         <div className={`home-slogan ${widthThreshold ? 'hs-small' : ''}`}>Personal Expense Tracker</div>
                         {
                             !widthThreshold &&
@@ -27,7 +27,7 @@ function Header({overviewRef, serviceRef, scrollToSection}) {
                         }
                     </div>
                     <div className={'home-header-content-right'}>
-                        <img src={'./src/assets/a.webp'} alt={'home-base-image'}
+                        <img src={'/a.webp'} alt={'home-base-image'}
                              className={`home-base ${widthThreshold ? 'hb-small' : ''}`}/>
                     </div>
                 </div>
