@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host 0.0.0.0",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
@@ -18,7 +18,7 @@
     "@mui/material": "^5.15.20",
     "@mui/x-date-pickers": "^7.6.2",
     "@mui/x-date-pickers-pro": "^7.10.0",
-    "axios": "^1.7.2",
+    "axios": "^1.7.7",
     "chart.js": "^4.4.3",
     "chartjs-plugin-annotation": "^3.0.1",
     "currency-list": "^1.0.8",
@@ -35,7 +35,9 @@
     "react-live-clock": "^6.1.16",
     "react-router-dom": "^6.23.1",
     "react-spinners": "^0.14.1",
-    "recharts": "^2.12.7"
+    "recharts": "^2.12.7",
+    "stream-browserify": "^3.0.0",
+    "util": "^0.12.5"
   },
   "devDependencies": {
     "@types/react": "^18.2.66",
