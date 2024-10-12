@@ -30,7 +30,7 @@ function TextImageContainer({ isLeft, image, title, description }) {
                                 <h2 className={'home-li-title'}>{title}</h2>
                                 <div className={'home-li-description'}>{description}</div>
                             </div>
-                            <img src={image} alt={'home-li'} className={'home-li hl-small'} />
+                            {image && <img src={image} alt={'home-li'} className={'home-li hl-small'} />}
                         </>
                     )
                 :
@@ -41,11 +41,11 @@ function TextImageContainer({ isLeft, image, title, description }) {
                         <h2 className={'home-li-title'}>{title}</h2>
                         <div className={'home-li-description'}>{description}</div>
                     </div>
-                    <img src={image} alt={'home-li'} className={'home-li'} />
+                    {image && <img src={image} alt={'home-li'} className={'home-li'}/>}
                 </>
             ) : (
                 <>
-                    <img src={image} alt={'home-li'} className={'home-li'} />
+                {image && <img src={image} alt={'home-li'} className={'home-li'} />}
                     <div className={'home-li-text-container'}>
                         <h2 className={'home-li-title'}>{title}</h2>
                         <div className={'home-li-description'}>{description}</div>
