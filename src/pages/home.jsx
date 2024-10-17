@@ -1,9 +1,10 @@
-import React, {useRef} from 'react';
+import React, {useEffect, useRef} from 'react';
 import Header from "../components/home/header.jsx";
 import Body from "../components/home/body.jsx";
 import LoginButton from "../components/login/login.jsx";
 import Footer from "../components/home/footer.jsx";
 import "/src/styles/home/home.css";
+import {fetchPublicData} from "../services/axios-services.js";
 
 function Home() {
 
@@ -13,6 +14,12 @@ function Home() {
     const scrollToSection = (ref) => {
         ref.current.scrollIntoView({behavior: 'smooth'});
     }
+
+    useEffect(() => {
+        fetchPublicData().then((data) => {
+            console.log("Here", data);
+        });
+    }, []);
 
     return (
 

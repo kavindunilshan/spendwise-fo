@@ -3,6 +3,17 @@ import getAccessToken from "./backend-token.js";
 
 const baseUrl = "http://localhost:8080/api/private";
 
+export const fetchPublicData = async () => {
+    const url = "http://localhost:8080/api/public";
+    try {
+        const response = await axios.get(url);
+        return response.data; // return the data received from the API
+    } catch (error) {
+        console.error("Error fetching public data:", error);
+        throw error; // rethrow the error for further handling if needed
+    }
+};
+
 // fetch all categories
 export const fetchAllCategories = async () => {
     const token = await getAccessToken(); // Wait for token to be fetched

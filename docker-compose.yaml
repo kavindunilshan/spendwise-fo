@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: spendwise-fo:latest
+    container_name: spendwise-fo
+    ports:
+      - "5173:80"
+    restart: unless-stopped
