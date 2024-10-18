@@ -6,11 +6,14 @@ import {BrowserRouter} from "react-router-dom";
 
 const root = createRoot(document.getElementById('root'));
 
+const auth0Domain = import.meta.env.VITE_AUTH0_DOMAIN;
+const clientId = import.meta.env.VITE_AUTH0_FO_CLIENT_ID;
+
 root.render(
         <BrowserRouter>
             <Auth0Provider
-                domain="dev-c5ls7veng3ljfc5g.us.auth0.com"
-                clientId="NeusqrLxWz03fI3MizB5jB0CsNHROijk"
+                domain={auth0Domain}
+                clientId={clientId}
                 authorizationParams={{
                     redirect_uri: window.location.origin
                 }}
