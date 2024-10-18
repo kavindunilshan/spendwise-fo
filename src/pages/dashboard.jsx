@@ -13,7 +13,6 @@ import {fetchUserData, getPreferences} from "../services/settings.js";
 import BarChartComponent from "../components/dashboard/charts/bar-chart.jsx";
 import dayjs from "dayjs";
 import Loading from "../components/utils/loading-image.jsx";
-import {useSearchParams} from "react-router-dom";
 
 function Dashboard() {
 
@@ -24,13 +23,6 @@ function Dashboard() {
     const [ isIncomePieChart, setIsIncomePieChart ] = useState(true);
     const [ isExpensePieChart, setIsExpensePieChart ] = useState(true);
     const [ period, setPeriod ] = useState('');
-
-    const [searchParams, setSearchParams] = useSearchParams();
-
-    const [loading, setLoading] = useState(searchParams.get('loading') || false);
-
-    
-
     const [isContentLoaded, setIsContentLoaded] = useState(false);
 
     const [pocket, setPocket] = useState(0);
@@ -60,7 +52,7 @@ function Dashboard() {
                 setIsDarkMode(data.isDarkMode);
                 setIsIncomePieChart(data.isIncomePieChart);
                 setIsExpensePieChart(data.isExpensePieChart);
-                setPeriod(data.dataViewPeriod);
+                setPeriod(data.dataViewPeriod || 'MONTHLY');
             });
         }
     }, [userId]);
