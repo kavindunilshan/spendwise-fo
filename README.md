@@ -1,8 +1,17 @@
-# React + Vite
+# Environment Variables
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Make sure to configure the following environment variables in your .env file for the application to function correctly:
 
-Currently, two official plugins are available:
+- VITE_AUTH0_DOMAIN: The Auth0 domain for authentication.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+- VITE_AUTH0_AUDIENCE: The audience identifier for your Auth0 API.
+
+
+- VITE_AUTH0_CLIENT_ID: The client ID for your Auth0 application.
+
+
+- VITE_AUTH0_CLIENT_SECRET: The client secret for your Auth0 application.
+
+
+- VITE_AUTH0_FO_CLIENT_ID: The client ID for the frontend Auth0 application.
