@@ -18,10 +18,11 @@ import Goals from "./components/data-center/components/goals/goals.jsx";
 import Advices from "./components/data-center/components/advices/advices.jsx";
 import Response from "./components/data-center/components/advices/response.jsx";
 import Learn from "./components/data-center/components/learn/learn.jsx";
+import ErrorBoundary from "./components/utils/ErrorBoundary.jsx";
 
 function App() {
     return (
-        <>
+        <ErrorBoundary>
             <SettingsProvider>
                 <Routes>
                     <Route path="/settings" element={<Settings />}>
@@ -46,7 +47,7 @@ function App() {
                     <Route path="/dashboard" element={<Dashboard />} />
                 </Routes>
             </SettingsProvider>
-        </>
+        </ErrorBoundary>
     );
 }
 
