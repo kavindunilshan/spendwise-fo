@@ -9,7 +9,7 @@ export const fetchPublicData = async () => {
         const response = await axios.get(url);
         return response.data; // return the data received from the API
     } catch (error) {
-        console.error("Error fetching public data:", error);
+        
         throw error; // rethrow the error for further handling if needed
     }
 };

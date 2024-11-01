@@ -71,22 +71,22 @@ export const createUser = async (user) => {
 
 // fetch pocket balance
 export const fetchPocketBalance = async (userId, period, value) => {
-    console.log("data in balance", userId, period, value)
+    
     const token = await getAccessToken(); // Wait for token to be fetched
-    console.log("token received in balance", token);
+    
     const response = await axios.get(`${baseUrl}/transactions/pocket/${userId}/${period}/${value}`, {
         headers: {
             Authorization: `Bearer ${token}`
         }
     });
-    console.log("response in balance", response.data);
+    
     return response.data;
 }
 
 // fetch over monthly data
 export const fetchOverMonthlyData = async (userId, months) => {
     const token = await getAccessToken(); // Wait for token to be fetched
-    console.log("token received in monthly data", token);
+    
     const response = await axios.get(`${baseUrl}/transactions/${userId}/monthly/${months}`, {
         headers: {
             Authorization: `Bearer ${token}`
