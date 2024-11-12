@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: spendwise-frontend-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: spendwise-frontend
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
