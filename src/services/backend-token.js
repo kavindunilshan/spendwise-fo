@@ -35,7 +35,7 @@ const getAccessToken = async () => {
 
             return accessToken;
         } catch (error) {
-            console.error('Error fetching access token:', error);
+            
         }
     } else {
         return token;

@@ -23,7 +23,7 @@ function Dashboard() {
     const [ isIncomePieChart, setIsIncomePieChart ] = useState(true);
     const [ isExpensePieChart, setIsExpensePieChart ] = useState(true);
     const [ period, setPeriod ] = useState('');
-    const [isContentLoaded, setIsContentLoaded] = useState(false);
+    const [isContentLoaded, setIsContentLoaded] = useState(0);
 
     const [pocket, setPocket] = useState(0);
     const [income, setIncome] = useState(0);
@@ -67,7 +67,9 @@ function Dashboard() {
                 setPocket(data.pocket);
                 setIncome(data.income);
                 setExpense(data.expenses);
-                setIsContentLoaded(true);
+                setIsContentLoaded(1);
+            }).catch((error) => {
+                setIsContentLoaded(2);
             });
 
             fetchOverMonthlyData(userId, 6).then((data) => {
@@ -100,6 +102,10 @@ function Dashboard() {
         setSecondaryColor(getCSSVariableValue('--yellow-color'));
         setSecondaryColor(getCSSVariableValue('--blue-color'));
     }, [isDarkMode]);
+
+    if (isContentLoaded === 2) {
+        throw new Error("Error fetching data");
+    }
 
 
     return (

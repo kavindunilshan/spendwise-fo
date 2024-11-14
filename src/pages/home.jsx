@@ -17,8 +17,13 @@ function Home() {
 
     useEffect(() => {
         fetchPublicData().then((data) => {
-            console.log("Here", data);
-        });
+            
+        }).catch(
+            (error) => {
+                
+                throw error;
+            }
+        );
     }, []);
 
     return (
