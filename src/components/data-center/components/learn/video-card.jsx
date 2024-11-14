@@ -1,4 +1,5 @@
 import React from 'react';
+import "src/styles/data-center/video-card.css";
 
 const VideoCard = ({ videoLink, description }) => {
     return (
