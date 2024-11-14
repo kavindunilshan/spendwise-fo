@@ -16,13 +16,38 @@ function Learn() {
 
         const dummyVideos = [
             {
-                link: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-                description: "This is a helpful video on managing your finances effectively!"
+                link: "https://www.youtube.com/watch?v=VaiqGsot5ws",
+                description: "How to Manage Your Money So You Never Go Broke"
             },
             {
-                link: "https://www.youtube.com/embed/otherVideoID",
-                description: "Learn how to save and invest wisely."
-            }
+                link: "https://www.youtube.com/watch?v=IfpAjsytwy0",
+                description: "How To Manage Your Money Like The 1%"
+            },
+            {
+                link: "https://www.youtube.com/watch?v=4j2emMn7UaI",
+                description: "How to Save Money: Financial Literacy"
+            },
+            {
+                link: "https://www.youtube.com/watch?v=MoFj7meoHkY",
+                description: "Financial Literacy & The Social Media Generation"
+            },
+            {
+                link: "https://www.youtube.com/watch?v=FXjHwQ6J_yI",
+                description: "How to start investing—responsibly"
+            },
+            {
+                link: "https://www.youtube.com/watch?v=jvBaRf9LHDs",
+                description: "How to Become a Millionaire in 3 Years"
+            },
+            {
+                link: "https://www.youtube.com/watch?v=UIIYoW4RwYc",
+                description: "The REAL Solution to Your Financial Problems"
+            },
+            {
+                link: "https://www.youtube.com/watch?v=UcAY6qRHlw0",
+                description: "How to Budget Your Money"
+            },
+
         ];
 
         setVideos(dummyVideos);

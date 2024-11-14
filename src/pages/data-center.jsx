@@ -8,6 +8,7 @@ import DataMenu from "../components/data-center/data-menu.jsx";
 import '/src/styles/data-center/colors.css'
 import '/src/styles/data-center/data-center.css'
 import FlatIcons from "../components/data-center/flat-icons.jsx";
+import Footer from "../components/home/footer.jsx";
 
 function DataCenter() {
 
@@ -42,6 +43,8 @@ function DataCenter() {
                     <Outlet/>
                 </div>
             </div>
+
+            <Footer/>
         </div>
     );
 }

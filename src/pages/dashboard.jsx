@@ -22,7 +22,7 @@ function Dashboard() {
     const [isDarkMode, setIsDarkMode] = useState(false);
     const [ isIncomePieChart, setIsIncomePieChart ] = useState(true);
     const [ isExpensePieChart, setIsExpensePieChart ] = useState(true);
-    const [ period, setPeriod ] = useState('');
+    const [ period, setPeriod ] = useState('MONTHLY');
     const [isContentLoaded, setIsContentLoaded] = useState(0);
 
     const [pocket, setPocket] = useState(0);

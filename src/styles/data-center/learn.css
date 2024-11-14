@@ -1,24 +1,3 @@
-/*<div className={'learn'}>*/
-/*<HeaderWithSlogan*/
-/* title={'Welcome to WiseLearn'}*/
-/*titleStyle={titleStyle}*/
-/*/>*/
-/*<div className={'learn-content'}>*/
-/*<div className={'learn-item'}>*/
-/*<div className={'learn-intro-text'}>*/
-/*                                   At SpendWise, we believe that knowledge is key to financial well-being.*/
-/*WiseLearn is our dedicated feature designed to empower you with essential*/
-/*financial education. Explore a wealth of resources, tips, and strategies*/
-/*that will help you manage your finances more effectively, make*/
-/*informed decisions, and achieve your financial goals.*/
-/*Dive into our curated content and take control of*/
-/*your financial future today!*/
-/*</div>*/
-/*</div>*/
-/*<img className={'learn-image'} src={'/finance.png'} alt={'learn'}/>*/
-/*</div>*/
-/*</div>*/
-
 .learn {
   display: flex;
   flex-direction: column;
@@ -43,9 +22,18 @@
 
 .learn-image {
   position: absolute;
-  bottom: 5%;
+  bottom: 20%;
   right: 10%;
   width: 20%;
   height: 60%;
   transform: rotate(30deg);
+}
+
+.video-section {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: center;
 }
