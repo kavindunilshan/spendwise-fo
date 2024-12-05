@@ -3,11 +3,16 @@ import '/src/styles/data-center/request-form.css';
 import HeaderWithSlogan from "../../../settings/header-slogan.jsx";
 import Button from "@mui/material/Button";
 import {AutoAwesome} from "@mui/icons-material";
+import {postAdvice} from "../../../../services/data-center.js";
+import dayjs from "dayjs";
+import {useAuth0} from "@auth0/auth0-react";
 
-function RequestForm(props) {
+function RequestForm({onChange}) {
 
     const [title, setTitle] = useState('');
-    const [description, setDescription] = useState('');
+    const [problem, setProblem] = useState('');
+
+    const {user} = useAuth0();
 
     const titleStyle = {
         fontSize: '1.2em',
@@ -17,7 +22,18 @@ function RequestForm(props) {
     }
 
     const handleSubmit = () => {
-
+        const timestamp = dayjs().format('YYYY-MM-DDTHH:mm:ss');
+        const advice = {
+            title: title,
+            problem: problem,
+            timestamp: timestamp,
+            status: false,
+            userId: user.sub.split("|")[1],
+        }
+        postAdvice(advice).then((data) => {
+            console.log("Advice Posted", data);
+            onChange();
+        });
     }
 
     return (
@@ -31,8 +47,8 @@ function RequestForm(props) {
                 </div>
                 <div className="request-form-group">
                     <HeaderWithSlogan title={'Problem Description'} titleStyle={titleStyle}/>
-                    <textarea id="problem" name="problem" value={description} className="form-control problem-field"
-                                onChange={(e) => setDescription(e.target.value)}
+                    <textarea id="problem" name="problem" value={problem} className="form-control problem-field"
+                                onChange={(e) => setProblem(e.target.value)}
                     ></textarea>
                 </div>
                 <div className={'request-form-bottom'}>

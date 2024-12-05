@@ -7,11 +7,13 @@ import AdviceResult from "./result.jsx";
 import {useAuth0} from "@auth0/auth0-react";
 import {fetchAdvices} from "../../../../services/data-center.js";
 
-function Advices(props) {
+function Advices({}) {
 
 
     const { setComponentData } = useContext(SettingsContext);
     const [advices, setAdvices] = useState([]);
+    const [changed, setChanged] = useState(false);
+
     const { isAuthenticated, user, loginWithPopup} = useAuth0();
 
 
@@ -22,11 +24,15 @@ function Advices(props) {
     useEffect(() => {
         if (isAuthenticated) {
             fetchAdvices(user.sub.split("|")[1]).then((data) => {
+                console.log("Advices", data);
                 setAdvices(data);
             });
         }
+    }, [user, changed]);
 
-    }, [user]);
+    const toggleChanged = () => {
+        setChanged(!changed);
+    }
 
 
     const titleStyle = {
@@ -53,7 +59,7 @@ function Advices(props) {
                                       titleStyle={titleStyle}
                     />
 
-                    <RequestForm/>
+                    <RequestForm onChange={toggleChanged}/>
                 </div>
                 <div className={'advices-info'}>
                     <HeaderWithSlogan title={'WiseAdvices'}
