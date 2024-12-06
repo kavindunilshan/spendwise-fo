@@ -37,7 +37,6 @@ function RequestForm({onChange}) {
             userId: user.sub.split("|")[1],
         }
         postAdvice(advice).then((data) => {
-            console.log("Advice Posted", data);
             onChange();
             handleShowNotification('Advice Requested Successfully', 'success');
             setTitle('');

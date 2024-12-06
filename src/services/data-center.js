@@ -6,7 +6,6 @@ const baseUrl = "http://localhost:8080/api/private";
 // fetch all advices for userId
 export const fetchAdvices = async (userId) => {
     const token = await getAccessToken();
-    console.log("Token", token);
     const response = await axios.get(`${baseUrl}/advices/${userId}`, {
         headers: {
             Authorization: `Bearer ${token}`

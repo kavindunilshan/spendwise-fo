@@ -14,7 +14,7 @@ function Advices({}) {
     const [advices, setAdvices] = useState([]);
     const [changed, setChanged] = useState(false);
 
-    const { isAuthenticated, user, loginWithPopup} = useAuth0();
+    const { isAuthenticated, user} = useAuth0();
 
 
     useEffect(() => {
@@ -24,7 +24,6 @@ function Advices({}) {
     useEffect(() => {
         if (isAuthenticated) {
             fetchAdvices(user.sub.split("|")[1]).then((data) => {
-                console.log("Advices", data);
                 setAdvices(data);
             });
         }
@@ -41,15 +40,6 @@ function Advices({}) {
         fontStyle: 'italic',
         color: '#04504d'
     }
-
-    const titleStyle2 = {
-        fontSize: '1.7em',
-        fontWeight: '500',
-        fontStyle: 'italic',
-        color: '#04504d'
-    }
-
-
 
     return (
         <div className={'advices'}>
