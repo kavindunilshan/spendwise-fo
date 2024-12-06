@@ -6,11 +6,17 @@ import {AutoAwesome} from "@mui/icons-material";
 import {postAdvice} from "../../../../services/data-center.js";
 import dayjs from "dayjs";
 import {useAuth0} from "@auth0/auth0-react";
+import Notification from "../../../utils/notification.jsx";
 
 function RequestForm({onChange}) {
 
     const [title, setTitle] = useState('');
     const [problem, setProblem] = useState('');
+    const [notification, setNotification] = useState({
+        open: false,
+        message: '',
+        severity: 'success',
+    });
 
     const {user} = useAuth0();
 
@@ -33,8 +39,19 @@ function RequestForm({onChange}) {
         postAdvice(advice).then((data) => {
             console.log("Advice Posted", data);
             onChange();
+            handleShowNotification('Advice Requested Successfully', 'success');
+            setTitle('');
+            setProblem('');
         });
     }
+
+    const handleShowNotification = (message, severity) => {
+        setNotification({ open: true, message, severity });
+    };
+
+    const handleCloseNotification = () => {
+        setNotification((prev) => ({ ...prev, open: false }));
+    };
 
     return (
         <div className="request-form">
@@ -71,6 +88,13 @@ function RequestForm({onChange}) {
                     </div>
                 </div>
             </form>
+
+            <Notification
+                open={notification.open}
+                onClose={handleCloseNotification}
+                message={notification.message}
+                severity={notification.severity}
+                />
         </div>
     );
 }

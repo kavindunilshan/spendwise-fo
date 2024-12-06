@@ -74,7 +74,7 @@ function Advices({}) {
                                           index={index + 1}
                                           title={advice.title}
                                           status={advice.status}
-                                          timestamp={advice.timestamp}
+                                          timestamp={advice.timestamp.replace("T", " at ")}
                                           problem={advice.problem}
                                           advice={advice.advice}
                             />
