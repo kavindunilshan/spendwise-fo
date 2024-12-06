@@ -66,3 +66,18 @@ export const updateGoal = async (id, goal) => {
     });
     return response.data;
 }
+
+
+export const checkPrivateScope = async () => {
+    const token = await getAccessToken(); // Wait for token to be fetched
+    console.log("Here is the token: ", token);
+    const response = await axios.get(`${baseUrl}-scoped`, {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    });
+
+    console.log("Here is the response checking: ", response.data);
+
+    return response.data;
+}
