@@ -1,21 +1,23 @@
 import axios from "axios";
-import getAccessToken from "./machine-to-machine.js";
 
 const baseUrl = "http://localhost:8080/api/private";
 
 // fetch user data
-export const fetchUserData = async (userId) => {
-    const token = await getAccessToken(); // Wait for token to be fetched
+export const fetchUserData = async (userId, getAccessToken) => {
+    const token = await getAccessToken();
+    
     const response = await axios.get(`${baseUrl}/users/${userId}`, {
         headers: {
             Authorization: `Bearer ${token}`
         }
     });
+
+    
     return response.data;
 }
 
 // update user data
-export const updateUserData = async (userId, data) => {
+export const updateUserData = async (userId, data, getAccessToken) => {
     const token = await getAccessToken(); // Wait for token to be fetched
     const response = await axios.put(`${baseUrl}/users/${userId}`, data, {
         headers: {
@@ -26,7 +28,7 @@ export const updateUserData = async (userId, data) => {
 }
 
 // get preferences
-export const getPreferences = async (userId) => {
+export const getPreferences = async (userId, getAccessToken) => {
     const token = await getAccessToken(); // Wait for token to be fetched
     const response = await axios.get(`${baseUrl}/preferences/${userId}`, {
         headers: {
@@ -37,7 +39,7 @@ export const getPreferences = async (userId) => {
 }
 
 // update preferences
-export const updatePreferences = async (userId, data) => {
+export const updatePreferences = async (userId, data, getAccessToken) => {
     const token = await getAccessToken(); // Wait for token to be fetched
     const response = await axios.put(`${baseUrl}/preferences/${userId}`, data, {
         headers: {

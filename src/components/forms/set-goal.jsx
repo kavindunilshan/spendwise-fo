@@ -4,6 +4,7 @@ import TextField from '@mui/material/TextField';
 import MenuItem from '@mui/material/MenuItem';
 import {InputAdornment} from "@mui/material";
 import {fetchCategoryByType} from "../../services/axios-services.js";
+import {useTokenManager} from "../../services/direct-tocken.js";
 
 const transactionTypes = [
     {
@@ -44,12 +45,13 @@ const periods = [
 
 export default function GoalFormFields({ formData, handleFormChange, errors, currency }) {
     const [categories, setCategories] = React.useState([]);
+    const { getAccessToken } = useTokenManager();
 
     
 
     useEffect(() => {
         if (formData.transactionType) {
-            fetchCategoryByType(formData.transactionType).then(fetchedCategories => {
+            fetchCategoryByType(formData.transactionType, getAccessToken).then(fetchedCategories => {
                 setCategories(fetchedCategories);
             }).catch(error => {
                 // Handle error

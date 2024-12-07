@@ -25,6 +25,7 @@ import TextField from "@mui/material/TextField";
 import MenuItem from "@mui/material/MenuItem";
 import Button from "@mui/material/Button";
 import SelectTextFields from "../../../forms/form-fields.jsx";
+import {useTokenManager} from "../../../../services/direct-tocken.js";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -99,6 +100,7 @@ export default function Transactions() {
     const [isFetch, setIsFetch] = useState(false);
 
     const [type, setType] = React.useState('INCOME');
+    const { getAccessToken } = useTokenManager();
 
     const [value, setValue] = React.useState([
         dayjs().add(-1, 'month'),
@@ -121,14 +123,16 @@ export default function Transactions() {
         if ( type === 'ALL') {
             fetchAllTransactionsBetweenDates(user?.sub.split('|')[1],
                 value[0].format('YYYY-MM-DDTHH:mm:ss'),
-                value[1].format('YYYY-MM-DDTHH:mm:ss')).then((data) => {
+                value[1].format('YYYY-MM-DDTHH:mm:ss'),
+                getAccessToken).then((data) => {
                 setTransactions(data)
             });
         }
         else {
             fetchTransactionsBetweenDates(user?.sub.split('|')[1], type,
                 value[0].format('YYYY-MM-DDTHH:mm:ss'),
-                value[1].format('YYYY-MM-DDTHH:mm:ss')).then((data) => {
+                value[1].format('YYYY-MM-DDTHH:mm:ss'),
+                getAccessToken).then((data) => {
                 
                 setTransactions(data)
             });

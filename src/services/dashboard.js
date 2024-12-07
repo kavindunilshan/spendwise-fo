@@ -4,7 +4,7 @@ import getAccessToken from "./machine-to-machine.js";
 const baseUrl = "http://localhost:8080/api/private";
 
 // fetch last five transactions
-export const fetchLastFiveTransactions = async (userId) => {
+export const fetchLastFiveTransactions = async (userId, getAccessToken) => {
     const token = await getAccessToken(); // Wait for token to be fetched
     const response = await axios.get(`${baseUrl}/transactions/${userId}/last-five`, {
         headers: {
@@ -15,7 +15,7 @@ export const fetchLastFiveTransactions = async (userId) => {
 }
 
 // fetch all transactions
-export const fetchAllTransactions = async (userId) => {
+export const fetchAllTransactions = async (userId, getAccessToken) => {
     const token = await getAccessToken(); // Wait for token to be fetched
     const response = await axios.get(`${baseUrl}/transactions/${userId}`, {
         headers: {
@@ -27,7 +27,7 @@ export const fetchAllTransactions = async (userId) => {
 
 // @GetMapping("/{userId}/{type}/between/{start}/{end}")
 // fetch transactions between two dates
-export const fetchTransactionsBetweenDates = async (userId, type, start, end) => {
+export const fetchTransactionsBetweenDates = async (userId, type, start, end, getAccessToken) => {
     const token = await getAccessToken(); // Wait for token to be fetched
     const response = await axios.get(`${baseUrl}/transactions/${userId}/${type}/between/${start}/${end}`, {
         headers: {
@@ -37,7 +37,7 @@ export const fetchTransactionsBetweenDates = async (userId, type, start, end) =>
     return response.data;
 }
 
-export const fetchAllTransactionsBetweenDates = async (userId, start, end) => {
+export const fetchAllTransactionsBetweenDates = async (userId, start, end, getAccessToken) => {
     const token = await getAccessToken(); // Wait for token to be fetched
     const response = await axios.get(`${baseUrl}/transactions/${userId}/between/${start}/${end}`, {
         headers: {
@@ -48,7 +48,7 @@ export const fetchAllTransactionsBetweenDates = async (userId, start, end) => {
 }
 
 // data breakdown
-export const fetchExpenseBreakdown = async (userId, type, month) => {
+export const fetchExpenseBreakdown = async (userId, type, month, getAccessToken) => {
     const token = await getAccessToken(); // Wait for token to be fetched
     const response = await axios.get(`${baseUrl}/transactions/${userId}/${type}/breakdown?isMonthly=true&month=${month}`, {
         headers: {
@@ -59,7 +59,7 @@ export const fetchExpenseBreakdown = async (userId, type, month) => {
 }
 
 // post a user
-export const createUser = async (user) => {
+export const createUser = async (user, getAccessToken) => {
     const token = await getAccessToken(); // Wait for token to be fetched
     const response = await axios.post(`${baseUrl}/users`, user, {
         headers: {
@@ -70,7 +70,7 @@ export const createUser = async (user) => {
 }
 
 // fetch pocket balance
-export const fetchPocketBalance = async (userId, period, value) => {
+export const fetchPocketBalance = async (userId, period, value, getAccessToken) => {
     
     const token = await getAccessToken(); // Wait for token to be fetched
     
@@ -84,7 +84,7 @@ export const fetchPocketBalance = async (userId, period, value) => {
 }
 
 // fetch over monthly data
-export const fetchOverMonthlyData = async (userId, months) => {
+export const fetchOverMonthlyData = async (userId, months, getAccessToken) => {
     const token = await getAccessToken(); // Wait for token to be fetched
     
     const response = await axios.get(`${baseUrl}/transactions/${userId}/monthly/${months}`, {

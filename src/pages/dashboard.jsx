@@ -13,6 +13,7 @@ import {fetchUserData, getPreferences} from "../services/settings.js";
 import BarChartComponent from "../components/dashboard/charts/bar-chart.jsx";
 import dayjs from "dayjs";
 import Loading from "../components/utils/loading-image.jsx";
+import {useTokenManager} from "../services/direct-tocken.js";
 
 function Dashboard() {
 
@@ -30,6 +31,8 @@ function Dashboard() {
     const [expense, setExpense] = useState(0);
 
     const [changed, setChanged] = useState(false);
+    const { getAccessToken } = useTokenManager();
+
     const [month, setMonth] = useState(dayjs().format('MM YYYY'));
 
     const [currency, setCurrency] = useState('₹');
@@ -48,7 +51,7 @@ function Dashboard() {
 
     useEffect(() => {
         if (userId) {
-            getPreferences(userId).then((data) => {
+            getPreferences(userId, getAccessToken).then((data) => {
                 setIsDarkMode(data.isDarkMode);
                 setIsIncomePieChart(data.isIncomePieChart);
                 setIsExpensePieChart(data.isExpensePieChart);
@@ -63,7 +66,7 @@ function Dashboard() {
 
         // Fetch the pocket value from the server
         if (userId) {
-            fetchPocketBalance(userId, period, value).then((data) => {
+            fetchPocketBalance(userId, period, value, getAccessToken).then((data) => {
                 setPocket(data.pocket);
                 setIncome(data.income);
                 setExpense(data.expenses);
@@ -72,11 +75,11 @@ function Dashboard() {
                 setIsContentLoaded(2);
             });
 
-            fetchOverMonthlyData(userId, 6).then((data) => {
+            fetchOverMonthlyData(userId, 6, getAccessToken).then((data) => {
                 setMonthlyData(data);
             });
 
-            fetchUserData(userId).then((data) => {
+            fetchUserData(userId, getAccessToken).then((data) => {
                 setCurrency(data.currency === "" ? "₹" : data.currency);
             });
         }

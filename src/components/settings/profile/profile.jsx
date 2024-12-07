@@ -7,10 +7,12 @@ import {useAuth0} from "@auth0/auth0-react";
 import {Avatar} from "@mui/material";
 import {Edit} from "@mui/icons-material";
 import {fetchUserData, updateUserData} from "../../../services/settings.js";
+import {useTokenManager} from "../../../services/direct-tocken.js";
 
 function Profile({}) {
 
     const { setComponentData } = useContext(SettingsContext);
+    const { getAccessToken } = useTokenManager();
 
     let { user, logout } = useAuth0();
 
@@ -26,7 +28,7 @@ function Profile({}) {
     }, []);
 
     useEffect(() => {
-        fetchUserData(user?.sub.split("|")[1]).then((data) => {
+        fetchUserData(user?.sub.split("|")[1], getAccessToken).then((data) => {
             setName(data.name);
             setEmail(data.email);
             setCountry(data.country);
@@ -51,7 +53,7 @@ function Profile({}) {
             currency: currency
         };
 
-        updateUserData(user?.sub.split("|")[1], data);
+        updateUserData(user?.sub.split("|")[1], getAccessToken, data);
 
     }
 

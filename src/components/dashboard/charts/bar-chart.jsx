@@ -12,6 +12,7 @@ import {
 import CountUp from "react-countup";
 import {fetchExpenseBreakdown} from "../../../services/dashboard.js";
 import {useAuth0} from "@auth0/auth0-react";
+import {useTokenManager} from "../../../services/direct-tocken.js";
 
 // Register the necessary components for Chart.js
 ChartJS.register(
@@ -31,6 +32,8 @@ const BarChartComponent = ({month, currency, value, changed, type, getCSSVariabl
     const [startValue, setStartValue] = React.useState(0);
     const [endValue, setEndValue] = React.useState(0);
 
+    const { getAccessToken } = useTokenManager();
+
     useEffect(() => {
         setStartValue(endValue);
         setEndValue(value);
@@ -38,7 +41,7 @@ const BarChartComponent = ({month, currency, value, changed, type, getCSSVariabl
 
     useEffect(() => {
         
-        fetchExpenseBreakdown(user.sub.split("|")[1], type.toUpperCase(), month).then((data) => {
+        fetchExpenseBreakdown(user.sub.split("|")[1], type.toUpperCase(), month, getAccessToken).then((data) => {
             setChartData(data || {});
         });
     }, [changed]);

@@ -7,12 +7,14 @@ import {Edit} from "@mui/icons-material";
 import {useAuth0} from "@auth0/auth0-react";
 import {getPreferences, updatePreferences} from "../../../services/settings.js";
 import {FormControl, FormControlLabel, Radio, RadioGroup} from "@mui/material";
+import {useTokenManager} from "../../../services/direct-tocken.js";
 
 
 function DashboardSettings() {
     const { setComponentData } = useContext(SettingsContext);
     const [ isDarkMode, setIsDarkMode ] = useState(false);
     const [ isIncomePieChart, setIsIncomePieChart ] = useState(true);
+    const { getAccessToken } = useTokenManager();
     const [ isExpensePieChart, setIsExpensePieChart ] = useState(true);
     const [ isEditing, setIsEditing ] = useState(false);
     const [dataViewPeriod, setDataViewPeriod] = useState('ALL');
@@ -26,7 +28,7 @@ function DashboardSettings() {
 
     useEffect(() => {
         if (user) {
-            getPreferences(user?.sub.split('|')[1]).then((data) => {
+            getPreferences(user?.sub.split('|')[1], getAccessToken).then((data) => {
                 if (data) {
                     setIsDarkMode(data.isDarkMode);
                     setIsIncomePieChart(data.isIncomePieChart);
@@ -51,7 +53,7 @@ function DashboardSettings() {
             dataViewPeriod
         }
 
-        updatePreferences(userId, preferences);
+        updatePreferences(userId, preferences, getAccessToken);
         setIsEditing(false);
     }
 

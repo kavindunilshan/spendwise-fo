@@ -7,6 +7,7 @@ import {postAdvice} from "../../../../services/data-center.js";
 import dayjs from "dayjs";
 import {useAuth0} from "@auth0/auth0-react";
 import Notification from "../../../utils/notification.jsx";
+import {useTokenManager} from "../../../../services/direct-tocken.js";
 
 function RequestForm({onChange}) {
 
@@ -17,6 +18,7 @@ function RequestForm({onChange}) {
         message: '',
         severity: 'success',
     });
+    const { getAccessToken } = useTokenManager();
 
     const {user} = useAuth0();
 
@@ -36,7 +38,7 @@ function RequestForm({onChange}) {
             status: false,
             userId: user.sub.split("|")[1],
         }
-        postAdvice(advice).then((data) => {
+        postAdvice(advice, getAccessToken).then((data) => {
             onChange();
             handleShowNotification('Advice Requested Successfully', 'success');
             setTitle('');

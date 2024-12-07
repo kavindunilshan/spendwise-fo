@@ -6,6 +6,7 @@ import RequestForm from "./request-form.jsx";
 import AdviceResult from "./result.jsx";
 import {useAuth0} from "@auth0/auth0-react";
 import {fetchAdvices} from "../../../../services/data-center.js";
+import {useTokenManager} from "../../../../services/direct-tocken.js";
 
 function Advices({}) {
 
@@ -15,6 +16,7 @@ function Advices({}) {
     const [changed, setChanged] = useState(false);
 
     const { isAuthenticated, user} = useAuth0();
+    const { getAccessToken } = useTokenManager();
 
 
     useEffect(() => {
@@ -23,7 +25,7 @@ function Advices({}) {
 
     useEffect(() => {
         if (isAuthenticated) {
-            fetchAdvices(user.sub.split("|")[1]).then((data) => {
+            fetchAdvices(user.sub.split("|")[1], getAccessToken).then((data) => {
                 setAdvices(data);
             });
         }
