@@ -1,4 +1,5 @@
 import axios from "axios";
+import getAccessToken from "./machine-to-machine.js";
 
 const baseUrl = "http://localhost:8080/api/private";
 
@@ -67,9 +68,8 @@ export const updateGoal = async (id, goal, getAccessToken) => {
 }
 
 
-export const checkPrivateScope = async (getAccessToken) => {
+export const checkPrivateScope = async () => {
     const token = await getAccessToken(); // Wait for token to be fetched
-    
     const response = await axios.get(`${baseUrl}-scope`, {
         headers: {
             Authorization: `Bearer ${token}`
