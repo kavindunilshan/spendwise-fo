@@ -14,24 +14,24 @@ function Response(props) {
     const [changed, setChanged] = useState(false);
     const { isAuthenticated, user, loginWithPopup} = useAuth0();
     const [isAdmin, setIsAdmin] = React.useState(false);
-    const { getAccessToken } = useTokenManager();
+    const { getAccessToken, isAdminUser } = useTokenManager();
 
     // use navigate
     const navigate = useNavigate();
 
 
     useEffect(() => {
-        if (isAuthenticated) {
-            fetchUserData(user?.sub.split("|")[1], getAccessToken).then((data) => {
-                if (data?.is_admin) {
-                    setIsAdmin(true);
-                    setComponentData({"title": "WiseAdvice-Response", "slogan": "You logged as an admin user."});
-                } else {
-                    navigate('/');
-                }
-            }).catch((error) => {
+        async function checkAdmin() {
+            const isAdmin = await isAdminUser()
+            if (!isAdmin) {
                 navigate('/');
-            });
+            } else {
+                setIsAdmin(true);
+            }
+        }
+
+        if (isAuthenticated) {
+            checkAdmin();
         }
     }, [user]);
 
@@ -40,7 +40,7 @@ function Response(props) {
         newAdvices[index].advice = answer;
         setAdvices(newAdvices);
 
-        updateAdvice(newAdvices[index], getAccessToken).then((data) => {
+        updateAdvice(newAdvices[index].id, newAdvices[index], getAccessToken).then((data) => {
             setChanged(!changed);
         });
     }

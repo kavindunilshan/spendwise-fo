@@ -1,5 +1,5 @@
 import { useAuth0 } from '@auth0/auth0-react';
-import jwtDecode from 'jwt-decode';
+import {jwtDecode} from 'jwt-decode';
 
 export const useTokenManager = () => {
     const { user, getAccessTokenSilently } = useAuth0();
@@ -44,5 +44,19 @@ export const useTokenManager = () => {
         }
     };
 
-    return { getAccessToken, getPermissions };
+    const isAdminUser = async () => {
+        const token = await getAccessToken()
+        if (!token) {
+            return false;
+        }
+        try {
+            const decoded = jwtDecode(token);
+            return decoded.permissions.includes('access:admin');
+        } catch (error) {
+            console.error("Error decoding token:", error);
+            return false;
+        }
+    };
+
+    return { getAccessToken, getPermissions, isAdminUser };
 };

@@ -16,7 +16,7 @@ export const fetchAdvices = async (userId, getAccessToken) => {
 
 export const fetchAllAdvices = async (userId, getAccessToken) => {
     const token = await getAccessToken(); // Wait for token to be fetched
-    const response = await axios.get(`${baseUrl}/advices/admin/${userId}`, {
+    const response = await axios.get(`${baseUrl}/advices/admin/unAnswered`, {
         headers: {
             Authorization: `Bearer ${token}`
         }
@@ -36,9 +36,11 @@ export const postAdvice = async (advice, getAccessToken) => {
 }
 
 // update advice
-export const updateAdvice = async (advice, getAccessToken) => {
-    const token = await getAccessToken(); // Wait for token to be fetched
-    const response = await axios.put(`${baseUrl}/advices`, advice, {
+export const updateAdvice = async (id, advice, getAccessToken) => {
+    const token = await getAccessToken();
+
+    console.log("Advice", advice);
+    const response = await axios.put(`${baseUrl}/advices/admin/${id}`, advice, {
         headers: {
             Authorization: `Bearer ${token}`
         }
@@ -70,7 +72,7 @@ export const updateGoal = async (id, goal, getAccessToken) => {
 
 export const checkPrivateScope = async () => {
     const token = await getAccessToken(); // Wait for token to be fetched
-    const response = await axios.get(`${baseUrl}-scope`, {
+    const response = await axios.get(`${baseUrl}-scoped`, {
         headers: {
             Authorization: `Bearer ${token}`
         }
