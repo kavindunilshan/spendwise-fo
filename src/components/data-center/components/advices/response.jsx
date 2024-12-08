@@ -1,10 +1,11 @@
 import React, {useContext, useEffect, useState} from 'react';
-import {fetchAdvices, fetchAllAdvices, updateAdvice} from "../../../../services/data-center.js";
+import {fetchAllAdvices, updateAdvice} from "../../../../services/data-center.js";
 import {SettingsContext} from "../../../settings/settings-context.jsx";
 import {useAuth0} from "@auth0/auth0-react";
 import AdviceResponse from "./advice-response.jsx";
 import {fetchUserData} from "../../../../services/settings.js";
 import {useNavigate} from "react-router-dom";
+import {useTokenManager} from "../../../../services/direct-tocken.js";
 
 function Response(props) {
 
@@ -13,6 +14,7 @@ function Response(props) {
     const [changed, setChanged] = useState(false);
     const { isAuthenticated, user, loginWithPopup} = useAuth0();
     const [isAdmin, setIsAdmin] = React.useState(false);
+    const { getAccessToken } = useTokenManager();
 
     // use navigate
     const navigate = useNavigate();
@@ -20,7 +22,7 @@ function Response(props) {
 
     useEffect(() => {
         if (isAuthenticated) {
-            fetchUserData(user?.sub.split("|")[1]).then((data) => {
+            fetchUserData(user?.sub.split("|")[1], getAccessToken).then((data) => {
                 if (data?.is_admin) {
                     setIsAdmin(true);
                     setComponentData({"title": "WiseAdvice-Response", "slogan": "You logged as an admin user."});
@@ -38,14 +40,14 @@ function Response(props) {
         newAdvices[index].advice = answer;
         setAdvices(newAdvices);
 
-        updateAdvice(newAdvices[index]).then((data) => {
+        updateAdvice(newAdvices[index], getAccessToken).then((data) => {
             setChanged(!changed);
         });
     }
 
     useEffect(() => {
         if (isAuthenticated && isAdmin) {
-            fetchAllAdvices(user.sub.split("|")[1]).then((data) => {
+            fetchAllAdvices(user.sub.split("|")[1], getAccessToken).then((data) => {
                 setAdvices(data);
             });
         }

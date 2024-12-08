@@ -13,6 +13,7 @@ import {fetchPocketBalance} from "../../../../services/dashboard.js";
 import {fetchUserData} from "../../../../services/settings.js";
 import WidgetContainer from "../../../dashboard/charts/chart-container.jsx";
 import PieChartComponent from "../../../dashboard/charts/pie-chart.jsx";
+import {useTokenManager} from "../../../../services/direct-tocken.js";
 
 
 const CustomDatePicker = styled(DatePicker)({
@@ -45,6 +46,7 @@ function Reports(props) {
     const [income, setIncome] = useState(0);
     const [expense, setExpense] = useState(0);
     const [saving, setSaving] = useState(0);
+    const { getAccessToken } = useTokenManager();
     const userId = isAuthenticated ? user.sub.split("|")[1] : null;
 
 
@@ -53,14 +55,15 @@ function Reports(props) {
         // Fetch the pocket value from the server
         if (userId) {
             
-            fetchPocketBalance(userId, "MONTHLY", date.format('MM YYYY')).then((data) => {
+            fetchPocketBalance(userId, "MONTHLY", date.format('MM YYYY'), getAccessToken).then((data) => {
                 setPocket(data.pocket);
                 setIncome(data.income);
                 setExpense(data.expenses);
                 setSaving(data.savings);
+                console.log("satisfied")
             });
 
-            fetchUserData(userId).then((data) => {
+            fetchUserData(userId, getAccessToken).then((data) => {
                 setCurrency(data.currency === "" ? "₹" : data.currency);
             });
         }

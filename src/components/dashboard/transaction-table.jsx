@@ -10,6 +10,7 @@ import Paper from '@mui/material/Paper';
 import {useEffect} from "react";
 import {fetchLastFiveTransactions} from "../../services/dashboard.js";
 import {useAuth0} from "@auth0/auth0-react";
+import {useTokenManager} from "../../services/direct-tocken.js";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -48,9 +49,10 @@ export default function Transactions({changed}) {
 
     const [transactions, setTransactions] = React.useState([]);
     const {user} = useAuth0();
+    const { getAccessToken } = useTokenManager();
 
     useEffect(() => {
-        fetchLastFiveTransactions(user.sub.split('|')[1]).then((data) => {
+        fetchLastFiveTransactions(user.sub.split('|')[1], getAccessToken).then((data) => {
             setTransactions(data || []);
         });
         }, [changed]);

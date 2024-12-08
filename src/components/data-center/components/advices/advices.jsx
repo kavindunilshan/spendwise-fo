@@ -6,6 +6,7 @@ import RequestForm from "./request-form.jsx";
 import AdviceResult from "./result.jsx";
 import {useAuth0} from "@auth0/auth0-react";
 import {fetchAdvices} from "../../../../services/data-center.js";
+import {useTokenManager} from "../../../../services/direct-tocken.js";
 
 function Advices({}) {
 
@@ -14,7 +15,8 @@ function Advices({}) {
     const [advices, setAdvices] = useState([]);
     const [changed, setChanged] = useState(false);
 
-    const { isAuthenticated, user, loginWithPopup} = useAuth0();
+    const { isAuthenticated, user} = useAuth0();
+    const { getAccessToken } = useTokenManager();
 
 
     useEffect(() => {
@@ -23,8 +25,7 @@ function Advices({}) {
 
     useEffect(() => {
         if (isAuthenticated) {
-            fetchAdvices(user.sub.split("|")[1]).then((data) => {
-                console.log("Advices", data);
+            fetchAdvices(user.sub.split("|")[1], getAccessToken).then((data) => {
                 setAdvices(data);
             });
         }
@@ -41,15 +42,6 @@ function Advices({}) {
         fontStyle: 'italic',
         color: '#04504d'
     }
-
-    const titleStyle2 = {
-        fontSize: '1.7em',
-        fontWeight: '500',
-        fontStyle: 'italic',
-        color: '#04504d'
-    }
-
-
 
     return (
         <div className={'advices'}>

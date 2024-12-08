@@ -22,7 +22,7 @@ const AdviceResult = ({ index, title, status, timestamp, problem, advice}) => {
                                     :
                                     <span className="advice-result-status processing"><FiberManualRecord color={'warning'}/> Processing</span>
                             }
-                                    <span className="advice-result-timestamp">{timestamp}</span>
+                                    <span className="advice-result-timestamp">Posted on {timestamp}</span>
                                 </div>
                                 </div>
                                 <div className="advice-result-content">

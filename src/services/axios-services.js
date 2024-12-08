@@ -1,9 +1,9 @@
 import axios from "axios";
-import getAccessToken from "./backend-token.js";
+import getAccessToken from "./machine-to-machine.js";
 
 const baseUrl = "http://localhost:8080/api/private";
 
-export const fetchPublicData = async () => {
+export const fetchPublicData = async (getAccessToken) => {
     const url = "http://localhost:8080/api/public";
     try {
         const response = await axios.get(url);
@@ -15,7 +15,7 @@ export const fetchPublicData = async () => {
 };
 
 // fetch all categories
-export const fetchAllCategories = async () => {
+export const fetchAllCategories = async (getAccessToken) => {
     const token = await getAccessToken(); // Wait for token to be fetched
     const response = await axios.get(baseUrl + "/categories", {
         headers: {
@@ -26,7 +26,7 @@ export const fetchAllCategories = async () => {
 }
 
 // fetch category by type
-export const fetchCategoryByType = async (type) => {
+export const fetchCategoryByType = async (type, getAccessToken) => {
     const token = await getAccessToken(); // Wait for token to be fetched
     const response = await axios.get(baseUrl + "/categories/type/" + type, {
         headers: {
@@ -37,7 +37,7 @@ export const fetchCategoryByType = async (type) => {
 }
 
 // create a transaction
-export const createTransaction = async (transaction) => {
+export const createTransaction = async (transaction, getAccessToken) => {
     const token = await getAccessToken(); // Wait for token to be fetched
     const response = await axios.post(baseUrl + "/transactions", transaction, {
         headers: {
@@ -48,7 +48,7 @@ export const createTransaction = async (transaction) => {
 }
 
 // Create Goal
-export const createGoal = async (goal) => {
+export const createGoal = async (goal, getAccessToken) => {
     const token = await getAccessToken(); // Wait for token to be fetched
     const response = await axios.post(baseUrl + "/goals", goal, {
         headers: {
@@ -59,7 +59,7 @@ export const createGoal = async (goal) => {
 }
 
 // edit a transaction
-export const editTransaction = async (tid, transaction) => {
+export const editTransaction = async (tid, transaction, getAccessToken) => {
     const token = await getAccessToken(); // Wait for token to be fetched
     const response = await axios.put(baseUrl + "/transactions/" + tid, transaction, {
         headers: {

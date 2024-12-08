@@ -4,16 +4,21 @@ import '/src/styles/settings/settings-menu.css'
 import {AutoAwesome, CastForEducation, School} from "@mui/icons-material";
 import {useAuth0} from "@auth0/auth0-react";
 import {fetchUserData} from "../../services/settings.js";
+import {useTokenManager} from "../../services/direct-tocken.js";
 
 function DataMenu({}) {
 
     const {user} = useAuth0();
 
     const [isAdmin, setIsAdmin] = React.useState(false);
+    const { getAccessToken } = useTokenManager();
+
+    const token = getAccessToken();
+    console.log(token);
 
 
     useEffect(() => {
-        fetchUserData(user?.sub.split("|")[1]).then((data) => {
+        fetchUserData(user?.sub.split("|")[1], getAccessToken).then((data) => {
             if (data.is_admin) {
                 setIsAdmin(true);
             }

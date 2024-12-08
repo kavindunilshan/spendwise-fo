@@ -14,6 +14,7 @@ import CustomizedDialogs from "../../../forms/add-transaction.jsx";
 import GoalFormFields from "../../../forms/set-goal.jsx";
 import {useAuth0} from "@auth0/auth0-react";
 import {fetchGoals, updateGoal} from "../../../../services/data-center.js";
+import {useTokenManager} from "../../../../services/direct-tocken.js";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -67,13 +68,14 @@ export default function GoalTable() {
     const [changed, setChanged] = useState(false);
 
     const {user, isAuthenticated} = useAuth0();
+    const { getAccessToken } = useTokenManager();
 
     const [goals, setGoals] = useState([]);
 
 
     useEffect(() => {
         if (isAuthenticated) {
-            fetchGoals(user.sub.split("|")[1]).then((data) => {
+            fetchGoals(user.sub.split("|")[1], getAccessToken).then((data) => {
                 setGoals(data);
             });
         }
@@ -163,7 +165,7 @@ export default function GoalTable() {
 
         
 
-        updateGoal(goal.goalId, goal).then(
+        updateGoal(goal.goalId, goal, getAccessToken).then(
             (data) => {
                 
                 setChanged(!changed);

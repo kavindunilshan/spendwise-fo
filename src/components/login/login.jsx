@@ -4,9 +4,12 @@ import Button from "@mui/material/Button";
 import UserMenu from "./logged-menu.jsx";
 import '/src/styles/login/login.css';
 import {createUser} from "../../services/dashboard.js";
+import {useTokenManager} from "../../services/direct-tocken.js";
 
 const LoginButton = () => {
     const { isAuthenticated, user, loginWithPopup} = useAuth0();
+    const { getAccessToken } = useTokenManager();
+
     const [loginAttempted, setLoginAttempted] = useState(false);
 
     const handleClick = () => {
@@ -20,7 +23,7 @@ const LoginButton = () => {
             email: user.email,
             userId: user.sub.split("|")[1],
         }
-        createUser(newUser);
+        createUser(newUser, getAccessToken);
     }
 
     return (

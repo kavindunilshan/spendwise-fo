@@ -1,12 +1,11 @@
 import axios from "axios";
-import getAccessToken from "./backend-token.js";
+import getAccessToken from "./machine-to-machine.js";
 
 const baseUrl = "http://localhost:8080/api/private";
 
 // fetch all advices for userId
-export const fetchAdvices = async (userId) => {
+export const fetchAdvices = async (userId, getAccessToken) => {
     const token = await getAccessToken();
-    console.log("Token", token);
     const response = await axios.get(`${baseUrl}/advices/${userId}`, {
         headers: {
             Authorization: `Bearer ${token}`
@@ -15,7 +14,7 @@ export const fetchAdvices = async (userId) => {
     return response.data;
 }
 
-export const fetchAllAdvices = async (userId) => {
+export const fetchAllAdvices = async (userId, getAccessToken) => {
     const token = await getAccessToken(); // Wait for token to be fetched
     const response = await axios.get(`${baseUrl}/advices/admin/${userId}`, {
         headers: {
@@ -26,7 +25,7 @@ export const fetchAllAdvices = async (userId) => {
 }
 
 // post advice
-export const postAdvice = async (advice) => {
+export const postAdvice = async (advice, getAccessToken) => {
     const token = await getAccessToken(); // Wait for token to be fetched
     const response = await axios.post(`${baseUrl}/advices`, advice, {
         headers: {
@@ -37,7 +36,7 @@ export const postAdvice = async (advice) => {
 }
 
 // update advice
-export const updateAdvice = async (advice) => {
+export const updateAdvice = async (advice, getAccessToken) => {
     const token = await getAccessToken(); // Wait for token to be fetched
     const response = await axios.put(`${baseUrl}/advices`, advice, {
         headers: {
@@ -47,7 +46,7 @@ export const updateAdvice = async (advice) => {
     return response.data;
 }
 
-export const fetchGoals = async (userId) => {
+export const fetchGoals = async (userId, getAccessToken) => {
     const token = await getAccessToken(); // Wait for token to be fetched
     const response = await axios.get(`${baseUrl}/goals/${userId}`, {
         headers: {
@@ -58,12 +57,26 @@ export const fetchGoals = async (userId) => {
 }
 
 // update a goal
-export const updateGoal = async (id, goal) => {
+export const updateGoal = async (id, goal, getAccessToken) => {
     const token = await getAccessToken(); // Wait for token to be fetched
     const response = await axios.put(`${baseUrl}/goals/${id}`, goal, {
         headers: {
             Authorization: `Bearer ${token}`
         }
     });
+    return response.data;
+}
+
+
+export const checkPrivateScope = async () => {
+    const token = await getAccessToken(); // Wait for token to be fetched
+    const response = await axios.get(`${baseUrl}-scope`, {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    });
+
+    
+
     return response.data;
 }
