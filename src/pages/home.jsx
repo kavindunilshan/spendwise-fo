@@ -18,17 +18,6 @@ function Home() {
         ref.current.scrollIntoView({behavior: 'smooth'});
     }
 
-    useEffect(() => {
-        checkPrivateScope(getAccessToken).then((data) => {
-            
-        }).catch(
-            (error) => {
-                
-                throw error;
-            }
-        );
-    }, []);
-
     return (
 
         <>

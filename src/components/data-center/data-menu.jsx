@@ -1,28 +1,27 @@
 import React, {useEffect} from 'react';
-import { NavLink } from "react-router-dom";
+import {NavLink} from "react-router-dom";
 import '/src/styles/settings/settings-menu.css'
-import {AutoAwesome, CastForEducation, School} from "@mui/icons-material";
+import {AutoAwesome, School} from "@mui/icons-material";
 import {useAuth0} from "@auth0/auth0-react";
-import {fetchUserData} from "../../services/settings.js";
 import {useTokenManager} from "../../services/direct-tocken.js";
 
 function DataMenu({}) {
 
-    const {user} = useAuth0();
+    const {user, isAuthenticated} = useAuth0();
 
     const [isAdmin, setIsAdmin] = React.useState(false);
-    const { getAccessToken } = useTokenManager();
-
-    const token = getAccessToken();
-    console.log(token);
+    const { isAdminUser } = useTokenManager();
 
 
     useEffect(() => {
-        fetchUserData(user?.sub.split("|")[1], getAccessToken).then((data) => {
-            if (data.is_admin) {
-                setIsAdmin(true);
-            }
-        });
+        async function checkAdmin() {
+            const isAdmin = await isAdminUser()
+            setIsAdmin(isAdmin);
+        }
+
+        if (isAuthenticated) {
+            checkAdmin();
+        }
     }, [user]);
 
 
@@ -96,7 +95,7 @@ function DataMenu({}) {
                                          color: "#faf7f7",
                                          backgroundColor: '#320440'
                                      } : {color: '#7d0a0a'})}
-                            >WiseAdvice-Res
+                            >Admin Advices
                             </NavLink>
                         </li>
                     }
