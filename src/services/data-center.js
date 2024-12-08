@@ -16,7 +16,7 @@ export const fetchAdvices = async (userId, getAccessToken) => {
 
 export const fetchAllAdvices = async (userId, getAccessToken) => {
     const token = await getAccessToken(); // Wait for token to be fetched
-    const response = await axios.get(`${baseUrl}/advices/admin/${userId}`, {
+    const response = await axios.get(`${baseUrl}/advices/unAnswered`, {
         headers: {
             Authorization: `Bearer ${token}`
         }
@@ -36,9 +36,11 @@ export const postAdvice = async (advice, getAccessToken) => {
 }
 
 // update advice
-export const updateAdvice = async (advice, getAccessToken) => {
-    const token = await getAccessToken(); // Wait for token to be fetched
-    const response = await axios.put(`${baseUrl}/advices`, advice, {
+export const updateAdvice = async (id, advice, getAccessToken) => {
+    const token = await getAccessToken();
+
+    console.log("Advice", advice);
+    const response = await axios.put(`${baseUrl}/advices/${id}`, advice, {
         headers: {
             Authorization: `Bearer ${token}`
         }

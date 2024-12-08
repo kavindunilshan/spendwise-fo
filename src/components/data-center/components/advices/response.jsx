@@ -40,7 +40,7 @@ function Response(props) {
         newAdvices[index].advice = answer;
         setAdvices(newAdvices);
 
-        updateAdvice(newAdvices[index], getAccessToken).then((data) => {
+        updateAdvice(newAdvices[index].id, newAdvices[index], getAccessToken).then((data) => {
             setChanged(!changed);
         });
     }

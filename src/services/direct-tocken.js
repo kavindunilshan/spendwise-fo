@@ -51,7 +51,7 @@ export const useTokenManager = () => {
         }
         try {
             const decoded = jwtDecode(token);
-            return decoded.permissions.includes('admin');
+            return decoded.permissions.includes('access:admin');
         } catch (error) {
             console.error("Error decoding token:", error);
             return false;
