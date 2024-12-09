@@ -61,6 +61,15 @@ function RequestForm({onChange}) {
         setNotification((prev) => ({ ...prev, open: false }));
     };
 
+    const submitAdvice = () => {
+        if (!title || !problem) {
+            console.log("here");
+            handleShowNotification('Both Title and Problem Description are required.', 'error');
+            return;
+        }
+        setOpen(true);
+    }
+
     return (
         <div className="request-form">
             <form>
@@ -78,7 +87,7 @@ function RequestForm({onChange}) {
                 </div>
                 <div className={'request-form-bottom'}>
                     <Button disableElevation
-                            onClick={() => setOpen(true)}
+                            onClick={() => submitAdvice()}
                             variant="contained"
                             style={{
                                 border: "1px solid var(--text-color)",

@@ -38,7 +38,7 @@ const CheckoutForm = ({ open, handleClose, onSuccess }) => {
             clientSecret,
             {
                 payment_method: {
-                    card: elements.getElement(CardElement),
+                    card: elements.getElement(CardNumberElement),
                 },
             }
         );
