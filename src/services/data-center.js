@@ -77,8 +77,22 @@ export const checkPrivateScope = async () => {
             Authorization: `Bearer ${token}`
         }
     });
-
-    
-
     return response.data;
 }
+
+export const fetchClientSecret = async (setClientSecret) => {
+    const token = await getAccessToken();
+    try {
+        const response = await axios.post(`${baseUrl}/payment/create-payment-intent`,
+            {},
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
+
+        setClientSecret(response.data.clientSecret);
+    } catch (error) {
+        console.error("Error fetching client secret:", error);
+    }
+};

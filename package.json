@@ -18,6 +18,8 @@
     "@mui/material": "^5.15.20",
     "@mui/x-date-pickers": "^7.6.2",
     "@mui/x-date-pickers-pro": "^7.10.0",
+    "@stripe/react-stripe-js": "^3.0.0",
+    "@stripe/stripe-js": "^5.2.0",
     "axios": "^1.7.7",
     "chart.js": "^4.4.3",
     "chartjs-plugin-annotation": "^3.0.1",

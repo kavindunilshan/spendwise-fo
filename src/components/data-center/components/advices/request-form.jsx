@@ -8,6 +8,7 @@ import dayjs from "dayjs";
 import {useAuth0} from "@auth0/auth0-react";
 import Notification from "../../../utils/notification.jsx";
 import {useTokenManager} from "../../../../services/direct-tocken.js";
+import CheckoutForm from "../../../utils/checkout-form.jsx";
 
 function RequestForm({onChange}) {
 
@@ -18,10 +19,14 @@ function RequestForm({onChange}) {
         message: '',
         severity: 'success',
     });
+    const [open, setOpen] = useState(false);
+
+    const handleClose = () => {
+        setOpen(false);
+    }
+
     const { getAccessToken } = useTokenManager();
-
     const {user} = useAuth0();
-
     const titleStyle = {
         fontSize: '1.2em',
         fontWeight: '500',
@@ -30,6 +35,8 @@ function RequestForm({onChange}) {
     }
 
     const handleSubmit = () => {
+        console.log('Submitting advice request');
+        setOpen(false);
         const timestamp = dayjs().format('YYYY-MM-DDTHH:mm:ss');
         const advice = {
             title: title,
@@ -54,6 +61,15 @@ function RequestForm({onChange}) {
         setNotification((prev) => ({ ...prev, open: false }));
     };
 
+    const submitAdvice = () => {
+        if (!title || !problem) {
+            console.log("here");
+            handleShowNotification('Both Title and Problem Description are required.', 'error');
+            return;
+        }
+        setOpen(true);
+    }
+
     return (
         <div className="request-form">
             <form>
@@ -71,7 +87,7 @@ function RequestForm({onChange}) {
                 </div>
                 <div className={'request-form-bottom'}>
                     <Button disableElevation
-                            onClick={() => handleSubmit()}
+                            onClick={() => submitAdvice()}
                             variant="contained"
                             style={{
                                 border: "1px solid var(--text-color)",
@@ -96,6 +112,8 @@ function RequestForm({onChange}) {
                 message={notification.message}
                 severity={notification.severity}
                 />
+
+            <CheckoutForm open={open} handleClose={handleClose} onSuccess={handleSubmit}/>
         </div>
     );
 }
