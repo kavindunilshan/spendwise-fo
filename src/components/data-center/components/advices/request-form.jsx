@@ -1,13 +1,14 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import '/src/styles/data-center/request-form.css';
 import HeaderWithSlogan from "../../../settings/header-slogan.jsx";
 import Button from "@mui/material/Button";
 import {AutoAwesome} from "@mui/icons-material";
-import {postAdvice} from "../../../../services/data-center.js";
+import {fetchClientSecret, postAdvice} from "../../../../services/data-center.js";
 import dayjs from "dayjs";
 import {useAuth0} from "@auth0/auth0-react";
 import Notification from "../../../utils/notification.jsx";
 import {useTokenManager} from "../../../../services/direct-tocken.js";
+import {CardElement, useElements, useStripe} from "@stripe/react-stripe-js";
 
 function RequestForm({onChange}) {
 
@@ -19,9 +20,7 @@ function RequestForm({onChange}) {
         severity: 'success',
     });
     const { getAccessToken } = useTokenManager();
-
     const {user} = useAuth0();
-
     const titleStyle = {
         fontSize: '1.2em',
         fontWeight: '500',
