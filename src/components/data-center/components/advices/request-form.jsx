@@ -1,14 +1,14 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import '/src/styles/data-center/request-form.css';
 import HeaderWithSlogan from "../../../settings/header-slogan.jsx";
 import Button from "@mui/material/Button";
 import {AutoAwesome} from "@mui/icons-material";
-import {fetchClientSecret, postAdvice} from "../../../../services/data-center.js";
+import {postAdvice} from "../../../../services/data-center.js";
 import dayjs from "dayjs";
 import {useAuth0} from "@auth0/auth0-react";
 import Notification from "../../../utils/notification.jsx";
 import {useTokenManager} from "../../../../services/direct-tocken.js";
-import {CardElement, useElements, useStripe} from "@stripe/react-stripe-js";
+import CheckoutForm from "../../../utils/checkout-form.jsx";
 
 function RequestForm({onChange}) {
 
@@ -19,6 +19,12 @@ function RequestForm({onChange}) {
         message: '',
         severity: 'success',
     });
+    const [open, setOpen] = useState(false);
+
+    const handleClose = () => {
+        setOpen(false);
+    }
+
     const { getAccessToken } = useTokenManager();
     const {user} = useAuth0();
     const titleStyle = {
@@ -29,6 +35,8 @@ function RequestForm({onChange}) {
     }
 
     const handleSubmit = () => {
+        console.log('Submitting advice request');
+        setOpen(false);
         const timestamp = dayjs().format('YYYY-MM-DDTHH:mm:ss');
         const advice = {
             title: title,
@@ -70,7 +78,7 @@ function RequestForm({onChange}) {
                 </div>
                 <div className={'request-form-bottom'}>
                     <Button disableElevation
-                            onClick={() => handleSubmit()}
+                            onClick={() => setOpen(true)}
                             variant="contained"
                             style={{
                                 border: "1px solid var(--text-color)",
@@ -95,6 +103,8 @@ function RequestForm({onChange}) {
                 message={notification.message}
                 severity={notification.severity}
                 />
+
+            <CheckoutForm open={open} handleClose={handleClose} onSuccess={handleSubmit}/>
         </div>
     );
 }
