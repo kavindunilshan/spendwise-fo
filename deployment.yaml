@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
         - name: spendwise-fo
-          image: kavindudocker/spendwise-fo:latest  # Replace with your actual Docker image path
+          image: kavindudocker/spendwise-fo:latest
           ports:
             - containerPort: 80
