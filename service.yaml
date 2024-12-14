@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: spendwise-frontend-service
+  name: spendwise-fo-service
 spec:
-  type: LoadBalancer
   selector:
-    app: spendwise-frontend
+    app: spendwise-fo
   ports:
     - protocol: TCP
-      port: 80
-      targetPort: 80
+      port: 80  # The external port for your service
+      targetPort: 80  # The port on which your app is running in the container
+  type: LoadBalancer  # Use NodePort or ClusterIP for local clusters

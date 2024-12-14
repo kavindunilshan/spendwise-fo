@@ -1,23 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: spendwise-frontend
+  name: spendwise-fo
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
-      app: spendwise-frontend
+      app: spendwise-fo
   template:
     metadata:
       labels:
-        app: spendwise-frontend
+        app: spendwise-fo
     spec:
       containers:
-        - name: spendwise-frontend
-          image: spendwise-fo:latest
+        - name: spendwise-fo
+          image: kavindudocker/spendwise-fo:latest
           ports:
             - containerPort: 80
-          resources:
-            limits:
-              memory: "512Mi"
-              cpu: "500m"
