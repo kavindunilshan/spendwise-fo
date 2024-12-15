@@ -214,7 +214,7 @@ export default function Transactions() {
             description: formData.description,
         };
 
-        editTransaction(formData.transactionId, transaction).then((data) => {
+        editTransaction(formData.transactionId, transaction, getAccessToken).then((data) => {
             const newTransactions = [...transactions];
             newTransactions[formData.index] = data;
 
