@@ -9,7 +9,7 @@ import {Elements} from "@stripe/react-stripe-js";
 const root = createRoot(document.getElementById('root'));
 
 const auth0Domain = "dev-c5ls7veng3ljfc5g.us.auth0.com";
-const clientId = "4NLurC88Lny8rWRYRamw6Wf2MAIeAWwv";
+const clientId = "NeusqrLxWz03fI3MizB5jB0CsNHROijk";
 const audience = "https://spendwise-backend-api";
 const stripePromise = loadStripe("pk_test_51QU2KtG16wBk4x4NoGSp3xm6Oavqek7vIJccU4PYQKjbxF46AWbmVrjUzeFUhdIHXMddBlp5zX2ymfT1knfbjU1I000QensuvM");
 
