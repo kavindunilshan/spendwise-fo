@@ -14,6 +14,7 @@ import BarChartComponent from "../components/dashboard/charts/bar-chart.jsx";
 import dayjs from "dayjs";
 import Loading from "../components/utils/loading-image.jsx";
 import {useTokenManager} from "../services/direct-tocken.js";
+import Notification from "../components/utils/notification.jsx";
 
 function Dashboard() {
 
@@ -38,6 +39,13 @@ function Dashboard() {
     const [currency, setCurrency] = useState('₹');
     const [monthlyData, setMonthlyData] = useState([]);
     const userId = isAuthenticated ? user.sub.split("|")[1] : null;
+
+    const [secondaryColor, setSecondaryColor] = useState('');
+    const [notification, setNotification] = useState({
+        open: false,
+        message: '',
+        severity: 'success',
+    });
 
     useEffect(() => {
         if (!isAuthenticated && !redirectAttempted) {
@@ -71,6 +79,8 @@ function Dashboard() {
                 setIncome(data.income);
                 setExpense(data.expenses);
                 setIsContentLoaded(1);
+
+                handleShowNotification('Data Loaded Successfully', 'success');
             }).catch((error) => {
                 setIsContentLoaded(2);
             });
@@ -85,8 +95,25 @@ function Dashboard() {
         }
     }, [userId, period, changed]);
 
-    const handleChanged = () => {
+    useEffect(() => {
+        setSecondaryColor(getCSSVariableValue('--chart-color'));
+        setSecondaryColor(getCSSVariableValue('--red-color'));
+        setSecondaryColor(getCSSVariableValue('--yellow-color'));
+        setSecondaryColor(getCSSVariableValue('--blue-color'));
+    }, [isDarkMode]);
+
+    const handleChanged = (message, severity) => {
+        if (message && severity === 'error') {
+            handleShowNotification(message, severity);
+            return;
+        }
+
+        if (message) {
+            handleShowNotification(message, severity);
+        }
+
         setChanged(!changed);
+
     }
 
     const getCSSVariableValue = (variable) => {
@@ -97,14 +124,15 @@ function Dashboard() {
         }
     }
 
-    const [secondaryColor, setSecondaryColor] = useState('');
+    // notification
+    const handleShowNotification = (message, severity) => {
+        setNotification({ open: true, message, severity });
+    };
 
-    useEffect(() => {
-        setSecondaryColor(getCSSVariableValue('--chart-color'));
-        setSecondaryColor(getCSSVariableValue('--red-color'));
-        setSecondaryColor(getCSSVariableValue('--yellow-color'));
-        setSecondaryColor(getCSSVariableValue('--blue-color'));
-    }, [isDarkMode]);
+    const handleCloseNotification = () => {
+        setNotification((prev) => ({ ...prev, open: false }));
+    };
+
 
     if (isContentLoaded === 2) {
         throw new Error("Error fetching data");
@@ -188,6 +216,13 @@ function Dashboard() {
                                 >
                                     <Transactions changed={changed}/>
                                 </WidgetContainer>
+
+                                <Notification
+                                    open={notification.open}
+                                    onClose={handleCloseNotification}
+                                    message={notification.message}
+                                    severity={notification.severity}
+                                />
                             </>
                         }
                     </div>

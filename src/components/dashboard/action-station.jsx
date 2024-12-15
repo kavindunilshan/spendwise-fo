@@ -38,6 +38,7 @@ const CustomDatePicker = styled(DatePicker)({
 
 function ActionStation({onChange, setMonth, period}) {
     const [date, setDate] = useState(dayjs());
+
     const { getAccessToken } = useTokenManager();
 
     const initialTransactionFormData = {
@@ -140,13 +141,17 @@ function ActionStation({onChange, setMonth, period}) {
             description: TransactionFormData.description,
         };
 
-        createTransaction(transaction, getAccessToken);
+        createTransaction(transaction, getAccessToken).then(
+            (data) => {
+                onChange("Transaction added successfully", "success");
+            }
+        ).catch((error) => {
+            onChange("Failed to add transaction", "error");
+        });
 
         setTransactionFormData(initialTransactionFormData);  // Reset the form
         setTransactionErrors({});
         setTransactionOpen(false);
-
-        onChange();
     };
 
     const handleGoalFormChange = (e) => {
@@ -178,7 +183,6 @@ function ActionStation({onChange, setMonth, period}) {
     }
 
     const handleGoalFormSaveChanges = () => {
-
         let hasError = false;
         let newErrors = {};
 
@@ -210,7 +214,13 @@ function ActionStation({onChange, setMonth, period}) {
 
         
 
-        createGoal(goal, getAccessToken);
+        createGoal(goal, getAccessToken).then(
+            (data) => {
+                onChange("Goal set successfully", "success");
+            }
+        ).catch((error) => {
+            onChange("Failed to set goal", "error");
+        });
 
 
         setGoalFormData(initialGoalFormData);
