@@ -1,5 +1,4 @@
 import axios from "axios";
-import getAccessToken from "./machine-to-machine.js";
 
 const baseUrl = "http://localhost:8080/api/private";
 

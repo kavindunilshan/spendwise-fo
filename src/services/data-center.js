@@ -1,5 +1,4 @@
 import axios from "axios";
-import getAccessToken from "./machine-to-machine.js";
 
 const baseUrl = "http://localhost:8080/api/private";
 
@@ -69,18 +68,7 @@ export const updateGoal = async (id, goal, getAccessToken) => {
     return response.data;
 }
 
-
-export const checkPrivateScope = async () => {
-    const token = await getAccessToken(); // Wait for token to be fetched
-    const response = await axios.get(`${baseUrl}-scoped`, {
-        headers: {
-            Authorization: `Bearer ${token}`
-        }
-    });
-    return response.data;
-}
-
-export const fetchClientSecret = async (setClientSecret) => {
+export const fetchClientSecret = async (setClientSecret, getAccessToken) => {
     const token = await getAccessToken();
     try {
         const response = await axios.post(`${baseUrl}/payment/create-payment-intent`,

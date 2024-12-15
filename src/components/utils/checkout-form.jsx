@@ -12,15 +12,17 @@ import Dialog from "@mui/material/Dialog";
 import {Box, CircularProgress, Typography} from "@mui/material";
 import Button from "@mui/material/Button";
 import DialogTitle from "@mui/material/DialogTitle";
+import {useTokenManager} from "../../services/direct-tocken.js";
 
 const CheckoutForm = ({ open, handleClose, onSuccess }) => {
     const stripe = useStripe();
     const elements = useElements();
     const [loading, setLoading] = useState(false);
     const [clientSecret, setClientSecret] = useState("");
+    const { getAccessToken } = useTokenManager();
 
     useEffect(() => {
-        fetchClientSecret(setClientSecret).then(
+        fetchClientSecret(setClientSecret, getAccessToken).then(
             (data) => {
                 console.log("Fetching client secret done", clientSecret);
             }

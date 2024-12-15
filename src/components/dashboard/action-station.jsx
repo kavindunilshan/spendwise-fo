@@ -15,6 +15,7 @@ import {styled} from "@mui/material/styles";
 import {useAuth0} from "@auth0/auth0-react";
 import SelectTextFields from "../forms/form-fields.jsx";
 import GoalFormFields from "../forms/set-goal.jsx";
+import {useTokenManager} from "../../services/direct-tocken.js";
 
 
 
@@ -37,6 +38,8 @@ const CustomDatePicker = styled(DatePicker)({
 
 function ActionStation({onChange, setMonth, period}) {
     const [date, setDate] = useState(dayjs());
+
+    const { getAccessToken } = useTokenManager();
 
     const initialTransactionFormData = {
         transactionType: 'INCOME',
@@ -138,13 +141,17 @@ function ActionStation({onChange, setMonth, period}) {
             description: TransactionFormData.description,
         };
 
-        createTransaction(transaction);
+        createTransaction(transaction, getAccessToken).then(
+            (data) => {
+                onChange("Transaction added successfully", "success");
+            }
+        ).catch((error) => {
+            onChange("Failed to add transaction", "error");
+        });
 
         setTransactionFormData(initialTransactionFormData);  // Reset the form
         setTransactionErrors({});
         setTransactionOpen(false);
-
-        onChange();
     };
 
     const handleGoalFormChange = (e) => {
@@ -176,7 +183,6 @@ function ActionStation({onChange, setMonth, period}) {
     }
 
     const handleGoalFormSaveChanges = () => {
-
         let hasError = false;
         let newErrors = {};
 
@@ -208,7 +214,13 @@ function ActionStation({onChange, setMonth, period}) {
 
         
 
-        createGoal(goal);
+        createGoal(goal, getAccessToken).then(
+            (data) => {
+                onChange("Goal set successfully", "success");
+            }
+        ).catch((error) => {
+            onChange("Failed to set goal", "error");
+        });
 
 
         setGoalFormData(initialGoalFormData);
