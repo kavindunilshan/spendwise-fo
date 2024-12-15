@@ -15,6 +15,7 @@ import {styled} from "@mui/material/styles";
 import {useAuth0} from "@auth0/auth0-react";
 import SelectTextFields from "../forms/form-fields.jsx";
 import GoalFormFields from "../forms/set-goal.jsx";
+import {useTokenManager} from "../../services/direct-tocken.js";
 
 
 
@@ -37,6 +38,7 @@ const CustomDatePicker = styled(DatePicker)({
 
 function ActionStation({onChange, setMonth, period}) {
     const [date, setDate] = useState(dayjs());
+    const { getAccessToken } = useTokenManager();
 
     const initialTransactionFormData = {
         transactionType: 'INCOME',
@@ -138,7 +140,7 @@ function ActionStation({onChange, setMonth, period}) {
             description: TransactionFormData.description,
         };
 
-        createTransaction(transaction);
+        createTransaction(transaction, getAccessToken);
 
         setTransactionFormData(initialTransactionFormData);  // Reset the form
         setTransactionErrors({});
@@ -208,7 +210,7 @@ function ActionStation({onChange, setMonth, period}) {
 
         
 
-        createGoal(goal);
+        createGoal(goal, getAccessToken);
 
 
         setGoalFormData(initialGoalFormData);
