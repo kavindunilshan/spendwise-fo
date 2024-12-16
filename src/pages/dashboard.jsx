@@ -60,6 +60,15 @@ function Dashboard() {
     useEffect(() => {
         if (userId) {
             getPreferences(userId, getAccessToken).then((data) => {
+                console.log("Data", data);
+                if (!data) {
+                    setIsDarkMode(false);
+                    setIsIncomePieChart(true);
+                    setIsExpensePieChart(true);
+                    setPeriod('MONTHLY');
+                    return;
+                }
+
                 setIsDarkMode(data.isDarkMode);
                 setIsIncomePieChart(data.isIncomePieChart);
                 setIsExpensePieChart(data.isExpensePieChart);
@@ -151,7 +160,7 @@ function Dashboard() {
 
                         {isAuthenticated &&
                             <>
-                                <WidgetContainer title="Expence Break down"
+                                <WidgetContainer title="Expense Break down"
                                                  position={{top: '3%', left: '2%'}}
                                                  size={{width: '25%', height: '40%'}}
                                 >
