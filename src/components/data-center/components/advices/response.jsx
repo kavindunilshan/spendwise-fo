@@ -38,6 +38,7 @@ function Response(props) {
     const handleSetAnswer = (index, answer) => {
         const newAdvices = [...advices];
         newAdvices[index].advice = answer;
+        newAdvices[index].status = true;
         setAdvices(newAdvices);
 
         updateAdvice(newAdvices[index].id, newAdvices[index], getAccessToken).then((data) => {

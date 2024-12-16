@@ -34,7 +34,6 @@ const PieChartComponent = ({month, currency, value, changed, type, getCSSVariabl
     useEffect(() => {
         fetchExpenseBreakdown(user.sub.split("|")[1], type.toUpperCase(), month, getAccessToken).then((data) => {
             setChartData(data || {});
-            
         });
     }, [changed]);
 
@@ -92,7 +91,11 @@ const PieChartComponent = ({month, currency, value, changed, type, getCSSVariabl
     return (
         <>
             <div style={{position: 'relative', height: '85%', width: '95%'}}>
-                <Pie data={data} options={options}/>
+                {Object.keys(chartData).length ? <Pie data={data} options={options} /> :
+                    <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%'}}>
+                        <h2 style={{color: 'var(--secondary-color)'}}>No data available</h2>
+                    </div>
+                }
             </div>
             <div style={styles}>
                 Total {type}s = {currency}<CountUp start={startValue} end={endValue} duration={5} separator=","/>
