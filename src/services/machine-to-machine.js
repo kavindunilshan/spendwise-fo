@@ -15,8 +15,8 @@ const isTokenExpired = (token) => {
 const getAccessToken = async () => {
     const auth0Domain = "dev-c5ls7veng3ljfc5g.us.auth0.com";
     const audience = "https://spendwise-backend-api";
-    const clientId = "4NLurC88Lny8rWRYRamw6Wf2MAIeAWwv";
-    const clientSecret = "DMwq8rCmoRXSwts1RFW_zmytBVAzFModkOe3S8Bw9PQuGhb6kWVf0DrOH6QCOup5";
+    const clientId = "";
+    const clientSecret = "";
 
     const token = localStorage.getItem('token');
 

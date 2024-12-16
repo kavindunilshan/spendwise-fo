@@ -1,7 +1,6 @@
 import axios from "axios";
-import getAccessToken from "./machine-to-machine.js";
 
-const baseUrl = "http://localhost:8080/api/private";
+const baseUrl = "https://spendwise-bo-196f496031c7.herokuapp.com/api/private";
 
 export const fetchPublicData = async (getAccessToken) => {
     const url = "http://localhost:8080/api/public";

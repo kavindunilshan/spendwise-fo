@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseUrl = "http://localhost:8080/api/private";
+const baseUrl = "https://spendwise-bo-196f496031c7.herokuapp.com/api/private";
 
 // fetch user data
 export const fetchUserData = async (userId, getAccessToken) => {
