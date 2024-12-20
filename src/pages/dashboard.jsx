@@ -54,13 +54,13 @@ function Dashboard() {
     const getWidgetPosition = () => {
         if (windowWidth700) {
             return [
-                { position: { top: "2%", left: "5%" }, size: { width: "90%", height: "25%" } },
-                { position: { top: "36%", left: "5%" }, size: { width: "90%", height: "25%" } },
-                { position: { top: "70%", left: "5%" }, size: { width: "90%", height: "20%" } },
-                { position: { top: "99%", left: "5%" }, size: { width: "90%", height: "15%" } },
-                { position: { top: "110%", left: "5%" }, size: { width: "90%", height: "20%" } },
-                { position: { top: "125%", left: "5%" }, size: { width: "90%", height: "30%" } },
-                { position: { top: "160%", left: "5%" }, size: { width: "90%", height: "30%" } },
+                { position: { top: "2%", left: "5%" }, size: { width: "80%", height: "35%" } },
+                { position: { top: "45%", left: "5%" }, size: { width: "80%", height: "35%" } },
+                { position: { top: "88%", left: "5%" }, size: { width: "80%", height: "30%" } },
+                { position: { top: "126%", left: "5%" }, size: { width: "80%", height: "25%" } },
+                { position: { top: "160%", left: "5%" }, size: { width: "80%", height: "35%" } },
+                { position: { top: "203%", left: "5%" }, size: { width: "80%", height: "40%" } },
+                { position: { top: "251%", left: "5%" }, size: { width: "80%", height: "60%" } },
             ];
         }
         if (windowWidth964) {
