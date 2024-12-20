@@ -1,5 +1,5 @@
 .chart-container {
-    display: inline-block;
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -9,6 +9,8 @@
     color: var(--text-color);
     border-radius: 0.5rem;
     box-shadow: 0 0 4px 4px var(--shadow-color);
+    margin: 1rem;
+    position: relative;
 }
 
 .chart-container-title {
@@ -16,4 +18,13 @@
     font-weight: 600;
     font-style: italic;
     font-size: 1.5rem;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .chart-container {
+        width: 100%; /* Full width for mobile */
+        height: auto; /* Let the height adjust based on content */
+        margin-bottom: 1rem; /* Add space between stacked widgets */
+    }
 }

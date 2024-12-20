@@ -161,7 +161,7 @@ function Dashboard() {
                         {isAuthenticated &&
                             <>
                                 <WidgetContainer title="Expense Break down"
-                                                 position={{top: '3%', left: '2%'}}
+                                                 position={{top: '2%', left: '0.5%'}}
                                                  size={{width: '25%', height: '40%'}}
                                 >
                                     {isExpensePieChart &&
@@ -174,7 +174,7 @@ function Dashboard() {
                                                            getCSSVariableValue={getCSSVariableValue}/>}
                                 </WidgetContainer>
                                 <WidgetContainer title="Income Break down"
-                                                 position={{top: '51%', left: '2%'}}
+                                                 position={{top: '50%', left: '0.5%'}}
                                                  size={{width: '25%', height: '42%'}}
                                 >
                                     {isIncomePieChart &&
@@ -189,19 +189,19 @@ function Dashboard() {
 
 
                                 <WidgetContainer title="Action Station"
-                                                 position={{top: '3%', left: '31%'}}
+                                                 position={{top: '2%', left: '30%'}}
                                                  size={{width: '25%', height: '30%'}}
                                 >
                                     <ActionStation onChange={handleChanged} setMonth={setMonth} period={period}/>
                                 </WidgetContainer>
                                 <WidgetContainer title="Available Pocket"
-                                                 position={{top: '40%', left: '31%'}}
+                                                 position={{top: '39%', left: '30%'}}
                                                  size={{width: '25%', height: '20%'}}
                                 >
                                     <Pocket currency={currency} value={pocket}/>
                                 </WidgetContainer>
                                 <WidgetContainer title="Milestones"
-                                                 position={{top: '67%', left: '31%'}}
+                                                 position={{top: '66%', left: '30%'}}
                                                  size={{width: '25%', height: '26%'}}
                                 >
                                     <Milestone/>
@@ -209,7 +209,7 @@ function Dashboard() {
 
 
                                 <WidgetContainer title="Over Months Analysis"
-                                                 position={{top: '3%', left: '60%'}}
+                                                 position={{top: '2%', left: '59%'}}
                                                  size={{width: '36%', height: '42%'}}
                                 >
                                     <LineChartComponent expenseData={Object.values(monthlyData.EXPENSE || {})}
@@ -220,8 +220,8 @@ function Dashboard() {
                                     />
                                 </WidgetContainer>
                                 <WidgetContainer title="Recent Transactions"
-                                                 position={{top: '54%', left: '60%'}}
-                                                 size={{width: '36%', height: '39%'}}
+                                                 position={{top: '52%', left: '59%'}}
+                                                 size={{width: '36%', height: '40%'}}
                                 >
                                     <Transactions changed={changed}/>
                                 </WidgetContainer>

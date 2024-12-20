@@ -23,7 +23,7 @@
 }
 
 .action-station-add-btn {
-    scale: 1.1;
+    scale: 1;
     width: 40%;
 }
 
@@ -31,7 +31,6 @@
     margin: 0 auto;
     scale: 1;
     font-size: 12px;
-    width: 45%;
 }
 
 .action-station-live-clock {
