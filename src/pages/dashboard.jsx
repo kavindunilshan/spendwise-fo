@@ -15,6 +15,7 @@ import dayjs from "dayjs";
 import Loading from "../components/utils/loading-image.jsx";
 import {useTokenManager} from "../services/direct-tocken.js";
 import Notification from "../components/utils/notification.jsx";
+import useWindowResize from "../services/useResize.js";
 
 function Dashboard() {
 
@@ -46,6 +47,45 @@ function Dashboard() {
         message: '',
         severity: 'success',
     });
+
+    const windowWidth700 = useWindowResize(700);
+    const windowWidth964 = useWindowResize(964);
+
+    const getWidgetPosition = () => {
+        if (windowWidth700) {
+            return [
+                { position: { top: "2%", left: "5%" }, size: { width: "90%", height: "25%" } },
+                { position: { top: "36%", left: "5%" }, size: { width: "90%", height: "25%" } },
+                { position: { top: "70%", left: "5%" }, size: { width: "90%", height: "20%" } },
+                { position: { top: "99%", left: "5%" }, size: { width: "90%", height: "15%" } },
+                { position: { top: "110%", left: "5%" }, size: { width: "90%", height: "20%" } },
+                { position: { top: "125%", left: "5%" }, size: { width: "90%", height: "30%" } },
+                { position: { top: "160%", left: "5%" }, size: { width: "90%", height: "30%" } },
+            ];
+        }
+        if (windowWidth964) {
+            return [
+                { position: { top: "2%", left: "5%" }, size: { width: "40%", height: "30%" } },
+                { position: { top: "35%", left: "5%" }, size: { width: "40%", height: "30%" } },
+                { position: { top: "2%", left: "55%" }, size: { width: "40%", height: "25%" } },
+                { position: { top: "30%", left: "55%" }, size: { width: "40%", height: "15%" } },
+                { position: { top: "48%", left: "55%" }, size: { width: "40%", height: "25%" } },
+                { position: { top: "70%", left: "5%" }, size: { width: "90%", height: "25%" } },
+                { position: { top: "100%", left: "5%" }, size: { width: "90%", height: "25%" } },
+            ];
+        }
+        return [
+            { position: { top: "2%", left: "0.5%" }, size: { width: "25%", height: "40%" } },
+            { position: { top: "50%", left: "0.5%" }, size: { width: "25%", height: "42%" } },
+            { position: { top: "2%", left: "30%" }, size: { width: "25%", height: "30%" } },
+            { position: { top: "39%", left: "30%" }, size: { width: "25%", height: "20%" } },
+            { position: { top: "66%", left: "30%" }, size: { width: "25%", height: "26%" } },
+            { position: { top: "2%", left: "59%" }, size: { width: "36%", height: "42%" } },
+            { position: { top: "52%", left: "59%" }, size: { width: "36%", height: "40%" } },
+        ];
+    };
+
+    const widgetLayout = getWidgetPosition();
 
     useEffect(() => {
         if (!isAuthenticated && !redirectAttempted) {
@@ -150,92 +190,113 @@ function Dashboard() {
 
     return (
         <>
-            {
-                !isContentLoaded ?
-                    <Loading/>
-
-                    :
-
-                    <div className={`dsb ${isDarkMode ? 'darkmode' : ''}`}>
-
-                        {isAuthenticated &&
-                            <>
-                                <WidgetContainer title="Expense Break down"
-                                                 position={{top: '2%', left: '0.5%'}}
-                                                 size={{width: '25%', height: '40%'}}
-                                >
-                                    {isExpensePieChart &&
-                                        <PieChartComponent month={month} currency={currency} value={expense}
-                                                           changed={changed} type={"Expense"}
-                                                           getCSSVariableValue={getCSSVariableValue}/>}
-                                    {!isExpensePieChart &&
-                                        <BarChartComponent month={month} currency={currency} value={expense}
-                                                           changed={changed} type={"Expense"}
-                                                           getCSSVariableValue={getCSSVariableValue}/>}
-                                </WidgetContainer>
-                                <WidgetContainer title="Income Break down"
-                                                 position={{top: '50%', left: '0.5%'}}
-                                                 size={{width: '25%', height: '42%'}}
-                                >
-                                    {isIncomePieChart &&
-                                        <PieChartComponent month={month} currency={currency} value={income}
-                                                           changed={changed} type={"Income"}
-                                                           getCSSVariableValue={getCSSVariableValue}/>}
-                                    {!isIncomePieChart &&
-                                        <BarChartComponent month={month} currency={currency} value={income}
-                                                           changed={changed} type={"Income"}
-                                                           getCSSVariableValue={getCSSVariableValue}/>}
-                                </WidgetContainer>
-
-
-                                <WidgetContainer title="Action Station"
-                                                 position={{top: '2%', left: '30%'}}
-                                                 size={{width: '25%', height: '30%'}}
-                                >
-                                    <ActionStation onChange={handleChanged} setMonth={setMonth} period={period}/>
-                                </WidgetContainer>
-                                <WidgetContainer title="Available Pocket"
-                                                 position={{top: '39%', left: '30%'}}
-                                                 size={{width: '25%', height: '20%'}}
-                                >
-                                    <Pocket currency={currency} value={pocket}/>
-                                </WidgetContainer>
-                                <WidgetContainer title="Milestones"
-                                                 position={{top: '66%', left: '30%'}}
-                                                 size={{width: '25%', height: '26%'}}
-                                >
-                                    <Milestone/>
-                                </WidgetContainer>
-
-
-                                <WidgetContainer title="Over Months Analysis"
-                                                 position={{top: '2%', left: '59%'}}
-                                                 size={{width: '36%', height: '42%'}}
-                                >
-                                    <LineChartComponent expenseData={Object.values(monthlyData.EXPENSE || {})}
-                                                        incomeData={Object.values(monthlyData.INCOME || {})}
-                                                        savingsData={Object.values(monthlyData.SAVING || {})}
-                                                        getCSSVariableValue={getCSSVariableValue}
-
+            {!isContentLoaded ? (
+                <Loading />
+            ) : (
+                <div className={`dsb ${isDarkMode ? "darkmode" : ""}`}>
+                    {isAuthenticated && (
+                        <>
+                            <WidgetContainer
+                                title="Expense Break down"
+                                position={widgetLayout[0].position}
+                                size={widgetLayout[0].size}
+                            >
+                                {isExpensePieChart ? (
+                                    <PieChartComponent
+                                        month={month}
+                                        currency={currency}
+                                        value={expense}
+                                        changed={changed}
+                                        type={"Expense"}
+                                        getCSSVariableValue={getCSSVariableValue}
                                     />
-                                </WidgetContainer>
-                                <WidgetContainer title="Recent Transactions"
-                                                 position={{top: '52%', left: '59%'}}
-                                                 size={{width: '36%', height: '40%'}}
-                                >
-                                    <Transactions changed={changed}/>
-                                </WidgetContainer>
-
-                                <Notification
-                                    open={notification.open}
-                                    onClose={handleCloseNotification}
-                                    message={notification.message}
-                                    severity={notification.severity}
+                                ) : (
+                                    <BarChartComponent
+                                        month={month}
+                                        currency={currency}
+                                        value={expense}
+                                        changed={changed}
+                                        type={"Expense"}
+                                        getCSSVariableValue={getCSSVariableValue}
+                                    />
+                                )}
+                            </WidgetContainer>
+                            <WidgetContainer
+                                title="Income Break down"
+                                position={widgetLayout[1].position}
+                                size={widgetLayout[1].size}
+                            >
+                                {isIncomePieChart ? (
+                                    <PieChartComponent
+                                        month={month}
+                                        currency={currency}
+                                        value={income}
+                                        changed={changed}
+                                        type={"Income"}
+                                        getCSSVariableValue={getCSSVariableValue}
+                                    />
+                                ) : (
+                                    <BarChartComponent
+                                        month={month}
+                                        currency={currency}
+                                        value={income}
+                                        changed={changed}
+                                        type={"Income"}
+                                        getCSSVariableValue={getCSSVariableValue}
+                                    />
+                                )}
+                            </WidgetContainer>
+                            <WidgetContainer
+                                title="Action Station"
+                                position={widgetLayout[2].position}
+                                size={widgetLayout[2].size}
+                            >
+                                <ActionStation onChange={handleChanged} setMonth={setMonth} period={period} />
+                            </WidgetContainer>
+                            <WidgetContainer
+                                title="Available Pocket"
+                                position={widgetLayout[3].position}
+                                size={widgetLayout[3].size}
+                            >
+                                <Pocket currency={currency} value={pocket} />
+                            </WidgetContainer>
+                            <WidgetContainer
+                                title="Milestones"
+                                position={widgetLayout[4].position}
+                                size={widgetLayout[4].size}
+                            >
+                                <Milestone />
+                            </WidgetContainer>
+                            <WidgetContainer
+                                title="Over Months Analysis"
+                                position={widgetLayout[5].position}
+                                size={widgetLayout[5].size}
+                            >
+                                <LineChartComponent
+                                    expenseData={Object.values(monthlyData.EXPENSE || {})}
+                                    incomeData={Object.values(monthlyData.INCOME || {})}
+                                    savingsData={Object.values(monthlyData.SAVING || {})}
+                                    getCSSVariableValue={getCSSVariableValue}
                                 />
-                            </>
-                        }
-                    </div>
-            }
+                            </WidgetContainer>
+                            <WidgetContainer
+                                title="Recent Transactions"
+                                position={widgetLayout[6].position}
+                                size={widgetLayout[6].size}
+                            >
+                                <Transactions changed={changed} />
+                            </WidgetContainer>
+
+                            <Notification
+                                open={notification.open}
+                                onClose={handleCloseNotification}
+                                message={notification.message}
+                                severity={notification.severity}
+                            />
+                        </>
+                    )}
+                </div>
+            )}
         </>
     );
 }
