@@ -5,7 +5,7 @@ import {AutoAwesome, School} from "@mui/icons-material";
 import {useAuth0} from "@auth0/auth0-react";
 import {useTokenManager} from "../../services/direct-tocken.js";
 
-function DataMenu({}) {
+function DataMenu({onSelect}) {
 
     const {user, isAuthenticated} = useAuth0();
 
@@ -26,7 +26,7 @@ function DataMenu({}) {
 
 
     return (
-        <div className="settings-sidebar-container">
+        <div className="settings-sidebar-container" onClick={() => onSelect()}>
             <div className="sidebar-menu">
                 <ul className="settings-sidebar">
                     <li className="settings-sidebar-item">
