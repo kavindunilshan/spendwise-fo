@@ -48,41 +48,40 @@ function Dashboard() {
         severity: 'success',
     });
 
-    const windowWidth700 = useWindowResize(700);
-    const windowWidth964 = useWindowResize(964);
+    const windowWidth700 = useWindowResize(700);const windowWidth964 = useWindowResize(964);
 
     const getWidgetPosition = () => {
         if (windowWidth700) {
-            return [
-                { position: { top: "2%", left: "5%" }, size: { width: "80%", height: "35%" } },
-                { position: { top: "45%", left: "5%" }, size: { width: "80%", height: "35%" } },
-                { position: { top: "88%", left: "5%" }, size: { width: "80%", height: "30%" } },
-                { position: { top: "126%", left: "5%" }, size: { width: "80%", height: "25%" } },
-                { position: { top: "160%", left: "5%" }, size: { width: "80%", height: "35%" } },
-                { position: { top: "203%", left: "5%" }, size: { width: "80%", height: "40%" } },
-                { position: { top: "251%", left: "5%" }, size: { width: "80%", height: "60%" } },
-            ];
+            return {
+                expense: { position: { top: "2%", left: "5%" }, size: { width: "80%", height: "35%" } },
+                income: { position: { top: "45%", left: "5%" }, size: { width: "80%", height: "35%" } },
+                action: { position: { top: "88%", left: "5%" }, size: { width: "80%", height: "30%" } },
+                pocket: { position: { top: "126%", left: "5%" }, size: { width: "80%", height: "25%" } },
+                milestone: { position: { top: "160%", left: "5%" }, size: { width: "80%", height: "35%" } },
+                graph: { position: { top: "203%", left: "5%" }, size: { width: "80%", height: "40%" } },
+                table: { position: { top: "251%", left: "5%" }, size: { width: "80%", height: "60%" } },
+            };
         }
         if (windowWidth964) {
-            return [
-                { position: { top: "2%", left: "5%" }, size: { width: "40%", height: "30%" } },
-                { position: { top: "35%", left: "5%" }, size: { width: "40%", height: "30%" } },
-                { position: { top: "2%", left: "55%" }, size: { width: "40%", height: "25%" } },
-                { position: { top: "30%", left: "55%" }, size: { width: "40%", height: "15%" } },
-                { position: { top: "48%", left: "55%" }, size: { width: "40%", height: "25%" } },
-                { position: { top: "70%", left: "5%" }, size: { width: "90%", height: "25%" } },
-                { position: { top: "100%", left: "5%" }, size: { width: "90%", height: "25%" } },
-            ];
+            return {
+                expense: { position: { top: "2%", left: "2%" }, size: { width: "42%", height: "40%" } },
+                income: { position: { top: "50%", left: "2%" }, size: { width: "42%", height: "40%" } },
+                action: { position: { top: "2%", left: "51%" }, size: { width: "40%", height: "30%" } },
+                pocket: { position: { top: "40%", left: "51%" }, size: { width: "40%", height: "20%" } },
+                milestone: { position: { top: "68%", left: "51%" }, size: { width: "40%", height: "22%" } },
+                graph: { position: { top: "98%", left: "2%" }, size: { width: "90%", height: "45%" } },
+                table: { position: { top: "151%", left: "2%" }, size: { width: "90%", height: "45%" } },
+            };
         }
-        return [
-            { position: { top: "2%", left: "0.5%" }, size: { width: "25%", height: "40%" } },
-            { position: { top: "50%", left: "0.5%" }, size: { width: "25%", height: "42%" } },
-            { position: { top: "2%", left: "30%" }, size: { width: "25%", height: "30%" } },
-            { position: { top: "39%", left: "30%" }, size: { width: "25%", height: "20%" } },
-            { position: { top: "66%", left: "30%" }, size: { width: "25%", height: "26%" } },
-            { position: { top: "2%", left: "59%" }, size: { width: "36%", height: "42%" } },
-            { position: { top: "52%", left: "59%" }, size: { width: "36%", height: "40%" } },
-        ];
+        return {
+            expense: { position: { top: "2%", left: "0.5%" }, size: { width: "25%", height: "40%" } },
+            income: { position: { top: "50%", left: "0.5%" }, size: { width: "25%", height: "42%" } },
+            action: { position: { top: "2%", left: "30%" }, size: { width: "25%", height: "30%" } },
+            pocket: { position: { top: "39%", left: "30%" }, size: { width: "25%", height: "20%" } },
+            milestone: { position: { top: "66%", left: "30%" }, size: { width: "25%", height: "26%" } },
+            graph: { position: { top: "2%", left: "59%" }, size: { width: "36%", height: "42%" } },
+            table: { position: { top: "52%", left: "59%" }, size: { width: "36%", height: "40%" } },
+        };
     };
 
     const widgetLayout = getWidgetPosition();
@@ -198,8 +197,8 @@ function Dashboard() {
                         <>
                             <WidgetContainer
                                 title="Expense Break down"
-                                position={widgetLayout[0].position}
-                                size={widgetLayout[0].size}
+                                position={widgetLayout.expense.position}
+                                size={widgetLayout.expense.size}
                             >
                                 {isExpensePieChart ? (
                                     <PieChartComponent
@@ -223,8 +222,8 @@ function Dashboard() {
                             </WidgetContainer>
                             <WidgetContainer
                                 title="Income Break down"
-                                position={widgetLayout[1].position}
-                                size={widgetLayout[1].size}
+                                position={widgetLayout.income.position}
+                                size={widgetLayout.income.size}
                             >
                                 {isIncomePieChart ? (
                                     <PieChartComponent
@@ -248,29 +247,29 @@ function Dashboard() {
                             </WidgetContainer>
                             <WidgetContainer
                                 title="Action Station"
-                                position={widgetLayout[2].position}
-                                size={widgetLayout[2].size}
+                                position={widgetLayout.action.position}
+                                size={widgetLayout.action.size}
                             >
                                 <ActionStation onChange={handleChanged} setMonth={setMonth} period={period} />
                             </WidgetContainer>
                             <WidgetContainer
                                 title="Available Pocket"
-                                position={widgetLayout[3].position}
-                                size={widgetLayout[3].size}
+                                position={widgetLayout.pocket.position}
+                                size={widgetLayout.pocket.size}
                             >
                                 <Pocket currency={currency} value={pocket} />
                             </WidgetContainer>
                             <WidgetContainer
                                 title="Milestones"
-                                position={widgetLayout[4].position}
-                                size={widgetLayout[4].size}
+                                position={widgetLayout.milestone.position}
+                                size={widgetLayout.milestone.size}
                             >
                                 <Milestone />
                             </WidgetContainer>
                             <WidgetContainer
                                 title="Over Months Analysis"
-                                position={widgetLayout[5].position}
-                                size={widgetLayout[5].size}
+                                position={widgetLayout.graph.position}
+                                size={widgetLayout.graph.size}
                             >
                                 <LineChartComponent
                                     expenseData={Object.values(monthlyData.EXPENSE || {})}
@@ -281,8 +280,8 @@ function Dashboard() {
                             </WidgetContainer>
                             <WidgetContainer
                                 title="Recent Transactions"
-                                position={widgetLayout[6].position}
-                                size={widgetLayout[6].size}
+                                position={widgetLayout.table.position}
+                                size={widgetLayout.table.size}
                             >
                                 <Transactions changed={changed} />
                             </WidgetContainer>
