@@ -254,31 +254,37 @@ function ActionStation({onChange, setMonth, period}) {
                         </LocalizationProvider>
                     </div>}
                     <div className={'action-station-add-btn'}>
-                        <Button disableElevation
-                                onClick={() => setTransactionOpen(true)}
-                                variant="contained"
-                                style={{
-                                    border: "1px solid var(--text-color)",
-                                    backgroundColor: "rgba(251,139,36,0)",
-                                    color: "var(--text-color)",
-                                    width: '100%',
-                                }}
-                                startIcon={<Add/>}
+                        <Button
+                            disableElevation
+                            onClick={() => setTransactionOpen(true)}
+                            variant="contained"
+                            style={{
+                                border: "1px solid var(--text-color)",
+                                backgroundColor: "rgba(251,139,36,0)",
+                                color: "var(--text-color)",
+                                width: '100%',
+                                fontSize: 'clamp(0.6rem, 1vw, 0.8rem)',
+                                padding: '0.5rem 1rem',
+                                textOverflow: 'ellipsis',
+                                whiteSpace: 'nowrap',
+                            }}
+                            startIcon={<Add/>}
                         >
                             Transaction
                         </Button>
                     </div>
+
                 </div>
-                    <div className={'action-station-goal-btn'}>
-                        <Button disableElevation
-                                onClick={() => setGoalOpen(true)}
-                                variant="contained"
-                                style={{
-                                    border: "1px solid var(--text-color)",
-                                    backgroundColor: "rgba(251,139,36,0)",
-                                    color: "var(--green-color)"
-                                }}
-                                startIcon={<SportsScoreOutlinedIcon style={{color: 'var(--red-color)'}}/>}
+                <div className={'action-station-goal-btn'}>
+                    <Button disableElevation
+                            onClick={() => setGoalOpen(true)}
+                            variant="contained"
+                            style={{
+                                border: "1px solid var(--text-color)",
+                                backgroundColor: "rgba(251,139,36,0)",
+                                color: "var(--green-color)"
+                            }}
+                            startIcon={<SportsScoreOutlinedIcon style={{color: 'var(--red-color)'}}/>}
                         >
                             Set Goal
                         </Button>

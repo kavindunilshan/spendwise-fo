@@ -1,7 +1,7 @@
 import React from 'react';
 import "/src/styles/dashboard/chart-container.css";
 
-const ChartContainer = ({ title, place, position, size, children }) => {
+const WidgetContainer = ({ title, place, position, size, children }) => {
     return (
         <div className={"chart-container"}
              style={{position: place || 'absolute', top: position.top, left:position.left,
@@ -12,4 +12,4 @@ const ChartContainer = ({ title, place, position, size, children }) => {
     );
 }
 
-export default ChartContainer;
+export default WidgetContainer;
