@@ -53,13 +53,13 @@ function Dashboard() {
     const getWidgetPosition = () => {
         if (windowWidth700) {
             return {
-                expense: { position: { top: "2%", left: "5%" }, size: { width: "80%", height: "35%" } },
-                income: { position: { top: "45%", left: "5%" }, size: { width: "80%", height: "35%" } },
-                action: { position: { top: "88%", left: "5%" }, size: { width: "80%", height: "30%" } },
-                pocket: { position: { top: "126%", left: "5%" }, size: { width: "80%", height: "25%" } },
-                milestone: { position: { top: "160%", left: "5%" }, size: { width: "80%", height: "35%" } },
-                graph: { position: { top: "203%", left: "5%" }, size: { width: "80%", height: "40%" } },
-                table: { position: { top: "251%", left: "5%" }, size: { width: "80%", height: "60%" } },
+                expense: { position: { top: "73%", left: "5%" }, size: { width: "80%", height: "40%" } },
+                income: { position: { top: "121%", left: "5%" }, size: { width: "80%", height: "40%" } },
+                action: { position: { top: "2%", left: "5%" }, size: { width: "80%", height: "30%" } },
+                pocket: { position: { top: "40%", left: "5%" }, size: { width: "80%", height: "25%" } },
+                milestone: { position: { top: "169%", left: "5%" }, size: { width: "80%", height: "35%" } },
+                graph: { position: { top: "212%", left: "5%" }, size: { width: "80%", height: "45%" } },
+                table: { position: { top: "265%", left: "5%" }, size: { width: "80%", height: "60%" } },
             };
         }
         if (windowWidth964) {
