@@ -66,7 +66,7 @@ function Support(props) {
                     />
                 </div>
                 <div className={'settings-faq-img'}>
-                    <img src={'./faq.png'} alt={'FAQ-img'} className={'faq-img'}/>
+                    <img src={'/faq.png'} alt={'FAQ-img'} className={'faq-img'}/>
                 </div>
             </div>
         </div>
