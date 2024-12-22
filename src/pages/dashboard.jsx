@@ -16,6 +16,7 @@ import Loading from "../components/utils/loading-image.jsx";
 import {useTokenManager} from "../services/direct-tocken.js";
 import Notification from "../components/utils/notification.jsx";
 import useWindowResize from "../services/useResize.js";
+import Footer from "../components/home/footer.jsx";
 
 function Dashboard() {
 
@@ -294,6 +295,16 @@ function Dashboard() {
                                 severity={notification.severity}
                             />
                         </>
+                    )}
+
+                    {windowWidth980 && (
+                        <div className="dsb-footer"
+                                style={{
+                                    top: windowWidth700 ? "300%" : "180%",
+                                }}
+                        >
+                            <Footer/>
+                        </div>
                     )}
                 </div>
             )}
