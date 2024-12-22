@@ -14,8 +14,10 @@ import useWindowResize from "../services/useResize.js";
 function DataCenter() {
 
     const { componentData } = useContext(SettingsContext);
-    const windowWidth1000 = useWindowResize(1000);
     const [isMenuVisible, setIsMenuVisible] = useState(false);
+
+    const windowWidth1000 = useWindowResize(1020);
+    const windowWidth768 = useWindowResize(980);
 
     const toggleMenu = () => {
         setIsMenuVisible(!isMenuVisible);
@@ -37,15 +39,15 @@ function DataCenter() {
                     titleStyle={{fontWeight: '600', fontStyle: 'italic', fontSize: '1.7em'}}
                 />
 
-                {!windowWidth1000 && (
+                {!windowWidth768 && (
                     <div className={'data-center-flat-icons'}>
                         <FlatIcons/>
                     </div>
                 )}
             </div>
 
-            {windowWidth1000 && (
-                <div className={'.data-center-flat-icons-small'}>
+            {windowWidth768 && (
+                <div className={'data-center-flat-icons-small'}>
                     <FlatIcons/>
                 </div>
             )}
@@ -58,22 +60,25 @@ function DataCenter() {
                 </div>
             )}
 
-            {(windowWidth1000 || !isMenuVisible) && (
-                <div className="settings-sub-container">
-                    <>
-                        {!windowWidth1000 ? (
+            {(!windowWidth1000 || !isMenuVisible) && (
+                <div className={!windowWidth1000 ? "settings-sub-container" : "settings-sub-container-small"}>
+                    {!windowWidth1000 ? (
+                        <>
                             <div className="settings-left">
                                 <DataMenu onSelect={handleMenuSelect}/>
                             </div>
-                        ) : (
-                            <>
-                                <Menu onClick={toggleMenu} style={{cursor: 'pointer', fontSize: '2em'}}/>
-                            </>
-                        )}
-                    </>
-                    <div className="settings-right">
-                        <Outlet/>
-                    </div>
+                            <div className="settings-right">
+                                <Outlet/>
+                            </div>
+                        </>
+                    ) : (
+                        <>
+                            <Menu onClick={toggleMenu} style={{ margin: '20px', cursor: 'pointer', fontSize: '2em'}}/>
+                            <div className="settings-right">
+                                <Outlet/>
+                            </div>
+                        </>
+                    )}
                 </div>
             )}
 

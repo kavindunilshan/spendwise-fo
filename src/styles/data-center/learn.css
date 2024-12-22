@@ -1,32 +1,80 @@
 .learn {
   display: flex;
   flex-direction: column;
+  padding: 1em;
 }
 
 .learn-content {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
+  flex-wrap: wrap;
 }
 
 .learn-item {
   scale: 0.9;
   width: 70%;
+  margin: auto;
 }
 
 .learn-intro-text {
   font-family: "Open Sans", sans-serif;
   color: #320440;
   text-align: center;
+  margin-bottom: 1em;
 }
 
 .learn-image {
   position: absolute;
-  bottom: 20%;
-  right: 10%;
+  bottom: 10%;
+  right: 5%;
   width: 20%;
-  height: 60%;
+  height: auto;
   transform: rotate(30deg);
+}
+
+@media (max-width: 1200px) {
+  .learn-image {
+    width: 20%;
+    bottom: 15%;
+    right: 5%;
+  }
+}
+
+@media (max-width: 900px) {
+  .learn-image {
+    width: 30%;
+    bottom: 10%;
+    right: 5%;
+    transform: rotate(20deg);
+  }
+
+  .learn-item {
+    width: 90%;
+  }
+}
+
+@media (max-width: 600px) {
+  .learn-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .learn-image {
+    width: 30%;
+    top: 38%;
+    left: 30%;
+    transform: rotate(10deg);
+  }
+
+  .learn-item {
+    width: 100%;
+  }
+
+  .learn-intro-text {
+    font-size: 1rem;
+    padding: 0 1em;
+  }
 }
 
 .video-section {
