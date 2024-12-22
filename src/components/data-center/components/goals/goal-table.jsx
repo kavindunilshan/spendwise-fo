@@ -15,6 +15,7 @@ import GoalFormFields from "../../../forms/set-goal.jsx";
 import {useAuth0} from "@auth0/auth0-react";
 import {fetchGoals, updateGoal} from "../../../../services/data-center.js";
 import {useTokenManager} from "../../../../services/direct-tocken.js";
+import useWindowResize from "../../../../services/useResize.js";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -64,6 +65,7 @@ export default function GoalTable() {
     const [goalOpen, setGoalOpen] = useState(false);
     const [goalFormData, setGoalFormData] = useState(initialGoalFormData);
     const [goalErrors, setGoalErrors] = useState({});
+    const windowWidth1000 = useWindowResize(1000);
 
     const [changed, setChanged] = useState(false);
 
@@ -186,9 +188,12 @@ export default function GoalTable() {
     }
 
 
-
         return (
-        <div className={'ds-transactions'} style={{width: '95%', marginLeft: '3%'}}>
+        <div className={'ds-transactions'}
+             style={{
+                 width: windowWidth1000 ? '105%' : '95%',
+                 marginLeft: windowWidth1000 ? '5%' : '3%',
+            }}>
             <TableContainer component={Paper} style={{marginTop: '4%', marginBottom: "15%"}}>
                 <Table sx={{ minWidth: 200 }} aria-label="customized table">
                     <TableHead>

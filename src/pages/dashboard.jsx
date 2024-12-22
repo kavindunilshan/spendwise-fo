@@ -16,6 +16,7 @@ import Loading from "../components/utils/loading-image.jsx";
 import {useTokenManager} from "../services/direct-tocken.js";
 import Notification from "../components/utils/notification.jsx";
 import useWindowResize from "../services/useResize.js";
+import Footer from "../components/home/footer.jsx";
 
 function Dashboard() {
 
@@ -48,7 +49,8 @@ function Dashboard() {
         severity: 'success',
     });
 
-    const windowWidth700 = useWindowResize(700);const windowWidth964 = useWindowResize(964);
+    const windowWidth700 = useWindowResize(700);
+    const windowWidth980 = useWindowResize(980);
 
     const getWidgetPosition = () => {
         if (windowWidth700) {
@@ -62,7 +64,7 @@ function Dashboard() {
                 table: { position: { top: "265%", left: "5%" }, size: { width: "80%", height: "60%" } },
             };
         }
-        if (windowWidth964) {
+        if (windowWidth980) {
             return {
                 expense: { position: { top: "2%", left: "2%" }, size: { width: "42%", height: "40%" } },
                 income: { position: { top: "50%", left: "2%" }, size: { width: "42%", height: "40%" } },
@@ -293,6 +295,16 @@ function Dashboard() {
                                 severity={notification.severity}
                             />
                         </>
+                    )}
+
+                    {windowWidth980 && (
+                        <div className="dsb-footer"
+                                style={{
+                                    top: windowWidth700 ? "300%" : "180%",
+                                }}
+                        >
+                            <Footer/>
+                        </div>
                     )}
                 </div>
             )}

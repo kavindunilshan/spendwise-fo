@@ -6,6 +6,12 @@
     box-shadow: 0 0 4px 4px rgba(50, 4, 64, 0.09);
 }
 
+.data-center-flat-icons-small {
+    margin: 0 20px 20px 20px;
+    border-radius: 2rem;
+    box-shadow: 0 0 4px 4px rgba(50, 4, 64, 0.09);
+}
+
 @media print {
     body * {
         visibility: hidden;

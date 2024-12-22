@@ -89,3 +89,33 @@
 .advice-result-answer {
     background-color: #d0f6d6;
 }
+
+@media (max-width: 600px) {
+    .advice-result {
+        margin-left: 0;
+    }
+
+    .advice-result-header {
+        margin-left: 0;
+    }
+
+    .advice-result-status-timestamp {
+        width: 100%;
+    }
+
+    .advice-result-status {
+        margin-left: 0;
+    }
+
+    .advice-result-content {
+        margin-left: 0;
+    }
+
+    .advice-result-avatar {
+        margin-left: 0;
+    }
+
+    .advice-result-text-box {
+        max-width: 100%;
+    }
+}

@@ -14,8 +14,8 @@ const VideoCard = ({ videoLink, description }) => {
     return (
         <div className="video-card">
             <iframe
-                width="500"
-                height="300"
+                width="400"
+                height="250"
                 src={convertToEmbedUrl(videoLink)}
                 title="YouTube video"
                 frameBorder="0"

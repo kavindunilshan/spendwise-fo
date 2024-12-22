@@ -14,3 +14,14 @@
     margin-top: 4%;
     width: 80%;
 }
+
+@media (max-width: 700px) {
+    .advices-request {
+        width: 100%;
+    }
+
+    .advices-info {
+        width: 100%;
+        margin: 0;
+    }
+}

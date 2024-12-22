@@ -2,9 +2,9 @@ import React from 'react';
 import { NavLink } from "react-router-dom";
 import '/src/styles/settings/settings-menu.css'
 
-function SettingsMenu({}) {
+function SettingsMenu({onSelect}) {
     return (
-        <div className="settings-sidebar-container">
+        <div className="settings-sidebar-container" onClick={() => onSelect()}>
             <div className="sidebar-menu">
                 <ul className="settings-sidebar">
                     <li className="settings-sidebar-item">
