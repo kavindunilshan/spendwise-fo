@@ -16,8 +16,9 @@ function Home() {
         ref.current.scrollIntoView({behavior: 'smooth'});
     }
 
-    return (
+    console.log("Here", import.meta.env.VITE_LOCAL_API_URL);
 
+    return (
         <>
             <img className={'home-landing-img'}
                  src={'/b2.jpg'}

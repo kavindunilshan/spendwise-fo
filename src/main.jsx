@@ -11,7 +11,8 @@ const root = createRoot(document.getElementById('root'));
 const auth0Domain = import.meta.env.VITE_AUTH0_DOMAIN;
 const clientId = import.meta.env.VITE_AUTH0_FO_CLIENT_ID;
 const audience = import.meta.env.VITE_AUTH0_AUDIENCE;
-const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY);
+const stripePublicKey = import.meta.env.VITE_STRIPE_PUBLIC_KEY;
+const stripePromise = loadStripe(stripePublicKey);
 
 root.render(
         <BrowserRouter>

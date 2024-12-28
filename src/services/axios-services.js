@@ -1,9 +1,9 @@
 import axios from "axios";
 
-const baseUrl = "http://localhost:8080/api/private";
+const baseUrl = `${import.meta.env.VITE_LOCAL_API_URL}/api/private`;
 
 export const fetchPublicData = async (getAccessToken) => {
-    const url = "http://localhost:8080/api/public";
+    const url = `${import.meta.env.VITE_LOCAL_API_URL}/api/public`;
     try {
         const response = await axios.get(url);
         return response.data; // return the data received from the API

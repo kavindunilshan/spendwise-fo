@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseUrl = "http://localhost:8080/api/private";
+const baseUrl = `${import.meta.env.VITE_LOCAL_API_URL}/api/private`;
 
 // fetch all advices for userId
 export const fetchAdvices = async (userId, getAccessToken) => {
