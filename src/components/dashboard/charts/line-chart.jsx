@@ -25,7 +25,7 @@ ChartJS.register(
 );
 
 const LineChartComponent = ({incomeData, getCSSVariableValue, expenseData, savingsData}) => {
-
+    console.log(incomeData);
 
     function generateMonthLabels() {
         const months = [];

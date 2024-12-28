@@ -274,9 +274,15 @@ function Dashboard() {
                                 size={widgetLayout.graph.size}
                             >
                                 <LineChartComponent
-                                    expenseData={Object.values(monthlyData.EXPENSE || {})}
-                                    incomeData={Object.values(monthlyData.INCOME || {})}
-                                    savingsData={Object.values(monthlyData.SAVING || {})}
+                                    expenseData={Object.keys(monthlyData.EXPENSE || {})
+                                        .sort()
+                                        .map(key => monthlyData.EXPENSE[key])}
+                                    incomeData={Object.keys(monthlyData.INCOME || {})
+                                        .sort()
+                                        .map(key => monthlyData.INCOME[key])}
+                                    savingsData={Object.keys(monthlyData.SAVING || {})
+                                        .sort()
+                                        .map(key => monthlyData.SAVING[key])}
                                     getCSSVariableValue={getCSSVariableValue}
                                 />
                             </WidgetContainer>
