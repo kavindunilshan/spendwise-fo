@@ -8,10 +8,10 @@ import {Elements} from "@stripe/react-stripe-js";
 
 const root = createRoot(document.getElementById('root'));
 
-const auth0Domain = "dev-c5ls7veng3ljfc5g.us.auth0.com";
-const clientId = "NeusqrLxWz03fI3MizB5jB0CsNHROijk";
-const audience = "https://spendwise-backend-api";
-const stripePromise = loadStripe("pk_test_51QU2KtG16wBk4x4NoGSp3xm6Oavqek7vIJccU4PYQKjbxF46AWbmVrjUzeFUhdIHXMddBlp5zX2ymfT1knfbjU1I000QensuvM");
+const auth0Domain = import.meta.env.VITE_AUTH0_DOMAIN;
+const clientId = import.meta.env.VITE_AUTH0_FO_CLIENT_ID;
+const audience = import.meta.env.VITE_AUTH0_AUDIENCE;
+const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY);
 
 root.render(
         <BrowserRouter>
