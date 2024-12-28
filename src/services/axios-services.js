@@ -1,9 +1,9 @@
 import axios from "axios";
 
-const baseUrl = `${import.meta.env.VITE_LOCAL_API_URL}/api/private`;
+const baseUrl = `https://spendwise-bo-196f496031c7.herokuapp.com/api/private`;
 
 export const fetchPublicData = async (getAccessToken) => {
-    const url = `${import.meta.env.VITE_LOCAL_API_URL}/api/public`;
+    const url = `https://spendwise-bo-196f496031c7.herokuapp.com/api/public`;
     try {
         const response = await axios.get(url);
         return response.data; // return the data received from the API
