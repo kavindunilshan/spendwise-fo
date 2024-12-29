@@ -40,8 +40,6 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 export default function MilestoneTable() {
     const windowWidth1000 = useWindowResize(1000);
 
-    const [changed, setChanged] = useState(false);
-
     const { user, isAuthenticated } = useAuth0();
     const { getAccessToken } = useTokenManager();
 
@@ -53,7 +51,7 @@ export default function MilestoneTable() {
                 setMilestones(data);
             });
         }
-    }, [user, changed]);
+    }, [user]);
 
     return (
         <div
