@@ -57,6 +57,16 @@ export const fetchGoals = async (userId, getAccessToken) => {
     return response.data;
 }
 
+export const fetchMilestones = async (userId, getAccessToken) => {
+    const token = await getAccessToken(); // Wait for token to be fetched
+    const response = await axios.get(`${baseUrl}/milestones/${userId}`, {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    });
+    return response.data;
+}
+
 // update a goal
 export const updateGoal = async (id, goal, getAccessToken) => {
     const token = await getAccessToken(); // Wait for token to be fetched
