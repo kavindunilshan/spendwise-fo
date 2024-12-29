@@ -85,13 +85,9 @@ const LineChartComponent = ({incomeData, getCSSVariableValue, expenseData, savin
                     callback: function (value, index, values) {
                         return 'Rs. ' + value;
                     },
-
                     color: secondaryColor,
                     stepSize: 1000,
-
-                    // Maximum number of ticks on the y-axis
                     maxTicksLimit: 6,
-
                 }
             },
         },
@@ -121,7 +117,7 @@ const LineChartComponent = ({incomeData, getCSSVariableValue, expenseData, savin
                 backgroundColor: blue,
                 fill: true,
                 tension: 0,
-                borderWidth: 1,
+                borderWidth: 2,
             },
             {
                 label: 'Expenses',
@@ -130,7 +126,7 @@ const LineChartComponent = ({incomeData, getCSSVariableValue, expenseData, savin
                 backgroundColor: red,
                 fill: true,
                 tension: 0,
-                borderWidth: 1,
+                borderWidth: 2,
             },
             {
                 label: 'Savings',
@@ -139,7 +135,7 @@ const LineChartComponent = ({incomeData, getCSSVariableValue, expenseData, savin
                 backgroundColor: yellow,
                 fill: true,
                 tension: 0,
-                borderWidth: 1,
+                borderWidth: 2,
             },
         ],
     };
