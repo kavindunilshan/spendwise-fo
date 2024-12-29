@@ -17,8 +17,6 @@ function Home() {
     }
 
     const apiUrl = window.configs?.VITE_LOCAL_API_URL;
-    console.log("Here1", apiUrl);
-    console.log("Here2", import.meta.env.VITE_LOCAL_API_URL);
 
     return (
         <>

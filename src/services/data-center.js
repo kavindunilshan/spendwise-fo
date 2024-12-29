@@ -38,7 +38,6 @@ export const postAdvice = async (advice, getAccessToken) => {
 export const updateAdvice = async (id, advice, getAccessToken) => {
     const token = await getAccessToken();
 
-    console.log("Advice", advice);
     const response = await axios.put(`${baseUrl}/advices/admin/${id}`, advice, {
         headers: {
             Authorization: `Bearer ${token}`

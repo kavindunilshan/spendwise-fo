@@ -30,7 +30,7 @@ function DashboardSettings() {
         if (user) {
             getPreferences(user?.sub.split('|')[1], getAccessToken).then((data) => {
                 if (data) {
-                    console.log("here coming data");
+
                     setIsDarkMode(data.isDarkMode);
                     setIsIncomePieChart(data.isIncomePieChart);
                     setIsExpensePieChart(data.isExpensePieChart);

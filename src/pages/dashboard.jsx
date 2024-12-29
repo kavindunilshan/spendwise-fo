@@ -101,7 +101,7 @@ function Dashboard() {
     useEffect(() => {
         if (userId) {
             getPreferences(userId, getAccessToken).then((data) => {
-                console.log("Data", data);
+
                 if (!data) {
                     setIsDarkMode(false);
                     setIsIncomePieChart(true);
