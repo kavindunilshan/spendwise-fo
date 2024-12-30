@@ -35,7 +35,7 @@ function RequestForm({onChange}) {
     }
 
     const handleSubmit = () => {
-        console.log('Submitting advice request');
+
         setOpen(false);
         const timestamp = dayjs().format('YYYY-MM-DDTHH:mm:ss');
         const advice = {
@@ -63,7 +63,7 @@ function RequestForm({onChange}) {
 
     const submitAdvice = () => {
         if (!title || !problem) {
-            console.log("here");
+
             handleShowNotification('Both Title and Problem Description are required.', 'error');
             return;
         }

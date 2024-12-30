@@ -38,7 +38,6 @@ export const postAdvice = async (advice, getAccessToken) => {
 export const updateAdvice = async (id, advice, getAccessToken) => {
     const token = await getAccessToken();
 
-    console.log("Advice", advice);
     const response = await axios.put(`${baseUrl}/advices/admin/${id}`, advice, {
         headers: {
             Authorization: `Bearer ${token}`
@@ -50,6 +49,16 @@ export const updateAdvice = async (id, advice, getAccessToken) => {
 export const fetchGoals = async (userId, getAccessToken) => {
     const token = await getAccessToken(); // Wait for token to be fetched
     const response = await axios.get(`${baseUrl}/goals/${userId}`, {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    });
+    return response.data;
+}
+
+export const fetchMilestones = async (userId, getAccessToken) => {
+    const token = await getAccessToken(); // Wait for token to be fetched
+    const response = await axios.get(`${baseUrl}/milestones/${userId}`, {
         headers: {
             Authorization: `Bearer ${token}`
         }

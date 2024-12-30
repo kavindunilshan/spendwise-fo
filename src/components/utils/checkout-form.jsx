@@ -24,7 +24,7 @@ const CheckoutForm = ({ open, handleClose, onSuccess }) => {
     useEffect(() => {
         fetchClientSecret(setClientSecret, getAccessToken).then(
             (data) => {
-                console.log("Fetching client secret done", clientSecret);
+
             }
         );
     }, []);
