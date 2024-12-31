@@ -13,6 +13,7 @@ const clientId = import.meta.env.VITE_AUTH0_FO_CLIENT_ID;
 const audience = import.meta.env.VITE_AUTH0_AUDIENCE;
 const stripePublicKey = import.meta.env.VITE_STRIPE_PUBLIC_KEY;
 const stripePromise = loadStripe(stripePublicKey);
+const scope = 'delete:resources write:advices access:admin';
 
 root.render(
         <BrowserRouter>
@@ -22,6 +23,7 @@ root.render(
                 authorizationParams={{
                     redirect_uri: window.location.origin,
                     ...(audience ? { audience: audience } : null),
+                    ...(scope ? { scope: scope } : null),
                 }}
             >
                 <Elements stripe={stripePromise}>
