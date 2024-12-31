@@ -60,7 +60,7 @@ function Reports(props) {
                 setIncome(data.income);
                 setExpense(data.expenses);
                 setSaving(data.savings);
-                console.log("satisfied")
+
             });
 
             fetchUserData(userId, getAccessToken).then((data) => {

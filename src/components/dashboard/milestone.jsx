@@ -1,8 +1,21 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import Trophy from "./tryphy.jsx";
+import {useAuth0} from "@auth0/auth0-react";
+import {useTokenManager} from "../../services/direct-tocken.js";
+import {fetchMilestones} from "../../services/data-center.js";
 
 function Milestone(props) {
-    const [milestones, setMilestones] = React.useState([]);
+    const { user, isAuthenticated } = useAuth0();
+    const { getAccessToken } = useTokenManager();
+    const [milestones, setMilestones] = useState([]);
+
+    useEffect(() => {
+        if (isAuthenticated) {
+            fetchMilestones(user.sub.split('|')[1], getAccessToken).then((data) => {
+                setMilestones(data);
+            });
+        }
+    }, [user]);
 
     const styles = {
         display: 'flex',
@@ -19,9 +32,15 @@ function Milestone(props) {
             })
             }
 
-            <Trophy img={'/m1.png'} date={'TBD'} reason={'First Income Goal'}/>
-            <Trophy img={'/m1.png'} date={'TBD'} reason={'First Expense Goal'}/>
-            <Trophy img={'/m1.png'} date={'TBD'} reason={'100 Transactions'}/>
+
+            {
+                milestones.length === 0 &&
+                <>
+                    <Trophy img={'/m1.png'} date={'Not achieved'} reason={'First Income Goal'}/>
+                    <Trophy img={'/m1.png'} date={'Not achieved'} reason={'First Expense Goal'}/>
+                    <Trophy img={'/m1.png'} date={'Not achieved'} reason={'100 Transactions'}/>
+                </>
+            }
 
         </div>
     );
