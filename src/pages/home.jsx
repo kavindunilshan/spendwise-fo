@@ -4,21 +4,14 @@ import Body from "../components/home/body.jsx";
 import LoginButton from "../components/login/login.jsx";
 import Footer from "../components/home/footer.jsx";
 import "/src/styles/home/home.css";
-import {useTokenManager} from "../services/direct-tocken.js";
 
 function Home() {
 
     const overviewRef = useRef();
     const serviceRef = useRef();
-    const { getAccessToken } = useTokenManager();
-
     const scrollToSection = (ref) => {
         ref.current.scrollIntoView({behavior: 'smooth'});
     }
-
-    const apiUrl = window.configs?.VITE_LOCAL_API_URL;
-    console.log("Here1", apiUrl);
-    console.log("Here2", import.meta.env.VITE_LOCAL_API_URL);
 
     return (
         <>

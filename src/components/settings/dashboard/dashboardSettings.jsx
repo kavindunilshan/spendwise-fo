@@ -17,7 +17,7 @@ function DashboardSettings() {
     const { getAccessToken } = useTokenManager();
     const [ isExpensePieChart, setIsExpensePieChart ] = useState(true);
     const [ isEditing, setIsEditing ] = useState(false);
-    const [dataViewPeriod, setDataViewPeriod] = useState('ALL');
+    const [dataViewPeriod, setDataViewPeriod] = useState('MONTHLY');
 
     const {user} = useAuth0();
     const userId = user?.sub.split('|')[1];
@@ -30,7 +30,7 @@ function DashboardSettings() {
         if (user) {
             getPreferences(user?.sub.split('|')[1], getAccessToken).then((data) => {
                 if (data) {
-                    console.log("here coming data");
+
                     setIsDarkMode(data.isDarkMode);
                     setIsIncomePieChart(data.isIncomePieChart);
                     setIsExpensePieChart(data.isExpensePieChart);
