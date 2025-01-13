@@ -14,7 +14,7 @@ const clientId = import.meta.env.VITE_AUTH0_FO_CLIENT_ID;
 const audience = import.meta.env.VITE_AUTH0_AUDIENCE;
 const stripePublicKey = import.meta.env.VITE_STRIPE_PUBLIC_KEY;
 const stripePromise = loadStripe(stripePublicKey);
-const scope = 'delete:resources write:advices access:admin';
+const scope = 'openid profile email delete:resources write:advices access:admin';
 
 root.render(
         <BrowserRouter>
