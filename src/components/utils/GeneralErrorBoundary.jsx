@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import "/src/styles/utils/error-boundary.css";
 
-class ErrorBoundary extends Component {
+class GeneralErrorBoundary extends Component {
     state = { hasError: false };
 
     static getDerivedStateFromError(error) {
@@ -38,4 +38,4 @@ class ErrorBoundary extends Component {
     }
 }
 
-export default ErrorBoundary;
+export default GeneralErrorBoundary;
