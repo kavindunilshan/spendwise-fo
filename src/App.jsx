@@ -18,12 +18,12 @@ import Goals from "./components/data-center/components/goals/goals.jsx";
 import Advices from "./components/data-center/components/advices/advices.jsx";
 import Response from "./components/data-center/components/advices/response.jsx";
 import Learn from "./components/data-center/components/learn/learn.jsx";
-import ErrorBoundary from "./components/utils/ErrorBoundary.jsx";
+import GeneralErrorBoundary from "./components/utils/GeneralErrorBoundary.jsx";
 import ContactUs from "./components/home/contactus.jsx";
 
 function App() {
     return (
-        <ErrorBoundary>
+        <GeneralErrorBoundary>
             <SettingsProvider>
                 <Routes>
                     <Route path="/settings" element={<Settings />}>
@@ -49,7 +49,7 @@ function App() {
                     <Route path="/contact" element={<ContactUs />} />
                 </Routes>
             </SettingsProvider>
-        </ErrorBoundary>
+        </GeneralErrorBoundary>
     );
 }
 
