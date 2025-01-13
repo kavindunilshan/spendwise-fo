@@ -13,7 +13,7 @@ const clientId = "NeusqrLxWz03fI3MizB5jB0CsNHROijk";
 const audience = "https://spendwise-backend-api";
 const stripePublicKey = "pk_test_51QU2KtG16wBk4x4NoGSp3xm6Oavqek7vIJccU4PYQKjbxF46AWbmVrjUzeFUhdIHXMddBlp5zX2ymfT1knfbjU1I000QensuvM";
 const stripePromise = loadStripe(stripePublicKey);
-const scope = 'delete:resources write:advices access:admin';
+const scope = 'openid profile email delete:resources write:advices access:admin';
 
 root.render(
         <BrowserRouter>
