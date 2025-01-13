@@ -1,5 +1,6 @@
 import React, {useContext, useEffect} from 'react';
 import {SettingsContext} from "../../../settings/settings-context.jsx";
+import MilestoneTable from "./milestone-table.jsx";
 
 function Milestones(props) {
 
@@ -10,7 +11,9 @@ function Milestones(props) {
     }, []);
 
     return (
-        <div></div>
+        <div>
+            <MilestoneTable />
+        </div>
     );
 }
 
