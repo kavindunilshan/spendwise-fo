@@ -1,12 +1,5 @@
-import React, { useState, useEffect } from "react";
-import {
-    useStripe,
-    useElements,
-    CardElement,
-    CardNumberElement,
-    CardExpiryElement,
-    CardCvcElement
-} from "@stripe/react-stripe-js";
+import React, {useEffect, useState} from "react";
+import {CardCvcElement, CardExpiryElement, CardNumberElement, useElements, useStripe} from "@stripe/react-stripe-js";
 import {fetchClientSecret} from "../../services/data-center.js";
 import Dialog from "@mui/material/Dialog";
 import {Box, CircularProgress, Typography} from "@mui/material";
